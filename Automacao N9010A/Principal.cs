@@ -9,6 +9,7 @@ namespace Automacao_N9010A
         string RefLevel = "20";
         string Att = "35";
 
+
         public Principal()
         {
             InitializeComponent();
@@ -388,9 +389,9 @@ namespace Automacao_N9010A
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < checkedListBox2.CheckedItems.Count; i++)
+            for (int i = 0; i < ListaEnsaiosItem11.CheckedItems.Count; i++)
             {
-                switch (checkedListBox2.CheckedItems[i])
+                switch (ListaEnsaiosItem11.CheckedItems[i])
                 {
                     case "Largura de faixa a 6 dB":
                         MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 6 dB");
@@ -427,9 +428,9 @@ namespace Automacao_N9010A
                         continue;
                 }
             }
-            for (int i = 0; i < checkedListBox3.CheckedItems.Count; i++)
+            for (int i = 0; i < ListaEnsaiosItem12.CheckedItems.Count; i++)
             {
-                switch (checkedListBox3.CheckedItems[i])
+                switch (ListaEnsaiosItem12.CheckedItems[i])
                 {
                     case "Potência de saída":
 
