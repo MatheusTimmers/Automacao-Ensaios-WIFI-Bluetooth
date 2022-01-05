@@ -1,0 +1,7 @@
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.csproj.AssemblyReference.cache
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao_N9010A.Form1.resources
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.csproj.GenerateResource.cache
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.AssemblyInfoInputs.cache
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.AssemblyInfo.cs
+C:\Users\Teste\source\repos\Automacao N9010A\Automacao N9010A\obj\Debug\net5.0-windows\Automacao N9010A Form.csproj.CoreCompileInputs.cache

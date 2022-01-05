@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RsInstrument" Version="1.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Ivi.Driver">
+      <HintPath>..\..\..\..\..\..\Program Files\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Scope">
+      <HintPath>..\..\..\..\..\..\Program Files\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Scope.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Visa.Interop">
+      <HintPath>..\..\..\..\..\..\Program Files\IVI Foundation\VISA\VisaCom64\Primary Interop Assemblies\Ivi.Visa.Interop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

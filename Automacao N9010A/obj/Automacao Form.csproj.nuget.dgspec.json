@@ -1,0 +1,208 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj",
+        "projectName": "Automacao Form",
+        "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {
+              "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
+                "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
+              },
+              "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+        "projectName": "AutomacaoN9010A",
+        "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "RsInstrument": {
+              "target": "Package",
+              "version": "[1.15.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj",
+        "projectName": "KeySightLib",
+        "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "RsInstrument": {
+              "target": "Package",
+              "version": "[1.15.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

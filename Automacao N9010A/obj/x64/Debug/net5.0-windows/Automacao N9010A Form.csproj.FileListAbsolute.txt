@@ -1,0 +1,26 @@
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.exe
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.deps.json
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.runtimeconfig.json
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.runtimeconfig.dev.json
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\ref\Automacao N9010A Form.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Automacao N9010A Form.pdb
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\RsInstrument.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\AutomacaoN9010A.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\KeySightLib.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Ivi.Visa.Interop.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\AutomacaoN9010A.pdb
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\KeySightLib.pdb
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\bin\x64\Debug\net5.0-windows\Ivi.Visa.Interop.xml
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.csproj.AssemblyReference.cache
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Form1.resources
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.csproj.GenerateResource.cache
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.AssemblyInfoInputs.cache
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.AssemblyInfo.cs
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.csproj.CoreCompileInputs.cache
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.csproj.CopyComplete
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\ref\Automacao N9010A Form.dll
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.pdb
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao N9010A Form.genruntimeconfig.cache
