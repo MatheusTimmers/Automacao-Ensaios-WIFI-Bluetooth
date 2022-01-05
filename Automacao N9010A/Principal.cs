@@ -76,7 +76,7 @@ namespace Automacao_N9010A
         }
 
 
-        //OI
+        
         public void Ensaio_Largura_de_faixa_a_26_dB(string valFreq, string ip)
         {
             AutomacaoN9010A radical;
