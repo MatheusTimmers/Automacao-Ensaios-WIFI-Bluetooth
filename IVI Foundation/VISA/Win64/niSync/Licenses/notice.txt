@@ -1,0 +1,3 @@
+This product includes code from "NDIS5 Driver for AMD PCnet Ethernet Adapter", version 4.51.0.0 licensed by a third party or parties pursuant to AMD PCnet Ethernet Adapter License, which can be found at C:\Program Files\IVI Foundation\VISA\WinNT\niSync\licenses and that is subject to the following notice(s):
+
+Copyright 2004-2005 ADVANCED MICRO DEVICES, INC. All Rights Reserved.

@@ -1,0 +1,512 @@
+FPAttributeValueFile
+
+n SubType="IVI"
+
+n SubVersion="1"
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrInternalTriggerSlopeRangeTable DataType="i"
+ IVIPWRMETER_VAL_POSITIVE (1)
+  "Sets the trigger event to occur on the rising edge of the trigger pulse."
+
+ IVIPWRMETER_VAL_NEGATIVE (0)
+  "Sets the trigger event to occur on the falling edge of the trigger "
+  "pulse."
+
+
+v attrTriggerSourceRangeTable DataType="i"
+ IVIPWRMETER_VAL_IMMEDIATE (1)
+  "The power meter exits the Wait-For-Trigger state immediately after "
+  "entering.  It does not wait for a trigger of any kind."
+
+ IVIPWRMETER_VAL_EXTERNAL (2)
+  "The power meter exits the Wait-For-Trigger state when a trigger occurs on "
+  "the external trigger input."
+
+ IVIPWRMETER_VAL_INTERNAL (3)
+  "The power meter exits the Wait-For-Trigger state when an internal trigger "
+  "event occurs on the measurement signal."
+
+ IVIPWRMETER_VAL_SOFTWARE_TRIG (4)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "software trigger."
+
+ IVIPWRMETER_VAL_TTL0 (100)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL0."
+
+ IVIPWRMETER_VAL_TTL1 (101)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL1."
+
+ IVIPWRMETER_VAL_TTL2 (102)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL2."
+
+ IVIPWRMETER_VAL_TTL3 (103)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL3."
+
+ IVIPWRMETER_VAL_TTL4 (104)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL4."
+
+ IVIPWRMETER_VAL_TTL5 (105)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL5."
+
+ IVIPWRMETER_VAL_TTL6 (106)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL6."
+
+ IVIPWRMETER_VAL_TTL7 (107)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on TTL7."
+
+ IVIPWRMETER_VAL_ECL0 (200)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on ECL0."
+
+ IVIPWRMETER_VAL_ECL1 (201)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on ECL1."
+
+ IVIPWRMETER_VAL_PXI_STAR (300)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on PXI Star trigger bus."
+
+ IVIPWRMETER_VAL_RTSI_0 (400)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI0 line."
+
+ IVIPWRMETER_VAL_RTSI_1 (401)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI1 line."
+
+ IVIPWRMETER_VAL_RTSI_2 (402)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI2 line."
+
+ IVIPWRMETER_VAL_RTSI_3 (403)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI3 line."
+
+ IVIPWRMETER_VAL_RTSI_4 (404)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI4 line."
+
+ IVIPWRMETER_VAL_RTSI_5 (405)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI5 line."
+
+ IVIPWRMETER_VAL_RTSI_6 (406)
+  "The power meter exits the Wait-For-Trigger state when it receives a "
+  "trigger on the RTSI6 line."
+
+
+v attrUnitsRangeTable DataType="i"
+ IVIPWRMETER_VAL_DBM (1)
+  "Sets the units to dBm."
+
+ IVIPWRMETER_VAL_DBMV (2)
+  "Sets the units to dB millivolts."
+
+ IVIPWRMETER_VAL_DBUV (3)
+  "Sets the units to dB microvolts."
+
+ IVIPWRMETER_VAL_WATTS (4)
+  "Sets the units to Watts."
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviPwrMeter_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviPwrMeter_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 IviPwrMeter_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviPwrMeter_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviPwrMeter_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 IviPwrMeter_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviPwrMeter_SetAttributeViString 3 4 false s DataType="ViString"
+0 IviPwrMeter_GetAttributeViString 3 5 false g DataType="ViString"
+0 IviPwrMeter_CheckAttributeViString 3 4 false s DataType="ViString"
+0 IviPwrMeter_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviPwrMeter_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 IviPwrMeter_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviPwrMeter_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 IviPwrMeter_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 IviPwrMeter_CheckAttributeViSession 3 4 false s DataType="ViSession"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options"
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVIPWRMETER_ATTR_RANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that you "
+  "pass to driver functions.  Range checking parameters is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable range checking and maximize performance.\n"
+  "    The default value is TRUE.   Use the IviPwrMeter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVIPWRMETER_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable status checking and maximize performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is FALSE.   Use the IviPwrMeter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVIPWRMETER_ATTR_CACHE ViBoolean gs Boolean_values
+  "Specifies whether to cache the value of attributes.  When caching is "
+  "enabled, the instrument driver keeps track of the current instrument "
+  "settings and avoids sending redundant commands to the instrument.  Thus, "
+  "you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is TRUE.   Use the IviPwrMeter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Simulate" IVIPWRMETER_ATTR_SIMULATE ViBoolean gs Boolean_values
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is FALSE.   Use the IviPwrMeter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Record Value Coercions" IVIPWRMETER_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for integer and real type attributes.  You call IviPwrMeter_GetNextCoercionRecord "
+  "function to extract and delete the oldest coercion record from "
+  "the list.\n"
+  "    The default value is FALSE.   Use the IviPwrMeter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVIPWRMETER_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings.\n"
+  "\n"
+  "The default value is FALSE.\n"
+  "\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  You call "
+  "IviPwrMeter_GetNextInterchangeWarning function to extract interchange warnings.  Call the "
+  "IviPwrMeter_ClearInterchangeWarnings function to clear the list of "
+  "interchangeability warnings without reading them.\n"
+  "Interchangeability checking logs a warning for each attribute you have not "
+  "set that affects the behavior of the instrument.\n"
+  "    "
+
+2 all "Driver Identification"
+  "Attributes that provide identity and version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Description" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific driver.\n"
+  "    "
+
+3 all "Driver Prefix" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_PREFIX ViString g
+  "A string that contains the prefix for the instrument driver.  The name of "
+  "each user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Driver Vendor" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "    "
+
+3 all "Revision" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_REVISION ViString g
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVIPWRMETER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+2 all "Driver Capabilities"
+  "Attributes that provide information about the capabilities of this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Channel Count" IVIPWRMETER_ATTR_CHANNEL_COUNT ViInt32 g
+  "Indicates the number of channels that the specific instrument driver "
+  "supports.  \n"
+  "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag is set, "
+  "the IVI engine maintains a separate cache value for each channel.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVIPWRMETER_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g
+  "Contains a model code of the instrument. For drivers that support more "
+  "than one device, this attribute contains a comma-separated list of "
+  "supported instrument models.\n"
+  "    "
+
+3 all "Class Group Capabilities" IVIPWRMETER_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extention groups "
+  "that this driver implements.\n"
+  "    "
+
+2 all "Instrument Identification"
+  "Attributes that provide identity information about the instrument that "
+  "you are using.    "
+
+3 all "Manufacturer" IVIPWRMETER_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are "
+  "currently using.\n"
+  "    "
+
+3 all "Model" IVIPWRMETER_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that "
+  "you are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVIPWRMETER_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information for the "
+  "instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information"
+  "Attributes that contain additional information concerning the instrument "
+  "driver session.      "
+
+3 all "Logical Name" IVIPWRMETER_ATTR_LOGICAL_NAME ViString g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviPwrMeter_init or "
+  "IviPwrMeter_InitWithOptions functions.  The IVI Configuration "
+  "utility must contain an entry for the logical name.  The logical name "
+  "entry refers to a driver session section in the IVI Configuration "
+  "file.  The driver session section specifies a physical device and "
+  "initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVIPWRMETER_ATTR_IO_RESOURCE_DESCRIPTOR ViString g
+  "Indicates the resource descriptor the driver uses to identify the "
+  "physical device.\n"
+  "    If you initialize the driver with a logical name, this attribute "
+  "contains the resource descriptor that corresponds to the entry in the IVI "
+  "Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource descriptor, "
+  "this attribute contains that value.\n"
+  "    "
+
+3 all "Driver Setup" IVIPWRMETER_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver options at "
+  "initialization time.  An example of this is specifying a particular "
+  "instrument model from among a family of instruments that the driver "
+  "supports.  This is useful when using simulation.  You can specify "
+  "driver-specific options through the DriverSetup keyword in the "
+  "optionsString parameter to the IviPwrMeter_InitWithOptions "
+  "function.  If you open an instrument using a logical name, you can also "
+  "specify the options through the IVI Configuration Utility.\n"
+  "    The default value is an empty string.\n"
+  "    "
+
+1 all "Basic Operation"
+  "Basic Operation"
+
+2 all "Averaging Auto Enabled" IVIPWRMETER_ATTR_AVERAGING_AUTO_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies the auto-averaging mode used by "
+  "the instrument for the specified input channel.\n"
+  "If auto averaging is enabled, the instrument determines the best value for "
+  "the averaging count automatically. The averaging count specifies the "
+  "number of samples that the instrument takes before the measurement is "
+  "complete.\n"
+  "If auto averaging is disabled, specify the averaging count explicitly by "
+  "setting the IVIPWRMETER_ATTR_AVERAGING_COUNT [AVG] attribute. \n"
+  ""
+
+2 all "Correction Frequency" IVIPWRMETER_ATTR_CORRECTION_FREQUENCY ViReal64 gs
+  "This channel-based attribute specifies the frequency of the input signal "
+  "in Hertz.  The instrument uses this value to determine the appropriate "
+  "correction factor for the sensor.\n"
+  "To obtain the most accurate measurement, specify the correction frequency "
+  "as close as possible to the actual frequency of the input signal.\n"
+
+2 all "Offset" IVIPWRMETER_ATTR_OFFSET ViReal64 gs
+  "This channel-based attribute specifies an offset to be added to the "
+  "measured value on a channel in units of dB.  This attribute can be used to "
+  "compensate for system losses or gains between the unit under test and the "
+  "sensor of the power meter.  \n"
+  "A positive value is used for loss compensation.  A negative value is used "
+  "for gain compensation. For example, a cable loss of 2 dB could be "
+  "compensated for by setting this attribute to +2.  Similarly, a gain stage "
+  "of 10 dB could be accounted for by setting the value of this attribute to "
+  "-10.  In both cases, the reading from the power meter will indicate the "
+  "power at the unit under test rather than power at the power meter's "
+  "sensor.\n"
+
+2 all "Range Auto Enabled" IVIPWRMETER_ATTR_RANGE_AUTO_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies if the power meter should "
+  "automatically determine the best range for the measurement.\n"
+  "If this attribute is set to TRUE, the instrument automatically determines "
+  "the best range for the measurement. If this attribute is set to FALSE, "
+  "specify the lower and upper limits of the measurement range by explicitly "
+  "setting the IVIPWRMETER_ATTR_RANGE_LOWER [RNG] and  "
+  "IVIPWRMETER_ATTR_RANGE_UPPER [RNG] attributes.\n"
+
+2 all "Units" IVIPWRMETER_ATTR_UNITS ViInt32 gs attrUnitsRangeTable
+  "Specifies the unit to which the RF power is converted after measurement. \n"
+  "The actual RF power of the signal on a channel is always measured in "
+  "Watts. The value of this attribute is used to determine the units in which "
+  "the IVIPWRMETER_ATTR_RANGE_LOWER [RNG] and IVIPWRMETER_ATTR_RANGE_UPPER [RNG] "
+  "attributes are specified. The unit of the "
+  "measurement result returned by the Read and Fetch functions also depends "
+  "on the value of this attribute.\n"
+
+2 all "Channel Acquisition"
+  "Channel Acquisition"
+
+3 all "Channel Enabled [CH]" IVIPWRMETER_ATTR_CHANNEL_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies if the power meter takes a "
+  "measurement on the specified input channel. The power meter will take a "
+  "measurement on a channel only if that channel is enabled.\n"
+  "Channels are also enabled when you call the Configure "
+  "Measurement function. See the function description for more details.\n"
+
+1 all "Manual Range"
+  "Manual Range"
+
+2 all "Range Lower [RNG]" IVIPWRMETER_ATTR_RANGE_LOWER ViReal64 gs
+  "This channel-based attribute specifies the lower limit (minimum) of the "
+  "expected value of the measurement.  The specific driver coerces this value "
+  "to the appropriate range for the instrument. The value of this attribute "
+  "is specified in the same units as the value of the IVIPWRMETER_ATTR_UNITS "
+  "attribute.\n"
+  "This attribute affects the behavior of the instrument only when the "
+  "IVIPWRMETER_ATTR_RANGE_AUTO_ENABLED attribute is set to "
+  "FALSE.\n"
+
+2 all "Range Upper [RNG]" IVIPWRMETER_ATTR_RANGE_UPPER ViReal64 gs
+  "This channel-based attribute specifies the upper limit (maximum) of the "
+  "expected value of the measurement.  The specific driver coerces this value "
+  "to the appropriate range for the instrument. The value of this attribute "
+  "is specified in the same units as the value of the IVIPWRMETER_ATTR_UNITS.\n"
+  "This attribute affects the behavior of the instrument only when the "
+  "IVIPWRMETER_ATTR_RANGE_AUTO_ENABLED attribute is set to FALSE.\n"
+  ""
+
+1 all "Trigger"
+  "Trigger"
+
+2 all "Trigger Source [TRG]" IVIPWRMETER_ATTR_TRIGGER_SOURCE ViInt32 gs attrTriggerSourceRangeTable
+  "Specifies the trigger source the power meter monitors for the trigger "
+  "event.\n"
+  "When the trigger event occurs on the source specified by this attribute, "
+  "the power meter leaves the Wait-For-Trigger state and takes a measurement "
+  "on all enabled channels.\n"
+  "If this attribute is set to the Internal defined value, the power meter "
+  "uses the channel specified by the IVIPWRMETER_ATTR_INTERNAL_TRIGGER_EVENT_SOURCE [IT] "
+  "attribute to monitor "
+  "the internal trigger event.\n"
+
+2 all "Internal Trigger"
+  "Internal Trigger"
+
+3 all "Internal Trigger Event Source [IT]" IVIPWRMETER_ATTR_INTERNAL_TRIGGER_EVENT_SOURCE ViString gs
+  "Specifies the channel that the power meter uses to monitor the internal "
+  "trigger event. The power meter leaves the Idle state when the measurement "
+  "signal on this channel meets the conditions set by the "
+  "IVIPWRMETER_ATTR_INTERNAL_TRIGGER_LEVEL [IT] and "
+  "the IVIPWRMETER_ATTR_INTERNAL_TRIGGER_SLOPE [IT] "
+  "attributes.\n"
+  "This attribute affects the behavior of the instrument only if the "
+  "IVIPWRMETER_ATTR_TRIGGER_SOURCE [TRG] attribute is set to Internal.\n"
+  ""
+
+3 all "Internal Trigger Level [IT]" IVIPWRMETER_ATTR_INTERNAL_TRIGGER_LEVEL ViReal64 gs
+  "Specifies the trigger level for the measurement signal. The power meter "
+  "leaves the Idle state when the measurement signal on the channel specified "
+  "by the IVIPWRMETER_ATTR_INTERNAL_TRIGGER_EVENT_SOURCE [IT] "
+  "attribute crosses the value specified by this attribute. The "
+  "value of this attribute is specified in the same unit as the value of the "
+  "IVIPWRMETER_ATTR_UNITS.\n"
+  "This attribute affects the behavior of the instrument only if the "
+  "IVIPWRMETER_ATTR_TRIGGER_SOURCE [TRG] attribute is set to Internal.\n"
+  ""
+
+3 all "Internal Trigger Slope [IT]" IVIPWRMETER_ATTR_INTERNAL_TRIGGER_SLOPE ViInt32 gs attrInternalTriggerSlopeRangeTable
+  "Specifies the polarity of the internal trigger slope. The power meter "
+  "triggers on the rising or falling edge of the internal trigger source "
+  "depending on the value of this attribute.\n"
+  "This attribute affects the behavior of the instrument only if the "
+  "IVIPWRMETER_ATTR_TRIGGER_SOURCE [TRG] attribute is set to Internal.\n"
+  ""
+
+1 all "Duty Cycle"
+  "Duty Cycle"
+
+2 all "Duty Cycle Correction [DC]" IVIPWRMETER_ATTR_DUTY_CYCLE_CORRECTION ViReal64 gs
+  "This channel-based attribute specifies the duty cycle correction the "
+  "power meter uses to calculate the pulse power of a pulse-modulated signal. "
+  " The power meter measures the average power of the pulsed input signal and "
+  "then divides the result by the value specified for this attribute to "
+  "obtain a pulse power reading. \n"
+  "The value of this attribute is specified as a percentage.\n"
+
+2 all "Duty Cycle Correction Enabled [DC]" IVIPWRMETER_ATTR_DUTY_CYCLE_CORRECTION_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies if the power meter performs a duty "
+  "cycle correction on the specified channel.\n"
+
+1 all "Averaging Count"
+  "Averaging Count"
+
+2 all "Average Count [AVG]" IVIPWRMETER_ATTR_AVERAGING_COUNT ViInt32 gs
+  "This channel-based attribute specifies the average count that the "
+  "instrument uses in manual averaging mode. When the IVIPWRMETER_ATTR_AVERAGING_AUTO_ENABLED "
+  "attribute is set to FALSE, the driver "
+  "filters the input signal by averaging it the number of times specified by "
+  "this attribute.\n"
+
+1 all "Reference Oscillator"
+  "Reference Oscillator"
+
+2 all "Ref Oscillator Enabled [RO]" IVIPWRMETER_ATTR_REF_OSCILLATOR_ENABLED ViBoolean gs Boolean_values
+  "Specifies if the internal reference oscillator is enabled."
+
+2 all "Ref Oscillator Frequency [RO]" IVIPWRMETER_ATTR_REF_OSCILLATOR_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the signal generated by the reference "
+  "oscillator in Hertz. This attribute affects the behavior of the instrument "
+  "only if the IVIPWRMETER_ATTR_REF_OSCILLATOR_ENABLED [RO] "
+  "attribute is set to TRUE.\n"
+
+2 all "Ref Oscillator Level [RO]" IVIPWRMETER_ATTR_REF_OSCILLATOR_LEVEL ViReal64 gs
+  "Specifies the power level of the signal generated by the reference "
+  "oscillator in dBm. This attribute affects the behavior of the instrument "
+  "only if the IVIPWRMETER_ATTR_REF_OSCILLATOR_ENABLED [RO] "
+  "attribute is set to TRUE.\n"
+  "    "
+

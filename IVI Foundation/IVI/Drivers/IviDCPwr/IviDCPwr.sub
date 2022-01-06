@@ -1,0 +1,502 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+v Boolean_values
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+v attrCurrentLimitBehaviorRangeTable DataType="i"
+ IVIDCPWR_VAL_CURRENT_REGULATE (0)
+ "When the output current reaches the value of the "
+ "IVIDCPWR_ATTR_CURRENT_LIMIT attribute, the power supply "
+ "regulates the output current at that value."
+ 
+ IVIDCPWR_VAL_CURRENT_TRIP (1)
+ "When the output current reaches or exceeds the value of the "
+ "IVIDCPWR_ATTR_CURRENT_LIMIT attribute, the power supply "
+ "disables the output."
+  
+v attrTriggerSourceRangeTable DataType="i"
+ IVIDCPWR_VAL_TRIG_IMMEDIATE (0)
+  "The power supply does not wait for a trigger of any kind."
+
+ IVIDCPWR_VAL_TRIG_EXTERNAL (1)
+  "The power supply waits for a trigger on the external trigger input."
+
+ IVIDCPWR_VAL_SOFTWARE_TRIG (2)
+  "The power supply waits until you call the IviDCPwr_SendSoftwareTrigger function."
+
+ IVIDCPWR_VAL_TRIG_TTL0 (3)
+  "The power supply waits until it receives a trigger on the PXI TRIG0 line (for PXI "
+  "instruments) or the VXI TTL0 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL1 (4)
+  "The power supply waits until it receives a trigger on the PXI TRIG1 line (for PXI "
+  "instruments) or the VXI TTL1 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL2 (5)
+  "The power supply waits until it receives a trigger on the PXI TRIG2 line (for PXI "
+  "instruments) or the VXI TTL2 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL3 (6)
+  "The power supply waits until it receives a trigger on the PXI TRIG3 line (for PXI "
+  "instruments) or the VXI TTL3 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL4 (7)
+  "The power supply waits until it receives a trigger on the PXI TRIG4 line (for PXI "
+  "instruments) or the VXI TTL4 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL5 (8)
+  "The power supply waits until it receives a trigger on the PXI TRIG5 line (for PXI "
+  "instruments) or the VXI TTL5 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL6 (9)
+  "The power supply waits until it receives a trigger on the PXI TRIG6 line (for PXI "
+  "instruments) or the VXI TTL6 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_TTL7 (10)
+  "The power supply waits until it receives a trigger on the PXI TRIG7 line (for PXI "
+  "instruments) or the VXI TTL7 line (for VXI instruments)."
+
+ IVIDCPWR_VAL_TRIG_ECL0 (11)
+  "The power supply waits until it receives a trigger on the VXI ECL0 line."
+
+ IVIDCPWR_VAL_TRIG_ECL1 (12)
+  "The power supply waits until it receives a trigger on the VXI ECL1 line."
+
+ IVIDCPWR_VAL_TRIG_PXI_STAR (13)
+  "The power supply waits until it receives a trigger on the PXI STAR trigger bus."
+  
+ IVIDCPWR_VAL_TRIG_RTSI_0 (14)
+  "The power supply waits until it receives a trigger on RTSI line 0 ."
+
+ IVIDCPWR_VAL_TRIG_RTSI_1 (15)
+  "The power supply waits until it receives a trigger on RTSI line 1."
+
+ IVIDCPWR_VAL_TRIG_RTSI_2 (16)
+  "The power supply waits until it receives a trigger on RTSI line 2."
+
+ IVIDCPWR_VAL_TRIG_RTSI_3 (17)
+  "The power supply waits until it receives a trigger on RTSI line 3."
+
+ IVIDCPWR_VAL_TRIG_RTSI_4 (18)
+  "The power supply waits until it receives a trigger on RTSI line 4."
+
+ IVIDCPWR_VAL_TRIG_RTSI_5 (19)
+  "The power supply waits until it receives a trigger on RTSI line 5."
+
+ IVIDCPWR_VAL_TRIG_RTSI_6 (20)
+  "The power supply waits until it receives a trigger on RTSI line 6."
+
+v measurementTypeRangeTable DataType="i" 
+ IVIDCPWR_VAL_MEASURE_CURRENT (0)
+  ""
+
+ IVIDCPWR_VAL_MEASURE_VOLTAGE (0)
+  ""
+
+
+v outputStateRangeTable DataType="i" 
+ IVIDCPWR_VAL_OUTPUT_CONSTANT_VOLTAGE (0)
+  ""
+
+ IVIDCPWR_VAL_OUTPUT_CONSTANT_CURRENT (0)
+  ""
+
+ IVIDCPWR_VAL_OUTPUT_OVER_VOLTAGE (0)
+  ""
+
+ IVIDCPWR_VAL_OUTPUT_OVER_CURRENT (0)
+  ""
+
+ IVIDCPWR_VAL_OUTPUT_UNREGULATED (0)
+  ""
+
+
+v rangeTypeRangeTable DataType="i" 
+ IVIDCPWR_VAL_RANGE_CURRENT (0)
+  ""
+
+ IVIDCPWR_VAL_RANGE_VOLTAGE (0)
+  ""
+
+
+
+0 IviDCPwr_SetAttributeViInt32     3 4 false s  DataType="ViInt32"
+0 IviDCPwr_GetAttributeViInt32     3 4 false g  DataType="ViInt32"
+0 IviDCPwr_CheckAttributeViInt32   3 4 false s  DataType="ViInt32"
+0 IviDCPwr_SetAttributeViReal64    3 4 false s  DataType="ViReal64"
+0 IviDCPwr_GetAttributeViReal64    3 4 false g  DataType="ViReal64"
+0 IviDCPwr_CheckAttributeViReal64  3 4 false s  DataType="ViReal64"
+0 IviDCPwr_SetAttributeViString    3 4 false s  DataType="ViString"
+0 IviDCPwr_GetAttributeViString    3 5 false g  DataType="ViString"
+0 IviDCPwr_CheckAttributeViString  3 4 false s  DataType="ViString"
+0 IviDCPwr_SetAttributeViBoolean   3 4 false s  DataType="ViBoolean"
+0 IviDCPwr_GetAttributeViBoolean   3 4 false g  DataType="ViBoolean"
+0 IviDCPwr_CheckAttributeViBoolean 3 4 false s  DataType="ViBoolean"
+0 IviDCPwr_SetAttributeViSession   3 4 false s  DataType="ViSession"
+0 IviDCPwr_GetAttributeViSession   3 4 false g  DataType="ViSession"
+0 IviDCPwr_CheckAttributeViSession 3 4 false s  DataType="ViSession"
+
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVIDCPWR_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that "
+ "you pass to driver functions.  Range checking "
+ "parameters is very useful for debugging.  After you validate your program, "
+ "you can set this attribute to VI_FALSE to disable range checking and "
+ "maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDCPwr_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVIDCPWR_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful "
+ "for debugging.  After you validate your program, you can set this "
+ "attribute to VI_FALSE to disable status checking and maximize "
+ "performance\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDCPwr_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVIDCPWR_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  "
+ "When caching is enabled, the instrument driver keeps track of "
+ "the current instrument settings and avoids sending redundant commands to "
+ "the instrument.  Thus, you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDCPwr_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Simulate" IVIDCPWR_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O "
+ "operations.  If simulation is enabled, instrument driver "
+ "functions perform range checking and set and get attributes, "
+ "but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDCPwr_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVIDCPWR_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVIDCPWR_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Record Value Coercions" IVIDCPWR_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVIDCPWR_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVIDCPWR_ATTR_SPY is set to VI_FALSE "
+ "you call IviDCPwr_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviDCPwr_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Interchange Check" IVIDCPWR_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to perform interchangeability checking and retrieve "
+ "interchangeability warnings when you call the "
+ "IviDCPwr_Initiate and IviDCPwr_Measure functions.  "
+ "The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVIDCPWR_ATTR_SPY is set to VI_FALSE, you call "
+ "IviDCPwr_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviDCPwr_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"
+ "If IVIDCPWR_ATTR_SPY is set to VI_TRUE, you can use the NI I/O Trace utility to view "
+ "interchangeability warnings.\n"
+ 
+ "     Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviDCPwr class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviDCPwr "
+ "class.\n\n"
+
+ "(3) The IviDCPwr class defines an attribute as read-only and you "  
+ "have set that attribute.\n\n"
+
+3 all "Spy" IVIDCPWR_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is VI_TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVIDCPWR_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVIDCPWR_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVIDCPWR_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVIDCPWR_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDCPWR_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDCPWR_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVIDCPWR_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVIDCPWR_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVIDCPWR_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIDCPWR_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVIDCPWR_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDCPWR_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDCPWR_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVIDCPWR_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVIDCPWR_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviDCPwr capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviDCPwrBase\" - Supports fundamental DC power supply capabilities.\n\n"
+ "\"IviDCPwrTrigger\" - Supports IviDCPwrBase with the capability to change the output on trigger events.\n\n"
+ "\"IviDCPwrSoftwareTrigger\" - Supports IviDCPwrTrigger with the capability to send a software trigger.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVIDCPWR_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviDCPwr functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviDCPwr_init\"\n"
+ "    \"IviDCPwr_close\"\n"
+ "    \"IviDCPwr_reset\"\n"
+ "    \"IviDCPwr_self_test\"\n"
+ "    \"IviDCPwr_error_query\"\n"
+ "    \"IviDCPwr_error_message\"\n"
+ "    \"IviDCPwr_revision_query\"\n"
+ "    \"IviDCPwr_InitWithOptions\"\n"
+ "    \"IviDCPwr_ConfigureOutputEnabled\"\n"
+ "    \"IviDCPwr_ConfigureOutputRange\"\n"
+ "    \"IviDCPwr_ConfigureCurrentLimit\"\n"
+ "    \"IviDCPwr_ConfigureOVP\"\n"
+ "    \"IviDCPwr_ConfigureVoltageLevel\"\n"
+ "    \"IviDCPwr_QueryOutputState\"\n"
+ "    \"IviDCPwr_QueryMaxCurrentLimit\"\n"
+ "    \"IviDCPwr_QueryMaxVoltageLevel\"\n"
+ "    \"IviDCPwr_ResetOutputProtection\"\n"
+ "    \"IviDCPwr_ConfigureTriggerSource\"\n"
+ "    \"IviDCPwr_ConfigureTriggeredVoltageLevel\"\n"
+ "    \"IviDCPwr_ConfigureTriggeredCurrentLimit\"\n"
+ "    \"IviDCPwr_Abort\"\n"
+ "    \"IviDCPwr_Initiate\"\n"
+ "    \"IviDCPwr_SendSoftwareTrigger\"\n"
+ "    \"IviDCPwr_Measure\"\n"
+ "    "
+
+3 all "Channel Count" IVIDCPWR_ATTR_CHANNEL_COUNT ViInt32 g
+ "Indicates the number of channels that the specific driver supports.  \n"
+ "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag attribute "
+ "is set, the instrument driver maintains a separate cache value for each channel.\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVIDCPWR_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVIDCPWR_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVIDCPWR_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVIDCPWR_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviDCPwr_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVIDCPWR_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviDCPwr_init or "
+ "IviDCPwr_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVIDCPWR_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+
+1 all "Basic Operation" "Attributes for controlling the basic features of the DC power supply."
+
+2 all "Output Enabled" IVIDCPWR_ATTR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "This channel-based attribute specifies whether the signal the power supply "
+ "produces appears at the output connector. \n"
+ "    "
+ 
+2 all "OVP Enabled" IVIDCPWR_ATTR_OVP_ENABLED ViBoolean gs Boolean_values
+ "This channel-based attribute specifies whether the power supply provides "
+ "over-voltage protection.  If this attribute is set to VI_TRUE, the power "
+ "supply disables the output when the output voltage is greater than or equal "
+ "to the value of the IVIDCPWR_ATTR_OVP_LIMIT attribute.\n"
+ "    "
+
+2 all "OVP Limit" IVIDCPWR_ATTR_OVP_LIMIT ViReal64 gs
+ "This channel-based attribute specifies the voltage the power supply allows. "
+ "The units are Volts.\n\n"
+ "If the IVIDCPWR_ATTR_OVP_ENABLED attribute is set to VI_TRUE, "
+ "the power supply disables the output when the output voltage is greater "
+ "than or equal to the value of this attribute.\n\n"
+ "If the IVIDCPWR_ATTR_OVP_ENABLED attribute is set to VI_FALSE, "
+ "this attribute does not affect the behavior of the instrument.\n\n"
+ "    "
+
+2 all "Current Limit Behavior" IVIDCPWR_ATTR_CURRENT_LIMIT_BEHAVIOR ViInt32 gs attrCurrentLimitBehaviorRangeTable
+ "This channel-based attribute specifies the behavior of the power supply when "
+ "the output current is equal to or greater than the value of the "
+ "IVIDCPWR_ATTR_CURRENT_LIMIT attribute.\n"
+ "    "
+
+2 all "Current Limit" IVIDCPWR_ATTR_CURRENT_LIMIT ViReal64 gs
+ "This channel-based attribute specifies the output current limit. "
+ "The units are Amperes.\n\n"
+ "The value of the IVIDCPWR_ATTR_CURRENT_LIMIT_BEHAVIOR "
+ "attribute determines the behavior of the power supply when the output "
+ "current is equal to or greater than the value of this attribute.\n\n"
+ "    "
+
+2 all "Voltage Level" IVIDCPWR_ATTR_VOLTAGE_LEVEL ViReal64 gs 
+ "This channel-based attribute specifies the voltage level the DC power "
+ "supply attempts to generate.  The units are Volts.\n\n"
+ "    "
+
+1 all "Trigger Subsystem" "Attributes for triggered output changes."
+
+2 all "Trigger Source [TRG]" IVIDCPWR_ATTR_TRIGGER_SOURCE ViInt32 gs attrTriggerSourceRangeTable 
+ "This channel-based attribute specifies the trigger source.  After you call "
+ "IviDCPwr_Initiate, the power supply waits for a trigger event from "
+ "the source you specify with this attribute.  After a trigger event occurs, "
+ "the power supply changes the voltage level to the value of the "
+ "IVIDCPWR_ATTR_TRIGGERED_VOLTAGE_LEVEL and the current limit to "
+ "the value of the IVIDCPWR_ATTR_TRIGGERED_CURRENT_LIMIT "
+ "attributes.\n"
+ "    "
+
+2 all "Triggered Voltage Level [TRG]" IVIDCPWR_ATTR_TRIGGERED_VOLTAGE_LEVEL ViReal64 gs
+ "This channel-based attribute specifies the value to  which the power supply "
+ "sets the voltage level after a trigger event occurs. The units are Volts.\n\n"
+ "After you call IviDCPwr_Initiate, the power supply waits for a "
+ "trigger event from the source you specify with the "
+ "IVIDCPWR_ATTR_TRIGGER_SOURCE attribute.  After a trigger event "
+ "occurs, the power supply sets the voltage level to the value of this "
+ "attribute.  After a trigger occurs, the value of the "
+ "IVIDCPWR_ATTR_VOLTAGE_LEVEL attribute reflects the new value "
+ "to which the voltage level has been set.\n\n"
+ "    "
+
+2 all "Triggered Current Limit [TRG]" IVIDCPWR_ATTR_TRIGGERED_CURRENT_LIMIT ViReal64 gs
+ "This channel-based attribute specifies the value to  which the power supply "
+ "sets the current limit after a trigger event occurs. The units are amps.\n\n"
+ "After you call IviDCPwr_Initiate, the power supply waits for a "
+ "trigger event from the source you specify with the "
+ "IVIDCPWR_ATTR_TRIGGER_SOURCE attribute.  After a trigger event "
+ "occurs, the power supply sets the current limit to the value of this "
+ "attribute.  After a trigger occurs, the value of the "
+ "IVIDCPWR_ATTR_CURRENT_LIMIT attribute reflects the new value "
+ "to which the current limit has been set.\n\n"
+ "    "

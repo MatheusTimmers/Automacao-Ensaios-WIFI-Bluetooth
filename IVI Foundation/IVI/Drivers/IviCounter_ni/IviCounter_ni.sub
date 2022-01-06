@@ -1,0 +1,679 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+v Boolean_values
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+v ArmTypeRangeTable DataType="i" 
+ IVICOUNTER_VAL_IMMEDIATE_ARM_TYPE (1)
+  "Immediate start arming"
+
+ IVICOUNTER_VAL_EXTERNAL_ARM_TYPE (2)
+  "External start arming"
+
+
+v CouplingRangeTable DataType="i" 
+ IVICOUNTER_VAL_AC (1)
+  "The counter AC couples the channel signal."
+
+ IVICOUNTER_VAL_DC (2)
+  "The counter DC couples the channel signal."
+
+
+v ImpedanceTable DataType="d" 
+ 50.0 (5.00000000000000E+1)
+  "0 to 50 coerced to 50"
+
+ 1.0E6 (1.00000000000000E+6)
+  "1001 to 1000000 coerced to 1000000"
+
+
+v MeasurementFunctionRangeTable DataType="i" 
+ IVICOUNTER_VAL_FREQUENCY (1)
+  "Sets the counter to measure frequency."
+
+ IVICOUNTER_VAL_FREQUENCY_WITH_APERTURE (2)
+  "Sets the counter to measure frequency with aperture."
+
+ IVICOUNTER_VAL_PERIOD (3)
+  "Sets the counter to measure period."
+
+ IVICOUNTER_VAL_PERIOD_WITH_APERTURE (4)
+  "Sets the counter to measure period with aperture."
+
+ IVICOUNTER_VAL_PULSE_WIDTH (5)
+  "Sets the counter to measure pulse width."
+
+ IVICOUNTER_VAL_DUTY_CYCLE (6)
+  "Sets the counter to measure duty cycle."
+
+ IVICOUNTER_VAL_EDGE_TIME (7)
+  "Sets the counter to measure edge time."
+
+ IVICOUNTER_VAL_FREQUENCY_RATIO (8)
+  "Sets the counter to measure frequency ratio."
+
+ IVICOUNTER_VAL_TIME_INTERVAL (9)
+  "Sets the counter to measure time interval."
+
+ IVICOUNTER_VAL_PHASE (10)
+  "Sets the counter to measure phase."
+
+ IVICOUNTER_VAL_CONTINUOUS_TOTALIZE (11)
+  "Sets the counter for a continuous totalize measurement."
+
+ IVICOUNTER_VAL_GATED_TOTALIZE (12)
+  "Sets the counter for a gated totalize measurement."
+
+ IVICOUNTER_VAL_TIMED_TOTALIZE (13)
+  "Sets the counter for a timed totalize measurement."
+
+ IVICOUNTER_VAL_DC_VOLTAGE (14)
+  "Sets the counter to measure DC voltage."
+
+ IVICOUNTER_VAL_MAXIMUM_VOLTAGE (15)
+  "Sets the counter to measure maximum voltage."
+
+ IVICOUNTER_VAL_MINIMUM_VOLTAGE (16)
+  "Sets the counter to measure minimum voltage."
+
+ IVICOUNTER_VAL_RMS_VOLTAGE (17)
+  "Sets the counter to measure RMS voltage."
+
+ IVICOUNTER_VAL_PEAK_TO_PEAK_VOLTAGE (18)
+  "Sets the counter to measure peak-to-peak voltage."
+
+
+v SlopeRangeTable DataType="i" 
+ IVICOUNTER_VAL_NEGATIVE (0)
+  "A negative (falling) edge passing through the trigger level triggers the "
+  "counter."
+
+ IVICOUNTER_VAL_POSITIVE (1)
+  "A positive (rising) edge passing through the trigger level triggers the "
+  "counter."
+
+  
+v attrEdgeTimeReferenceTypeRangeTable DataType="i" 
+ IVICOUNTER_VAL_VOLTAGE_REFERENCE_TYPE (1)
+  "Sets the counter to measure edge time based on voltage reference levels."
+
+ IVICOUNTER_VAL_PERCENT_REFERENCE_TYPE (2)
+  "Sets the counter to measure edge time based on percentage reference "
+  "levels."  
+  
+  
+v Boolean_values DataType="i" 
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+0 IviCounter_SetAttributeViInt32     3 4 false s  DataType="ViInt32"
+0 IviCounter_GetAttributeViInt32     3 4 false g  DataType="ViInt32"
+0 IviCounter_CheckAttributeViInt32   3 4 false s  DataType="ViInt32"
+0 IviCounter_SetAttributeViReal64    3 4 false s  DataType="ViReal64"
+0 IviCounter_GetAttributeViReal64    3 4 false g  DataType="ViReal64"
+0 IviCounter_CheckAttributeViReal64  3 4 false s  DataType="ViReal64"
+0 IviCounter_SetAttributeViString    3 4 false s  DataType="ViString"
+0 IviCounter_GetAttributeViString    3 5 false g  DataType="ViString"
+0 IviCounter_CheckAttributeViString  3 4 false s  DataType="ViString"
+0 IviCounter_SetAttributeViBoolean   3 4 false s  DataType="ViBoolean"
+0 IviCounter_GetAttributeViBoolean   3 4 false g  DataType="ViBoolean"
+0 IviCounter_CheckAttributeViBoolean 3 4 false s  DataType="ViBoolean"
+0 IviCounter_SetAttributeViSession   3 4 false s  DataType="ViSession"
+0 IviCounter_GetAttributeViSession   3 4 false g  DataType="ViSession"
+0 IviCounter_CheckAttributeViSession 3 4 false s  DataType="ViSession"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVICOUNTER_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that "
+  "you pass to driver functions.  Range checking parameters is very useful "
+  "for debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable range checking and maximize performance.\n"
+  "    The default value is VI_TRUE.  Use the IviCounter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVICOUNTER_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful "
+  "for debugging.  After you validate your program, you can set this "
+  "attribute to VI_FALSE to disable status checking and maximize "
+  "performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_FALSE.  Use the IviCounter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVICOUNTER_ATTR_CACHE ViBoolean gs Boolean_values 
+  "Specifies whether to cache the value of attributes.  "
+  "When caching is enabled, the instrument driver keeps track of "
+  "the current instrument settings and avoids sending redundant commands to "
+  "the instrument.  Thus, you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_TRUE.  Use the IviCounter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+ 
+3 all "Simulate" IVICOUNTER_ATTR_SIMULATE ViBoolean gs Boolean_values 
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is VI_FALSE.  Use the IviCounter_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+ 
+3 all "Record Value Coercions" IVICOUNTER_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for integer and real type attributes.  "  
+  "You call IviCounter Get Next Coercion Record to extract and delete the oldest "
+  "coercion record from the list.\n"  
+  "    The default value is VI_FALSE.  Use the "
+  "IviCounter_InitWithOptions function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVICOUNTER_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings.\n"
+  "\n"
+  "The default value is VI_FALSE.\n\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  "
+  "You call "
+  "IviCounter Get Next Interchange Warning to extract interchange warnings.  "
+  "Call the IviCounter_ClearInterchangeWarnings function to clear the list "
+  "of interchangeability warnings without reading them.\n"
+  "Interchangeability checking logs a warning for each attribute you have not set "
+  "that affects the behavior of the instrument.\n"
+  "    "
+
+2 all "Driver Identification"
+  "Attributes that provide identity and version information about this instrument driver.\n"
+  "    "
+
+3 all "Description" IVICOUNTER_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific "
+  "driver.\n"
+  "    "
+
+3 all "Driver Prefix" IVICOUNTER_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+  "A string that contains the prefix for the instrument driver.  The name of each "
+  "user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Driver Vendor" IVICOUNTER_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "    "
+
+3 all "Revision" IVICOUNTER_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVICOUNTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which this driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVICOUNTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which this driver is compliant.\n"
+  "    "
+
+2 all "Driver Capabilities"
+  "Attributes that provide information about the capabilities of this instrument driver.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVICOUNTER_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+  "Contains a model code of the instrument. For drivers that support more than one device, this "
+  "attribute contains a comma-separated list of supported instrument "
+  "models.\n"
+  "    "
+
+3 all "Class Group Capabilities" IVICOUNTER_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extension groups that "
+  "this driver implements.\n"
+  "    "
+  
+3 all "Channel Count" IVICOUNTER_ATTR_CHANNEL_COUNT ViInt32 g
+ "Returns the number of available channels."
+
+2 all "Instrument Identification" 
+  "Attributes that provide identity information about the instrument that you are using."
+  "    "
+
+3 all "Manufacturer" IVICOUNTER_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are currently "
+  "using.\n"
+  "    "
+
+3 all "Model" IVICOUNTER_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that you "
+  "are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVICOUNTER_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information "
+  "for the instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information" 
+  "Attributes that contain additional information concerning the instrument driver session.  "
+  "    "
+
+3 all "Logical Name" IVICOUNTER_ATTR_LOGICAL_NAME ViString  g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviCounter_init or "
+  "IviCounter_InitWithOptions functions.  "
+  "The IVI Configuration utility must contain an entry for the logical name.  "
+  "The logical name entry refers to a virtual instrument section in the "
+  "IVI Configuration file.  The virtual instrument section specifies a physical "
+  "device and initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVICOUNTER_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+  "Indicates the resource descriptor the driver "
+  "uses to identify the physical device.\n"
+  "    If you initialize the driver with a logical name, this "
+  "attribute contains the resource descriptor that corresponds "
+  "to the entry in the IVI Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource "
+  "descriptor, this attribute contains that value.\n"
+  "    "
+
+3 all "Driver Setup" IVICOUNTER_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver "
+  "options at initialization time.  An example of this is specifying "
+  "a particular instrument model from among a family of instruments "
+  "that the driver supports.  This is useful when using simulation.  "
+  "You can specify driver-specific options through "
+  "the DriverSetup keyword in the optionsString parameter to the "
+  "IviCounter_InitWithOptions function.  If you open an instrument "
+  "using a logical name, you can also specify the options "
+  "through the IVI Configuration Utility.\n" 
+  "    The default value is an empty string.\n"
+  "    "
+
+1 all "Basic Operation" 
+ "Base Capability Group: Configures, initiates, and returns results of a "
+ "frequency measurement on any counter compliant with this class.  This "
+ "group defines a number of functions that are relevant in many of the other "
+ "groups."
+
+2 all "Measurement" 
+ "Measurement-related attributes" 
+
+3 all "Measurement Function" IVICOUNTER_ATTR_MEASUREMENT_FUNCTION ViInt32 gs MeasurementFunctionRangeTable 
+ "Specifies the current measurement function of the counter. Set the "
+ "function by calling one of the configure measurement functions or the set "
+ "attribute function. Refer to the configure measurement functions for more "
+ "information about setting up a measurement. Refer to the behavior model for "
+ "proper usage of the this attribute." 
+ 
+2 all "Channel" 
+ "Channel related attributes" 
+ 
+3 all "Channel Impedance" IVICOUNTER_ATTR_IMPEDANCE ViReal64 gs ImpedanceTable 
+ "Specifies the input impedance of the channel, in ohms. "
+ "Common values are 50, 75, and 1,000,000." 
+ 
+3 all "Channel Coupling" IVICOUNTER_ATTR_COUPLING ViInt32 gs CouplingRangeTable 
+ "Specifies the electrical coupling method used on the input channel." 
+ 
+3 all "Channel Attenuation" IVICOUNTER_ATTR_ATTENUATION ViReal64 gs 
+ "Specifies the scale factor by which the channel attenuates the input. "
+ "Increasing this value decreases the sensitivity. For instance, setting "
+ "this value to 10 attenuates the input by a factor of 10."
+
+3 all "Channel Level" IVICOUNTER_ATTR_CHANNEL_LEVEL ViReal64 gs 
+ "Specifies the voltage level the input signal must pass through to produce "
+ "a count. Level is specified as the voltage at the input terminals and is "
+ "independent of attenuation." 
+ 
+3 all "Channel Hysteresis" IVICOUNTER_ATTR_CHANNEL_HYSTERESIS ViReal64 gs 
+ "Specifies the hysteresis value, in volts. Hysteresis sets how far a signal "
+ "must fall below the level before a rising edge can be detected again, and "
+ "how far a signal must rise above the level before a falling edge can "
+ "be detected again. Use hysteresis to help eliminate false events caused by signal noise. "
+ "Hysteresis is specified as the voltage at the input terminals and is independent "
+ "of attenuation."  
+ 
+3 all "Channel Slope" IVICOUNTER_ATTR_CHANNEL_SLOPE ViInt32 gs SlopeRangeTable 
+ "Specifies whether a rising (positive) or a falling (negative) edge triggers "
+ "the counter." 
+
+3 all "Channel Filter Enabled" IVICOUNTER_ATTR_FILTER_ENABLED ViBoolean gs Boolean_values 
+ "Specifies whether to enable filtering on the selected channel." 
+ 
+2 all "Frequency Measurement" 
+ "Frequency Measurement related attributes" 
+ 
+3 all "Frequency Channel" IVICOUNTER_ATTR_FREQUENCY_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the frequency."
+ 
+3 all "Frequency Estimate" IVICOUNTER_ATTR_FREQUENCY_ESTIMATE ViReal64 gs 
+ "Specifies the estimated frequency, in hertz, for the frequency function. "
+ "The driver uses this value to optimize the configuration of the instrument for "
+ "the input signal and to set the duration of the measurement."
+ "Setting this attribute overrides the IVICOUNTER_ATTR_FREQUENCY_APERTURE_TIME "
+ "attribute and sets the IVICOUNTER_ATTR_FREQUENCY_ESTIMATE_AUTO attribute to false."
+
+3 all "Frequency Resolution" IVICOUNTER_ATTR_FREQUENCY_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in hertz, for the frequency function." 
+ "Setting this attribute overrides the IVICOUNTER_ATTR_FREQUENCY_APERTURE_TIME attribute "
+ "and sets the IVICOUNTER_ATTR_FREQUENCY_RESOLUTION_AUTO attribute to false." 
+
+3 all "Frequency Aperture Time" IVICOUNTER_ATTR_FREQUENCY_APERTURE_TIME ViReal64 gs 
+ "Specifies the aperture time, in seconds, for the frequency with aperture "
+ "time function."
+ "Setting this attribute overrides the IVICOUNTER_ATTR_FREQUENCY_ESTIMATE and "
+ "IVICOUNTER_ATTR_FREQUENCY_RESOLUTION attributes."
+ "You can read this attribute to determine the value of the aperture time selected by "
+ "the driver based on the frequency estimate and frequency resolution." 
+ 
+3 all "Frequency Estimate Auto" IVICOUNTER_ATTR_FREQUENCY_ESTIMATE_AUTO ViBoolean gs Boolean_values 
+ "Specifies if the counter auto frequency estimate is enabled. "
+ "If this attribute is set to True, the instrument automatically determines "
+ "the best frequency estimate for the measurement. If this attribute is set "
+ "to False, you can specify the frequency estimate of the measurement by "
+ "explicitly setting the IVICOUNTER_ATTR_FREQUENCY_ESTIMATE attribute."
+ 
+3 all "Frequency Resolution Auto" IVICOUNTER_ATTR_FREQUENCY_RESOLUTION_AUTO ViBoolean gs Boolean_values 
+ "Specifies if the counter auto frequency resolution selection is enabled. "
+ "If this attribute is set to True, the instrument automatically determines "
+ "the best frequency resolution for the measurement. If this attribute is set "
+ "to False, you can specify the frequency resolution of the measurement by "
+ "explicitly setting the IVICOUNTER_ATTR_FREQUENCY_RESOLUTION attribute."
+ 
+2 all "Period Measurement" 
+ "Period Measurement related attributes" 
+ 
+3 all "Period Channel" IVICOUNTER_ATTR_PERIOD_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the period." 
+ 
+3 all "Period Estimate" IVICOUNTER_ATTR_PERIOD_ESTIMATE ViReal64 gs 
+ "Specifies the estimated period, in seconds, for the period function. The "
+ "driver uses this value to optimize the configuration of the instrument for the "
+ "input signal and to set the duration of the measurement."
+
+3 all "Period Resolution" IVICOUNTER_ATTR_PERIOD_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in seconds, for the period function."
+
+3 all "Period Aperture Time" IVICOUNTER_ATTR_PERIOD_APERTURE_TIME ViReal64 gs 
+ "Specifies the aperture time, in seconds, for the period with aperture time function."
+ "Setting this attribute overrides the IVICOUNTER_ATTR_PERIOD_ESTIMATE and "
+ "IVICOUNTER_ATTR_PERIOD_RESOLUTION attributes."
+ "You can read this attribute to determine the value of the aperture time selected "
+ "by the driver based on the period estimate and period resolution."
+
+2 all "Pulse Width Measurement" 
+ "Pulse Width Measurement related attributes" 
+ 
+3 all "Pulse Width Channel" IVICOUNTER_ATTR_PULSE_WIDTH_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the pulse width."
+ 
+3 all "Pulse Width Estimate" IVICOUNTER_ATTR_PULSE_WIDTH_ESTIMATE ViReal64 gs 
+ "Specifies the estimated pulse width, in seconds, for the pulse width function. "
+ "The driver uses this value to optimize the configuration of the instrument for the "
+ "input signal and to set the duration of the measurement."
+
+3 all "Pulse Width Resolution" IVICOUNTER_ATTR_PULSE_WIDTH_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in seconds, for the pulse width function."
+
+2 all "Duty Cycle Measurement" 
+ "Duty Cycle Measurement related attributes" 
+ 
+3 all "Duty Cycle Channel" IVICOUNTER_ATTR_DUTY_CYCLE_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the duty cycle."
+ 
+3 all "Duty Cycle Frequency Estimate" IVICOUNTER_ATTR_DUTY_CYCLE_FREQUENCY_ESTIMATE ViReal64 gs 
+ "Specifies the estimated frequency, in hertz, for the duty cycle. The driver "
+ "uses this value to optimize the configuration of the instrument for the input signal and to "
+ "set the duration of the measurement."
+
+3 all "Duty Cycle Resolution" IVICOUNTER_ATTR_DUTY_CYCLE_RESOLUTION ViReal64 gs 
+ "Specifies the resolution for the duty cycle. Duty cycle resolution is a "
+ "unitless value."
+
+2 all "Edge Time Measurement" 
+ "Edge Time Measurement related attributes" 
+ 
+3 all "Edge Time Channel" IVICOUNTER_ATTR_EDGE_TIME_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the edge time function."
+ 
+3 all "Edge Time Reference Type" IVICOUNTER_ATTR_EDGE_TIME_REFERENCE_TYPE ViInt32 gs 
+ "Specifies the current reference type of the counter. This attribute determines whether "
+ "the IVICOUNTER_ATTR_EDGE_TIME_HIGH_REFERENCE and IVICOUNTER_ATTR_EDGE_TIME_LOW_REFERENCE "
+ "attributes are interpreted as a percentage of peak-to-peak or absolute volts. "
+ 
+3 all "Edge Time Estimate" IVICOUNTER_ATTR_EDGE_TIME_ESTIMATE ViReal64 gs 
+ "Specifies the estimated edge time, in seconds, for the edge time function."
+
+3 all "Edge Time Resolution" IVICOUNTER_ATTR_EDGE_TIME_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in seconds, for the edge time function."
+
+3 all "Edge Time High Reference" IVICOUNTER_ATTR_EDGE_TIME_HIGH_REFERENCE ViReal64 gs 
+ "Specifies the high reference voltage level for the edge time function. For a rise time"
+ "measurement, this value is the level where the measurement stops; for a fall time"
+ "measurement, this value is the level where the measurement starts."
+
+3 all "Edge Time Low Reference" IVICOUNTER_ATTR_EDGE_TIME_LOW_REFERENCE ViReal64 gs 
+ "Specifies the low reference voltage level for the edge time function. For a rise time"
+ "measurement, this value is the level where the measurement starts; for a fall time"
+ "measurement, this value is the level where the measurement stops." 
+ 
+2 all "Frequency Ratio Measurement" 
+ "Frequency Ratio Measurement related attributes" 
+ 
+3 all "Frequency Ratio Numerator Channel" IVICOUNTER_ATTR_FREQUENCY_RATIO_NUMERATOR_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the frequency ratio."
+ 
+3 all "Frequency Ratio Denominator Channel" IVICOUNTER_ATTR_FREQUENCY_RATIO_DENOMINATOR_CHANNEL ViString gs 
+ "Specifies the input denominator channel on which to measure the frequency ratio."
+
+3 all "Frequency Ratio Numerator Frequency Estimate" IVICOUNTER_ATTR_FREQUENCY_RATIO_NUMERATOR_FREQUENCY_ESTIMATE ViReal64 gs 
+ "Specifies the estimated numerator frequency, in hertz, for the frequency ratio "
+ "function. The driver uses this value to optimize the configuration of the instrument "
+ "for the input signal and to set the duration of the measurement."
+
+3 all "Frequency Ratio Estimate" IVICOUNTER_ATTR_FREQUENCY_RATIO_ESTIMATE ViReal64 gs 
+ "Specifies the estimated frequency ratio for the frequency ratio function. "
+ "Frequency ratio estimate is a unitless value."
+
+3 all "Frequency Ratio Resolution" IVICOUNTER_ATTR_FREQUENCY_RATIO_RESOLUTION ViReal64 gs 
+ "Specifies the frequency ratio resolution of the frequency ratio function. "
+ "Frequency ratio resolution is a unitless value."
+
+2 all "Time Interval Measurement" 
+ "Time Interval Measurement related attributes" 
+ 
+3 all "Time Interval Start Channel" IVICOUNTER_ATTR_TIME_INTERVAL_START_CHANNEL ViString gs 
+ "Specifies the start channel used to perform the time interval function."
+
+3 all "Time Interval Stop Channel" IVICOUNTER_ATTR_TIME_INTERVAL_STOP_CHANNEL ViString gs 
+ "Specifies the stop channel used to perform the time interval function."
+
+3 all "Time Interval Estimate" IVICOUNTER_ATTR_TIME_INTERVAL_ESTIMATE ViReal64 gs 
+ "Specifies the estimated time interval, in seconds, for the time interval function."
+
+3 all "Time Interval Resolution" IVICOUNTER_ATTR_TIME_INTERVAL_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in seconds, for the time interval function."
+
+2 all "Phase Measurement" 
+ "Phase Measurement related attributes" 
+ 
+3 all "Phase Input Channel" IVICOUNTER_ATTR_PHASE_INPUT_CHANNEL ViString gs 
+ "Specifies the input channel on which to measure the phase." 
+ 
+3 all "Phase Reference Channel" IVICOUNTER_ATTR_PHASE_REFERENCE_CHANNEL ViString gs 
+ "Specifies the reference channel for the phase measurement."
+
+3 all "Phase Frequency Estimate" IVICOUNTER_ATTR_PHASE_FREQUENCY_ESTIMATE ViReal64 gs 
+ "Specifies the estimated frequency, in hertz, for the phase function reference channel. "
+ "The driver uses this to optimize the configuration of the instrument for the input signal "
+ "and to set the duration of the measurement."
+
+3 all "Phase Resolution" IVICOUNTER_ATTR_PHASE_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in degrees, for the phase function "
+ "reference channel."
+
+2 all "Totalize Measurement" 
+ "Totalize Measurement related attributes" 
+
+3 all "Continuous Totalize Channel" IVICOUNTER_ATTR_CONTINUOUS_TOTALIZE_CHANNEL ViString gs 
+ "Specifies the input channel used for the continuous totalize function."  
+ 
+3 all "Gated Totalize Channel" IVICOUNTER_ATTR_GATED_TOTALIZE_CHANNEL ViString gs 
+ "Specifies the input channel for the gated totalize function." 
+ 
+3 all "Gated Totalize Gate Source" IVICOUNTER_ATTR_GATED_TOTALIZE_GATE_SOURCE ViString gs 
+ "Specifies the gate source for the gated totalize function."
+
+3 all "Gated Totalize Gate Slope" IVICOUNTER_ATTR_GATED_TOTALIZE_GATE_SLOPE ViInt32 gs SlopeRangeTable 
+ "Specifies the gate slope that enables the gated totalize function."
+
+3 all "Timed Totalize Channel" IVICOUNTER_ATTR_TIMED_TOTALIZE_CHANNEL ViString gs 
+ "Specifies the input channel for the timed totalize function."  
+ 
+3 all "Timed Totalize Gate Time" IVICOUNTER_ATTR_TIMED_TOTALIZE_GATE_TIME ViReal64 gs 
+ "Specifies the gate time, in seconds, for the timed totalize function."
+
+2 all "Arming" 
+ "Arming related attributes" 
+ 
+3 all "Start Arm Type" IVICOUNTER_ATTR_START_ARM_TYPE ViInt32 gs ArmTypeRangeTable 
+ "Specifies the start arm type for armed measurements."
+
+3 all "External Start Arm Source" IVICOUNTER_ATTR_EXTERNAL_START_ARM_SOURCE ViString gs 
+ "Specifies the start arm source for external armed measurements."
+
+3 all "External Start Arm Level" IVICOUNTER_ATTR_EXTERNAL_START_ARM_LEVEL ViReal64 gs 
+ "Specifies the voltage level, in volts, that starts external armed measurements."
+
+3 all "External Start Arm Slope" IVICOUNTER_ATTR_EXTERNAL_START_ARM_SLOPE ViInt32 gs SlopeRangeTable 
+ "Specifies the signal slope that starts external armed measurements."
+
+3 all "External Start Arm Delay" IVICOUNTER_ATTR_EXTERNAL_START_ARM_DELAY ViReal64 gs 
+ "Specifies the delay, in seconds, used after an external armed measurement has been armed."
+
+3 all "Stop Arm Type" IVICOUNTER_ATTR_STOP_ARM_TYPE ViInt32 gs ArmTypeRangeTable 
+ "Specifies the stop arm type for armed measurements."
+
+3 all "External Stop Arm Source" IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_SOURCE ViString gs 
+ "Specifies the stop arm source for external armed measurements."
+
+3 all "External Stop Arm Level" IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_LEVEL ViReal64 gs 
+ "Specifies the voltage level, in volts, that stops external armed measurements. "
+ "The value of the IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_DELAY attribute, if "
+ "non-zero, is applied before the measurement stops."
+
+3 all "External Stop Arm Slope" IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_SLOPE ViInt32 gs SlopeRangeTable 
+ "Specifies the signal slope that stops external armed measurements. "
+ "The value of the IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_DELAY attribute, if "
+ "non-zero, is applied before the measurement stops."
+
+3 all "External Stop Arm Delay" IVICOUNTER_ATTR_EXTERNAL_STOP_ARM_DELAY ViReal64 gs 
+ "Specifies the delay, in seconds, after the external arm stop event has occurred "
+ "until the measurement stops."
+
+1 all "Filter" 
+ "Filter Extension Group: Defines extensions for setting the minimum and "
+ "maximum filter frequencies for the input signal."
+
+2 all "Minimum Frequency " IVICOUNTER_ATTR_FILTER_MINIMUM_FREQUENCY ViReal64 gs 
+ "Specifies the low cutoff frequency for the filter, in hertz. Set this attribute "
+ "to zero to disable low frequency filtering."
+
+2 all "Maximum Frequency " IVICOUNTER_ATTR_FILTER_MAXIMUM_FREQUENCY ViReal64 gs 
+ "Specifies the high cutoff frequency for the filter, in hertz. Set this attribute "
+ "to positive infinity to disable high frequency filtering."
+
+1 all "Time Interval Stop Holdoff" 
+ "Time Interval Delay Extension Group: Defines attributes and functions for "
+ "setting the delay time for the Time Interval functions."
+
+2 all "Time Interval Stop Holdoff" IVICOUNTER_ATTR_TIME_INTERVAL_STOP_HOLDOFF ViReal64 gs 
+ "Specifies the stop holdoff time, in seconds, for a time interval measurement. "
+ "The stop holdoff time is the time from the time interval start channel trigger "
+ "until the time interval stop channel trigger is enabled."
+
+1 all "Voltage Measurement" 
+ "Voltage Measurement Extension Group: Defines extensions for making voltage "
+ "measurements on the input signal. "
+
+2 all "Voltage Channel" IVICOUNTER_ATTR_VOLTAGE_CHANNEL ViString gs 
+ "Specifies the input channel on which the voltage is measured." 
+ 
+2 all "Voltage Estimate" IVICOUNTER_ATTR_VOLTAGE_ESTIMATE ViReal64 gs 
+ "Specifies the estimated voltage, in volts, for the voltage function." 
+
+2 all "Voltage Resolution" IVICOUNTER_ATTR_VOLTAGE_RESOLUTION ViReal64 gs 
+ "Specifies the resolution of the measurement, in volts, for the voltage function."
+
+1 all "Miscellaneous Attributes"
+  "Additional Attributes."
+
+2 all "ID Query Response" IVICOUNTER_ATTR_ID_QUERY_RESPONSE ViString g 
+ "Returns the ID Query response string.  The instrument driver gets the value of "
+ "this attribute when you pass VI_TRUE for the ID Query parameter to the "
+ "IviCounter_init or IviCounter_InitWithOptions function.\n"
+ "    "
+
+
+
+2 all "Hidden Attributes (not user-viewable)" 
+  "    "
+
+
+3 all "OPC Callback Timeout" IVICOUNTER_ATTR_OPC_TIMEOUT ViInt32 hidden 
+  "This attribute is hidden.  The driver uses this attribute internally to set the "
+  "timeout for the OPC callback.\n"
+  "    "
+
+3 all "Use Specific Simulation" IVICOUNTER_ATTR_USE_SPECIFIC_SIMULATION ViBoolean hidden
+  "This attribute is hidden.  The driver uses this attribute internally to set whether "
+  "to use specific simulation.\n"
+  "    "
+
+3 all "Visa RM Session" IVICOUNTER_ATTR_VISA_RM_SESSION ViSession hidden
+  "This attribute is hidden."
+  "\n"
+  "    "
+
+3 all "IO Session" IVICOUNTER_ATTR_IO_SESSION ViSession hidden
+  "This attribute is hidden."
+  "\n"
+  "    "
+
+3 all "OPC Callback" IVICOUNTER_ATTR_OPC_CALLBACK ViAddr hidden
+  "This attribute is hidden."
+  "\n"
+  "    "
+
+3 all "Check Status Callback" IVICOUNTER_ATTR_CHECK_STATUS_CALLBACK ViAddr hidden
+  "This attribute is hidden."
+  "\n"
+  "    "
+
+3 all "User Interchange Check Callback" IVICOUNTER_ATTR_USER_INTERCHANGE_CHECK_CALLBACK ViAddr hidden
+  "This attribute is hidden."
+  "\n"
+  "    "

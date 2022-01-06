@@ -1,0 +1,1234 @@
+FPAttributeValueFile
+
+n  SubType="IVI" 
+
+n  SubVersion="1" 
+   
+v Boolean_values DataType="i" 
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrIFInputCouplingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_IF_INPUT_COUPLING_AC (0)
+  "The upconverter AC couples the IF input signal."
+
+ IVIUPCONVERTER_VAL_IF_INPUT_COUPLING_DC (1)
+  "The upconverter DC couples the IF input signal."
+  
+  
+v attrALCSourceRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_ALC_SOURCE_INTERNAL (0)
+  "The ALC is controlled by an internal measurement source."
+
+ IVIUPCONVERTER_VAL_ALC_SOURCE_EXTERNAL (1)
+  "The ALC is controlled by an external voltage."
+
+
+v attrAMExternalCouplingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_AM_EXTERNAL_COUPLING_AC (0)
+  "The external source is coupled for AC only."
+
+ IVIUPCONVERTER_VAL_AM_EXTERNAL_COUPLING_DC (1)
+  "The external source is coupled for both DC and AC."
+  
+  
+v attrAMScalingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_AM_SCALING_LINEAR (0)
+  "Enables linear attenuation for amplitude modulation."
+
+ IVIUPCONVERTER_VAL_AM_SCALING_LOGARITHMIC (1)
+  "Enables logarithmic attenuation for amplitude modulation."
+  
+  
+v attrFMExternalCouplingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_FM_EXTERNAL_COUPLING_AC (0)
+  "The external source is coupled for AC only."
+
+ IVIUPCONVERTER_VAL_FM_EXTERNAL_COUPLING_DC (1)
+  "The external source is coupled for both DC and AC."
+  
+  
+v attrPMExternalCouplingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_PM_EXTERNAL_COUPLING_AC (0)
+  "The external source is coupled for AC only."
+
+ IVIUPCONVERTER_VAL_PM_EXTERNAL_COUPLING_DC (1)
+  "The external source is coupled for both DC and AC."
+  
+  
+v attrPulseModulationExternalPolarityRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_PULSE_MODULATION_EXTERNAL_POLARITY_NORMAL (0)
+  "The upconverter modulates the carrier signal with normal pulse polarity. Increasing the positive pulse voltage level results in higher RF level."
+
+ IVIUPCONVERTER_VAL_PULSE_MODULATION_EXTERNAL_POLARITY_INVERSE (1)
+  "The upconverter modulates the carrier signal with inverted pulse polarity. Increasing the positive pulse voltage level results in lower RF level."
+  
+  
+v attrFrequencyStepScalingRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_FREQUENCY_STEP_SCALING_LINEAR (0)
+  "Enables linear scaling."
+
+ IVIUPCONVERTER_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC (1)
+  "Enables logarithmic scaling."
+
+
+v attrReferenceOscillatorSourceRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_INTERNAL (0)
+  "Internal reference oscillator."
+
+ IVIUPCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL (1)
+  "External reference oscillator."
+
+
+v attrSweepModeRangeTable DataType="i" 
+ IVIUPCONVERTER_VAL_SWEEP_MODE_NONE (0)
+  "The RF output is a non-swept signal (continuous wave)."
+
+ IVIUPCONVERTER_VAL_SWEEP_MODE_FREQUENCY_SWEEP (1)
+  "Sweeps the RF output signal frequency in an analog form "
+  "(non-stepped)."
+  
+ IVIUPCONVERTER_VAL_SWEEP_MODE_POWER_SWEEP (2)
+  "Sweeps the RF output signal power in an analog form "
+  "(non-stepped)."
+  
+ IVIUPCONVERTER_VAL_SWEEP_MODE_GAIN_SWEEP (3)
+  "Sweeps the upconverter's gain in an analog form "
+  "(non-stepped)."
+
+ IVIUPCONVERTER_VAL_SWEEP_MODE_FREQUENCY_STEP (4)
+  "Sweeps the RF output signal frequency in steps."
+  
+ IVIUPCONVERTER_VAL_SWEEP_MODE_POWER_STEP (5)
+  "Sweeps the RF output signal power level in steps."
+  
+ IVIUPCONVERTER_VAL_SWEEP_MODE_GAIN_STEP (6)
+  "Sweeps the upconverter's gain in steps."
+
+ IVIUPCONVERTER_VAL_SWEEP_MODE_LIST (7)
+  "Uses two lists with frequency and power level or gain "
+  "values to sweep the RF output signal."	
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviUpconverter_SetAttributeViInt32     3 4 false s DataType="ViInt32" 
+0 IviUpconverter_GetAttributeViInt32     3 4 false g DataType="ViInt32" 
+0 IviUpconverter_CheckAttributeViInt32   3 4 false s DataType="ViInt32" 
+0 IviUpconverter_SetAttributeViReal64    3 4 false s DataType="ViReal64" 
+0 IviUpconverter_GetAttributeViReal64    3 4 false g DataType="ViReal64" 
+0 IviUpconverter_CheckAttributeViReal64  3 4 false s DataType="ViReal64" 
+0 IviUpconverter_SetAttributeViSession   3 4 false s DataType="ViSession" 
+0 IviUpconverter_GetAttributeViSession   3 4 false g DataType="ViSession" 
+0 IviUpconverter_CheckAttributeViSession 3 4 false s DataType="ViSession" 
+0 IviUpconverter_SetAttributeViBoolean   3 4 false s DataType="ViBoolean" 
+0 IviUpconverter_GetAttributeViBoolean   3 4 false g DataType="ViBoolean" 
+0 IviUpconverter_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean" 
+0 IviUpconverter_SetAttributeViString    3 4 false s DataType="ViString" 
+0 IviUpconverter_GetAttributeViString    3 5 false g DataType="ViString" 
+0 IviUpconverter_CheckAttributeViString  3 4 false s DataType="ViString" 
+  
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVIUPCONVERTER_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that "
+ "you pass to driver functions.  Range checking "
+ "parameters is very useful for debugging.  After you validate your program, "
+ "you can set this attribute to VI_FALSE to disable range checking and "
+ "maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviUpconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVIUPCONVERTER_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful "
+ "for debugging.  After you validate your program, you can set this "
+ "attribute to VI_FALSE to disable status checking and maximize "
+ "performance\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviUpconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVIUPCONVERTER_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  "
+ "When caching is enabled, the instrument driver keeps track of "
+ "the current instrument settings and avoids sending redundant commands to "
+ "the instrument.  Thus, you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviUpconverter_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Simulate" IVIUPCONVERTER_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O "
+ "operations.  If simulation is enabled, instrument driver "
+ "functions perform range checking and set and get attributes, "
+ "but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviUpconverter_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVIUPCONVERTER_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVIUPCONVERTER_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Record Value Coercions" IVIUPCONVERTER_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVIUPCONVERTER_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVIUPCONVERTER_ATTR_SPY is set to VI_FALSE "
+ "you call IviUpconverter_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviUpconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Interchange Check" IVIUPCONVERTER_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to perform interchangeability checking and retrieve "
+ "interchangeability warnings when you call the "
+ "IviUpconverter_WaitUntilSettled function.  "
+ "The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVIUPCONVERTER_ATTR_SPY is set to VI_FALSE, you call "
+ "IviUpconverter_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviUpconverter_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"	
+
+ "If IVIUPCONVERTER_ATTR_SPY is set to VI_TRUE, you can use the NI I/O Trace utility to view "
+ "interchange warnings.\n" 
+
+ "     Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviUpconverter class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviUpconverter "
+ "class.\n\n"
+
+ "(3) The IviUpconverter class defines an attribute as read-only and you "  
+ "have set that attribute.\n\n"
+ 
+3 all "Spy" IVIUPCONVERTER_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is VI_TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVIUPCONVERTER_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVIUPCONVERTER_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVIUPCONVERTER_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVIUPCONVERTER_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIUPCONVERTER_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIUPCONVERTER_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIUPCONVERTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVIUPCONVERTER_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVIUPCONVERTER_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviUpconverter capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviUpconverterBase\" - Supports fundamental upconverter capabilities.\n\n"
+ "\"IviUpconverterOutputGain\" - Supports IviUpconverterBase with the capability to specify the output power gain.\n\n"
+ "\"IviUpconverterOutputPowerLevel\" - Supports IviUpconverterBase with the capability to specify the absolute output power level.\n\n"
+ "\"IviUpconverterModulateAM\" - Supports IviUpconverterBase with the capability to apply amplitude modulation to the RF output signal.\n\n"
+ "\"IviUpconverterModulateFM\" - Supports IviUpconverterBase with the capability to apply frequency modulation to the RF output signal.\n\n"
+ "\"IviUpconverterModulatePM\" - Supports IviUpconverterBase with the capability to apply phase modulation to the RF output signal.\n\n"
+ "\"IviUpconverterAnalogModulationSource\" - Supports IviUpconverterBase with the capability to apply analog modulation to the RF output signal.\n\n"
+ "\"IviUpconverterModulatePulse\" - Supports IviUpconverterBase with the capability to apply pulse modulation to the RF output signal.\n\n"
+ "\"IviUpconverterBypass\" - Supports IviUpconverterBase with the capability to route the IF input completely around the upconverter.\n\n"
+ "\"IviUpconverterOutputReadyTrigger\" - Supports IviUpconverterBase with the capability to send an output trigger signal when the RF output has settled to a point where it is suitable for processing by downstream components.\n\n"
+ "\"IviUpconverterSweep\" - Supports IviUpconverterBase with the capability to sweep the output frequency, power, or gain.\n\n"
+ "\"IviUpconverterFrequencySweep\" - Supports IviUpconverterBase with the capability to apply a frequency sweep to the RF output signal.\n\n"
+ "\"IviUpconverterPowerSweep\" - Supports IviUpconverterBase with the capability to apply a power sweep to the RF output signal.\n\n"
+ "\"IviUpconverterGainSweep\" - Supports IviUpconverterBase with the capability to apply a gain sweep to the RF output signal.\n\n"
+ "\"IviUpconverterFrequencyStep\" - Supports IviUpconverterBase with the capability to sweep the frequency of the RF output signal in steps.\n\n"
+ "\"IviUpconverterPowerStep\" - Supports IviUpconverterBase with the capability to sweep the power of the RF output signal in steps.\n\n"
+ "\"IviUpconverterGainStep\" - Supports IviUpconverterBase with the capability to sweep the gain of the upconverter in steps.\n\n"
+ "\"IviUpconverterList\" - Supports IviUpconverterBase with the capability to sweep the output frequency, power, or gain by a list of values.\n\n"
+ "\"IviUpconverterALC\" - Supports IviUpconverterBase with the capability to configure automatic level control (ALC).\n\n"
+ "\"IviUpconverterCalibration\" - Supports IviUpconverterBase with the capability to perform self-calibration.\n\n"
+ "\"IviUpconverterAttenuatorHold\" - Supports IviUpconverterBase with the capability to hold the attenuators at a constant value.\n\n"
+ "\"IviUpconverterReferenceOscillator\" - Supports IviUpconverterBase with the capability to configure frequency reference.\n\n"
+ "\"IviUpconverterSoftwareTrigger\" - Supports IviUpconverterBase with the capability to generate output based on a software trigger signal.\n\n"
+ "\"IviUpconverterModulateIQ\" - Supports IviUpconverterBase with the capability to apply IQ (vector) modulation to the RF output signal.\n\n"
+ "\"IviUpconverterIQImpairment\" - Supports IviUpconverterBase with the capability to simulate or correct impairment on IQ (vector) modulation.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVIUPCONVERTER_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviUpconverter functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviUpconverter_init\"\n"
+ "    \"IviUpconverter_close\"\n"
+ "    \"IviUpconverter_reset\"\n"
+ "    \"IviUpconverter_self_test\"\n"
+ "    \"IviUpconverter_error_query\"\n"
+ "    \"IviUpconverter_error_message\"\n"
+ "    \"IviUpconverter_revision_query\"\n"  
+ "    \"IviUpconverter_InitWithOptions\"\n"
+ "    \"IviUpconverter_ConfigureIFInputAttenuation\"\n"
+ "    \"IviUpconverter_ConfigureIFInputFrequency\"\n"
+ "    \"IviUpconverter_ConfigureRFOutputEnabled\"\n"
+ "    \"IviUpconverter_GetIFInputName\"\n"
+ "    \"IviUpconverter_GetRFOutputName\"\n"
+ "    \"IviUpconverter_SetActiveIFInput\"\n"
+ "    \"IviUpconverter_SetActiveRFOutput\"\n"
+ "    \"IviUpconverter_WaitUntilReady\"\n"
+ "    \"IviUpconverter_ConfigureRFOutputGain\"\n"
+ "    \"IviUpconverter_ConfigureRFOutputLevel\"\n"
+ "    \"IviUpconverter_ConfigureAM\"\n"
+ "    \"IviUpconverter_ConfigureAMEnabled\"\n"
+ "    \"IviUpconverter_ConfigureAMExternalCoupling\"\n"
+ "    \"IviUpconverter_ConfigureFM\"\n"
+ "    \"IviUpconverter_ConfigureFMEnabled\"\n"
+ "    \"IviUpconverter_ConfigureFMExternalCoupling\"\n"
+ "    \"IviUpconverter_ConfigurePM\"\n"  
+ "    \"IviUpconverter_ConfigurePMEnabled\"\n"
+ "    \"IviUpconverter_ConfigurePMExternalCoupling\"\n"
+ "    \"IviUpconverter_GetAnalogModulationSourceName\"\n"
+ "    \"IviUpconverter_ConfigurePulseModulationEnabled\"\n"
+ "    \"IviUpconverter_ConfigurePulseModulationExternalPolarity\"\n"		
+ "    \"IviUpconverter_ConfigureBypass\"\n"
+ "    \"IviUpconverter_ConfigureRFOutputReadyTrigger\"\n"
+ "    \"IviUpconverter_ConfigureSweep\"\n"
+ "    \"IviUpconverter_ConfigureFrequencySweepCenterSpan\"\n"
+ "    \"IviUpconverter_ConfigureFrequencySweepStartStop\"\n"
+ "    \"IviUpconverter_ConfigureFrequencySweepTime\"\n"
+ "    \"IviUpconverter_ConfigurePowerSweepStartStop\"\n"
+ "    \"IviUpconverter_ConfigurePowerSweepTime\"\n"
+ "    \"IviUpconverter_ConfigureGainSweepStartStop\"\n"
+ "    \"IviUpconverter_ConfigureGainSweepTime\"\n"
+ "    \"IviUpconverter_ConfigureFrequencyStepDwell\"\n"
+ "    \"IviUpconverter_ConfigureFrequencyStepStartStop\"\n"
+ "    \"IviUpconverter_ResetFrequencyStep\"\n"
+ "    \"IviUpconverter_ConfigurePowerStepDwell\"\n"
+ "    \"IviUpconverter_ConfigurePowerStepStartStop\"\n"
+ "    \"IviUpconverter_ResetPowerStep\"\n"
+ "    \"IviUpconverter_ConfigureGainStepDwell\"\n"
+ "    \"IviUpconverter_ConfigureGainStepStartStop\"\n"
+ "    \"IviUpconverter_ResetGainStep\"\n"
+ "    \"IviUpconverter_ClearAllLists\"\n"
+ "    \"IviUpconverter_ConfigureListDwell\"\n"
+ "    \"IviUpconverter_CreateFrequencyList\"\n"
+ "    \"IviUpconverter_CreateFrequencyPowerList\"\n"
+ "    \"IviUpconverter_CreateFrequencyGainList\"\n"
+ "    \"IviUpconverter_CreatePowerList\"\n"
+ "    \"IviUpconverter_CreateGainList\"\n"
+ "    \"IviUpconverter_ResetList\"\n"
+ "    \"IviUpconverter_ConfigureALC\"\n"
+ "    \"IviUpconverter_Calibrate\"\n"
+ "    \"IviUpconverter_IsCalibrationComplete\"\n"
+ "    \"IviUpconverter_ConfigureAttenuatorHoldEnabled\"\n"
+ "    \"IviUpconverter_ConfigureReferenceOscillator\"\n"
+ "    \"IviUpconverter_ConfigureReferenceOscillatorOutputEnabled\"\n"
+ "    \"IviUpconverter_SendSoftwareTrigger\"\n"
+ "    \"IviUpconverter_CalibrateIQ\"\n"
+ "    \"IviUpconverter_ConfigureIQEnabled\"\n"
+ "    \"IviUpconverter_ConfigureIQImpairment\"\n"
+ "    \"IviUpconverter_ConfigureIQImpairmentEnabled\"\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVIUPCONVERTER_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVIUPCONVERTER_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVIUPCONVERTER_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVIUPCONVERTER_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviUpconverter_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVIUPCONVERTER_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviUpconverter_init or "
+ "IviUpconverter_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVIUPCONVERTER_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+
+1 all "IF Input" 
+ "Attributes that control the IF input of the upconverter.\n"
+ "    "	 
+
+2 all "Active IF Input" IVIUPCONVERTER_ATTR_ACTIVE_IF_INPUT ViString gs 
+ "Specifies the IF input that is currently active. Subsequent calls to functions "
+ "and attributes that are based on the IF Input repeated capability will be "
+ "applied to the Active IF Input specified here. The values for this attribute "
+ "correspond to the allowed repeated capability names for the IF Input repeated "
+ "capability. If the driver defines a qualified IF Input name, this attribute "
+ "returns the qualified name. Use the IviUpconverter_GetIFInputName function to "
+ "read the allowed values for this attribute.\n"
+ "    "
+ 
+2 all "Auto Corrections Enabled" IVIUPCONVERTER_ATTR_AUTO_CORRECTIONS_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables automatic global corrections on the device.\n"
+ "    " 
+
+2 all "Bypass [BP]" IVIUPCONVERTER_ATTR_BYPASS ViBoolean gs Boolean_values 
+ "Specifies whether or not the IF input signal bypasses the entire upconverter.\n\n"
+ "When set to True, the IF input signal is routed directly to the RF output "
+ "indicated by the value of the IVIUPCONVERTER_ATTR_ACTIVE_RF_OUTPUT attribute. "
+ "When set to False, the IF input signal is routed into the front end of the "
+ "upconverter and follows the normal signal path, as dictated by other downstream "
+ "path control attributes.\n"
+ "    "
+ 
+2 all "IF Input Attenuation" IVIUPCONVERTER_ATTR_IF_INPUT_ATTENUATION ViReal64 gs
+ "Specifies the amount of attenuation (or gain) to apply to the active IF input of the "
+ "upconverter. The units are dB.\n\n"
+ "Positive values for this attribute represent attenuation while negative values "
+ "represent gain.\n\n"
+ "If an instrument only supports a fixed IF attenuation, the driver should accept "
+ "that value for the IVIUPCONVERTER_ATTR_IF_INPUT_ATTENUATION attribute and return "
+ "Invalid Value error for any other value.\n"
+ "    " 
+
+2 all "IF Input Count" IVIUPCONVERTER_ATTR_IF_INPUT_COUNT ViInt32 g
+ "Returns the number of IF Inputs available on the device.\n"
+ "    "	
+
+2 all "IF Input Coupling" IVIUPCONVERTER_ATTR_IF_INPUT_COUPLING ViInt32 gs attrIFInputCouplingRangeTable
+ "Specifies the coupling applied to active IF input.\n"
+ "    " 
+
+2 all "IF Input Frequency" IVIUPCONVERTER_ATTR_IF_INPUT_FREQUENCY ViReal64 g
+ "Returns the frequency of the active IF input. The units are Hertz.\n"
+ "    " 
+ 
+1 all "RF Output" 
+ "Attributes that control the RF output of the upconverter.\n"
+ "    "	 
+
+2 all "Active RF Output" IVIUPCONVERTER_ATTR_ACTIVE_RF_OUTPUT ViString gs 
+ "Specifies the RF output that is currently active. Subsequent calls to functions "
+ "and attributes that are based on the RF Output repeated capability will be "
+ "applied to the Active RF Output specified here. The values for this attribute "
+ "correspond to the allowed repeated capability names for the RF Output repeated "
+ "capability. If the driver defines a qualified RF Output name, this attribute "
+ "returns the qualified name. Use the IviUpconverter_GetRFOutputName function to "
+ "read the allowed values for this attribute.\n"
+ "Note that this attribute does not enable the specified output. "
+ "This attribute only controls the RF Output repeated capability instance to which "
+ "other functions and attributes apply. Use the RF Output Enabled atribute to route "
+ "the RF signal to a specific output.\n"
+ "    "
+ 
+2 all "Attenuator Hold Enabled [AH]" IVIUPCONVERTER_ATTR_ATTENUATOR_HOLD_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the attenuator hold on the active RF output.\n"
+ "    "
+ 
+2 all "Is Ready" IVIUPCONVERTER_ATTR_IS_READY ViBoolean g Boolean_values
+ "Indicates whether the upconverter has settled from changes to either the IF "
+ "input signal or changes to device control parameters, such as RF Output Gain, "
+ "RF Frequency, or IF Attenuation. This attribute indicates whether or not the "
+ "RF output is valid for processing by another downstream system component, such "
+ "as a digitizer.\n"
+ "    "	 
+ 
+2 all "RF Output Bandwidth" IVIUPCONVERTER_ATTR_RF_OUTPUT_BANDWIDTH ViReal64 gs
+ "Specifies the maximum effective RF signal bandwidth of the upconverter's active RF Output. The units "
+ "are Hertz.\n\n"
+ "This value is a measure of the spectral width between two points for which the "
+ "amplitude profile is 3 dB below a peak close to mid band.\n"
+ "    "	
+ 
+2 all "RF Output Count" IVIUPCONVERTER_ATTR_RF_OUTPUT_COUNT ViInt32 g
+ "Returns the number of RF Outputs available on the device.\n"
+ "    " 
+
+2 all "RF Output Enabled" IVIUPCONVERTER_ATTR_RF_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the active RF output. Only a single RF Output can be enabled at a time. "
+ "Thus, when this attribute is set to True for a particular RF output, all other RF "
+ "outputs are disabled.\n"
+ "    "	  	
+
+2 all "RF Output Frequency" IVIUPCONVERTER_ATTR_RF_OUTPUT_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the active RF output. The units are Hertz.\n"
+ "    "	  
+ 
+2 all "RF Output Gain [OG]" IVIUPCONVERTER_ATTR_RF_OUTPUT_GAIN ViReal64 gs
+ "Specifies the amount of gain (or attenuation) to apply to the active RF output of the "
+ "upconverter. The units are dB.\n\n"
+ "Positive values for this attribute represent signal gain while negative values "
+ "represent attenuation.\n"
+ "    "	
+
+2 all "RF Output Level [OPL]" IVIUPCONVERTER_ATTR_RF_OUTPUT_LEVEL ViReal64 gs
+ "Specifies the output power that should appear at the active RF output of the upconverter. "
+ "The units are dBm.\n"
+ "    "	
+ 
+2 all "RF Output Ready Trigger [ORT]" IVIUPCONVERTER_ATTR_RF_OUTPUT_READY_TRIGGER ViString gs
+ "Specifies where a trigger should be fired when the active RF output has settled to a "
+ "point that is suitable for processing by downstream components.\n"
+ "    \n"
+ "Triggers:\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_NONE (\"\") - "
+ "No trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_IMMEDIATE (\"Immediate\") - "
+ "Trigger Immediately.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_EXTERNAL (\"External\") - "
+ "External trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_INTERNAL (\"Internal\") - "
+ "Internal trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_SOFTWARE (\"Software\") - "
+ "Software trigger.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN0 (\"LAN0\") - "
+ "LAN0 (LXI defined \"LAN0\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN1 (\"LAN1\") - "
+ "LAN1 (LXI defined \"LAN1\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN2 (\"LAN2\") - "
+ "LAN2 (LXI defined \"LAN2\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN3 (\"LAN3\") - "
+ "LAN3 (LXI defined \"LAN3\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN4 (\"LAN4\") - "
+ "LAN4 (LXI defined \"LAN4\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN5 (\"LAN5\") - "
+ "LAN5 (LXI defined \"LAN5\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN6 (\"LAN6\") - "
+ "LAN6 (LXI defined \"LAN6\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN7 (\"LAN7\") - "
+ "LAN7 (LXI defined \"LAN7\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI0 (\"LXI0\") - "
+ "LXI Trigger Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI1 (\"LXI1\") - "
+ "LXI Trigger Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI2 (\"LXI2\") - "
+ "LXI Trigger Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI3 (\"LXI3\") - "
+ "LXI Trigger Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI4 (\"LXI4\") - "
+ "LXI Trigger Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI5 (\"LXI5\") - "
+ "LXI Trigger Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI6 (\"LXI6\") - "
+ "LXI Trigger Bus Line 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI7 (\"LXI7\") - "
+ "LXI Trigger Bus Line 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL0 (\"TTL0\") - "
+ "TTL Interface 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL1 (\"TTL1\") - "
+ "TTL Interface 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL2 (\"TTL2\") - "
+ "TTL Interface 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL3 (\"TTL3\") - "
+ "TTL Interface 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL4 (\"TTL4\") - "
+ "TTL Interface 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL5 (\"TTL5\") - "
+ "TTL Interface 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL6 (\"TTL6\") - "
+ "TTL Interface 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL7 (\"TTL7\") - "
+ "TTL Interface 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_STAR (\"PXI_STAR\") - "
+ "PXI Star Interface.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG0 (\"PXI_TRIG0\") - "
+ "PXI Trigger Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG1 (\"PXI_TRIG1\") - "
+ "PXI Trigger Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG2 (\"PXI_TRIG2\") - "
+ "PXI Trigger Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG3 (\"PXI_TRIG3\") - "
+ "PXI Trigger Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG4 (\"PXI_TRIG4\") - "
+ "PXI Trigger Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG5 (\"PXI_TRIG5\") - "
+ "PXI Trigger Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG6 (\"PXI_TRIG6\") - "
+ "PXI Trigger Bus Line 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG7 (\"PXI_TRIG7\") - "
+ "PXI Trigger Bus Line 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARA (\"PXIe_DSTARA\") - "
+ "PXI Express DStar Line A.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARB (\"PXIe_DSTARB\") - "
+ "PXI Express DStar Line B.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARC (\"PXIe_DSTARC\") - "
+ "PXI Express DStar Line C.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI0 (\"RTSI0\") - "
+ "RTSI Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI1 (\"RTSI1\") - "
+ "RTSI Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI2 (\"RTSI2\") - "
+ "RTSI Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI3 (\"RTSI3\") - "
+ "RTSI Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI4 (\"RTSI4\") - "
+ "RTSI Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI5 (\"RTSI5\") - "
+ "RTSI Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI6 (\"RTSI6\") - "
+ "RTSI Bus Line 6.\n"
+ "    "
+ 
+1 all "External LO" 
+ "Attributes that control the external LO of the upconverter.\n"
+ "    "	 
+
+2 all "External LO Enabled" IVIUPCONVERTER_ATTR_EXTERNAL_LO_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the external LO.\n"
+ "    "	 
+
+2 all "External LO Frequency" IVIUPCONVERTER_ATTR_EXTERNAL_LO_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the external LO. The units are Hertz.\n"
+ "    "	
+ 
+1 all "Analog Modulation" 
+ "Attributes that control the analog modulation of the upconverter.\n"
+ "    "
+ 
+2 all "AM" 
+ "This group contains attributes to support the instrument that can apply amplitude "
+ "modulation to the RF output signal.\n"
+ "    "
+ 
+3 all "AM Depth [AM]" IVIUPCONVERTER_ATTR_AM_DEPTH ViReal64 gs
+ "Specifies the extent of modulation the upconverter applies to the RF output signal "
+ "with the modulating signal as a result of summing all sources, internal and external.\n\n"
+ "The amount of the specified modulation depth is achieved with a modulating voltage "
+ "of AM Nominal Voltage. If the IVIUPCONVERTER_ATTR_AM_SCALING attribute is set to "
+ "IVIUPCONVERTER_VAL_AM_SCALING_LINEAR, then the units are percent (%). If the "
+ "IVIUPCONVERTER_ATTR_AM_SCALING attribute is set to IVIUPCONVERTER_VAL_AM_SCALING_LOGARITHMIC"
+ ", then the units are dBm.\n"
+ "    " 
+ 
+3 all "AM Enabled [AM]" IVIUPCONVERTER_ATTR_AM_ENABLED ViBoolean gs Boolean_values 
+ "Specifies whether the upconverter enables or disables amplitude modulation of "
+ "the RF output signal.\n"
+ "    "
+ 
+3 all "AM External Coupling [AM]" IVIUPCONVERTER_ATTR_AM_EXTERNAL_COUPLING ViInt32 gs attrAMExternalCouplingRangeTable
+ "Specifies the coupling of the external source of the modulating signal.\n"
+ "    " 
+ 
+3 all "AM Nominal Voltage [AM]" IVIUPCONVERTER_ATTR_AM_NOMINAL_VOLTAGE ViReal64 g
+ "Returns the voltage at which the instrument achieves the amount of modulation "
+ "specified by the IVIUPCONVERTER_ATTR_AM_DEPTH attribute. The units are Volts.\n"
+ "    " 
+ 
+3 all "AM Scaling [AM]" IVIUPCONVERTER_ATTR_AM_SCALING ViInt32 gs attrAMScalingRangeTable
+ "Specifies linear or logarithmic characteristics for amplitude modulation. The "
+ "units of the IVIUPCONVERTER_ATTR_AM_DEPTH attribute is changed with this setting.\n"
+ "    " 
+ 
+3 all "AM Source [AM]" IVIUPCONVERTER_ATTR_AM_SOURCE ViString gs
+ "Specifies the source of the signal that is used as the modulating signal. If more "
+ "than one source is specified, the voltages of all sources are summed. Multiple "
+ "source names are separated by commas.\n"
+ "    " 
+ 
+2 all "FM" 
+ "This group contains attributes to support the instrument that can apply frequency "
+ "modulation to the RF output signal.\n"
+ "    "
+ 
+3 all "FM Deviation [FM]" IVIUPCONVERTER_ATTR_FM_DEVIATION ViReal64 gs
+ "Specifies the extent of modulation the upconverter applies to the RF output signal "
+ "with the modulating signal as a result of summing all sources, internal and external.\n\n"
+ "The amount of the specified FM modulation deviation is achieved with a modulating voltage "
+ "of FM Nominal Voltage. The units are Hertz.\n"
+ "    " 
+ 
+3 all "FM Enabled [FM]" IVIUPCONVERTER_ATTR_FM_ENABLED ViBoolean gs Boolean_values 
+ "Specifies whether the upconverter enables or disables frequency modulation of "
+ "the RF output signal.\n"
+ "    "
+ 
+3 all "FM External Coupling [FM]" IVIUPCONVERTER_ATTR_FM_EXTERNAL_COUPLING ViInt32 gs attrFMExternalCouplingRangeTable
+ "Specifies the coupling of the external source of the modulating signal.\n"
+ "    " 
+ 
+3 all "FM Nominal Voltage [FM]" IVIUPCONVERTER_ATTR_FM_NOMINAL_VOLTAGE ViReal64 g
+ "Returns the voltage at which the instrument achieves the amount of modulation "
+ "specified by the IVIUPCONVERTER_ATTR_FM_DEVIATION attribute. The units are Volts.\n"
+ "    " 
+ 
+3 all "FM Source [FM]" IVIUPCONVERTER_ATTR_FM_SOURCE ViString gs
+ "Specifies the source of the signal that is used as the modulating signal. If more "
+ "than one source is specified, the voltages of all sources are summed. Multiple "
+ "source names are separated by commas.\n"
+ "    " 
+ 
+2 all "PM" 
+ "This group contains attributes to support the instrument that can apply phase "
+ "modulation to the RF output signal.\n"
+ "    "
+ 
+3 all "PM Deviation [PM]" IVIUPCONVERTER_ATTR_PM_DEVIATION ViReal64 gs
+ "Specifies the extent of modulation the upconverter applies to the RF output signal "
+ "with the modulating signal as a result of summing all sources, internal and external.\n\n"
+ "The amount of the specified PM modulation deviation is achieved with a modulating voltage "
+ "of PM Nominal Voltage. The units are radians.\n"
+ "    " 
+ 
+3 all "PM Enabled [PM]" IVIUPCONVERTER_ATTR_PM_ENABLED ViBoolean gs Boolean_values 
+ "Specifies whether the upconverter enables or disables phase modulation of "
+ "the RF output signal.\n"
+ "    "
+ 
+3 all "PM External Coupling [PM]" IVIUPCONVERTER_ATTR_PM_EXTERNAL_COUPLING ViInt32 gs attrPMExternalCouplingRangeTable
+ "Specifies the coupling of the external source of the modulating signal.\n"
+ "    " 
+ 
+3 all "PM Nominal Voltage [PM]" IVIUPCONVERTER_ATTR_PM_NOMINAL_VOLTAGE ViReal64 g
+ "Returns the voltage at which the instrument achieves the amount of modulation "
+ "specified by the IVIUPCONVERTER_ATTR_PM_DEVIATION attribute. The units are Volts.\n"
+ "    " 
+ 
+3 all "PM Source [PM]" IVIUPCONVERTER_ATTR_PM_SOURCE ViString gs
+ "Specifies the source of the signal that is used as the modulating signal. If more "
+ "than one source is specified, the voltages of all sources are summed. Multiple "
+ "source names are separated by commas.\n"
+ "    " 
+ 
+2 all "Source" 
+ "Attributes that control the analog modulation source of the upconverter.\n"
+ "    "
+ 
+3 all "Analog Modulation Source Count [MS]" IVIUPCONVERTER_ATTR_ANALOG_MODULATION_SOURCE_COUNT ViInt32 g
+ "Returns the number of Analog Modulation Sources available on the device.\n"
+ "    " 
+ 
+1 all "Pulse Modulation" 
+ "This group contains attributes to support the instrument that can apply pulse "
+ "modulation to the RF output signal.\n"
+ "    "
+ 
+2 all "Pulse Modulation Enabled [PULM]" IVIUPCONVERTER_ATTR_PULSE_MODULATION_ENABLED ViBoolean gs Boolean_values 
+ "Enables or disables pulse modulation of the RF output signal.\n"
+ "    "
+ 
+2 all "Pulse Modulation External Polarity [PULM]" IVIUPCONVERTER_ATTR_PULSE_MODULATION_EXTERNAL_POLARITY ViInt32 gs attrPulseModulationExternalPolarityRangeTable
+ "Specifies the polarity of the external source signal.\n"
+ "    " 
+
+1 all "Sweep" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "output frequency, power, or gain.\n"
+ "    "
+ 
+2 all "Sweep Mode [SWP]" IVIUPCONVERTER_ATTR_SWEEP_MODE ViInt32 gs attrSweepModeRangeTable 
+ "Specifies whether the RF output signal is a continuous wave or the frequency, "
+ "power level, or gain is swept or stepped.\n"
+ "    "
+ 
+2 all "Sweep Trigger Source [SWP]" IVIUPCONVERTER_ATTR_SWEEP_TRIGGER_SOURCE ViString gs
+ "Specifies the way to start the sweep or run the sweep continuously.\n"
+ "    \n"
+ "Trigger Sources:\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_NONE (\"\") - "
+ "No trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_IMMEDIATE (\"Immediate\") - "
+ "Trigger Immediately.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_EXTERNAL (\"External\") - "
+ "External trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_INTERNAL (\"Internal\") - "
+ "Internal trigger source.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_SOFTWARE (\"Software\") - "
+ "Software trigger.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN0 (\"LAN0\") - "
+ "LAN0 (LXI defined \"LAN0\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN1 (\"LAN1\") - "
+ "LAN1 (LXI defined \"LAN1\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN2 (\"LAN2\") - "
+ "LAN2 (LXI defined \"LAN2\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN3 (\"LAN3\") - "
+ "LAN3 (LXI defined \"LAN3\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN4 (\"LAN4\") - "
+ "LAN4 (LXI defined \"LAN4\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN5 (\"LAN5\") - "
+ "LAN5 (LXI defined \"LAN5\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN6 (\"LAN6\") - "
+ "LAN6 (LXI defined \"LAN6\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LAN7 (\"LAN7\") - "
+ "LAN7 (LXI defined \"LAN7\" LAN message).\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI0 (\"LXI0\") - "
+ "LXI Trigger Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI1 (\"LXI1\") - "
+ "LXI Trigger Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI2 (\"LXI2\") - "
+ "LXI Trigger Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI3 (\"LXI3\") - "
+ "LXI Trigger Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI4 (\"LXI4\") - "
+ "LXI Trigger Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI5 (\"LXI5\") - "
+ "LXI Trigger Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI6 (\"LXI6\") - "
+ "LXI Trigger Bus Line 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_LXI7 (\"LXI7\") - "
+ "LXI Trigger Bus Line 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL0 (\"TTL0\") - "
+ "TTL Interface 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL1 (\"TTL1\") - "
+ "TTL Interface 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL2 (\"TTL2\") - "
+ "TTL Interface 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL3 (\"TTL3\") - "
+ "TTL Interface 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL4 (\"TTL4\") - "
+ "TTL Interface 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL5 (\"TTL5\") - "
+ "TTL Interface 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL6 (\"TTL6\") - "
+ "TTL Interface 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_TTL7 (\"TTL7\") - "
+ "TTL Interface 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_STAR (\"PXI_STAR\") - "
+ "PXI Star Interface.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG0 (\"PXI_TRIG0\") - "
+ "PXI Trigger Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG1 (\"PXI_TRIG1\") - "
+ "PXI Trigger Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG2 (\"PXI_TRIG2\") - "
+ "PXI Trigger Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG3 (\"PXI_TRIG3\") - "
+ "PXI Trigger Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG4 (\"PXI_TRIG4\") - "
+ "PXI Trigger Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG5 (\"PXI_TRIG5\") - "
+ "PXI Trigger Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG6 (\"PXI_TRIG6\") - "
+ "PXI Trigger Bus Line 6.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG7 (\"PXI_TRIG7\") - "
+ "PXI Trigger Bus Line 7.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARA (\"PXIe_DSTARA\") - "
+ "PXI Express DStar Line A.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARB (\"PXIe_DSTARB\") - "
+ "PXI Express DStar Line B.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARC (\"PXIe_DSTARC\") - "
+ "PXI Express DStar Line C.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI0 (\"RTSI0\") - "
+ "RTSI Bus Line 0.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI1 (\"RTSI1\") - "
+ "RTSI Bus Line 1.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI2 (\"RTSI2\") - "
+ "RTSI Bus Line 2.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI3 (\"RTSI3\") - "
+ "RTSI Bus Line 3.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI4 (\"RTSI4\") - "
+ "RTSI Bus Line 4.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI5 (\"RTSI5\") - "
+ "RTSI Bus Line 5.\n"
+ "    IVIUPCONVERTER_VAL_TRIGGER_SOURCE_RTSI6 (\"RTSI6\") - "
+ "RTSI Bus Line 6.\n"
+ "    "
+
+2 all "Is Sweeping [SWP]" IVIUPCONVERTER_ATTR_IS_SWEEPING ViBoolean g Boolean_values
+ "Indicates if the upconverter is currently sweeping the RF output signal.\n"
+ "    "
+ 
+2 all "Frequency Sweep" 
+ "This group contains attributes to support the instrument that can apply a frequency "
+ "sweep to the RF output signal.\n"
+ "    "
+ 
+3 all "Frequency Sweep Start [FSW]" IVIUPCONVERTER_ATTR_FREQUENCY_SWEEP_START ViReal64 gs
+ "Specifies the start frequency of the sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are Hertz.\n"
+ "    "
+ 
+3 all "Frequency Sweep Stop [FSW]" IVIUPCONVERTER_ATTR_FREQUENCY_SWEEP_STOP ViReal64 gs
+ "Specifies the stop frequency of the sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are Hertz.\n"
+ "    "
+ 
+3 all "Frequency Sweep Time [FSW]" IVIUPCONVERTER_ATTR_FREQUENCY_SWEEP_TIME ViReal64 gs
+ "Specifies the duration of one sweep from start to stop frequency. The units "
+ "are seconds.\n"
+ "    "
+ 
+2 all "Power Sweep" 
+ "This group contains attributes to support the instrument that can apply a power "
+ "sweep to the RF output signal.\n"
+ "    "
+ 
+3 all "Power Sweep Start [PSW]" IVIUPCONVERTER_ATTR_POWER_SWEEP_START ViReal64 gs
+ "Specifies the start power of the sweep.\n\n"
+ "If the stop power is less than the start power, the power decreases "
+ "during the sweep. The units are dBm.\n"
+ "    "
+ 
+3 all "Power Sweep Stop [PSW]" IVIUPCONVERTER_ATTR_POWER_SWEEP_STOP ViReal64 gs
+ "Specifies the stop power of the sweep.\n\n"
+ "If the stop power is less than the start power, the power decreases "
+ "during the sweep. The units are dBm.\n"
+ "    "
+ 
+3 all "Power Sweep Time [PSW]" IVIUPCONVERTER_ATTR_POWER_SWEEP_TIME ViReal64 gs
+ "Specifies the duration of one sweep from start to stop power. The units "
+ "are seconds.\n"
+ "    "
+ 
+2 all "Gain Sweep" 
+ "This group contains attributes to support the instrument that can apply a gain "
+ "sweep to the RF output signal.\n"
+ "    "
+ 
+3 all "Gain Sweep Start [GSW]" IVIUPCONVERTER_ATTR_GAIN_SWEEP_START ViReal64 gs
+ "Specifies the start gain of the sweep.\n\n"
+ "If the stop gain is less than the start gain, the gain decreases "
+ "during the sweep. The units are dB.\n"
+ "    "
+ 
+3 all "Gain Sweep Stop [GSW]" IVIUPCONVERTER_ATTR_GAIN_SWEEP_STOP ViReal64 gs
+ "Specifies the stop gain of the sweep.\n\n"
+ "If the stop gain is less than the start gain, the gain decreases "
+ "during the sweep. The units are dB.\n"
+ "    "
+ 
+3 all "Gain Sweep Time [GSW]" IVIUPCONVERTER_ATTR_GAIN_SWEEP_TIME ViReal64 gs
+ "Specifies the duration of one sweep from start to stop gain. The units "
+ "are seconds.\n"
+ "    "
+
+2 all "Frequency Step" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "frequency of the RF output signal in steps.\n"
+ "    "
+
+3 all "Frequency Step Dwell [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_DWELL ViReal64 gs  
+ "Specifies the duration of one step. The units are seconds.\n\n"
+ "The dwell time starts immediately after a trigger or next step; no settling time "
+ "is added. This attribute is valid only when the "
+ "IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SINGLE_STEP_ENABLED attribute is set to "
+ "VI_FALSE.\n"
+ "    "
+
+3 all "Frequency Step Scaling [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SCALING ViInt32 gs attrFrequencyStepScalingRangeTable
+ "Specifies the spacing of the steps.\n"
+ "    "
+ 
+3 all "Frequency Step Single Step Enabled [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+ 
+3 all "Frequency Step Size [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SIZE ViReal64 gs
+ "Specifies the step size. The units are Hertz if the "
+ "IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SCALING attribute is set to "
+ "IVIUPCONVERTER_VAL_FREQUENCY_STEP_SCALING_LINEAR and unitless (factor) if the "
+ "IVIUPCONVERTER_ATTR_FREQUENCY_STEP_SCALING attribute is set to "
+ "IVIUPCONVERTER_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC.\n"
+ "    "
+ 
+3 all "Frequency Step Start [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_START ViReal64 gs
+ "Specifies the start frequency of the stepped sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are Hertz.\n"
+ "    "
+ 
+3 all "Frequency Step Stop [FST]" IVIUPCONVERTER_ATTR_FREQUENCY_STEP_STOP ViReal64 gs
+ "Specifies the stop frequency of the stepped sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are Hertz.\n"
+ "    "
+ 
+2 all "Power Step" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "power of the RF output signal in steps.\n"
+ "    "
+
+3 all "Power Step Dwell [PST]" IVIUPCONVERTER_ATTR_POWER_STEP_DWELL ViReal64 gs  
+ "Specifies the duration of one step. The units are seconds.\n\n"
+ "This attribute is valid only when the "
+ "IVIUPCONVERTER_ATTR_POWER_STEP_SINGLE_STEP_ENABLED attribute is set to "
+ "VI_FALSE.\n"
+ "    "
+ 
+3 all "Power Step Single Step Enabled [PST]" IVIUPCONVERTER_ATTR_POWER_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+ 
+3 all "Power Step Size [PST]" IVIUPCONVERTER_ATTR_POWER_STEP_SIZE ViReal64 gs
+ "Specifies the step size. The units are dBm.\n"
+ "    "
+ 
+3 all "Power Step Start [PST]" IVIUPCONVERTER_ATTR_POWER_STEP_START ViReal64 gs
+ "Specifies the start power of the stepped sweep.\n\n"
+ "If the stop power is less than the start power, the power decreases "
+ "during the sweep. The units are dBm.\n"
+ "    "
+ 
+3 all "Power Step Stop [PST]" IVIUPCONVERTER_ATTR_POWER_STEP_STOP ViReal64 gs
+ "Specifies the stop power of the stepped sweep.\n\n"
+ "If the stop power is less than the start power, the power decreases "
+ "during the sweep. The units are dBm.\n"
+ "    "
+ 
+2 all "Gain Step" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "gain of the RF output signal in steps.\n"
+ "    "
+
+3 all "Gain Step Dwell [GST]" IVIUPCONVERTER_ATTR_GAIN_STEP_DWELL ViReal64 gs  
+ "Specifies the duration of one step. The units are seconds.\n\n"
+ "This attribute is valid only when the "
+ "IVIUPCONVERTER_ATTR_GAIN_STEP_SINGLE_STEP_ENABLED attribute is set to "
+ "VI_FALSE.\n"
+ "    "
+ 
+3 all "Gain Step Single Step Enabled [GST]" IVIUPCONVERTER_ATTR_GAIN_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+ 
+3 all "Gain Step Size [GST]" IVIUPCONVERTER_ATTR_GAIN_STEP_SIZE ViReal64 gs
+ "Specifies the step size. The units are dB.\n"
+ "    "
+ 
+3 all "Gain Step Start [GST]" IVIUPCONVERTER_ATTR_GAIN_STEP_START ViReal64 gs
+ "Specifies the start gain of the stepped sweep.\n\n"
+ "If the stop gain is less than the start gain, the gain decreases "
+ "during the sweep. The units are dB.\n"
+ "    "
+ 
+3 all "Gain Step Stop [GST]" IVIUPCONVERTER_ATTR_GAIN_STEP_STOP ViReal64 gs
+ "Specifies the stop gain of the stepped sweep.\n\n"
+ "If the stop gain is less than the start gain, the gain decreases "
+ "during the sweep. The units are dB.\n"
+ "    "
+
+2 all "List" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "output frequency, power, or gain by a list of values.\n"
+ "    "
+
+3 all "List Dwell [LST]" IVIUPCONVERTER_ATTR_LIST_DWELL ViReal64 gs
+ "Specifies the duration of one step. The units are seconds.\n\n"
+ "This attribute is valid only when the "
+ "IVIUPCONVERTER_ATTR_LIST_SINGLE_STEP_ENABLED attribute is set "
+ "to VI_FALSE.\n"
+ "    "
+
+3 all "List Selected Name [LST]" IVIUPCONVERTER_ATTR_LIST_SELECTED_NAME ViString gs
+ "Specifies the name of the selected list to become active. The name shall be one "
+ "of the lists created.\n"
+ "    "
+
+3 all "List Single Step Enabled [LST]" IVIUPCONVERTER_ATTR_LIST_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+
+1 all "ALC" 
+ "This group contains attributes to support the instrument that can configure "
+ "automatic level control (ALC).\n"
+ "    "
+
+2 all "ALC Bandwidth [ALC]" IVIUPCONVERTER_ATTR_ALC_BANDWIDTH ViReal64 gs
+ "Specifies the bandwidth of the level control. Narrow bandwidth improves noise "
+ "and allows AM with modulation frequencies beyond bandwidth frequency. The units "
+ "are Hertz.\n"
+ "    "
+ 
+2 all "ALC Enabled" IVIUPCONVERTER_ATTR_ALC_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the Automatic Level Control (ALC).\n"
+ "    "	 
+ 
+2 all "ALC Source [ALC]" IVIUPCONVERTER_ATTR_ALC_SOURCE ViInt32 gs attrALCSourceRangeTable
+ "Specifies the source of the controlling voltage for the Automatic Level Control. "
+ "The RF level at the sensor point is held constant.\n"
+ "    "
+ 
+1 all "Reference Oscillator" 
+ "This group contains attributes to support the instrument that can configure "
+ "frequency reference.\n"
+ "    "
+
+2 all "Reference Oscillator External Frequency [RO]" IVIUPCONVERTER_ATTR_REFERENCE_OSCILLATOR_EXTERNAL_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the external signal that is used as reference for internal "
+ "RF frequency generation. The units are Hertz.\n\n"
+ "This attribute is valid only when "
+ "IVIUPCONVERTER_ATTR_REFERENCE_OSCILLATOR_SOURCE is set to "
+ "IVIUPCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL.\n"
+ "    " 
+ 
+2 all "Reference Oscillator Source [RO]" IVIUPCONVERTER_ATTR_REFERENCE_OSCILLATOR_SOURCE ViInt32 gs attrReferenceOscillatorSourceRangeTable 
+ "Specifies the reference oscillator source used to generate the precise RF output "
+ "frequency.\n"
+ "    " 
+
+2 all "Reference Oscillator Output Enabled [RO]" IVIUPCONVERTER_ATTR_REFERENCE_OSCILLATOR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the reference output.\n"
+ "    " 
+
+1 all "IQ" 
+ "This group contains attributes to support the instrument that can apply IQ (vector) "
+ "modulation to the RF output signal.\n"
+ "    "
+
+2 all "IQ Enabled [MIQ]" IVIUPCONVERTER_ATTR_IQ_ENABLED ViBoolean gs Boolean_values 
+ "Enables or disables IQ (vector) modulation of the RF output signal.\n"
+ "    "
+ 
+2 all "IQ Impairment" 
+ "This group contains attributes to support the instrument that can simulate or "
+ "correct impairment on IQ (vector) modulation.\n"
+ "    "
+ 
+3 all "IQ Impairment Enabled [IQI]" IVIUPCONVERTER_ATTR_IQ_IMPAIRMENT_ENABLED ViBoolean gs Boolean_values 
+ "Enables or disables IQ impairment.\n"
+ "    "
+
+3 all "IQ Impairment I Offset [IQI]" IVIUPCONVERTER_ATTR_IQ_IMPAIRMENT_I_OFFSET ViReal64 gs
+ "Specifies an origin offset voltage to the I signal. The range of values allowed "
+ "is -100% to +100%. The value is expressed as percentage (%).\n"
+ "    "
+ 
+3 all "IQ Impairment Q Offset [IQI]" IVIUPCONVERTER_ATTR_IQ_IMPAIRMENT_Q_OFFSET ViReal64 gs
+ "Specifies an origin offset voltage to the Q signal. The range of values allowed "
+ "is -100% to +100%. The value is expressed as percentage (%).\n"
+ "    "
+ 
+3 all "IQ Impairment Ratio [IQI]" IVIUPCONVERTER_ATTR_IQ_IMPAIRMENT_RATIO ViReal64 gs
+ "Specifies the gain imbalance between I and Q channels. For no imbalance this "
+ "value is set to 0%. The value is expressed as percentage (%).\n"
+ "    "
+ 
+3 all "IQ Impairment Skew [IQI]" IVIUPCONVERTER_ATTR_IQ_IMPAIRMENT_SKEW ViReal64 gs
+ "Specifies the adjustment of the phase angle between the I and Q vectors. If this "
+ "skew is zero, the phase angle is 90 degrees. The units are degrees.\n"
+ "    "
+ 
+2 all "IQ Nominal Voltage [MIQ]" IVIUPCONVERTER_ATTR_IQ_NOMINAL_VOLTAGE ViReal64 g
+ "Returns the voltage at which the instrument achieves full modulation. The value "
+ "is calculated by SQRT(I2+Q2). The units are Volts.\n"
+ "    " 
+ 
+2 all "IQ Swap Enabled [MIQ]" IVIUPCONVERTER_ATTR_IQ_SWAP_ENABLED ViBoolean gs Boolean_values 
+ "Enables or disables the inverse phase rotation of the IQ signal by swapping the "
+ "I and Q inputs.\n"
+ "    "

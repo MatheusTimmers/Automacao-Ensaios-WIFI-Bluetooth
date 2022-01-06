@@ -1,0 +1,43 @@
+
+IVI Compliance Category:
+-----------------------
+
+IVI-C IviSpecAn Class Instrument Driver
+Class Specification version:		2.0
+
+
+
+Driver Identification:
+---------------------
+
+Driver Revision: 			4.0
+Driver Vendor: 				National Instruments
+Prefix: 				IviSpecAn
+Description: 				Class driver for IviSpecAn
+
+
+
+32-bit Software Information:
+---------------------------
+Supported Operating Systems:		Windows 7 (32-bit), Windows 7 (64-bit), Windows 8 (32-bit), Windows 8 (64-bit)
+                                        Windows 10 (32-bit), Windows 10 (64-bit)
+Unsupported Operation Systems:          N/A
+Support Software Required: 		National Instruments IVI Compliance Package 17.0 or later
+					NI VISA 17.0
+Source Code Availability: 		Source code is not available 
+
+
+64-bit Software Information:
+---------------------------
+Supported Operating Systems:		Windows 7 (64-bit), Windows 8 (64-bit), Windows 10 (64-bit)
+Unsupported Operation Systems:          N/A
+Support Software Required: 		National Instruments IVI Compliance Package 17.0 or later
+					NI VISA 17.0
+Source Code Availability: 		Source code is not available
+
+
+
+Note: 
+IVI Class driver help is located in the ...\Users\Public\Documents\National Instruments\ICP Documentation directory on your system, 
+and can also be accessed from the Start menu.
+IVI Class examples are located in the ...\Users\Public\Documents\National Instruments\CVI\samples\IVI directory on your system.

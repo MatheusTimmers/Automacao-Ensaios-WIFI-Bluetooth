@@ -1,0 +1,1228 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+
+v Boolean_values
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrAcquisitionTypeRangeTable DataType="i" 
+ IVISCOPE_VAL_NORMAL (0)
+  "Sets the oscilloscope to the normal acquisition mode.  The oscilloscope "
+  "acquires one sample for each point in the waveform record.  The oscilloscope "
+  "can use real-time or equivalent-time sampling."
+
+ IVISCOPE_VAL_PEAK_DETECT (1)
+  "Sets the oscilloscope to the peak-detect acquisition mode.  The oscilloscope "
+  "oversamples the input signal and keeps the minimum and maximum values that "
+  "correspond to each position in the waveform record.  The oscilloscope uses "
+  "only real-time sampling."
+
+ IVISCOPE_VAL_HI_RES (2)
+  "Sets the oscilloscope to the high-resolution acquisition mode.  The "
+  "oscilloscope oversamples the input signal and calculates an average "
+  "value for each position in the "
+  "waveform record.  The oscilloscope uses only real-time sampling."
+
+ IVISCOPE_VAL_ENVELOPE (3)
+  "Sets the oscilloscope to the envelope acquisition mode.  The oscilloscope "
+  "acquires multiple waveforms and keeps the minimum and maximum voltages it "
+  "acquires for each point in the waveform record.  You specify the number of "
+  "waveforms the oscilloscope acquires with the "
+  "IVISCOPE_ATTR_NUM_ENVELOPES attribute.  The oscilloscope can use "
+  "real-time or equivalent-time sampling."
+
+ IVISCOPE_VAL_AVERAGE (4)
+  "Sets the oscilloscope to the average acquisition mode.  The oscilloscope "
+  "acquires multiple waveforms and calculates an average "
+  "value for each point in the waveform record.  You specify the number of "
+  "waveforms the oscilloscope acquires with the "
+  "IVISCOPE_ATTR_NUM_AVERAGES attribute.  The oscilloscope "
+  "can use real-time or equivalent-time sampling."
+
+
+v attrProbeAttenuationRangeTable DataType="d" 
+ IVISCOPE_VAL_PROBE_SENSE_ON (-1.0)
+  "Enables the oscilloscope's automatic probe sense capability."
+  
+  
+v attrVerticalCouplingRangeTable DataType="i" 
+ IVISCOPE_VAL_AC (0)
+  "The oscilloscope AC couples the input signal."
+
+ IVISCOPE_VAL_DC (1)
+  "The oscilloscope DC couples the input signal."
+
+ IVISCOPE_VAL_GND (2)
+  "The oscilloscope ground couples the input signal."
+
+
+v attrTriggerCouplingRangeTable DataType="i" 
+ IVISCOPE_VAL_AC (0)
+  "The oscilloscope AC couples the trigger signal."
+
+ IVISCOPE_VAL_DC (1)
+  "The oscilloscope DC couples the trigger signal."
+
+ IVISCOPE_VAL_LF_REJECT (4)
+  "The oscilloscope rejects low frequencies from the trigger signal."
+
+ IVISCOPE_VAL_HF_REJECT (3)
+  "The oscilloscope rejects high frequencies from the trigger signal."
+
+ IVISCOPE_VAL_NOISE_REJECT (5)
+  "The oscilloscope rejects noise from the trigger signal."
+
+
+v attrTriggerSlopeRangeTable DataType="i" 
+ IVISCOPE_VAL_POSITIVE (1)
+  "A positive (rising) edge passing through the trigger level triggers "
+  "the oscilloscope."
+
+ IVISCOPE_VAL_NEGATIVE (0)
+  "A negative (falling) edge passing through the trigger level triggers "
+  "the oscilloscope."
+
+
+v attrTriggerTypeRangeTable DataType="i" 
+ IVISCOPE_VAL_EDGE_TRIGGER (1)
+  "Configures the oscilloscope for edge triggering.  An edge trigger "
+  "occurs when the trigger signal passes through the voltage threshold "
+  "that you specify with the IVISCOPE_ATTR_TRIGGER_LEVEL "
+  "attribute and has the slope that you specify with the "
+  "IVISCOPE_ATTR_TRIGGER_SLOPE attribute."
+
+ IVISCOPE_VAL_RUNT_TRIGGER (3)
+  "Configures the oscilloscope for runt triggering.  A runt trigger occurs "
+  "when the trigger signal crosses one of the runt thresholds twice without "
+  "crossing the other runt threshold.  You specify the runt thresholds "
+  "with the IVISCOPE_ATTR_RUNT_HIGH_THRESHOLD "
+  "and IVISCOPE_ATTR_RUNT_LOW_THRESHOLD attributes.  You specify "
+  "the polarity of the runt with the IVISCOPE_ATTR_RUNT_POLARITY "
+  "attribute."
+
+ IVISCOPE_VAL_GLITCH_TRIGGER (4)
+  "Configures the oscilloscope for glitch triggering.  A glitch trigger "
+  "occurs when the trigger signal has a pulse with a width "
+  "that is less than the glitch width.  You specify the "
+  "glitch width with the IVISCOPE_ATTR_GLITCH_WIDTH "
+  "attribute.   You specify the polarity of the pulse with the "
+  "IVISCOPE_ATTR_GLITCH_POLARITY attribute.  The trigger does not "
+  "actually occur until the edge of a pulse that corresponds to the "
+  "glitch width and polarity you specify crosses the trigger level "
+  "you specify with the IVISCOPE_ATTR_TRIGGER_LEVEL attribute."
+
+ IVISCOPE_VAL_WIDTH_TRIGGER (2)
+  "Configures the oscilloscope for width triggering.  A width trigger occurs "
+  "when the oscilloscope detects a positive or negative pulse with a width "
+  "between, or optionally outside, the width thresholds.  You specify "
+  "the width thresholds with the IVISCOPE_ATTR_WIDTH_HIGH_THRESHOLD "
+  "and IVISCOPE_ATTR_WIDTH_LOW_THRESHOLD attributes.  You specify whether "
+  "the oscilloscope triggers on pulse widths that are within or outside the width "
+  "thresholds with the IVISCOPE_ATTR_WIDTH_CONDITION attribute.  "
+  "You specify the polarity of the pulse with the "
+  "IVISCOPE_ATTR_WIDTH_POLARITY attribute.  The trigger does not "
+  "actually occur until the edge of a pulse that corresponds to the width thresholds, "
+  "width condition, and polarity you specify crosses the trigger level you "
+  "specify with the IVISCOPE_ATTR_TRIGGER_LEVEL attribute.\n"
+  
+ IVISCOPE_VAL_TV_TRIGGER (5)
+  "Configures the oscilloscope for TV triggering.  You configure the TV trigger "
+  "with the IVISCOPE_ATTR_TV_TRIGGER_SIGNAL_FORMAT, "
+  "IVISCOPE_ATTR_TV_TRIGGER_EVENT, "
+  "IVISCOPE_ATTR_TV_TRIGGER_LINE_NUMBER, and "
+  "IVISCOPE_ATTR_TV_TRIGGER_POLARITY attributes."
+
+ IVISCOPE_VAL_AC_LINE_TRIGGER (7)
+  "Configures the oscilloscope for AC line triggering."
+
+ IVISCOPE_VAL_IMMEDIATE_TRIGGER (6)
+  "Configures the oscilloscope for immediate triggering."
+
+
+v attrInterpolationRangeTable DataType="i" 
+ IVISCOPE_VAL_NO_INTERPOLATION (1)
+  "The oscilloscope does not interpolate points in the waveform.  "
+  "Instead, the driver sets every element in the waveform array for which the "
+  "oscilloscope cannot resolve a value to "
+  "an IEEE defined NaN (Not a Number) value."
+
+ IVISCOPE_VAL_SINE_X (2)
+  "sin(x)/x interpolation"
+
+ IVISCOPE_VAL_LINEAR (3)
+  "Linear interpolation"
+
+
+v attrTvTriggerEventRangeTable DataType="i"
+ IVISCOPE_VAL_TV_EVENT_FIELD1 (1)
+  "Field 1 of the video signal"
+  
+ IVISCOPE_VAL_TV_EVENT_FIELD2 (2)
+  "Field 2 of the video signal"
+  
+ IVISCOPE_VAL_TV_EVENT_ANY_FIELD (3)
+  "Any field of the video signal"
+
+ IVISCOPE_VAL_TV_EVENT_ANY_LINE (4)
+  "Any line of the video signal"
+
+ IVISCOPE_VAL_TV_EVENT_LINE_NUMBER (5)
+  "A specified line of the video signal"
+
+
+v attrTvTriggerSignalFormatRangeTable DataType="i" 
+ IVISCOPE_VAL_NTSC (1)
+  "NTSC video signal"
+
+ IVISCOPE_VAL_PAL (2)
+  "PAL video signal"
+
+ IVISCOPE_VAL_SECAM (3)
+  "SECAM video signal"
+
+
+v attrTvTriggerPolarityRangeTable DataType="i" 
+ IVISCOPE_VAL_TV_POSITIVE (1)
+  "Positive video sync pulse"
+
+ IVISCOPE_VAL_TV_NEGATIVE (2)
+  "Negative video sync pulse"
+
+
+v attrRuntPolarityRangeTable DataType="i" 
+ IVISCOPE_VAL_RUNT_POSITIVE (1)
+  "The oscilloscope triggers on a positive runt.  A positive runt occurs when "
+  "a rising edge crosses the low runt threshold and does not cross the high "
+  "runt threshold before re-crossing the low runt threshold."
+
+ IVISCOPE_VAL_RUNT_NEGATIVE (2)
+  "The oscilloscope triggers on a negative runt.  A negative runt occurs when "
+  "a falling edge crosses the high runt threshold and does not cross the low "
+  "runt threshold before re-crossing the high runt threshold."
+
+ IVISCOPE_VAL_RUNT_EITHER (3)
+  "The oscilloscope triggers on either a positive or negative runt."
+
+
+v attrGlitchPolarityRangeTable DataType="i" 
+ IVISCOPE_VAL_GLITCH_POSITIVE (1)
+  "The oscilloscope triggers on a positive glitch."
+
+ IVISCOPE_VAL_GLITCH_NEGATIVE (2)
+  "The oscilloscope triggers on a negative glitch."
+
+ IVISCOPE_VAL_GLITCH_EITHER (3)
+  "The oscilloscope triggers on either a positive or negative glitch."
+
+
+v attrGlitchConditionRangeTable DataType="i" 
+ IVISCOPE_VAL_GLITCH_LESS_THAN (1)
+  "The oscilloscope triggers on a less-than glitch."
+
+ IVISCOPE_VAL_GLITCH_GREATER_THAN (2)
+  "The oscilloscope triggers on a greater-than glitch."
+
+
+v attrWidthPolarityRangeTable DataType="i" 
+ IVISCOPE_VAL_WIDTH_POSITIVE (1)
+  "The oscilloscope triggers on a positive pulse."
+
+ IVISCOPE_VAL_WIDTH_NEGATIVE (2)
+  "The oscilloscope triggers on a negative pulse."
+  
+
+v attrWidthConditionRangeTable DataType="i" 
+ IVISCOPE_VAL_WIDTH_WITHIN (1)
+  "The oscilloscope triggers on pulses that have a width that is less than "
+  "the high threshold and greater than the low threshold.  "
+  
+ IVISCOPE_VAL_WIDTH_OUTSIDE (2)
+  "The oscilloscope triggers on pulses that have a width that is either "
+  "greater than the high width threshold or less than a low width threshold."
+
+
+v attrAcLineTriggerSlopeRangeTable DataType="i" 
+ IVISCOPE_VAL_AC_LINE_POSITIVE (1)
+  "The oscilloscope triggers on positive slope zero crossings of the network supply voltage."
+
+ IVISCOPE_VAL_AC_LINE_NEGATIVE (2)
+  "The oscilloscope triggers on negative slope zero crossings of the network supply voltage."
+
+ IVISCOPE_VAL_AC_LINE_EITHER (3)
+  "The oscilloscope triggers on either positive or negative slope zero crossings of the network supply voltage."
+
+
+v attrSampleModeRangeTable DataType="i" 
+ IVISCOPE_VAL_REAL_TIME (0)
+  "Indicates that the oscilloscope is using real-time sampling."
+
+ IVISCOPE_VAL_EQUIVALENT_TIME (1)
+  "Indicates that the oscilloscope is using equivalent-time sampling."
+
+
+v attrTriggerModifierRangeTable DataType="i" 
+ IVISCOPE_VAL_NO_TRIGGER_MOD (1)
+  "The oscilloscope waits indefinitely for the trigger you specify."
+
+ IVISCOPE_VAL_AUTO (2)
+  "If the trigger you specify does not occur within the oscilloscope's timeout "
+  "period, the oscilloscope automatically triggers."
+
+ IVISCOPE_VAL_AUTO_LEVEL (3)
+  "If the trigger you specify does not occur within the oscilloscope's timeout "
+  "period, the oscilloscope automatically adjusts the trigger level to a value "
+  "that causes a trigger.  The trigger level remains at the new value."
+
+
+0 IviScope_SetAttributeViInt32     3 4 false s  DataType="ViInt32"
+0 IviScope_GetAttributeViInt32     3 4 false g  DataType="ViInt32"
+0 IviScope_CheckAttributeViInt32   3 4 false s  DataType="ViInt32"
+0 IviScope_SetAttributeViReal64    3 4 false s  DataType="ViReal64"
+0 IviScope_GetAttributeViReal64    3 4 false g  DataType="ViReal64"
+0 IviScope_CheckAttributeViReal64  3 4 false s  DataType="ViReal64"
+0 IviScope_SetAttributeViString    3 4 false s  DataType="ViString"
+0 IviScope_GetAttributeViString    3 5 false g  DataType="ViString"
+0 IviScope_CheckAttributeViString  3 4 false s  DataType="ViString"
+0 IviScope_SetAttributeViBoolean   3 4 false s  DataType="ViBoolean"
+0 IviScope_GetAttributeViBoolean   3 4 false g  DataType="ViBoolean"
+0 IviScope_CheckAttributeViBoolean 3 4 false s  DataType="ViBoolean"
+0 IviScope_SetAttributeViSession   3 4 false s  DataType="ViSession"
+0 IviScope_GetAttributeViSession   3 4 false g  DataType="ViSession"
+0 IviScope_CheckAttributeViSession 3 4 false s  DataType="ViSession"
+
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVISCOPE_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that you "
+ "pass to driver functions.  Range checking parameters is very useful for "
+ "debugging.  After you validate your program, you can set this attribute to "
+ "VI_FALSE to disable range checking and maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviScope_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVISCOPE_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful for "
+ "debugging.  After you validate your program, you can set this  attribute to "
+ "VI_FALSE to disable status checking and maximize performance.\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is FALSE.   Use the "
+ "IviScope_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVISCOPE_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  When caching is "
+ "enabled, the instrument driver keeps track of the current instrument "
+ "settings and avoids sending redundant commands to the instrument.  Thus, "
+ "you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviScope_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Record Value Coercions" IVISCOPE_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVISCOPE_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVISCOPE_ATTR_SPY is set to VI_FALSE "
+ "you call IviScope_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviScope_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Simulate" IVISCOPE_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O operations.  If "
+ "simulation is enabled, instrument driver functions perform range checking "
+ "and set and get attributes, but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviScope_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVISCOPE_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVISCOPE_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Interchange Check" IVISCOPE_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to record interchangeability warnings when you call one of the "
+ "following functions:\n\n"
+ "    IviScope_InitiateAcquisition\n"
+ "    IviScope_ReadWaveform\n"
+ "    IviScope_ReadMinMaxWaveform\n\n"
+ "    IviScope_ReadWaveformMeasurement\n"
+ "    IviScope_FetchWaveformMeasurement\n\n"
+ "    The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVISCOPE_ATTR_SPY is set to VI_FALSE, you call "
+ "IviScope_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviScope_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"
+ "If the IVISCOPE_ATTR_SPY attribute is set to VI_TRUE, you use the "
+ "NI I/O Trace utility to view interchangeability warnings.\n"
+
+ "Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviScope class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviScope "
+ "class.\n\n"
+
+ "(3) The IviScope class defines an attribute as read-only and you "
+ "have set that attribute.\n\n"
+
+ "The IviScope class provides the following exceptions to these "
+ "interchangeability checking rules.  The exceptions are listed "
+ "under the capability group to which they refer:\n\n"
+
+ "(1) IviScopeBase Capabilities:\n\n"
+
+ " - The following attributes are required to be in a "
+ "user-specified state on a channel only if the "
+ "IVISCOPE_ATTR_CHANNEL_ENABLED attribute is set to VI_TRUE for that "
+ "channel:\n\n"
+ "    IVISCOPE_ATTR_VERTICAL_RANGE\n"
+ "    IVISCOPE_ATTR_VERTICAL_OFFSET\n"
+ "    IVISCOPE_ATTR_VERTICAL_COUPLING\n"
+ "    IVISCOPE_ATTR_PROBE_ATTENUATION\n"
+ "    IVISCOPE_ATTR_MAX_INPUT_FREQUENCY\n"
+ "    IVISCOPE_ATTR_INPUT_IMPEDANCE\n\n"
+
+ " - The IVISCOPE_ATTR_TRIGGER_LEVEL attribute is required to "
+ "be in a user-specified state only if the IVISCOPE_ATTR_TRIGGER_TYPE "
+ "attribute is set to IVISCOPE_VAL_EDGE_TRIGGER, IVISCOPE_VAL_GLITCH_TRIGGER "
+ "or IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+
+ " - The IVISCOPE_ATTR_TRIGGER_COUPLING and "
+ "IVISCOPE_ATTR_TRIGGER_SLOPE attributes are required to "
+ "be in a user-specified state only if the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_EDGE.\n\n"
+
+ "(2) IviScopeTVTrigger Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set "
+ "to IVISCOPE_VAL_TV_TRIGGER.\n\n"
+
+ " - The IVISCOPE_ATTR_TV_TRIGGER_LINE_NUMBER attribute must be in a user-"
+ "specified state only if the IVISCOPE_ATTR_TV_TRIGGER_EVENT attribute "
+ "is set to IVISCOPE_VAL_LINE_NUMBER.\n\n"
+ 
+ "(3) IviScopeRuntTrigger Capabilities:\n\n"
+ 
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set "
+ "to IVISCOPE_VAL_RUNT_TRIGGER.\n\n"
+
+ "(4) IviScopeGlitchTrigger Capabilities: "
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set "
+ "to IVISCOPE_VAL_GLITCH_TRIGGER.\n\n"
+
+ "(5) IviScopeWidthTrigger Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set "
+ "to IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+
+ "(6) IviScopeAcLineTrigger Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set "
+ "to IVISCOPE_VAL_AC_LINE_TRIGGER.\n\n"
+
+ "(7) IviScopeWaveformMeas Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IviScope_ReadWaveformMeasurement function is called.\n\n"
+
+ " - The IVISCOPE_ATTR_MEAS_LOW_REF, IVISCOPE_ATTR_MEAS_MID_REF, "
+ "and IVISCOPE_ATTR_MEAS_HIGH_REF attributes are required to be in "
+ "a user-specified state only if you request a waveform "
+ "measurement that requires reference levels.\n\n"
+
+ "(8) IviScopeMinMaxWaveform Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_ACQUISITION_TYPE attribute is "
+ "set to IVISCOPE_VAL_ENVELOPE or IVISCOPE_VAL_PEAK_DETECT.\n\n"
+
+ " - The IVISCOPE_ATTR_NUM_ENVELOPES attribute is required to be "
+ "in a user-specified state only when the "
+ "IVISCOPE_ATTR_ACQUISITION_TYPE attribute is set to "
+ "IVISCOPE_VAL_ENVELOPE.\n\n"
+
+ "(9) IviScopeAverageAcquisition Capabilities:\n\n"
+
+ " - Interchangeability checking is performed on this extension "
+ "group only when the IVISCOPE_ATTR_ACQUISITION_TYPE attribute is "
+ "set to IVISCOPE_VAL_AVERAGE.\n\n"
+
+3 all "Spy" IVISCOPE_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVISCOPE_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVISCOPE_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVISCOPE_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVISCOPE_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVISCOPE_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVISCOPE_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVISCOPE_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVISCOPE_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVISCOPE_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVISCOPE_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVISCOPE_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVISCOPE_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVISCOPE_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVISCOPE_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVISCOPE_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviScope capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviScopeBase\" - Supports fundamental oscilloscope capabilities.\n\n"
+ "\"IviScopeInterpolation\" - Supports IviScopeBase with the ability to configure "
+ "the oscilloscope to interpolate missing points in a waveform.\n\n"
+ "\"IviScopeTVTrigger\" - Supports IviScopeBase with the ability to trigger "
+ "on standard television signals.\n\n"
+ "\"IviScopeRuntTrigger\" - Supports IviScopeBase with the ability to trigger "
+ "on runts.\n\n"
+ "\"IviScopeGlitchTrigger\" - Supports IviScopeBase with the ability to trigger "
+ "on glitches.\n\n"
+ "\"IviScopeWidthTrigger\" - Supports IviScopeBase with the ability to trigger "
+ "on a variety of conditions regarding pulse widths.\n\n"
+ "\"IviScopeAcLineTrigger\" - Supports IviScopeBase with the ability to trigger "
+ "on zero crossings of a network supply voltage.\n\n"
+ "\"IviScopeWaveformMeas\" - Supports IviScopeBase with the ability to "
+ "calculate waveform measurements.\n\n"
+ "\"IviScopeMinMaxWaveform\" - Supports IviScopeBase with the ability to acquire "
+ "minimum and maximum waveforms that correspond to the same time range.\n\n"
+ "\"IviScopeProbeAutoSense\" - Supports IviScopeBase with the ability to "
+ "automatically sense the probe attenuation of an attached probe.\n\n"
+ "\"IviScopeContinuousAcquisition\" - Supports IviScopeBase with the ability "
+ "to continuously acquire data from the input.\n\n"
+ "\"IviScopeAverageAcquisition\" - Supports IviScopeBase with the ability to "
+ "create a waveform that is the average of multiple waveform acquisitions.\n\n"
+ "\"IviScopeSampleMode\" - Supports IviScopeBase with the ability to return "
+ "the actual sample mode.\n\n"
+ "\"IviScopeTriggerModifier\" - Supports IviScopeBase with the ability to modify "
+ "the behavior of the triggering subsystem in the absence of an expected trigger.\n\n"
+ "\"IviScopeAutoSetup\" - Supports IviScopeBase with the ability to perform an "
+ "auto-setup operation.\n\n"
+ "\"IviScopeSoftwareTrigger\" - Supports IviScopeBase with the ability to use "
+ "the software trigger as the exclusive trigger type.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVISCOPE_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviScope functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviScope_init\"\n"
+ "    \"IviScope_close\"\n"
+ "    \"IviScope_reset\"\n"
+ "    \"IviScope_self_test\"\n"
+ "    \"IviScope_error_query\"\n"
+ "    \"IviScope_error_message\"\n"
+ "    \"IviScope_revision_query\"\n"
+ "    \"IviScope_Abort\"\n"
+ "    \"IviScope_AcquisitionStatus\"\n"
+ "    \"IviScope_ActualRecordLength\"\n"
+ "    \"IviScope_ConfigureAcquisitionRecord\"\n"
+ "    \"IviScope_ConfigureAcquisitionType\"\n"
+ "    \"IviScope_ConfigureChannel\"\n"
+ "    \"IviScope_ConfigureChanCharacteristics\"\n"
+ "    \"IviScope_ConfigureEdgeTriggerSource\"\n"
+ "    \"IviScope_ConfigureTrigger\"\n"
+ "    \"IviScope_ConfigureTriggerCoupling\"\n"
+ "    \"IviScope_FetchWaveform\"\n"
+ "    \"IviScope_InitiateAcquisition\"\n"
+ "    \"IviScope_IsInvalidWfmElement\"\n"
+ "    \"IviScope_ReadWaveform\"\n"
+ "    \"IviScope_SampleRate\"\n"
+ "    \"IviScope_ConfigureInterpolation\"\n"
+ "    \"IviScope_ConfigureTVTriggerSource\"\n"
+ "    \"IviScope_ConfigureTVTriggerLineNumber\"\n"
+ "    \"IviScope_ConfigureRuntTriggerSource\"\n"
+ "    \"IviScope_ConfigureGlitchTriggerSource\"\n"
+ "    \"IviScope_ConfigureWidthTriggerSource\"\n"
+ "    \"IviScope_ConfigureAcLineTriggerSlope\"\n"
+ "    \"IviScope_ConfigureRefLevels\"\n"
+ "    \"IviScope_FetchWaveformMeasurement\"\n"
+ "    \"IviScope_ReadWaveformMeasurement\"\n"
+ "    \"IviScope_ConfigureNumEnvelopes\"\n"
+ "    \"IviScope_FetchMinMaxWaveform\"\n"
+ "    \"IviScope_ReadMinMaxWaveform\"\n"
+ "    \"IviScope_AutoProbeSenseValue\"\n"
+ "    \"IviScope_ConfigureInitiateContinuous\"\n"
+ "    \"IviScope_ConfigureNumAverages\"\n"
+ "    \"IviScope_SampleMode\"\n"
+ "    \"IviScope_ConfigureTriggerModifier\"\n"
+ "    \"IviScope_AutoSetup\"\n"
+ "    "
+
+3 all "Channel Count" IVISCOPE_ATTR_CHANNEL_COUNT ViInt32 g
+ "Indicates the number of channels that the specific driver supports.  \n"
+ "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag attribute "
+ "is set, the instrument driver maintains a separate cache value for each channel.\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVISCOPE_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVISCOPE_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVISCOPE_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVISCOPE_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviScope_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVISCOPE_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviScope_init or "
+ "IviScope_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVISCOPE_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+
+1 all "Acquisition" 
+ "Attributes that configure the various acquisition modes"
+
+2 all "Acquisition Type" IVISCOPE_ATTR_ACQUISITION_TYPE ViInt32 gs attrAcquisitionTypeRangeTable 
+ "Specifies how the oscilloscope acquires data and fills the waveform record.  "
+ "When you set this attribute to IVISCOPE_VAL_ENVELOPE or "
+ "IVISCOPE_VAL_PEAK_DETECT, the oscilloscope acquires minimum "
+ "and maximum waveforms.  To retrieve the minimum and maximum waveforms, "
+ "use the IviScope_ReadMinMaxWaveform and "
+ "IviScope_FetchMinMaxWaveform functions.\n"
+ "    "
+
+2 all "Horizontal Time Per Record" IVISCOPE_ATTR_HORZ_TIME_PER_RECORD ViReal64 gs
+ "This attribute specifies the time in seconds that corresponds to the record "
+ "length.\n"
+ "    "
+
+2 all "Horizontal Minimum Number of Points" IVISCOPE_ATTR_HORZ_MIN_NUM_PTS ViInt32 gs 
+ "Specifies the minimum number of points you require in the waveform record "
+ "for each channel.  This instrument driver uses the value you specify to "
+ "configure the record length that the oscilloscope uses for waveform acquisition.  "
+ "Use the IVISCOPE_ATTR_HORZ_RECORD_LENGTH attribute to obtain the "
+ "actual record length.\n"
+ "    "
+
+2 all "Horizontal Record Length" IVISCOPE_ATTR_HORZ_RECORD_LENGTH ViInt32 g 
+ "Returns the actual number of points the oscilloscope acquires for each channel.  "
+ "The value is equal to or greater than the minimum number of points you specify "
+ "with the IVISCOPE_ATTR_HORZ_MIN_NUM_PTS attribute.  Allocate a "
+ "ViReal64 array of this size or greater to pass as the Waveform Array parameter of the "
+ "IviScope_ReadWaveform and IviScope_FetchWaveform functions.  \n"
+ "    Note:  The oscilloscope may use different size records depending on the "
+ "value you specify for the IVISCOPE_ATTR_ACQUISITION_TYPE attribute.\n"
+ "    "
+
+2 all "Horizontal Sample Rate" IVISCOPE_ATTR_HORZ_SAMPLE_RATE ViReal64 g 
+ "Returns the effective digitizing rate using the current "
+ "configuration.  The units are samples per second.\n"
+ "    "
+
+2 all "Acquisition Start Time" IVISCOPE_ATTR_ACQUISITION_START_TIME ViReal64 gs
+ "This attributes specifies the length of time from the trigger event to the "
+ "first point in the waveform record.  The units are seconds.  If the value "
+ "is positive, the first point in the waveform record occurs after the trigger "
+ "event.  If the value is negative, the first point in the waveform record "
+ "occurs before the trigger event.\n"
+ "    "
+
+2 all "Interpolation [I]" IVISCOPE_ATTR_INTERPOLATION ViInt32 gs attrInterpolationRangeTable 
+ "Specifies the interpolation method the oscilloscope uses when it cannot "
+ "sample a voltage for every point in the waveform record.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeInterpolation [I] extension group.\n"
+ "    "
+
+2 all "Number of Averages [AA]" IVISCOPE_ATTR_NUM_AVERAGES ViInt32 gs
+ "Specifies the number of waveforms the oscilloscope acquires and averages.  "
+ "After the oscilloscope acquires as many waveforms as this attribute specifies, "
+ "it returns to the idle state.  This attribute affects instrument behavior only "
+ "when the IVISCOPE_ATTR_ACQUISITION_TYPE attribute is set to "
+ "IVISCOPE_VAL_AVERAGE.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeAverageAcquisition [AA] extension group.\n"
+ "    "
+
+2 all "Number of Envelopes [MmW]" IVISCOPE_ATTR_NUM_ENVELOPES ViInt32 gs
+ "When you set the IVISCOPE_ATTR_ACQUISITION_TYPE attribute to "
+ "IVISCOPE_VAL_ENVELOPE, the oscilloscope acquires multiple "
+ "waveforms.  After each waveform acquisition, the oscilloscope keeps the "
+ "minimum and maximum values it finds for each point in the waveform record.  " 
+ "This attribute specifies the number of waveforms the oscilloscope acquires and "
+ "analyzes to create the minimum and maximum waveforms.  After the oscilloscope "
+ "acquires as many waveforms as this attribute specifies, it returns to the idle "
+ "state.  This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_ACQUISITION_TYPE attribute is set to "
+ "IVISCOPE_VAL_ENVELOPE.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeMinMaxWaveform [MmW] extension group.\n"
+ "    "
+
+2 all "Sample Mode [SM]" IVISCOPE_ATTR_SAMPLE_MODE ViInt32 g attrSampleModeRangeTable
+ "Returns the sample mode the oscilloscope is currently using.\n
+ "    IVISCOPE_VAL_REAL_TIME (0) - Indicates that the oscilloscope "
+ "is using real-time sampling.\n"
+ "    IVISCOPE_VAL_EQUIVALENT_TIME (1) - Indicates that the oscilloscope "
+ "is using equivalent-time sampling.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeSampleMode [SM] extension group.\n"
+ "    "
+
+2 all "Initiate Continuous [CA]" IVISCOPE_ATTR_INITIATE_CONTINUOUS ViBoolean gs Boolean_values 
+ "Specifies whether the oscilloscope continuously initiates waveform acquisition.  "
+ "If you set this attribute to VI_TRUE, the oscilloscope immediately waits for "
+ "another trigger after the previous waveform acquisition is complete.  Setting "
+ "this attribute to VI_TRUE is useful when you require continuous updates of "
+ "the oscilloscope display.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeContinuousAcquisition [CA] extension group.\n"
+ "    "
+
+1 all "Channel Subsystem" 
+ "Channel-based attributes that you use to configure the oscilloscope."
+
+2 all "Channel Enabled" IVISCOPE_ATTR_CHANNEL_ENABLED ViBoolean gs Boolean_values 
+ "This channel-based attribute specifies whether the oscilloscope "
+ "acquires a waveform for a channel when you call the  IviScope_InitiateAcquisition, "
+ "IviScope_ReadWaveform, IviScope_ReadMinMaxWaveform, or "
+ "IviScope_ReadWaveformMeasurement function.\n"
+ "    "
+
+2 all "Probe Attenuation" IVISCOPE_ATTR_PROBE_ATTENUATION ViReal64 gs attrProbeAttenuationRangeTable 
+ "This channel-based attribute specifies the scaling factor by which the probe "
+ "you attach to the channel attenuates the input.  For example, when you use "
+ "a 10:1 probe, set this attribute to 10.0.\n"
+ "    This driver reserves negative values to control the oscilloscope's "
+ "automatic probe sense capability.  Setting this attribute to "
+ "IVISCOPE_VAL_PROBE_SENSE_ON configures the oscilloscope "
+ "to sense the attenuation of the probe automatically.  "
+ "After you enable the automatic probe sense, subsequent queries of this attribute "
+ "return the value IVISCOPE_VAL_PROBE_SENSE_ON.  Use the "
+ "IVISCOPE_ATTR_PROBE_SENSE_VALUE attribute to obtain the "
+ "actual probe attenuation.\n"
+ "    If you set the oscilloscope to sense the probe attenuation automatically, "
+ "the probe attenuation value can change at any time.  When the oscilloscope detects "
+ "a new probe attenuation value, other settings in the oscilloscope might also "
+ "change.  The driver has no way of knowing when these changes occur.  "
+ "Therefore, when you enable the automatic probe sense capability, this driver disables "
+ "caching for attributes that depend on the probe attenuation.  These "
+ "attributes include IVISCOPE_ATTR_VERTICAL_RANGE, "
+ "IVISCOPE_ATTR_VERTICAL_OFFSET, and all the attributes that "
+ "configure trigger levels.  To maximize performance, set this attribute to "
+ "a manual probe attenuation setting.\n"
+ "    If the oscilloscope is set to sense the probe attenuation automatically, "
+ "setting this attribute to a positive value disables the automatic probe sense "
+ "and configures the oscilloscope to use the manual probe attenuation "
+ "you specify.\n"
+ "    If you use a manual probe attenuation, you must "
+ "set this attribute to reflect the new probe attenuation each time you attach "
+ "a different probe.\n"
+ "    "
+
+2 all "Probe Sense Value [PAS]" IVISCOPE_ATTR_PROBE_SENSE_VALUE ViReal64 g  
+ "This channel-based attribute returns the probe attenuation value the oscilloscope "
+ "automatically senses.  If you disable the automatic probe sense capability, this "
+ "attribute returns the manual probe attenuation setting.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeProbeAutoSense [PAS] extension group.\n"
+ "    "
+ 
+2 all "Vertical Range" IVISCOPE_ATTR_VERTICAL_RANGE ViReal64 gs 
+ "This channel-based attribute specifies the absolute value of the input range the "
+ "oscilloscope can acquire for the channel.  The units are volts.  "
+ "For example, to acquire a sine wave which spans between -5.0 and 5.0 volts, "
+ "you set this attribute to 10.0 volts.\n"
+ "    "
+
+2 all "Vertical Offset" IVISCOPE_ATTR_VERTICAL_OFFSET ViReal64 gs 
+ "This channel-based attribute specifies the location of the center of the range "
+ "that you specify with the IVISCOPE_ATTR_VERTICAL_RANGE attribute.  Express the "
+ "value in volts and with respect to ground.  For example, to acquire a sine wave "
+ "that spans between 0.0 and 10.0 volts, set this attribute to 5.0 volts.\n"
+ "    "
+
+2 all "Vertical Coupling" IVISCOPE_ATTR_VERTICAL_COUPLING ViInt32 gs attrVerticalCouplingRangeTable 
+ "This channel-based attribute specifies how the oscilloscope couples "
+ "the input signal for the channel.\n"
+ "    "
+
+2 all "Maximum Input Frequency" IVISCOPE_ATTR_MAX_INPUT_FREQUENCY ViReal64 gs
+ "This channel-based attribute specifies the maximum input frequency of the "
+ "channel.  Express this value as the frequency at which the input circuitry "
+ "attenuates the input signal by 3 dB.  The units for this attribute are hertz.\n"
+ "    "
+
+2 all "Input Impedance" IVISCOPE_ATTR_INPUT_IMPEDANCE ViReal64 gs 
+ "This channel-based attribute specifies the input impedance for the "
+ "channel.  The units are ohms.\n"
+ "    "
+
+1 all "Trigger Subsystem" 
+ "Attributes that control how the oscilloscope triggers an acquisition."
+
+2 all "Trigger Type" IVISCOPE_ATTR_TRIGGER_TYPE ViInt32 gs attrTriggerTypeRangeTable 
+ "This attribute specifies the trigger type.\n"
+ "    "
+
+2 all "Trigger Source" IVISCOPE_ATTR_TRIGGER_SOURCE ViString gs
+ "Specifies the source the oscilloscope monitors for a trigger.  Set this "
+ "attribute to a channel name or to one of the values below.\n"
+ "    \n"
+ "Additional Trigger Sources:\n"
+ "    IVISCOPE_VAL_EXTERNAL (\"VAL_EXTERNAL\") - "
+ "The oscilloscope waits for a trigger on the external trigger input.\n"
+ "    IVISCOPE_VAL_GPIB_GET (\"VAL_GPIB_GET\") - "
+ "The oscilloscope waits until it receives a GPIB Group Execute Trigger (GET).\n"
+ "    IVISCOPE_VAL_TTL0 (\"VAL_TTL0\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG0 line (for PXI "
+ "instruments) or the VXI TTL0 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL1 (\"VAL_TTL1\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG1 line (for PXI "
+ "instruments) or the VXI TTL1 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL2 (\"VAL_TTL2\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG2 line (for PXI "
+ "instruments) or the VXI TTL2 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL3 (\"VAL_TTL3\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG3 line (for PXI "
+ "instruments) or the VXI TTL3 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL4 (\"VAL_TTL4\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG4 line (for PXI "
+ "instruments) or the VXI TTL4 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL5 (\"VAL_TTL5\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG5 line (for PXI "
+ "instruments) or the VXI TTL5 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL6 (\"VAL_TTL6\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG6 line (for PXI "
+ "instruments) or the VXI TTL6 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_TTL7 (\"VAL_TTL7\") - "
+ "The oscilloscope waits until it receives a trigger on the PXI TRIG7 line (for PXI "
+ "instruments) or the VXI TTL7 line (for VXI instruments).\n"
+ "    IVISCOPE_VAL_ECL0 (\"VAL_ECL0\") - "
+ "The oscilloscope waits for a trigger on the ECL line 0.\n"
+ "    IVISCOPE_VAL_ECL1 (\"VAL_ECL1\") - "
+ "The oscilloscope waits for a trigger on the ECL line 1.\n"
+ "    IVISCOPE_VAL_PXI_STAR (\"VAL_PXI_STAR\") - "
+ "The oscilloscope waits for a trigger on the PXI Star bus.\n"
+ "    IVISCOPE_VAL_RTSI_0 (\"VAL_RTSI_0\") - "
+ "The oscilloscope waits for a trigger on RTSI line 0.\n"
+ "    IVISCOPE_VAL_RTSI_1 (\"VAL_RTSI_1\") - "
+ "The oscilloscope waits for a trigger on RTSI line 1.\n"
+ "    IVISCOPE_VAL_RTSI_2 (\"VAL_RTSI_2\") - "
+ "The oscilloscope waits for a trigger on RTSI line 2.\n"
+ "    IVISCOPE_VAL_RTSI_3 (\"VAL_RTSI_3\") - "
+ "The oscilloscope waits for a trigger on RTSI line 3.\n"
+ "    IVISCOPE_VAL_RTSI_4 (\"VAL_RTSI_4\") - "
+ "The oscilloscope waits for a trigger on RTSI line 4.\n"
+ "    IVISCOPE_VAL_RTSI_5 (\"VAL_RTSI_5\") - "
+ "The oscilloscope waits for a trigger on RTSI line 5.\n"
+ "    IVISCOPE_VAL_RTSI_6 (\"VAL_RTSI_6\") - "
+ "The oscilloscope waits for a trigger on RTSI line 6.\n"
+ "    "
+
+2 all "Trigger Coupling" IVISCOPE_ATTR_TRIGGER_COUPLING ViInt32 gs attrTriggerCouplingRangeTable 
+ "Specifies how the oscilloscope couples the trigger source.\n"
+ "    "
+
+2 all "Trigger Holdoff" IVISCOPE_ATTR_TRIGGER_HOLDOFF ViReal64 gs 
+ "Specifies the length of time the oscilloscope waits after it detects "
+ "a trigger until the oscilloscope enables the trigger subsystem to detect "
+ "another trigger.  The units are seconds.\n"
+ "    The IVISCOPE_ATTR_TRIGGER_HOLDOFF attribute affects instrument "
+ "operation only when the oscilloscope requires multiple acquisitions to build "
+ "a complete waveform.  The oscilloscope requires multiple waveform "
+ "acquisitions when it uses equivalent-time sampling or when you set the "
+ "IVISCOPE_ATTR_ACQUISITION_TYPE attribute to "
+ "IVISCOPE_VAL_ENVELOPE or IVISCOPE_VAL_AVERAGE.\n"
+ "    "
+
+2 all "Trigger Level" IVISCOPE_ATTR_TRIGGER_LEVEL ViReal64 gs 
+ "Specifies the voltage threshold for the trigger subsystem.  The units are "
+ "volts.  This attribute affects instrument behavior only "
+ "when you set the IVISCOPE_ATTR_TRIGGER_TYPE to "
+ "IVISCOPE_VAL_EDGE_TRIGGER, IVISCOPE_VAL_GLITCH_TRIGGER, or "
+ "IVISCOPE_VAL_WIDTH_TRIGGER.\n"
+ "    "
+
+2 all "Trigger Slope" IVISCOPE_ATTR_TRIGGER_SLOPE ViInt32 gs attrTriggerSlopeRangeTable 
+ "Specifies whether a rising or a falling edge triggers the oscilloscope.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_EDGE_TRIGGER.\n"
+ "    "
+
+2 all "Trigger Modifier [TM]" IVISCOPE_ATTR_TRIGGER_MODIFIER ViInt32 gs attrTriggerModifierRangeTable 
+ "Specifies the trigger modifier.  The trigger modifier determines "
+ "the oscilloscope's behavior in the absence of the trigger you configure.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTriggerModifier [TM] extension group.\n"
+ "    "
+
+2 all "TV Triggering [TV]" 
+  "Attributes that configure the oscilloscope to trigger on TV signals.  You "
+  "use these attributes to configure the oscilloscope after you set the "
+  "IVISCOPE_ATTR_TRIGGER_TYPE to IVISCOPE_VAL_TV_TRIGGER.\n"
+
+3 all "TV Trigger Signal Format [TV]" IVISCOPE_ATTR_TV_TRIGGER_SIGNAL_FORMAT ViInt32 gs attrTvTriggerSignalFormatRangeTable 
+ "Specifies the format of the TV signal on which the oscilloscope triggers.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_TV_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTVTrigger [TV] extension group.\n"
+ "    "
+
+3 all "TV Trigger Event [TV]" IVISCOPE_ATTR_TV_TRIGGER_EVENT ViInt32 gs attrTvTriggerEventRangeTable        
+ "Specifies the event on which the oscilloscope triggers.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_TV_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTVTrigger [TV] extension group.\n"
+ "    "
+ 
+3 all "TV Trigger Line Number [TV]" IVISCOPE_ATTR_TV_TRIGGER_LINE_NUMBER ViInt32 gs        
+ "Specifies the line on which the oscilloscope triggers.  This attribute affects "
+ "instrument operation only when the IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_TV_TRIGGER and when the IVISCOPE_ATTR_TV_TRIGGER_EVENT attribute is "
+ "set to IVISCOPE_VAL_LINE_NUMBER.  The line number setting is independent of the field.  "
+ "This means that to trigger on the first line of the second field, you must set this "
+ "attribute to the value of 263 (if we presume that field one had 262 lines).\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTVTrigger [TV] extension group.\n"
+ "    "
+ 
+3 all "TV Trigger Polarity [TV]" IVISCOPE_ATTR_TV_TRIGGER_POLARITY ViInt32 gs attrTvTriggerPolarityRangeTable 
+ "Specifies the polarity of the TV signal.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_TV_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTVTrigger [TV] extension group.\n"
+ "    "
+
+2 all "Runt Triggering [RT]" 
+ "Attributes that configure the oscilloscope for runt triggering.  You use "
+ "these attributes to configure the oscilloscope after you set the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE to IVISCOPE_VAL_RUNT_TRIGGER.\n"
+ "    A runt trigger occurs when the trigger signal crosses one of the runt "
+ "thresholds twice without crossing the other runt threshold.  You specify the "
+ "runt thresholds with the IVISCOPE_ATTR_RUNT_HIGH_THRESHOLD "
+ "and IVISCOPE_ATTR_RUNT_LOW_THRESHOLD attributes.  You specify "
+ "the polarity of the runt with the IVISCOPE_ATTR_RUNT_POLARITY "
+ "attribute.\n"
+ "    "
+
+3 all "Runt High Threshold [RT]" IVISCOPE_ATTR_RUNT_HIGH_THRESHOLD ViReal64 gs  
+ "Specifies the high threshold the oscilloscope uses for runt triggering.  "
+ "The units are volts.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_RUNT_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeRuntTrigger [RT] extension group.\n"
+ "    "
+ 
+3 all "Runt Low Threshold [RT]" IVISCOPE_ATTR_RUNT_LOW_THRESHOLD ViReal64 gs  
+ "Specifies the low threshold the oscilloscope uses for runt triggering.  "
+ "The units are volts. "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_RUNT_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeRuntTrigger [RT] extension group.\n"
+ "    "
+
+3 all "Runt Polarity [RT]" IVISCOPE_ATTR_RUNT_POLARITY ViInt32 gs attrRuntPolarityRangeTable 
+ "Specifies the polarity of the runt that triggers the oscilloscope. "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_RUNT_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeRuntTrigger [RT] extension group.\n"
+ "    "
+
+2 all "Glitch Triggering [GT]" 
+ "Attributes that configure the oscilloscope for glitch triggering.  You use "
+ "these attributes to configure the oscilloscope after you set the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE to IVISCOPE_VAL_GLITCH_TRIGGER.\n"
+ "    A glitch trigger occurs when the trigger signal has a pulse with a width "
+ "that is less than or greater than the glitch width.  You specify which comparison "
+ "criterion to use with the IVISCOPE_ATTR_GLITCH_CONDITION attribute.  You specify the "
+ "glitch width with the IVISCOPE_ATTR_GLITCH_WIDTH "
+ "attribute.   You specify the polarity of the pulse with the "
+ "IVISCOPE_ATTR_GLITCH_POLARITY attribute.  The trigger occurs "
+ "when the edge of a pulse that corresponds to the "
+ "glitch width and polarity you specify crosses the trigger level "
+ "you specify with the IVISCOPE_ATTR_TRIGGER_LEVEL attribute.\n"
+ "    "
+
+3 all "Glitch Width [GT]" IVISCOPE_ATTR_GLITCH_WIDTH ViReal64 gs  
+ "Specifies the glitch width.  The units are seconds.  The oscilloscope triggers "
+ "when it detects a pulse with a width that is less than the value you specify. "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_GLITCH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeGlitchTrigger [GT] extension group.\n"
+ "    "
+
+3 all "Glitch Polarity [GT]" IVISCOPE_ATTR_GLITCH_POLARITY ViInt32 gs attrGlitchPolarityRangeTable 
+ "Specifies the polarity of the glitch that triggers the oscilloscope. "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_GLITCH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeGlitchTrigger [GT] extension group.\n"
+ "    "
+
+3 all "Glitch Condition [GT]" IVISCOPE_ATTR_GLITCH_CONDITION ViInt32 gs attrGlitchConditionRangeTable 
+ "Specifies the glitch condition that triggers the oscilloscope.  "
+ "The glitch trigger occurs when the oscilloscope detects a pulse "
+ "with a width less than or greater than the width value you specify  "
+ "with the IVISCOPE_ATTR_GLITCH_WIDTH attribute.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_GLITCH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeGlitchTrigger [GT] extension group.\n"
+ "    "
+ 
+2 all "Width Triggering [WT]" 
+ "Attributes that configure the oscilloscope for width triggering.  You use "
+ "these attributes to configure the oscilloscope after you set the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE to IVISCOPE_VAL_WIDTH_TRIGGER.\n"
+ "    A width trigger occurs when the oscilloscope detects a positive or negative "
+ "pulse with a width between, or optionally outside, the width thresholds.  "
+ "You specify the width thresholds with the IVISCOPE_ATTR_WIDTH_HIGH_THRESHOLD "
+ "and IVISCOPE_ATTR_WIDTH_LOW_THRESHOLD attributes.  You specify whether "
+ "the oscilloscope triggers on pulse widths that are within or outside the width "
+ "thresholds with the IVISCOPE_ATTR_WIDTH_CONDITION attribute.  "
+ "You specify the polarity of the pulse with the "
+ "IVISCOPE_ATTR_WIDTH_POLARITY attribute.  The trigger occurs "
+ "when the edge of a pulse that corresponds to the width thresholds, "
+ "width condition, and polarity you specify crosses the trigger level you specify with "
+ "the IVISCOPE_ATTR_TRIGGER_LEVEL attribute.\n"
+ "    "
+
+3 all "Width Condition [WT]" IVISCOPE_ATTR_WIDTH_CONDITION ViInt32 gs attrWidthConditionRangeTable 
+ "Specifies whether a pulse that is within or outside the high and low thresholds "
+ "triggers the oscilloscope.  You specify the high and low thresholds with the "
+ "IVISCOPE_ATTR_WIDTH_HIGH_THRESHOLD and "
+ "IVISCOPE_ATTR_WIDTH_LOW_THRESHOLD attributes.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWidthTrigger [WT] extension group.\n"
+ "    "
+ 
+3 all "Width High Threshold [WT]" IVISCOPE_ATTR_WIDTH_HIGH_THRESHOLD ViReal64 gs  
+ "Specifies the high width threshold time.  The units are seconds.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWidthTrigger [WT] extension group.\n"
+ "    "
+
+3 all "Width Low Threshold [WT]" IVISCOPE_ATTR_WIDTH_LOW_THRESHOLD ViReal64 gs  
+ "Specifies the low width threshold time.  The units are seconds.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWidthTrigger [WT] extension group.\n"
+ "    "
+
+3 all "Width Polarity [WT]" IVISCOPE_ATTR_WIDTH_POLARITY ViInt32 gs attrWidthPolarityRangeTable 
+ "Specifies the polarity of the pulse that triggers the oscilloscope.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_WIDTH_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWidthTrigger [WT] extension group.\n"
+ "    "
+
+2 all "AC Line Triggering [AT]" 
+  "Attributes for synchronizing the trigger with the AC Line.  You "
+  "use these attributes to configure the oscilloscope after you set the "
+  "IVISCOPE_ATTR_TRIGGER_TYPE to IVISCOPE_VAL_AC_LINE_TRIGGER.\n"
+
+3 all "AC Line Trigger Slope [AT]" IVISCOPE_ATTR_AC_LINE_TRIGGER_SLOPE ViInt32 gs attrAcLineTriggerSlopeRangeTable 
+ "Specifies the slope of the zero crossing upon which the scope triggers.  "
+ "This attribute affects instrument operation only when the "
+ "IVISCOPE_ATTR_TRIGGER_TYPE attribute is set to "
+ "IVISCOPE_VAL_AC_LINE_TRIGGER.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeTVTrigger [AT] extension group.\n"
+ "    "
+
+1 all "Waveform Measurement [WM]" 
+ "Attributes that configure the waveform measurement reference levels."
+
+2 all "Measurement High Reference [WM]" IVISCOPE_ATTR_MEAS_HIGH_REF ViReal64 gs 
+ "Specifies the high reference the oscilloscope uses for waveform measurements.  "
+ "The value is a percentage of the difference between the Voltage High and Voltage Low.  "
+ "The oscilloscope calculates the Voltage High and the Voltage Low using either the "
+ "min/max or histogram methods.  The min/max method uses the maximum and minimum values "
+ "found.  The histogram method uses the most common values found above and below the "
+ "middle of the waveform.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWaveformMeas [WM] extension group.\n"
+ "    "
+
+2 all "Measurement Low Reference [WM]" IVISCOPE_ATTR_MEAS_LOW_REF ViReal64 gs 
+ "Specifies the low reference the oscilloscope uses for waveform measurements.  "
+ "The value is a percentage of the difference between the Voltage High and Voltage Low.  "
+ "The oscilloscope calculates the Voltage High and the Voltage Low using either the "
+ "min/max or histogram methods.  The min/max method uses the maximum and minimum values "
+ "found.  The histogram method uses the most common values found above and below the "
+ "middle of the waveform.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWaveformMeas [WM] extension group.\n"
+ "    "
+
+2 all "Measurement Mid Reference [WM]" IVISCOPE_ATTR_MEAS_MID_REF ViReal64 gs 
+ "Specifies the mid reference the oscilloscope uses for waveform measurements.  "
+ "The value is a percentage of the difference between the Voltage High and Voltage Low.  "
+ "The oscilloscope calculates the Voltage High and the Voltage Low using either the "
+ "min/max or histogram methods.  The min/max method uses the maximum and minimum values "
+ "found.  The histogram method uses the most common values found above and below the "
+ "middle of the waveform.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviScopeWaveformMeas [WM] extension group.\n"
+ "    "
+

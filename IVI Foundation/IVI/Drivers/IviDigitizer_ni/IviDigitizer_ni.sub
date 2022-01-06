@@ -1,0 +1,1237 @@
+FPAttributeValueFile
+
+n SubType="IVI"
+
+n SubVersion="1"
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrCouplingRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TRIGGER_COUPLING_AC (0)
+  "The digitizer AC couples the trigger signal."
+
+ IVIDIGITIZER_VAL_TRIGGER_COUPLING_DC (1)
+  "The digitizer DC couples the trigger signal."
+
+ IVIDIGITIZER_VAL_TRIGGER_COUPLING_HF_REJECT (2)
+  "The digitizer filters out the high frequencies from the trigger signal."
+
+ IVIDIGITIZER_VAL_TRIGGER_COUPLING_LF_REJECT (3)
+  "The digitizer filters out the low frequencies from the trigger signal."
+
+ IVIDIGITIZER_VAL_TRIGGER_COUPLING_NOISE_REJECT (4)
+  "The digitizer filters out the noise from the trigger signal."
+
+
+v attrSlopeRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TRIGGER_SLOPE_NEGATIVE (0)
+  "A negative (falling) edge passing through the trigger or arm level triggers or arms the "
+  "digitizer."
+
+ IVIDIGITIZER_VAL_TRIGGER_SLOPE_POSITIVE (1)
+  "A positive (rising) edge passing through the trigger or arm level triggers or arms the "
+  "digitizer."
+
+
+v attrTriggerTypeRangeTable DataType="i"
+ IVIDIGITIZER_VAL_EDGE_TRIGGER (1)
+  "Configures the digitizer for edge triggering. An edge trigger occurs when the "
+  "trigger signal specified with the IVIDIGITIZER_ATTR_ACTIVE_TRIGGER_SOURCE "
+  "attribute passes the voltage threshold specified with the "
+  "IVIDIGITIZER_ATTR_TRIGGER_LEVEL attribute and has the slope specified with "
+  "the IVIDIGITIZER_ATTR_TRIGGER_SLOPE attribute."
+
+ IVIDIGITIZER_VAL_WIDTH_TRIGGER (2)
+  "Configures the digitizer for width triggering. Use the IviDigitizerWidthTrigger "
+  "extension group attributes and values to configure the trigger."
+
+ IVIDIGITIZER_VAL_RUNT_TRIGGER (3)
+  "Configures the digitizer for runt triggering. Use the IviDigitizerRuntTrigger "
+  "extension group attributes and values to configure the trigger."
+  
+ IVIDIGITIZER_VAL_GLITCH_TRIGGER (4)
+  "Configures the digitizer for glitch triggering. Use the IviDigitizerGlitchTrigger "
+  "extension group attributes and values to configure the trigger."
+
+ IVIDIGITIZER_VAL_TV_TRIGGER (5)
+  "Configures the digitizer for triggering on TV signals. Use the IviDigitizerTVTrigger "
+  "extension group attributes and values to configure the trigger."
+
+ IVIDIGITIZER_VAL_WINDOW_TRIGGER (6)
+  "Configures the digitizer for window triggering. Use the IviDigitizerWindowTrigger "
+  "extension group attributes and values to configure the trigger."
+
+
+v attrArmTypeRangeTable DataType="i"
+ IVIDIGITIZER_VAL_EDGE_ARM (1)
+  "Configures the digitizer for edge arming. An edge arm occurs when the arm signal "
+  "specified with the IVIDIGITIZER_ATTR_ACTIVE_ARM_SOURCE attribute passes the "
+  "voltage threshold specified with the IVIDIGITIZER_ATTR_ARM_LEVEL attribute and "
+  "has the slope specified with the IVIDIGITIZER_ATTR_ARM_SLOPE attribute."
+
+ IVIDIGITIZER_VAL_WIDTH_ARM (2)
+  "Configures the digitizer for width arming. Use the IviDigitizerWidthArm "
+  "extension group attributes and values to configure the arm."
+
+ IVIDIGITIZER_VAL_RUNT_ARM (3)
+  "Configures the digitizer for runt arming. Use the IviDigitizerRuntArm "
+  "extension group attributes and values to configure the arm."
+  
+ IVIDIGITIZER_VAL_GLITCH_ARM (4)
+  "Configures the digitizer for glitch arming. Use the IviDigitizerGlitchArm "
+  "extension group attributes and values to configure the arm."
+
+ IVIDIGITIZER_VAL_TV_ARM (5)
+  "Configures the digitizer for arming on TV signals. Use the IviDigitizerTVArm "
+  "extension group attributes and values to configure the arm."
+
+ IVIDIGITIZER_VAL_WINDOW_ARM (6)
+  "Configures the digitizer for window arming. Use the IviDigitizerWindowArm "
+  "extension group attributes and methods to configure the arm."
+
+
+v attrVerticalCouplingRangeTable DataType="i"
+ IVIDIGITIZER_VAL_VERTICAL_COUPLING_AC (0)
+  "The digitizer AC couples the input signal."
+
+ IVIDIGITIZER_VAL_VERTICAL_COUPLING_DC (1)
+  "The digitizer DC couples the input signal."
+
+ IVIDIGITIZER_VAL_VERTICAL_COUPLING_GND (2)
+  "The digitizer couples the channel to the ground."
+  
+  
+v attrTemperatureUnitsRangeTable DataType="i"
+ IVIDIGITIZER_VAL_CELSIUS (0)
+  "Temperature values returned from the digitizer are in degrees Celsius."
+
+ IVIDIGITIZER_VAL_FAHRENHEIT (1)
+  "Temperature values returned from the digitizer are in degrees Fahrenheit."
+
+ IVIDIGITIZER_VAL_KELVIN (2)
+  "Temperature values returned from the digitizer are kelvins."
+ 
+ 
+v attrReferenceOscillatorSourceTable DataType="i"
+ IVIDIGITIZER_VAL_REFERENCE_OSCILLATOR_SOURCE_INTERNAL (0)
+  "Use the internal reference oscillator."
+
+ IVIDIGITIZER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL (1)
+  "Use an external reference oscillator."
+
+ IVIDIGITIZER_VAL_REFERENCE_OSCILLATOR_SOURCE_PXI_CLK10 (2)
+  "Use the PXI/PXIe backplane 10 MHz reference oscillator."
+
+ IVIDIGITIZER_VAL_REFERENCE_OSCILLATOR_SOURCE_PXIE_CLK100 (3)
+  "Use the PXIe backplane 100 MHz reference oscillator."
+
+
+v attrSampleClockSourceRangeTable DataType="i"
+ IVIDIGITIZER_VAL_SAMPLE_CLOCK_SOURCE_INTERNAL (0)
+  "Use the internal sample clock."
+
+ IVIDIGITIZER_VAL_SAMPLE_CLOCK_SOURCE_EXTERNAL (1)
+  "Use an external sample clock."
+
+
+v attrSampleModeRangeTable DataType="i"
+ IVIDIGITIZER_VAL_SAMPLE_MODE_REAL_TIME (0)
+  "Specifies real-time sampling."
+
+ IVIDIGITIZER_VAL_SAMPLE_MODE_EQUIVALENT_TIME (1)
+  "Specifies equivalent-time sampling."
+
+
+v attrArmSourceOperatorRangeTable DataType="i"
+ IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_AND (0)
+  "Use the AND Boolean operation for arm sources. The digitizer arms when all "
+  "configured arm source conditions are satisfied."
+
+ IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_OR (1)
+  "Use the OR Boolean operation for arm sources. The digitizer arms when the "
+  "first configured arm source condition is satisfied."
+
+ IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_NONE (2)
+  "No operator is applied to the configured list of arm sources. The arm source "
+  "list is ignored, and the digitizer arms when the active arm source, specified "
+  "by the IVIDIGITIZER_ATTR_ACTIVE_ARM_SOURCE attribute, and its associated arm "
+  "conditions are satisfied."
+ 
+ 
+v attrTriggerSourceOperatorRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_AND (0)
+  "Use the AND Boolean operation for trigger sources. The digitizer triggers when "
+  "all configured trigger source conditions are satisfied."
+
+ IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_OR (1)
+  "Use the OR Boolean operation for trigger sources. The digitizer triggers when "
+  "the first configured trigger source condition is satisfied."
+
+ IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_NONE (2)
+  "No operator is applied to the configured list of trigger sources. The trigger "
+  "source list is ignored, and the digitizer triggers when the active trigger "
+  "source, specified by the IVIDIGITIZER_ATTR_ACTIVE_TRIGGER_SOURCE attribute, "
+  "and its associated trigger conditions are satisfied."
+ 
+ 
+v attrGlitchConditionRangeTable DataType="i"
+ IVIDIGITIZER_VAL_GLITCH_LESS_THAN (1)
+  "The digitizer triggers when the pulse width is less than the value "
+  "you specify with the Glitch Width attribute."
+
+ IVIDIGITIZER_VAL_GLITCH_GREATER_THAN (2)
+  "The digitizer triggers when the pulse width is greater than the value "
+  "you specify with the Glitch Width attribute."
+
+
+v attrGlitchPolarityRangeTable DataType="i"
+ IVIDIGITIZER_VAL_GLITCH_POSITIVE (1)
+  "The digitizer triggers or arms on a positive glitch."
+
+ IVIDIGITIZER_VAL_GLITCH_NEGATIVE (2)
+  "The digitizer triggers or arms on a negative glitch."
+
+ IVIDIGITIZER_VAL_GLITCH_EITHER (3)
+  "The digitizer triggers or arms on either a positive or negative glitch."
+ 
+ 
+v attrRuntPolarityRangeTable DataType="i"
+ IVIDIGITIZER_VAL_RUNT_POSITIVE (1)
+  "The digitizer triggers on a positive runt. A positive runt occurs when a "
+  "rising edge crosses the low runt threshold and does not cross the high "
+  "runt threshold before re-crossing the low runt threshold."
+
+ IVIDIGITIZER_VAL_RUNT_NEGATIVE (2)
+  "The digitizer triggers on a negative runt. A negative runt occurs when a "
+  "falling edge crosses the high runt threshold and does not cross the low "
+  "runt threshold before re-crossing the high runt threshold."
+
+ IVIDIGITIZER_VAL_RUNT_EITHER (3)
+  "The digitizer triggers on either a positive or negative runt."
+ 
+ 
+v attrTVTriggerEventRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TV_EVENT_FIELD1 (1)
+  "Sets the digitizer to trigger on field 1 of the video signal."
+
+ IVIDIGITIZER_VAL_TV_EVENT_FIELD2 (2)
+  "Sets the digitizer to trigger on field 2 of the video signal."
+
+ IVIDIGITIZER_VAL_TV_EVENT_ANY_FIELD (3)
+  "Sets the digitizer to trigger on any field."
+  
+ IVIDIGITIZER_VAL_TV_EVENT_ANY_LINE (4)
+  "Sets the digitizer to trigger on any line."
+
+ IVIDIGITIZER_VAL_TV_EVENT_LINE_NUMBER (5)
+  "Sets the digitizer to trigger on a specific line number you specify "
+  "with the TV Trigger Line Number attribute."
+
+
+v attrTVTriggerPolarityRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TV_POSITIVE (1)
+  "Configures the digitizer to trigger on a positive video sync pulse."
+
+ IVIDIGITIZER_VAL_TV_NEGATIVE (2)
+  "Configures the digitizer to trigger on a negative video sync pulse."
+ 
+ 
+v attrTVSignalFormatRangeTable DataType="i"
+ IVIDIGITIZER_VAL_NTSC (1)
+  "Configures the digitizer to trigger on the NTSC signal format."
+
+ IVIDIGITIZER_VAL_PAL (2)
+  "Configures the digitizer to trigger on the PAL signal format."
+
+ IVIDIGITIZER_VAL_SECAM (3)
+  "Configures the digitizer to trigger on the SECAM signal format."
+
+
+v attrWidthConditionRangeTable DataType="i"
+ IVIDIGITIZER_VAL_WIDTH_WITHIN (1)
+  "Configures the digitizer to trigger on pulses that have a width that is "
+  "less than the high threshold and greater than the low threshold. Specify "
+  "the high and low thresholds with the Width Trigger/Arm High Threshold and "
+  "Width Trigger/Arm Low Threshold attributes."
+
+ IVIDIGITIZER_VAL_WIDTH_OUTSIDE (2)
+  "Configures the digitizer to trigger on pulses that have a width that is "
+  "either greater than the high threshold or less than a low threshold. Specify "
+  "the high and low thresholds with the Width Trigger/Arm High Threshold and "
+  "Width Trigger/Arm Low Threshold attributes."
+
+
+v attrWidthPolarityRangeTable DataType="i"
+ IVIDIGITIZER_VAL_WIDTH_POSITIVE (1)
+  "Configures the digitizer to trigger on positive pulses that have a width that "
+  "meets the condition specified with the Width Trigger/Arm Condition attribute."
+
+ IVIDIGITIZER_VAL_WIDTH_NEGATIVE (2)
+  "Configures the digitizer to trigger on negative pulses that have a width that "
+  "meets the condition specified with the Width Trigger/Arm Condition attribute."
+
+ IVIDIGITIZER_VAL_WIDTH_EITHER (3)
+  "Configures the digitizer to trigger on either positive or negative pulses that "
+  "have a width that meets the condition specified with the Width Trigger/Arm "
+  "Condition attribute."
+
+
+v attrWindowConditionRangeTable DataType="i"
+ IVIDIGITIZER_VAL_WINDOW_CONDITION_ENTERING (1)
+  "Configures the digitizer to trigger on signals when they enter the given "
+  "triggering window. Specify the high and low thresholds with the Window "
+  "Trigger/Arm High Threshold and Window Trigger/Arm Low Threshold attributes."
+
+ IVIDIGITIZER_VAL_WINDOW_CONDITION_LEAVING (2)
+  "Configures the digitizer to trigger on signals when they leave the given "
+  "triggering window. Specify the high and low thresholds with the Window "
+  "Trigger/Arm High Threshold and Window Trigger/Arm Low Threshold attributes."
+
+
+v attrTriggerModifierRangeTable DataType="i"
+ IVIDIGITIZER_VAL_TRIGGER_MODIFIER_NONE (1)
+  "The digitizer waits until the specified trigger occurs."
+
+ IVIDIGITIZER_VAL_TRIGGER_MODIFIER_AUTO (2)
+  "The digitizer automatically triggers if the configured trigger does not "
+  "occur within the digitizer timeout period."
+
+ IVIDIGITIZER_VAL_TRIGGER_MODIFIER_AUTO_LEVEL (3)
+  "The digitizer adjusts the trigger level if the specified trigger "
+  "does not occur."
+
+
+0 IviDigitizer_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviDigitizer_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 IviDigitizer_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviDigitizer_SetAttributeViInt64 3 4 false s DataType="ViInt64"
+0 IviDigitizer_GetAttributeViInt64 3 4 false g DataType="ViInt64"
+0 IviDigitizer_CheckAttributeViInt64 3 4 false s DataType="ViInt64"
+0 IviDigitizer_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviDigitizer_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 IviDigitizer_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviDigitizer_SetAttributeViString 3 4 false s DataType="ViString"
+0 IviDigitizer_GetAttributeViString 3 5 false g DataType="ViString"
+0 IviDigitizer_CheckAttributeViString 3 4 false s DataType="ViString"
+0 IviDigitizer_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviDigitizer_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 IviDigitizer_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviDigitizer_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 IviDigitizer_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 IviDigitizer_CheckAttributeViSession 3 4 false s DataType="ViSession"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options"
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVIDIGITIZER_ATTR_RANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that you "
+  "pass to driver functions.  Range checking parameters is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable range checking and maximize performance.\n"
+  "    The default value is TRUE.   Use the IviDigitizer_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVIDIGITIZER_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable status checking and maximize performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is FALSE.   Use the IviDigitizer_InitWithOptions"
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVIDIGITIZER_ATTR_CACHE ViBoolean gs Boolean_values
+  "Specifies whether to cache the value of attributes.  When caching is "
+  "enabled, the instrument driver keeps track of the current instrument "
+  "settings and avoids sending redundant commands to the instrument.  Thus, "
+  "you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is TRUE.   Use the IviDigitizer_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Simulate" IVIDIGITIZER_ATTR_SIMULATE ViBoolean gs Boolean_values
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is FALSE.   Use the IviDigitizer_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Record Value Coercions" IVIDIGITIZER_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for integer and real type attributes.  You call IviDigitizer_GetNextCoercionRecord "
+  "function to extract and delete the oldest coercion record from "
+  "the list.\n"
+  "    The default value is FALSE.   Use the IviDigitizer_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVIDIGITIZER_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings.\n"
+  "\n"
+  "The default value is FALSE.\n"
+  "\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  You call IviDigitizer_GetNextInterchangeWarning "
+  "function to extract interchange warnings.  Call the "
+  "IviDigitizer_ClearInterchangeWarnings function to clear the list of "
+  "interchangeability warnings without reading them.\n"
+  "Interchangeability checking logs a warning for each attribute you have not "
+  "set that affects the behavior of the instrument.\n"
+  "    "
+
+3 all "Spy" IVIDIGITIZER_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is VI_TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVIDIGITIZER_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVIDIGITIZER_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVIDIGITIZER_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVIDIGITIZER_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDIGITIZER_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDIGITIZER_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDIGITIZER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+  "Attributes that provide information about the capabilities of this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Channel Count" IVIDIGITIZER_ATTR_CHANNEL_COUNT ViInt32 g
+  "Indicates the number of channels that the specific instrument driver "
+  "supports.  \n"
+  "For each attribute for which the IVI_VAL_MULTI_CHANNEL flag is set, "
+  "the IVI engine maintains a separate cache value for each channel.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVIDIGITIZER_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g
+  "Contains a model code of the instrument. For drivers that support more "
+  "than one device, this attribute contains a comma-separated list of "
+  "supported instrument models.\n"
+  "    "
+
+3 all "Group Capabilities" IVIDIGITIZER_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extention groups "
+  "that this driver implements.\n"
+  "    "
+
+3 all "Function Capabilities" IVIDIGITIZER_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviDigitizer functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ 
+2 all "Instrument Identification"
+  "Attributes that provide identity information about the instrument that "
+  "you are using.    "
+
+3 all "Manufacturer" IVIDIGITIZER_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are "
+  "currently using.\n"
+  "    "
+
+3 all "Model" IVIDIGITIZER_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that "
+  "you are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVIDIGITIZER_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information for the "
+  "instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information"
+  "Attributes that contain additional information concerning the instrument "
+  "driver session.      "
+
+3 all "Logical Name" IVIDIGITIZER_ATTR_LOGICAL_NAME ViString g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviDigitizer_init or "
+  "IviDigitizer_InitWithOptions functions.  The IVI Configuration "
+  "utility must contain an entry for the logical name.  The logical name "
+  "entry refers to a driver session section in the IVI Configuration "
+  "file.  The driver session section specifies a physical device and "
+  "initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVIDIGITIZER_ATTR_IO_RESOURCE_DESCRIPTOR ViString g
+  "Indicates the resource descriptor the driver uses to identify the "
+  "physical device.\n"
+  "    If you initialize the driver with a logical name, this attribute "
+  "contains the resource descriptor that corresponds to the entry in the IVI "
+  "Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource descriptor, "
+  "this attribute contains that value.\n"
+  "    "
+
+3 all "Driver Setup" IVIDIGITIZER_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver options at "
+  "initialization time.  An example of this is specifying a particular "
+  "instrument model from among a family of instruments that the driver "
+  "supports.  This is useful when using simulation.  You can specify "
+  "driver-specific options through the DriverSetup keyword in the "
+  "optionsString parameter to the IviDigitizer_InitWithOptions function. "
+  " If you open an instrument using a logical name, you can also specify the "
+  "options through the IVI Configuration Utility.\n"
+  "    The default value is an empty string.\n"
+  "    "
+
+1 all "Arm"
+  "Attributes that control and define Arm operation."
+
+2 all "Active Arm Source [ARM]" IVIDIGITIZER_ATTR_ACTIVE_ARM_SOURCE ViString gs
+  "Specifies the source the digitizer monitors for the arm event. The specified "
+  "value must be one of the valid repeated capability names for "
+  "the ArmSource repeated capability.\n\n"
+  "This attribute affects instrument behavior only when either the "
+  "IviDigitizerMultiArm extension group is not supported or when the "
+  "you set the IVIDIGITIZER_ATTR_ARM_SOURCE_OPERATOR attribute to "
+  "IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_NONE."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+  
+2 all "Arm Count [ARM]" IVIDIGITIZER_ATTR_ARM_COUNT ViInt32 gs
+  "Specifies the number of times the arm has to occur to complete the arm "
+  "loop; that is, the number of arms that are accepted before the "
+  "acquisition must be initiated again."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Source Count [ARM]" IVIDIGITIZER_ATTR_ARM_SOURCE_COUNT ViInt32 g
+  "Returns the number of arm sources available on the device."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Coupling [ARM]" IVIDIGITIZER_ATTR_ARM_COUPLING ViInt32 gs attrCouplingRangeTable
+  "Specifies how the digitizer couples the arm source."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Delay [ARM]" IVIDIGITIZER_ATTR_ARM_DELAY ViReal64 gs
+  "Specifies the delay from when the arm logic is satisfied until the waiting "
+  "for trigger state is entered.  The units are in seconds."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Hysteresis [ARM]" IVIDIGITIZER_ATTR_ARM_HYSTERESIS ViReal64 gs
+  "Specifies the arm hysteresis, in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Level [ARM]" IVIDIGITIZER_ATTR_ARM_LEVEL ViReal64 gs
+  "Specifies the voltage threshold for the arm sub-system. The units are in "
+  "volts.\n"
+  "This attribute affects instrument behavior only when you set the IVIDIGITIZER_ATTR_ARM_TYPE "
+  "attribute to one of the following values: IVIDIGITIZER_VAL_EDGE_ARM, "
+  "IVIDIGITIZER_VAL_GLITCH_ARM, or IVIDIGITIZER_VAL_WIDTH_ARM. This attribute, along with "
+  "the IVIDIGITIZER_ATTR_ARM_SLOPE, IVIDIGITIZER_ATTR_ACTIVE_ARM_SOURCE, and "
+  "IVIDIGITIZER_ATTR_ARM_COUPLING attributes, defines the arm event."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Output Enabled [ARM]" IVIDIGITIZER_ATTR_ARM_OUTPUT_ENABLED ViBoolean gs
+  "Specifies whether an accepted arm appears at an output of the "
+  "digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Arm Type [ARM]" IVIDIGITIZER_ATTR_ARM_TYPE ViInt32 gs attrArmTypeRangeTable
+  "The kind of event that arms the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Edge Arming"
+  "Attributes that control and define Edge Arm operation."
+
+3 all "Arm Slope [ARM]" IVIDIGITIZER_ATTR_ARM_SLOPE ViInt32 gs attrSlopeRangeTable
+  "Specifies whether a rising or a falling edge arms the digitizer. This attribute "
+  "affects instrument operation only when you set the IVIDIGITIZER_ATTR_ARM_TYPE "
+  "attribute to IVIDIGITIZER_VAL_EDGE_ARM."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerArm [ARM] extension group."
+
+2 all "Glitch Arming"
+  "Attributes that control and define Glitch Arm operation."
+
+3 all "Glitch Arm Condition [GA]" IVIDIGITIZER_ATTR_GLITCH_ARM_CONDITION ViInt32 gs attrGlitchConditionRangeTable
+  "Specifies the glitch condition. This attribute determines whether the "
+  "glitch arm occurs when the digitizer detects a pulse with a width less "
+  "than or greater than the width value."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchArm [GA] extension group."
+
+3 all "Glitch Arm Polarity [GA]" IVIDIGITIZER_ATTR_GLITCH_ARM_POLARITY ViInt32 gs attrGlitchPolarityRangeTable
+  "Specifies the polarity of the glitch that arms the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchArm [GA] extension group."
+
+3 all "Glitch Arm Width [GA]" IVIDIGITIZER_ATTR_GLITCH_ARM_WIDTH ViReal64 gs
+  "Specifies the glitch width. The units are in seconds. The digitizer arms "
+  "when it detects a pulse with a width less than or greater than this value "
+  "depending on the IVIDIGITIZER_ATTR_GLITCH_ARM_CONDITION attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchArm [GA] extension group."
+
+2 all "Multi Arming"
+  "Attributes that control and define Multi Arm operation."
+
+3 all "Arm Source List [MA]" IVIDIGITIZER_ATTR_ARM_SOURCE_LIST ViString gs
+  "A comma separated list of source names to use in a multi arm scenario. "
+  "This attribute affects instrument behavior only when you set the "
+  "IVIDIGITIZER_ATTR_ARM_SOURCE_OPERATOR attribute to "
+  "IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_AND or "
+  "IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_OR. When you set "
+  "IVIDIGITIZER_ATTR_ARM_SOURCE_OPERATOR to "
+  "IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_AND, the arm conditions associated "
+  "with each source in this list must be simultaneously satisfied to arm the "
+  "digitizer. When you set IVIDIGITIZER_ATTR_ARM_SOURCE_OPERATOR to "
+  "IVIDIGITIZER_VAL_ARM_SOURCE_OPERATOR_OR, the first arm source in the list that "
+  "satisfies its arm conditions arms the digitizer. You can use any valid name used "
+  "for the IVIDIGITIZER_ATTR_ACTIVE_ARM_SOURCE attribute in this list. An arm source "
+  "can appear only once in the list. If a name in the list is not recognized, the "
+  "driver returns the Unknown Channel Name error."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerMultiArm [MA] extension group."
+
+3 all "Arm Source Operator [MA]" IVIDIGITIZER_ATTR_ARM_SOURCE_OPERATOR ViInt32 gs attrArmSourceOperatorRangeTable
+  "Specifies the boolean operation to apply to the arm sources specified by "
+  "the IVIDIGITIZER_ATTR_ARM_SOURCE_LIST attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerMultiArm [MA] extension group."
+
+2 all "Runt Arming"
+  "Attributes that control and define Runt Arm operation."
+
+3 all "Runt Arm High Threshold [RA]" IVIDIGITIZER_ATTR_RUNT_ARM_HIGH_THRESHOLD ViReal64 gs
+  "The high threshold the digitizer uses for runt arming. The units are in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntArm [RA] extension group."
+
+3 all "Runt Arm Low Threshold [RA]" IVIDIGITIZER_ATTR_RUNT_ARM_LOW_THRESHOLD ViReal64 gs
+  "The low threshold the digitizer uses for runt arming. The units are in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntArm [RA] extension group."
+
+3 all "Runt Arm Polarity [RA]" IVIDIGITIZER_ATTR_RUNT_ARM_POLARITY ViInt32 gs attrRuntPolarityRangeTable
+  "Specifies the polarity of the runt that arms the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntArm [RA] extension group."
+
+2 all "TV Arming"
+  "Attributes that control and define TV Arm operation."
+
+3 all "TV Arm Event [TVA]" IVIDIGITIZER_ATTR_TV_ARM_EVENT ViInt32 gs attrTVTriggerEventRangeTable
+  "Specifies the event on which the digitizer arms."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVArm [TVA] extension group."
+
+3 all "TV Arm Line Number [TVA]" IVIDIGITIZER_ATTR_TV_ARM_LINE_NUMBER ViInt32 gs
+  "Specifies the line on which the digitizer arms. The driver uses this "
+  "attribute when you set the IVIDIGITIZER_ATTR_TV_ARM_EVENT attribute to "
+  "IVIDIGITIZER_VAL_TV_EVENT_LINE_NUMBER. The line number setting is "
+  "independent of the field. This means that to arm on the first line of "
+  "the second field, configure the line number to the value of 263, assuming "
+  "that field one has 262 lines."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVArm [TVA] extension group."
+
+3 all "TV Arm Polarity [TVA]" IVIDIGITIZER_ATTR_TV_ARM_POLARITY ViInt32 gs attrTVTriggerPolarityRangeTable
+  "Specifies the polarity of the TV signal."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVArm [TVA] extension group."
+
+3 all "TV Arm Signal Format [TVA]" IVIDIGITIZER_ATTR_TV_ARM_SIGNAL_FORMAT ViInt32 gs attrTVSignalFormatRangeTable
+  "Specifies the format of TV signal on which the digitizer arms."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVArm [TVA] extension group."
+
+2 all "Width Arming"
+  "Attributes that control and define Width Arm operation."
+
+3 all "Width Arm Condition [WA]" IVIDIGITIZER_ATTR_WIDTH_ARM_CONDITION ViInt32 gs attrWidthConditionRangeTable
+  "Specifies whether a pulse that is within or outside the high and low "
+  "thresholds arms the digitizer. Specify the high and low thresholds with the "
+  "IVIDIGITIZER_ATTR_WIDTH_ARM_HIGH_THRESHOLD and IVIDIGITIZER_ATTR_WIDTH_ARM_LOW_THRESHOLD "
+  "attributes, respectively."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthArm [WA] extension group."
+
+3 all "Width Arm High Threshold [WA]" IVIDIGITIZER_ATTR_WIDTH_ARM_HIGH_THRESHOLD ViReal64 gs
+  "Specifies the high width threshold time, in seconds."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthArm [WA] extension group."
+
+3 all "Width Arm Low Threshold [WA]" IVIDIGITIZER_ATTR_WIDTH_ARM_LOW_THRESHOLD ViReal64 gs
+  "Specifies the low width threshold time, in seconds."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthArm [WA] extension group."
+
+3 all "Width Arm Polarity [WA]" IVIDIGITIZER_ATTR_WIDTH_ARM_POLARITY ViInt32 gs attrWidthPolarityRangeTable
+  "Specifies the polarity of the pulse that arms the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthArm [WA] extension group."
+
+2 all "Window Arming"
+  "Attributes that control and define Width Arm operation."
+
+3 all "Window Arm Condition [WINA]" IVIDIGITIZER_ATTR_WINDOW_ARM_CONDITION ViInt32 gs attrWindowConditionRangeTable
+  "Specifies whether a signal that is entering or leaving the voltage window "
+  "defined by the high and low thresholds arms the digitizer. Specify the high "
+  "and low thresholds with the IVIDIGITIZER_ATTR_WINDOW_ARM_HIGH_THRESHOLD and "
+  "IVIDIGITIZER_ATTR_WINDOW_ARM_LOW_THRESHOLD attributes, respectively."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowArm [WINA] extension group."
+
+3 all "Window Arm High Threshold [WINA]" IVIDIGITIZER_ATTR_WINDOW_ARM_HIGH_THRESHOLD ViReal64 gs
+  "Specifies the high window threshold voltage, in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowArm [WINA] extension group."
+
+3 all "Window Arm Low Threshold [WINA]" IVIDIGITIZER_ATTR_WINDOW_ARM_LOW_THRESHOLD ViReal64 gs
+  "Specifies the low window threshold voltage in Volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowArm [WINA] extension group."
+  
+1 all "Channel"
+  "Channel-based attributes that you use to configure the digitizer."
+
+2 all "Channel Enabled" IVIDIGITIZER_ATTR_CHANNEL_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the digitizer acquires a waveform for the channel."
+
+2 all "Data Interleaved Channel List [DIC]" IVIDIGITIZER_ATTR_DATA_INTERLEAVED_CHANNEL_LIST ViString gs
+  "This attribute is used to combine this channel with one or more other "
+  "channels to interleave the returned data. This string specifies which"
+  "channels should operate in combined mode with the current channel. "
+  "This attribute is a comma-separated list of one or more channel "
+  "names. You can specify either physical or virtual repeated "
+  "capability identifiers in this list. Pass an empty string or VI_NULL "
+  "to indicate that no channels should be combined or that no channels are "
+  "currently combined, in the case of a query."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerDataInterleavedChannels [DIC] extension group."
+
+2 all "Downconversion"
+  "Attributes that control and define downconversion operation."
+
+3 all "Downconversion Enabled [DC]" IVIDIGITIZER_ATTR_DOWNCONVERSION_ENABLED ViBoolean gs Boolean_values
+  "Enables or disables downconversion. When you enable this attribute, the Read and Fetch "
+  "functions return data according to the setting of the IVIDIGITIZER_ATTR_DOWNCONVERSION_IQ_INTERLEAVED "
+  "attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerDownconversion [DC] extension group."
+
+3 all "Downconversion Center Frequency [DC]" IVIDIGITIZER_ATTR_DOWNCONVERSION_CENTER_FREQUENCY ViReal64 gs
+  "Specifies the center frequency, in hertz, from which the digitizer should "
+  "downconvert."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerDownconversion [DC] extension group."
+  
+3 all "Downconversion IQ Interleaved [DC]" IVIDIGITIZER_ATTR_DOWNCONVERSION_IQ_INTERLEAVED ViBoolean gs Boolean_values
+  "Controls how the Read and Fetch functions return data when downconversion "
+  "is enabled. When this attribute is true and downconversion is enabled, the "
+  "data returned from the Read and Fetch functions is interleaved I-Q data "
+  "points. When this attribute is false and downconversion is enabled, the "
+  "Read and Fetch functions return data with all I data points in sequence "
+  "followed by all Q data points. This attribute has no effect when the "
+  "IVIDIGITIZER_ATTR_DOWNCONVERSION_ENABLED attribute is false."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerDownconversion [DC] extension group."
+
+2 all "Channel Filter"
+  "Attributes that control and define channel filter operation."
+
+3 all "Input Filter Bypass [CF]" IVIDIGITIZER_ATTR_INPUT_FILTER_BYPASS ViBoolean gs Boolean_values
+  "Specifies whether to bypass the input filter."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerChannelFilter [CF] extension group."
+
+3 all "Input Filter Max Frequency [CF]" IVIDIGITIZER_ATTR_INPUT_FILTER_MAX_FREQUENCY ViReal64 gs
+  "Specifies the maximum input filter frequency.  Specifying a value of zero "
+  "means that the device should be set to the full bandwidth that the filter "
+  "can deliver without being bypassed."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerChannelFilter [CF] extension group."
+
+3 all "Input Filter Min Frequency [CF]" IVIDIGITIZER_ATTR_INPUT_FILTER_MIN_FREQUENCY ViReal64 gs
+  "Specifies the minimum input filter frequency.  Specifying a value of zero "
+  "means that the device should be set to the full bandwidth that the filter "
+  "can deliver without being bypassed."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerChannelFilter [CF] extension group."
+
+2 all "Input Connector Selection" IVIDIGITIZER_ATTR_INPUT_CONNECTOR_SELECTION ViInt32 gs
+  "Specifies which connector to use for digitizers that include multiple "
+  "connectors for each digitizer input channel. These connectors often "
+  "provide convenience for system cabling ?multiple signals can be routed "
+  "to the various connectors, and the desired signal can be sent into the "
+  "digitizer by changing an internal switch. With other digitizers, the "
+  "connectors may be of different types or even different impedances.\n\n"
+  "Values for this attribute are 1-based. Digitizers that have only a "
+  "single connector for each channel support only a value of 1 for this "
+  "attribute."
+  
+2 all "Input Impedance" IVIDIGITIZER_ATTR_INPUT_IMPEDANCE ViReal64 gs
+  "The input impedance of this channel. The units are in ohms."
+
+2 all "Time Interleaved Channel List [TIC]" IVIDIGITIZER_ATTR_TIME_INTERLEAVED_CHANNEL_LIST ViString gs
+  "Combines this channel with one or more other channels to achieve "
+  "higher effective sampling rates and/or greater memory depth. "
+  "This string specifies which channels should operate in combined "
+  "mode with the current channel. This attribute is a comma-separated "
+  "list of one or more channel names. You can specify either "
+  "physical or virtual repeated capability identifiers in this list. "
+  "Pass an empty string or VI_NULL to indicate that no channels should "
+  "be combined or that non channels are currently combined, in the case of a query."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTimeInterleavedChannels [TIC] extension group."
+
+2 all "Vertical Coupling" IVIDIGITIZER_ATTR_VERTICAL_COUPLING ViInt32 gs attrVerticalCouplingRangeTable
+  "Specifies how the digitizer couples the input signal for the channel."
+
+2 all "Vertical Offset" IVIDIGITIZER_ATTR_VERTICAL_OFFSET ViReal64 gs
+  "The location of the center of the range that you specify with the "
+  "IVIDIGITIZER_ATTR_VERTICAL_RANGE attribute. The units are in  "
+  "volts, with respect to ground. For example, to acquire a sine "
+  "wave spanning 0.0 to 10.0 volts, set this attribute to 5.0 volts."
+
+2 all "Vertical Range" IVIDIGITIZER_ATTR_VERTICAL_RANGE ViReal64 gs
+  "The absolute value of the input range the digitizer can acquire for the "
+  "channel. The units are in volts. For example, to acquire a sine wave "
+  "spanning -5.0 to 5.0 volts, set this attribute to 10.0 volts."
+
+1 all "Reference Oscillator"
+  "Attributes that control and define reference oscillator operation."
+
+2 all "Reference Oscillator Source [RO]" IVIDIGITIZER_ATTR_REFERENCE_OSCILLATOR_SOURCE ViInt32 gs attrReferenceOscillatorSourceTable
+  "Specifies the reference frequency source to use."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerReferenceOscillator [RO] extension group."
+
+2 all "Reference Oscillator External Frequency [RO]" IVIDIGITIZER_ATTR_REFERENCE_OSCILLATOR_EXTERNAL_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the external reference oscillator. The driver uses "
+  "this value only if you set the the IVIDIGITIZER_ATTR_REFERENCE_OSCILLATOR_SOURCE "
+  "attribute to IVIDIGITIZER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL. "
+  "The units are in hertz."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerReferenceOscillator [RO] extension group."
+
+2 all "Reference Oscillator Output Enabled [RO]" IVIDIGITIZER_ATTR_REFERENCE_OSCILLATOR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the reference frequency signal appears at an "
+  "output of the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerReferenceOscillator [RO] extension group."
+
+1 all "Sample Clock"
+  "Attributes that control and define sample operation."
+
+2 all "Sample Clock Source [SC]" IVIDIGITIZER_ATTR_SAMPLE_CLOCK_SOURCE ViInt32 gs attrSampleClockSourceRangeTable
+  "Specifies the clock used to pace acquisition sampling."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerSampleClock [SC] extension group."
+
+2 all "Sample Clock External Frequency [SC]" IVIDIGITIZER_ATTR_SAMPLE_CLOCK_EXTERNAL_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the sample clock. The driver uses this attribute "
+  "only if you set the IVIDIGITIZER_ATTR_SAMPLE_CLOCK_SOURCE attribute"
+  "to IVIDIGITIZER_VAL_SAMPLE_CLOCK_SOURCE_EXTERNAL. "
+  "The units are in hertz."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerSampleClock [SC] extension group."
+
+2 all "Sample Clock Output Enabled [SC]" IVIDIGITIZER_ATTR_SAMPLE_CLOCK_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the sample clock appears at a reference output "
+  "of the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerSampleClock [SC] extension group."
+
+2 all "Sample Clock External Divider [SC]" IVIDIGITIZER_ATTR_SAMPLE_CLOCK_EXTERNAL_DIVIDER ViReal64 gs
+  "Specifies the value by which to divide the external sample clock. This value "
+  "is used only if you set the IVIDIGITIZER_ATTR_SAMPLE_CLOCK_SOURCE attribute to "
+  "IVIDIGITIZER_VAL_SAMPLE_CLOCK_SOURCE_EXTERNAL."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerSampleClock [SC] extension group."
+
+1 all "Temperature"
+  "Attributes that control and define board temperature operation."
+
+2 all "Board Temperature [BT]" IVIDIGITIZER_ATTR_BOARD_TEMPERATURE ViReal64 g
+  "Indicates the temperature of the entire board. The IVIDIGITIZER_ATTR_TEMPERATURE_UNITS "
+  "attribute specifies the units of temperature used."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerBoardTemperature [BT] extension group."
+
+2 all "Channel Temperature [CT]" IVIDIGITIZER_ATTR_CHANNEL_TEMPERATURE ViReal64 g
+  "Indicates the temperature of the channel. The IVIDIGITIZER_ATTR_TEMPERATURE_UNITS "
+  "attribute specifies the units of temperature used.
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerChannelTemperature [CT] extension group."
+
+2 all "Temperature Unit [BT]" IVIDIGITIZER_ATTR_TEMPERATURE_UNITS ViInt32 gs attrTemperatureUnitsRangeTable
+  "Specifies the temperature units returned by the IVIDIGITIZER_ATTR_BOARD_TEMPERATURE and the "
+  "IVIDIGITIZER_ATTR_CHANNEL_TEMPERATURE attributes."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerBoardTemperature [BT] extension group."
+
+1 all "Trigger"
+  "Attributes that control and define Trigger operation."
+  
+2 all "Active Trigger Source" IVIDIGITIZER_ATTR_ACTIVE_TRIGGER_SOURCE ViString gs
+  "Specifies the source the digitizer monitors for the trigger event. The "
+  "value you specify must be one of the valid repeated capability names "
+  "for the TriggerSource repeated capability.\n"
+  "This attribute affects instrument behavior only when either the "
+  "IviDigitizerMultiTrigger extension group is not supported or when "
+  "you set the IVIDIGITIZER_ATTR_TRIGGER_SOURCE_OPERATOR attribute "
+  "to IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_NONE."
+
+2 all "Pretrigger Samples" IVIDIGITIZER_ATTR_PRETRIGGER_SAMPLES ViInt64 gs
+  "Specifies the number of samples that must be collected before a trigger "
+  "event will be recognized.  This attribute affects instrument operation "
+  "only when the digitizer requires multiple acquisitions to build a "
+  "complete waveform.  If trigger samples and pretrigger samples are "
+  "both non-zero, then both conditions must be "
+  "satisfied before the digitizer will accept a trigger."
+  
+2 all "Trigger Source Count" IVIDIGITIZER_ATTR_TRIGGER_SOURCE_COUNT ViInt32 g
+  "Returns the number of trigger sources available on the device."
+
+2 all "Trigger Coupling" IVIDIGITIZER_ATTR_TRIGGER_COUPLING ViInt32 gs attrCouplingRangeTable
+  "Specifies how the digitizer couples the trigger source."
+
+2 all "Trigger Modifier [TM]" IVIDIGITIZER_ATTR_TRIGGER_MODIFIER ViInt32 gs attrTriggerModifierRangeTable
+  "Specifies the trigger modifier. The trigger modifier determines the "
+  "digitizer's behavior in the absence of the configured trigger."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTriggerModifier [TM] extension group."
+
+2 all "Trigger Delay" IVIDIGITIZER_ATTR_TRIGGER_DELAY ViReal64 gs
+  "Specifies the length of time from the trigger event to the first point in "
+  "the waveform record. If the value is positive, the first point in the "
+  "waveform record occurs after the trigger event. If the value is negative, "
+  "the first point in the waveform record occurs before the trigger event. "
+  "The units are in seconds."
+
+2 all "Trigger Holdoff [TH]" IVIDIGITIZER_ATTR_TRIGGER_HOLDOFF ViReal64 gs
+  "Specifies the length of time the digitizer waits after it detects a "
+  "trigger until the digitizer enables the trigger subsystem to detect "
+  "another trigger. The units are in seconds. This attribute affects "
+  "instrument operation only when the digitizer requires multiple "
+  "acquisitions to build a complete waveform. If the trigger holdoff and "
+  "pretrigger samples are are both non-zero, then both conditions must be "
+  "satisfied before the digitizer will accept a trigger.\n\n"
+  "Note: Many digitizers have a small, non-zero value as the minimum value "
+  "for this attribute. To configure the instrument to use the shortest trigger "
+  "hold-off, you can specify a value of zero for this attribute. The driver "
+  "coerces any value between zero and the minimum value to the minimum value. "
+  "No other coercion is allowed on this attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTriggerHoldoff [TH] extension group."
+
+2 all "Trigger Hysteresis" IVIDIGITIZER_ATTR_TRIGGER_HYSTERESIS ViReal64 gs
+  "Specifies the trigger hysteresis, in volts."
+
+2 all "Trigger Level" IVIDIGITIZER_ATTR_TRIGGER_LEVEL ViReal64 gs
+  "Specifies the voltage threshold for the trigger sub-system. The units are "
+  "in volts. This attribute affects instrument behavior only when you set the "
+  "IVIDIGITIZER_ATTR_TRIGGER_TYPE attribute to one of the following values: "
+  "IVIDIGITIZER_VAL_EDGE_TRIGGER, IVIDIGITIZER_VAL_GLITCH_TRIGGER, or "
+  "IVIDIGITIZER_VAL_WIDTH_TRIGGER."
+
+2 all "Trigger Output Enabled" ATTR_TRIGGER_OUTPUT_ENABLED ViBoolean gs
+  "Specifies whether an accepted trigger appears at an output of the "
+  "digitizer."
+
+2 all "Trigger Type" IVIDIGITIZER_ATTR_TRIGGER_TYPE ViInt32 gs attrTriggerTypeRangeTable
+  "The kind of event that triggers the digitizer."
+
+2 all "Edge Triggering"
+  "Attributes that control and define Edge Trigger operation."
+
+3 all "Trigger Slope" IVIDIGITIZER_ATTR_TRIGGER_SLOPE ViInt32 gs attrSlopeRangeTable
+  "Specifies whether a rising or a falling edge triggers the digitizer. This "
+  "attribute affects instrument operation only when you set the "
+  "IVIDIGITIZER_ATTR_TRIGGER_TYPE attribute to IVIDIGITIZER_VAL_EDGE_TRIGGER."
+
+2 all "Glitch Triggering"
+  "Attributes that control and define Glitch Trigger operation."
+
+3 all "Glitch Trigger Condition [GT]" IVIDIGITIZER_ATTR_GLITCH_TRIGGER_CONDITION ViInt32 gs attrGlitchConditionRangeTable
+  "Specifies the glitch condition. This attribute determines whether the "
+  "glitch trigger happens when the digitizer detects a pulse with a width "
+  "less than or greater than the width value."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchTrigger [GT] extension group."
+
+3 all "Glitch Trigger Polarity [GT]" IVIDIGITIZER_ATTR_GLITCH_TRIGGER_POLARITY ViInt32 gs attrGlitchPolarityRangeTable
+  "Specifies the polarity of the glitch that triggers the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchTrigger [GT] extension group."
+
+3 all "Glitch Trigger Width [GT]" IVIDIGITIZER_ATTR_GLITCH_TRIGGER_WIDTH ViReal64 gs
+  "Specifies the glitch width. The units are in seconds. The digitizer triggers "
+  "when it detects a pulse with a width less than or greater than this value, "
+  "depending on the IVIDIGITIZER_ATTR_GLITCH_TRIGGER_CONDITION attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerGlitchTrigger [GT] extension group."
+
+2 all "Multi Triggering"
+  "Attributes that control and define Multi Trigger operation."
+
+3 all "Trigger Source List [MT]" IVIDIGITIZER_ATTR_TRIGGER_SOURCE_LIST ViString gs
+  "A comma separated list of source names to be used in a multi trigger "
+  "scenario. This attribute affects instrument behavior only when you set "
+  "the IVIDIGITIZER_ATTR_TRIGGER_SOURCE_OPERATOR attribute to "
+  "IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_AND or "
+  "IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_OR. When you set "
+  "IVIDIGITIZER_ATTR_TRIGGER_SOURCE_OPERATOR to "
+  "IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_AND, the trigger conditions "
+  "associated with each source in this list must be simultaneously satisfied "
+  "to trigger the digitizer. When you set IVIDIGITIZER_ATTR_TRIGGER_SOURCE_OPERATOR "
+  "to IVIDIGITIZER_VAL_TRIGGER_SOURCE_OPERATOR_OR, the first trigger source in the "
+  "list that satisfies its trigger conditions triggers the digitizer. You can use any "
+  "valid name used for the IVIDIGITIZER_ATTR_ACTIVE_TRIGGER_SOURCE attribute in this "
+  "list.  A trigger source can appear only once in the list. If a name in the list is "
+  "not recognized, the driver returns the Unknown Channel Name error."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerMultiTrigger [MT] extension group."
+
+3 all "Trigger Source Operator [MT]" IVIDIGITIZER_ATTR_TRIGGER_SOURCE_OPERATOR ViInt32 gs attrTriggerSourceOperatorRangeTable
+  "Specifies the Boolean operation to apply to the trigger sources specified "
+  "by the IVIDIGITIZER_ATTR_TRIGGER_SOURCE_LIST attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerMultiTrigger [MT] extension group."
+
+2 all "Runt Triggering"
+  "Attributes that control and define Runt Trigger operation."
+
+3 all "Runt Trigger High Threshold [RT]" IVIDIGITIZER_ATTR_RUNT_TRIGGER_HIGH_THRESHOLD ViReal64 gs
+  "The high threshold the digitizer uses for runt triggering. The units are "
+  "in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntTrigger [RT] extension group."
+
+3 all "Runt Trigger Low Threshold [RT]" IVIDIGITIZER_ATTR_RUNT_TRIGGER_LOW_THRESHOLD ViReal64 gs
+  "The low threshold the digitizer uses for runt triggering. The units are "
+  "in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntTrigger [RT] extension group."
+
+3 all "Runt Trigger Polarity [RT]" IVIDIGITIZER_ATTR_RUNT_TRIGGER_POLARITY ViInt32 gs attrRuntPolarityRangeTable
+  "Specifies the polarity of the runt that triggers the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerRuntTrigger [RT] extension group."
+
+2 all "TV Triggering"
+  "Attributes that control and define TV Trigger operation."
+
+3 all "TV Trigger Event [TVT]" IVIDIGITIZER_ATTR_TV_TRIGGER_EVENT ViInt32 gs attrTVTriggerEventRangeTable
+  "Specifies the event on which the digitizer triggers."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVTrigger [TVT] extension group."
+
+3 all "TV Trigger Line Number [TVT]" IVIDIGITIZER_ATTR_TV_TRIGGER_LINE_NUMBER ViInt32 gs
+  "Specifies the line on which the digitizer triggers. The driver uses this "
+  "attribute when you set the IVIDIGITIZER_ATTR_TV_TRIGGER_EVENT attribute to "
+  "IVIDIGITIZER_VAL_TV_EVENT_LINE_NUMBER. The line number setting is independent "
+  "of the field. This means that to trigger on the first line of the second field, "
+  "configure the line number to the value of 263, assuming that field one has "
+  "262 lines."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVTrigger [TVT] extension group."
+
+3 all "TV Trigger Polarity [TVT]" IVIDIGITIZER_ATTR_TV_TRIGGER_POLARITY ViInt32 gs attrTVTriggerPolarityRangeTable
+  "Specifies the polarity of the TV signal."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVTrigger [TVT] extension group."
+
+3 all "TV Trigger Signal Format [TVT]" IVIDIGITIZER_ATTR_TV_TRIGGER_SIGNAL_FORMAT ViInt32 gs attrTVSignalFormatRangeTable
+  "Specifies the format of the TV signal on which the digitizer triggers."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTVTrigger [TVT] extension group."
+
+2 all "Width Triggering"
+  "Attributes that control and define Width Trigger operation."
+
+3 all "Width Trigger Condition [WT]" IVIDIGITIZER_ATTR_WIDTH_TRIGGER_CONDITION ViInt32 gs attrWidthConditionRangeTable
+  "Specifies whether a pulse that is within or outside the high and low "
+  "thresholds triggers the digitizer. Specify the high and low thresholds "
+  "with the IVIDIGITIZER_ATTR_WIDTH_TRIGGER_HIGH_THRESHOLD and "
+  "IVIDIGITIZER_ATTR_WIDTH_TRIGGER_LOW_THRESHOLD attributes, respectively."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthTrigger [WT] extension group."
+
+3 all "Width Trigger High Threshold [WT]" IVIDIGITIZER_ATTR_WIDTH_TRIGGER_HIGH_THRESHOLD ViReal64 gs
+  "Specifies the high width threshold time, in seconds."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthTrigger [WT] extension group."
+
+3 all "Width Trigger Low Threshold [WT]" IVIDIGITIZER_ATTR_WIDTH_TRIGGER_LOW_THRESHOLD ViReal64 gs
+  "Specifies the low width threshold time, in seconds."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthTrigger [WT] extension group."
+
+3 all "Width Trigger Polarity [WT]" IVIDIGITIZER_ATTR_WIDTH_TRIGGER_POLARITY ViInt32 gs attrWidthPolarityRangeTable
+  "Specifies the polarity of the pulse that triggers the digitizer."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWidthTrigger [WT] extension group."
+
+2 all "Window Triggering"
+  "Attributes that control and define Width Trigger operation."
+
+3 all "Window Trigger Condition [WINT]" IVIDIGITIZER_ATTR_WINDOW_TRIGGER_CONDITION ViInt32 gs attrWindowConditionRangeTable
+  "Specifies whether a signal that is entering or leaving the voltage window "
+  "defined by the high and low thresholds triggers the digitizer. Specify the "
+  "high and low thresholds with the IVIDIGITIZER_ATTR_WINDOW_TRIGGER_HIGH_THRESHOLD "
+  "and IVIDIGITIZER_ATTR_WINDOW_TRIGGER_LOW_THRESHOLD attributes, respectively."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowTrigger [WINT] extension group."
+
+3 all "Window Trigger High Threshold [WINT]" IVIDIGITIZER_ATTR_WINDOW_TRIGGER_HIGH_THRESHOLD ViReal64 gs
+  "Specifies the high window threshold voltage, in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowTrigger [WINT] extension group."
+
+3 all "Window Trigger Low Threshold [WINT]" IVIDIGITIZER_ATTR_WINDOW_TRIGGER_LOW_THRESHOLD ViReal64 gs
+  "Specifies the low window threshold voltage, in volts."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerWindowTrigger [WINT] extension group."
+  
+1 all "Waveform Acquisition"
+  " Attributes that configure the waveform measurement of the digitizer."
+  
+2 all "Is Idle" IVIDIGITIZER_ATTR_IS_IDLE ViInt32 g
+  "Returns whether the device is currently in the Idle state. "
+  "If the driver cannot query the digitizer to return its state, "
+  "the driver returns the Unknown value."
+
+2 all "Is Measuring" IVIDIGITIZER_ATTR_IS_MEASURING ViInt32 g
+  "Returns whether the device is currently in the Measuring state. "
+  "If the driver cannot query the digitizer to return its state, "
+  "the driver returns the Unknown value."
+
+2 all "Is Waiting For Arm" IVIDIGITIZER_ATTR_IS_WAITING_FOR_ARM ViInt32 g
+  "Returns whether the device is currently in the Waiting For Arm state. "
+  "If the driver cannot query the digitizer to return its state, "
+  "the driver returns the Unknown value."
+
+2 all "Is Waiting For Trigger" IVIDIGITIZER_ATTR_IS_WAITING_FOR_TRIGGER ViInt32 g
+  "Returns whether the device is currently in the Waiting For Trigger state. "
+  "If the driver cannot query the digitizer to return its state, "
+  "the driver returns the Unknown value."
+
+2 all "Max First Valid Point Value" IVIDIGITIZER_ATTR_MAX_FIRST_VALID_POINT_VAL ViInt64 g
+  "Returns the maximum value that the First Valid Point parameter of the "
+  "readout functions may assume. This value is necessary to calculate to "
+  "minimum size of the required data buffer to retrieved the entire acquisition."
+
+2 all "Max Samples Per Channel" IVIDIGITIZER_ATTR_MAX_SAMPLES_PER_CHANNEL ViInt64 g
+  "Returns the maximum number of samples per channel that can be captured."
+
+2 all "Min Record Size" IVIDIGITIZER_ATTR_MIN_RECORD_SIZE ViInt64 g
+  "Indicates the minimum waveform record size. If the digitizer can support "
+  "any arbitrary size record, then this attribute returns 1."
+
+2 all "Num Acquired Records" IVIDIGITIZER_ATTR_NUM_ACQUIRED_RECORDS ViInt64 g
+  "Gets the total number of records acquired since the acquistion was last "
+  "initiated. You can call this attribute while an acquisition is in progress."
+
+2 all "Num Records To Acquire" IVIDIGITIZER_ATTR_NUM_RECORDS_TO_ACQUIRE ViInt64 gs
+  "Specifies the number of waveform records to acquire. One waveform record is "
+  "acquired for each recognized trigger per active channel."
+
+2 all "Record Size" IVIDIGITIZER_ATTR_RECORD_SIZE ViInt64 gs
+  "Specifies the number of samples to acquire in each waveform record."
+
+2 all "Sample Mode [SM]" IVIDIGITIZER_ATTR_SAMPLE_MODE ViInt32 gs attrSampleModeRangeTable
+  "Specifies whether the digitizer uses real-time or equivalent-time sampling."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerSampleMode [SM] extension group."
+
+2 all "Sample Rate" IVIDIGITIZER_ATTR_SAMPLE_RATE ViReal64 gs
+  "Specifies the rate of the sample clock in samples per second."
+  
+2 all "Time Interleaved Channel List Auto [TIC]" IVIDIGITIZER_ATTR_TIME_INTERLEAVED_CHANNEL_LIST_AUTO ViBoolean gs Boolean_values
+  "Specifies whether or not the instrument should automatically combine "
+  "enabled channels to satisfy user-specified sample rates. When set to True, "
+  "the instrument will automatically combine channels to meet the sample rate "
+  ""requirements specified via the Sample Rate attribute."
+  "\n\nNote:\n"
+  "(1) This attribute is part of the IviDigitizerTimeInterleavedChannels [TIC] extension group."

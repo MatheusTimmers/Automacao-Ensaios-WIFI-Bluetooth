@@ -1,0 +1,2436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RohdeSchwarz.Visa</name>
+    </assembly>
+    <members>
+        <member name="T:RohdeSchwarz.Visa.GpibSession">
+            <summary>
+            Class GpibSession hosting GPIB session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+            <seealso cref="T:Ivi.Visa.IGpibSession"/>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.MessageBasedSession">
+            <summary>
+            Public class inherited from basic VisaSession Session providing Message based
+            interface for raw Read/Write and formatted Read/Write
+            </summary>
+            
+            <seealso cref="T:RohdeSchwarz.Visa.Session"/>
+            
+            <seealso cref="T:Ivi.Visa.IMessageBasedSession"/>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Session">
+            <summary>
+            Class Session - parent class for all Message-based sessions.
+            </summary>
+            <seealso cref="T:Ivi.Visa.INativeVisaSession"/>
+            <seealso cref="T:Ivi.Visa.IVisaSession"/>
+            <seealso cref="T:System.IDisposable"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.Session"/> class.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+            <param name="mode">The mode.</param>
+            <param name="timeoutMilliseconds">The timeout milliseconds.</param>
+            <exception cref="T:System.ArgumentNullException">resourceName</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">timeoutMilliseconds - Timeout value must be &gt;= 0.</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.Session"/> class.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.CheckResourceType(System.String,System.Boolean,Ivi.Visa.HardwareInterfaceType)">
+            <summary>
+            Checks the type of the resource.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+            <param name="checkResourceType">if set to <c>true</c> [check resource type].</param>
+            <param name="allowedHwInterfaceType">Type of the allowed hw interface.</param>
+            <exception cref="T:Ivi.Visa.VisaException"></exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:RohdeSchwarz.Visa.Session"/> class.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.Close">
+            <summary>
+            Closes this session by:
+            - calling Close() of the session for underlying VISA-C implementation
+            - calling Close() of the Resource Manager that hosted the session
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.IsOpened">
+            <summary>
+            Determines whether this instance is opened.
+            </summary>
+            <returns><c>true</c> if this instance is opened; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.CheckEventType(System.Int32)">
+            <summary>
+            Checks the type of the event.
+            </summary>
+            <param name="eventType">Type of the event.</param>
+            <exception cref="T:Ivi.Visa.VisaException">Event index " + eventType + " not available.</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.DisableEvent(System.Int32)">
+            <summary>
+            Disables a client from receiving events of type(s) specified by the <paramref name="eventType" />
+            argument.
+            </summary>
+            <param name="eventType">The event type(s) to disable.  This may be a custom event type.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.DiscardEvents(System.Int32)">
+            <summary>
+            Discard all pending events of type(s) specified by the <paramref name="eventType" />
+            argument.
+            </summary>
+            <param name="eventType">The event type(s) for which events are discarded.  This may be a custom
+            event type.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.EnableEvent(System.Int32)">
+            <summary>
+            Enables a client to receive events of the type specified by the <paramref name="eventType" />
+            argument using a WaitOnEvent method.
+            </summary>
+            <param name="eventType">The event type to enable.  This may be a custom event type.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeBoolean(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViBoolean attribute ID.</param>
+            <returns>The boolean value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeBoolean(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViBoolean attribute ID.</param>
+            <returns>The boolean value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeByte(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViByte attribute ID.</param>
+            <returns>The I8 value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeByte(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViByte attribute ID.</param>
+            <returns>The I8 value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt16(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt16 or ViUInt16 attribute ID.</param>
+            <returns>The Int16 value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt16(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt16 or ViUInt16 attribute ID.</param>
+            <returns>The Int16 value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt32(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt32 or ViUInt32 attribute ID.</param>
+            <returns>The I32 value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt32(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt32 or ViUInt32 attribute ID.</param>
+            <returns>The value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt64(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt64 or ViUInt64 attribute ID.</param>
+            <returns>The value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeInt64(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt64 or ViUInt64 attribute ID.</param>
+            <returns>The value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeString(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViString or ViRsrc attribute ID.</param>
+            <returns>The value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.GetAttributeString(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViString or ViRsrc attribute ID.</param>
+            <returns>The value of the specified attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeBoolean(System.Int32,System.Boolean)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViBoolean attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeBoolean(Ivi.Visa.NativeVisaAttribute,System.Boolean)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViBoolean attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeByte(System.Int32,System.Byte)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViByte attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeByte(Ivi.Visa.NativeVisaAttribute,System.Byte)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViByte attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt16(System.Int32,System.Int16)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt16 or ViUInt16 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt16(Ivi.Visa.NativeVisaAttribute,System.Int16)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt16 or ViUInt16 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt32(System.Int32,System.Int32)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt32 or ViUInt32 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt32(Ivi.Visa.NativeVisaAttribute,System.Int32)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt32 or ViUInt32 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt64(System.Int32,System.Int64)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt64 or ViUInt64 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeInt64(Ivi.Visa.NativeVisaAttribute,System.Int64)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViInt64 or ViUInt64 attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeString(System.Int32,System.String)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViString or ViRsrc attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.SetAttributeString(Ivi.Visa.NativeVisaAttribute,System.String)">
+            <summary>
+            Set the value of the specified attribute in the underlying VISA C implementation.
+            </summary>
+            <param name="attribute">A VISA C ViString or ViRsrc attribute ID.</param>
+            <param name="value">The value to which the attribute will be set.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32,System.Int32)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <param name="timeoutMilliseconds">The maximum amount of time to wait for the event, in milliseconds.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32,System.TimeSpan)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <param name="timeout">The maximum amount of time to wait for the event.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32,System.Int32,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <param name="timeoutMilliseconds">The maximum amout of time to wait for the event, in milliseconds.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(System.Int32,System.TimeSpan,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.  This may be a custom
+            event type.</param>
+            <param name="timeout">The maximum amount of time to wait for the event.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.  Clients must dispose the returned object
+            when it is no longer needed.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.DisableEvent(Ivi.Visa.EventType)">
+            <summary>
+            Disables a client from receiving events of type(s) specified by the <paramref name="eventType" />
+            argument.
+            </summary>
+            <param name="eventType">The event type(s) to disable.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.DiscardEvents(Ivi.Visa.EventType)">
+            <summary>
+            Discard all pending events of type(s) specified by the <paramref name="eventType" />
+            argument.
+            </summary>
+            <param name="eventType">The event type(s) for which events are discarded.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.EnableEvent(Ivi.Visa.EventType)">
+            <summary>
+            Enables a client to receive events of the type specified by the <paramref name="eventType" />
+            argument using a WaitOnEvent method.
+            </summary>
+            <param name="eventType">The event type to enable.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.LockResource(System.Int32,System.String)">
+            <summary>
+            Locks the resource for this session with a shared lock, with the specified
+            timeout period.
+            </summary>
+            <param name="timeoutMilliseconds">The timeout period for obtaining the lock.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <param name="sharedKey">The name of the requested key.</param>
+            <returns>Then name of the key that was granted.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.LockResource(System.TimeSpan,System.String)">
+            <summary>
+            Locks the resource for this session with a shared lock, with the specified
+            timeout period.
+            </summary>
+            <param name="timeout">The timeout period for obtaining the lock.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+            <param name="sharedKey">The name of the requested key.</param>
+            <returns>Then name of the key that was granted.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.LockResource(System.Int32)">
+            <summary>
+            Locks the resource for this session with an exclusive lock, with the specified
+            timeout period.
+            </summary>
+            <param name="timeoutMilliseconds">The timeout period for obtaining the lock.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">timeoutMilliseconds</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.LockResource(System.TimeSpan)">
+            <summary>
+            Locks the resource for this session with an exclusive lock, with the specified
+            timeout period.
+            </summary>
+            <param name="timeout">The timeout period for obtaining the lock.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.LockResource">
+            <summary>
+            Locks the resource for this session with an exclusive lock, with an infinite timeout.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.UnlockResource">
+            <summary>
+            Unlock the resource.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,System.Int32,Ivi.Visa.EventQueueStatus@,System.Int32@)">
+            <summary>
+            Waits the on event.
+            </summary>
+            <param name="eventType">Type of the event.</param>
+            <param name="timeoutMilliseconds">The timeout milliseconds.</param>
+            <param name="status">The status.</param>
+            <param name="iOutEventContext">The i out event context.</param>
+            <returns>VisaEventArgs.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,System.TimeSpan,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <param name="timeout">The maximum amount of time to wait for the event.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,System.Int32,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <param name="timeoutMilliseconds">The maximum amount of time to wait for the event, in milliseconds.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,System.TimeSpan)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <param name="timeout">The maximum amount of time to wait for the event.  If the
+            timeout is TimeSpan.Zero, the operation will not block. If the timeout
+            is TimeSpan.MaxValue, the operation will not timeout.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,System.Int32)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <param name="timeoutMilliseconds">The maximum amount of time to wait for the event, in milliseconds.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), the operation will not block. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), the operation will not timeout.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType,Ivi.Visa.EventQueueStatus@)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <param name="status">The current state of the event queue when the method returns.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.WaitOnEvent(Ivi.Visa.EventType)">
+            <summary>
+            Wait for events of type(s) specified by the <paramref name="eventType" /> argument.
+            </summary>
+            <param name="eventType">The event type(s) for which the method will wait.</param>
+            <returns>Event identification and status information.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Session.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.BufferSize">
+            <summary>
+            Gets the size of the buffer.
+            </summary>
+            <value>The size of the buffer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.Handle">
+            <summary>
+            The ID for this session in the underlying VISA C implementation.
+            </summary>
+            <value>The handle.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.EventQueueCapacity">
+            <summary>
+            The capacity of the event queue - the maximum number of pending events.
+            </summary>
+            <value>The event queue capacity.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.HardwareInterfaceName">
+            <summary>
+            Human readable text that describes the hardware interface.
+            </summary>
+            <value>The name of the hardware interface.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.HardwareInterfaceNumber">
+            <summary>
+            The board number of the hardware interface.
+            </summary>
+            <value>The hardware interface number.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.HardwareInterfaceType">
+            <summary>
+            Specifies the hardware interface type (GPIB, ASRL, etc.).
+            </summary>
+            <value>The type of the hardware interface.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceClass">
+            <summary>
+            The class of resource for this session (INSTR, INTFC, etc.).
+            </summary>
+            <value>The resource class.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceImplementationVersion">
+            <summary>
+            The version of this VISA.NET implementation.
+            </summary>
+            <value>The resource implementation version.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceLockState">
+            <summary>
+            The current lock state of the resource for this session.
+            </summary>
+            <value>The state of the resource lock.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceManufacturerId">
+            <summary>
+            The IVI identification number of the software vendor of this VISA.NET implementation.
+            </summary>
+            <value>The resource manufacturer identifier.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceManufacturerName">
+            <summary>
+            The name of the software vendor that corresponds to the ResourceManufacturerId property.
+            </summary>
+            <value>The name of the resource manufacturer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceName">
+            <summary>
+            The VISA resource name of the currently open resource. This name is the canonical version
+            of the resource name and therefore may vary from the resource descriptor used to
+            open/initialize the resource.
+            </summary>
+            <value>The name of the resource.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.ResourceSpecificationVersion">
+            <summary>
+            The version of the VISA.NET specification that describes the functionality provided by this
+            session.
+            </summary>
+            <value>The resource specification version.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.SynchronizeCallbacks">
+            <summary>
+            Specifies whether callbacks must be performed in a specific synchronization context.
+            If false, the implementation is allowed to execute callbacks in any context.
+            The default value is true.
+            </summary>
+            <value><c>true</c> if [synchronize callbacks]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Session.TimeoutMilliseconds">
+            <summary>
+            The I/O timeout in milliseconds for I/O communication on this resource session.  If the
+            timeout is VisaConstants.ImmediateTimeout (0), operations will never wait for the device to respond. If the timeout
+            is VisaConstants.InfiniteTimeout (-1), I/O communication will not timeout.
+            </summary>
+            <value>The timeout milliseconds.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Session.EventMechanism">
+            <summary>
+            Enum EventMechanism
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Session.EventMechanism.ViNull">
+            <summary>
+            Null Member
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Session.EventMechanism.ViQueue">
+            <summary>
+            Standard mechanism using a queue
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Session.EventMechanism.ViHandler">
+            <summary>
+            Mechanism using a Handler, not supported by all events
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.MessageBasedSession"/> class.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+            <param name="mode">The mode.</param>
+            <param name="timeoutMilliseconds">The timeout milliseconds.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.MessageBasedSession"/> class.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.ServiceRequestCallback(System.Int32,RohdeSchwarz.Visa.Internal.ViEventType,System.Int32,System.Int32)">
+            <summary>
+            Services the request callback.
+            </summary>
+            <param name="vi">The vi.</param>
+            <param name="inEventType">Type of the in event.</param>
+            <param name="inContext">The in context.</param>
+            <param name="inUserHandle">The in user handle.</param>
+            <returns>System.Int32.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.AssertTrigger">
+            <summary>
+            Asserts a software or hardware trigger dependent on the interface type.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.Clear">
+            <summary>
+            Performs an IEEE 488.1-style clear of the device and clears the input and
+            output buffer (both raw and formatted I/O buffers).  It also may terminate
+            pending operations on the device.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.MessageBasedSession.ReadStatusByte">
+            <summary>
+            Reads the status from the device.  For 488.2 instruments, this is the
+            488.2 status byte.
+            </summary>
+            <returns>A value that indicates which status byte bits are set.</returns>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.ReadBufferSize">
+            <summary>
+            Gets/sets the size of the buffer for one read.
+            </summary>
+            <value>The size of the buffer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.FormattedIO">
+            <summary>
+            A reference to the formatted I/O interface.
+            </summary>
+            <value>The formatted io.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.RawIO">
+            <summary>
+            A reference to the raw I/O interface. All the raw VISA Write/Read are performed using this interface.
+            </summary>
+            <value>The raw io.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.IOProtocol">
+            <summary>
+            The protocol type for I/O communication with the physical resource.  In some cases you
+            may not be able to change the protocol, so reading this property value may not return
+            the same value that was set.
+            </summary>
+            <value>The io protocol.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.SendEndEnabled">
+            <summary>
+            Enables/disables sending the END signal on the last byte of a write.
+            </summary>
+            <value><c>true</c> if [send end enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.TerminationCharacter">
+            <summary>
+            The ASCII character used to end reading. This setting has no effect on writing operations.
+            </summary>
+            <value>The termination character.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.MessageBasedSession.TerminationCharacterEnabled">
+            <summary>
+            If true, reads end when a termination character is received.
+            </summary>
+            <value><c>true</c> if [termination character enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="E:RohdeSchwarz.Visa.MessageBasedSession.ServiceRequest">
+            <summary>
+            Occurs when a service request is received from the device.
+            </summary>
+            <remarks>When this event is received, client code should call ReadStatusByte.</remarks>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new GPIB session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. GPIB::29::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of GPIB class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new GPIB session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. GPIB::29::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.#ctor(System.String)">
+            <summary>
+            Creates a new GPIB session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. GPIB::29::INSTR</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.SendRemoteLocalCommand(System.Int16)">
+            <summary>
+            Sends the remote local command.
+            </summary>
+            <param name="mode">The mode.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.SendRemoteLocalCommand(Ivi.Visa.RemoteLocalMode)">
+            <summary>
+            Places the GPIB instrument into the specified local or remote mode.
+            </summary>
+            <param name="mode">Indicates the action to be taken.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.SendRemoteLocalCommand(Ivi.Visa.GpibInstrumentRemoteLocalMode)">
+            <summary>
+            Controls the state of the GPIB REN interface line and, optionally, the remote/local state
+            of the device.
+            </summary>
+            <param name="mode">Indicates the action to be taken.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.GpibSession.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.AllowDma">
+            <summary>
+            Gets or sets a value indicating whether [allow dma].
+            </summary>
+            <value><c>true</c> if [allow dma]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.PrimaryAddress">
+            <summary>
+            The primary address of the GPIB device used by the given session.
+            </summary>
+            <value>The primary address.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.ReaddressingEnabled">
+            <summary>
+            Specifies whether to use repeat addressing before each read or write operation. In some
+            cases you may not be able to change the readdressing behavior, so reading this property
+            value may not return the same value that was set.
+            </summary>
+            <value><c>true</c> if [readdressing enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.RenState">
+            <summary>
+            The current state of the GPIB REN interface line.
+            </summary>
+            <value>The state of the ren.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.SecondaryAddress">
+            <summary>
+            The secondary address of the GPIB device used by the given session.
+            </summary>
+            <value>The secondary address.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.GpibSession.UnaddressingEnabled">
+            <summary>
+            Specifies whether to unaddress the device (UNT and UNL) after each read or write operation.
+            </summary>
+            <value><c>true</c> if [unaddressing enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Internal.NativeResourceManager">
+            <summary>
+            Wrapper class for the VISA-C resource manager.
+            It is allowed for an object of IResourceManager to be released without closing the sessions. However,
+            the underlying VISA-C implementation does not allow this. Hence, we need a this class to wrap the
+            native resource manager.
+            Usually one would need some kind of reference counting, how many sessions were opened and closed by this 
+            RM and the VISA-C RM should be closed when this value drops to zero. However, this reference counting
+            is implicitly implemented by giving each rmSession a reference to a NativeResourceManager object. If all 
+            sessions are closed we rely on the garbage collector to release the NativeResourceManager object.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeResourceManager.SetFindResourceMode(System.Boolean,System.Boolean)">
+            <summary>
+            Rohde &amp; Schwarz VISA special feature: Setting the mode on how the FindRsrc() method searches for resources.
+            Revert to the default VISA FindRsrc() mode by setting both values to false.
+            </summary>
+            <param name="vxi11">Also Use VXI-11 broadcast</param>
+            <param name="mDns">Also Use mDNS/Bonjour</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeResourceManager.GetLxiResourceAttributes(System.Int32,System.String@,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Reads LXI attributes of the current FindNext list handle
+            </summary>
+            <param name="listHandle"></param>
+            <param name="manufacturer"></param>
+            <param name="model"></param>
+            <param name="serialNumber"></param>
+            <param name="version"></param>
+            <param name="description"></param>
+            <param name="hostName"></param>
+            <returns>true, if the LXI info is available</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeResourceManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeResourceManager.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.RsibSession">
+            <summary>
+            Class RsibSession hosting Rohde &amp; Schwarz-specific RSIB session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz-specific RSIB session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSIB::192.168.1.1::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of RSIB class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz-specific RSIB session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSIB::192.168.1.1::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.#ctor(System.String)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz-specific RSIB session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSIB::192.168.1.1::INSTR</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.SetRemoteState(System.Boolean)">
+            <summary>
+            Places the TCPIP instrument into the specified local or remote mode.
+            </summary>
+            <param name="remoteState">TRUE - set to remote state, FALSE - set to local state</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.SetTemporaryLocal">
+            <summary>
+            Places the TCPIP instrument temporarily into local mode.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsibSession.SendRemoteLocalCommand(Ivi.Visa.RemoteLocalMode)">
+            <summary>
+            Allows the same functionality as the viGpibControlREN, but over the LAN interface.
+            </summary>
+            <param name="mode">The remote or local mode.</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsibSession.Address">
+            <summary>
+            The TCP/IP address of the device to which the session is connected, in
+            IPv4 dot-notation or IPv6 representation.
+            </summary>
+            <value>The address.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsibSession.HostName">
+            <summary>
+            The host name of the device. If no host name is available, this property is set to the
+            empty string.
+            </summary>
+            <value>The name of the host.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsibSession.RsibImplVersion">
+            <summary>
+            Gets the rsib implementation version.
+            </summary>
+            <value>The RSIB implementation version.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.TcpipSession">
+            <summary>
+            Class TcpipSession hosting VXI-11 or HiSLIP session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+            <seealso cref="T:Ivi.Visa.ITcpipSession"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.ToString">
+            <see cref="M:RohdeSchwarz.Visa.TcpipSession.ToString"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new VXI-11 or HiSLIP session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::INSTR or TCPIP::192.168.2.100::hislip0</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of TCPIP class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new VXI-11 or HiSLIP session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::INSTR or TCPIP::192.168.2.100::hislip0</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.#ctor(System.String)">
+            <summary>
+            Creates a new VXI-11 or HiSLIP session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::INSTR or TCPIP::192.168.2.100::hislip0</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.SetBufferSize(Ivi.Visa.IOBuffers,System.Int32)">
+            <summary>
+            Sets the size of the read and/or write buffer for TCPIP communication.
+            </summary>
+            <param name="buffers">The buffer(s) to be resized.</param>
+            <param name="size">The new size of the buffer(s) in bytes.</param>
+            <returns>Indicates whether the buffer size was successfully reset.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">size</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSession.SendRemoteLocalCommand(Ivi.Visa.RemoteLocalMode)">
+            <summary>
+            Places the TCPIP instrument into the specified local or remote mode.
+            </summary>
+            <param name="mode">Indicates the action to be taken.</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.Address">
+            <summary>
+            The TCP/IP address of the device to which the session is connected, in
+            IPv4 dot-notation or IPv6 representation.
+            </summary>
+            <value>The address.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.DeviceName">
+            <summary>
+            The LAN device name used by the VXI-11 or HiSLIP protocol during connection.
+            </summary>
+            <value>The name of the device.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.HostName">
+            <summary>
+            The host name of the device. If no host name is available, this property is set to the
+            empty string.
+            </summary>
+            <value>The name of the host.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.Port">
+            <summary>
+            The device-side port number being used for communication.
+            </summary>
+            <value>The port.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.IsHiSLIP">
+            <summary>
+            If true, this session is using the HiSLIP protocol to communicate with the device.  If
+            false, the session is using VXI-11.
+            </summary>
+            <value><c>true</c> if this instance is hi slip; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.HiSLIPOverlapEnabled">
+            <summary>
+            Specifies whether the HiSLIP "overlap" mode is enabled.
+            </summary>
+            <value><c>true</c> if [hi slip overlap enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.HiSLIPProtocolVersion">
+            <summary>
+            The negotiated HiSLIP protocol version.
+            </summary>
+            <value>The hi slip protocol version.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSession.HiSLIPMaximumMessageKBytes">
+            <summary>
+            The HiSLIP maximum message size in kilobytes, where a kilobyte is 1024 bytes.
+            </summary>
+            <value>The hi slip maximum message k bytes.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Internal.ViEventType">
+            <summary>
+            Enum describing event types
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.None">
+            <summary>
+            Null element
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventIoCompletion">
+            <summary>
+            The vi event io completion
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventTrigger">
+            <summary>
+            The vi event trigger
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventServiceRequest">
+            <summary>
+            The vi event service request
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventClear">
+            <summary>
+            The vi event clear
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventException">
+            <summary>
+            The vi event exception
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventGpibCic">
+            <summary>
+            The vi event gpib cic
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventGpibTalk">
+            <summary>
+            The vi event gpib talk
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventGpibListen">
+            <summary>
+            The vi event gpib listen
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventVxiVmeSysFail">
+            <summary>
+            The vi event vxi vme system fail
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventVxiVmeSysReset">
+            <summary>
+            The vi event vxi vme system reset
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventVxiSigP">
+            <summary>
+            The vi event vxi sig p
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventVxiVmeIntr">
+            <summary>
+            The vi event vxi vme intr
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventTcpipConnect">
+            <summary>
+            The vi event tcpip connect
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViEventUsbIntr">
+            <summary>
+            The vi event usb intr
+            </summary>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.Internal.ViEventType.ViAllEnabledEvents">
+            <summary>
+            The vi all enabled events
+            </summary>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Internal.NativeMethods">
+            <summary>
+            Static class wrapping visa32.dll functions
+            </summary>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.TcpipSocket">
+            <summary>
+            Class TcpipSocket hosting TCPIP Raw Socket session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+            <seealso cref="T:Ivi.Visa.ITcpipSocketSession"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new TCPIP Raw Socket session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::5025::SOCKET</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of TCPIP class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new TCPIP Raw Socket session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::5025::SOCKET</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.#ctor(System.String)">
+            <summary>
+            Creates a new TCPIP Raw Socket session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. TCPIP::192.168.2.100::5025::SOCKET</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.Flush(Ivi.Visa.IOBuffers,System.Boolean)">
+            <summary>
+            Flushes the read and write buffers associated with the TCPIP connection.
+            </summary>
+            <param name="buffers">The buffers to be flushed.</param>
+            <param name="discard">Specifies whether to discard the data or perform I/O to the device.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.TcpipSocket.SetBufferSize(Ivi.Visa.IOBuffers,System.Int32)">
+            <summary>
+            Sets the size of the read and/or write buffer for TCPIP communication.
+            </summary>
+            <param name="buffers">The buffer(s) to be resized.</param>
+            <param name="size">The new size of the buffer(s) in bytes.</param>
+            <returns>Indicates whether the buffer size was successfully reset.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">size</exception>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSocket.Address">
+            <summary>
+            The TCP/IP address of the device to which the session is connected, formatted in
+            dot-notation.
+            </summary>
+            <value>The address.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSocket.HostName">
+            <summary>
+            The host name of the device. If no host name is available, this property is set to the
+            empty string.
+            </summary>
+            <value>The name of the host.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSocket.KeepAlive">
+            <summary>
+            If true, the TCP/IP provider enables the use of keep-alive packets on TCP connections.
+            </summary>
+            <value><c>true</c> if [keep alive]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSocket.NoDelay">
+            <summary>
+            If true, the Nagle algorithm is disabled.
+            </summary>
+            <value><c>true</c> if [no delay]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.TcpipSocket.Port">
+            <summary>
+            The port number for a given TCP/IP address (required for a TCP/IP SOCKET resource).
+            </summary>
+            <value>The port.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.UsbSession">
+            <summary>
+            Class UsbSession hosting USB-TMC session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+            <seealso cref="T:Ivi.Visa.IUsbSession"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new USB session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. USB::0x0AAD::0x0119::022019943::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of USB class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new USB session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. USB::0x0AAD::0x0119::022019943::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.#ctor(System.String)">
+            <summary>
+            Creates a new USB session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. USB::0x0AAD::0x0119::022019943::INSTR</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.ControlIn(System.Int16,System.Int16,System.Int16,System.Int16,System.Int16)">
+            <summary>
+            Request arbitrary data from a USB device on the default control port.
+            </summary>
+            <param name="requestType">A bitmap field for defining the USB control port request.  The
+            bitmap fields are defined by the USB specification.  The direction bit must be
+            device-to-host.</param>
+            <param name="request">Request ID for this transfer. The meaning of this value depends on
+            <paramref name="requestType" />.</param>
+            <param name="value">The requested value for this transfer.</param>
+            <param name="index">The interface or endpoint index number, depending on
+            <paramref name="requestType" />.</param>
+            <param name="length">The length of the data in bytes to send to the device during the Data
+            stage. If this value is 0, then a zero-length byte array is returned from this method.</param>
+            <returns>The data received from the device.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.ControlOut(System.Int16,System.Int16,System.Int16,System.Int16)">
+            <summary>
+            Send arbitrary data to a USB device on the default control port.
+            </summary>
+            <param name="requestType">A bitmap field for defining the USB control port request.  The
+            bitmap fields are defined by the USB specification.  The direction bit must be
+            host-to-device.</param>
+            <param name="request">Request ID for this transfer. The meaning of this value depends on
+            <paramref name="requestType" />.</param>
+            <param name="value">The requested value for this transfer.</param>
+            <param name="index">The interface or endpoint index number, depending on
+            <paramref name="requestType" />.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.ControlOut(System.Int16,System.Int16,System.Int16,System.Int16,System.Byte[])">
+            <summary>
+            Send arbitrary data to a USB device on the default control port.
+            </summary>
+            <param name="requestType">A bitmap field for defining the USB control port request.  The
+            bitmap fields are defined by the USB specification.  The direction bit must be
+            host-to-device.</param>
+            <param name="request">Request ID for this transfer. The meaning of this value depends on
+            <paramref name="requestType"/>.</param>
+            <param name="value">The requested value for this transfer.</param>
+            <param name="index">The interface or endpoint index number, depending on
+            <paramref name="requestType"/>.</param>
+            <param name="data">The data to send to the device during the Data stage.</param>
+            <exception cref="T:System.ArgumentNullException">data</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.UsbSession.SendRemoteLocalCommand(Ivi.Visa.RemoteLocalMode)">
+            <summary>
+            Places the USB instrument into the specified local or remote mode.
+            </summary>
+            <param name="mode">Indicates the action to be taken.</param>
+        </member>
+        <member name="E:RohdeSchwarz.Visa.UsbSession.Interrupt">
+            <summary>
+            Occurs when a vendor-specific USB interrupt is received from the device.
+            RS-VISA does not support USB interrupts
+            </summary>
+            <exception cref="T:Ivi.Visa.VisaException">
+            </exception>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.Is4882Compliant">
+            <summary>
+            True if the device is IEEE 488.2 compliant.
+            </summary>
+            <value><c>true</c> if [is4882 compliant]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.MaximumInterruptSize">
+            <summary>
+            Specifies the maximum number of bytes that this USB device will send on the interrupt
+            IN pipe.
+            </summary>
+            <value>The maximum size of the interrupt.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.ManufacturerId">
+            <summary>
+            The USB vendor identification number of the hardware vendor for this device.
+            </summary>
+            <value>The manufacturer identifier.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.ManufacturerName">
+            <summary>
+            The name of the hardware vendor that corresponds to the ManufacturerId property.
+            </summary>
+            <value>The name of the manufacturer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.ModelCode">
+            <summary>
+            The vendor-specific model number for this USB device.
+            </summary>
+            <value>The model code.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.ModelName">
+            <summary>
+            The name of this device (corresponds to the ModelCode property).
+            </summary>
+            <value>The name of the model.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.UsbInterfaceNumber">
+            <summary>
+            The USB interface number of the interface to which the USB device is connected.
+            </summary>
+            <value>The usb interface number.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.UsbProtocol">
+            <summary>
+            The USB protocol number.
+            </summary>
+            <value>The usb protocol.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.UsbSession.UsbSerialNumber">
+            <summary>
+            The serial number of the USB device.
+            </summary>
+            <value>The usb serial number.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.NativeVisaAsyncResult">
+            <summary>
+            Class NativeVisaAsyncResult implementing IVisaAsyncResult interface
+            </summary>
+            <seealso cref="T:Ivi.Visa.IVisaAsyncResult"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaAsyncResult.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.NativeVisaAsyncResult"/> class.
+            </summary>
+            <param name="buffer">The buffer.</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.Status">
+            <summary>
+             VISA C error code of the IO operation
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.AsyncState">
+            <summary>
+            Gets a user-defined object that qualifies or contains information about an asynchronous operation.
+            </summary>
+            <value>The state of the asynchronous.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.AsyncWaitHandle">
+            <summary>
+            Gets a <see cref="T:System.Threading.WaitHandle" /> that is used to wait for an asynchronous operation to complete.
+            </summary>
+            <value>The asynchronous wait handle.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.CompletedSynchronously">
+            <summary>
+            Gets a value that indicates whether the asynchronous operation completed synchronously.
+            </summary>
+            <value><c>true</c> if [completed synchronously]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.IsCompleted">
+            <summary>
+            Gets a value that indicates whether the asynchronous operation has completed.
+            </summary>
+            <value><c>true</c> if this instance is completed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.Buffer">
+            <summary>
+            For asynchronous write operations, the data buffer that contains the data to be written
+            to the device.  For asynchronous read operations, the content of the buffer is
+            unspecified until the operation is complete (that is, after the call to EndRead has
+            completed successfully.  If the asynchronous operation was initiated with a user
+            created buffer, this is that buffer.
+            </summary>
+            <value>The buffer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.Count">
+            <summary>
+            Before the associated asynchronous operation has been completed by executing EndRead or
+            EndWrite, the value of this property is undefined.  After the associated asynchronous
+            operation has been completed by executing EndRead or EndWrite, the value of this property
+            is the actual number of bytes written (for a write operation) or the actual number of
+            bytes read (for a read operation).
+            </summary>
+            <value>The count.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.Index">
+            <summary>
+            The value of the index argument for the method call that created this VISA asynchronous
+            results object.  If the method did not include an index, then 0.
+            </summary>
+            <value>The index.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaAsyncResult.IsAborted">
+            <summary>
+            If true, the asynchronous I/O operation was aborted by a call to AbortRead() or
+            AbortWrite().
+            </summary>
+            <value><c>true</c> if this instance is aborted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.NativeVisaEventArgs">
+            <summary>
+            Class NativeVisaEventArgs. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Ivi.Visa.INativeVisaEventArgs"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.#ctor(Ivi.Visa.VisaEventArgs,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.NativeVisaEventArgs"/> class.
+            </summary>
+            <param name="eventArgs">The <see cref="T:Ivi.Visa.VisaEventArgs"/> instance containing the event data.</param>
+            <param name="eventSession">The event session.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:RohdeSchwarz.Visa.NativeVisaEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeBoolean(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeBoolean(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeByte(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeByte(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt16(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt16(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt32(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt32(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt64(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeInt64(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeString(System.Int32)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard or vendor-defined
+            attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.GetAttributeString(Ivi.Visa.NativeVisaAttribute)">
+            <summary>
+            Retrieve the value of the specified attribute from the native C implementation.
+            </summary>
+            <param name="attribute">A constant that identifies a VISA standard attribute.</param>
+            <returns>The value of the attribute.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.NativeVisaEventArgs.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.NativeVisaEventArgs.EventArgs">
+            <summary>
+            An event args reference for the native C event.  This may reference an object that
+            derives from EventArgs, if the event handler for the event specified by the
+            EventArg.EventType of EventArg.CustomEventType properties uses a derived class.
+            </summary>
+            <value>The event arguments.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO">
+            <summary>
+            Class NativeWrapperMessageBasedRawIO. Implements all the MessageBasedRawIO methods.
+            </summary>
+            <seealso cref="T:Ivi.Visa.IMessageBasedRawIO"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.#ctor(Ivi.Visa.INativeVisaSession)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO"/> class.
+            </summary>
+            <param name="session">The session.</param>
+            <exception cref="T:System.ArgumentNullException">session</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.AbortAsyncOperation(Ivi.Visa.IVisaAsyncResult)">
+            <summary>
+            Requests the session to terminate normal execution of an asynchronous read or write
+            operation.
+            </summary>
+            <param name="result">Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[])">
+            <summary>
+            Read bytes asynchronously and store them in <paramref name="buffer" /> until it is full.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Int32)">
+            <summary>
+            Read <paramref name="count" /> bytes asynchronously and store them in the Async ResultsIVisaAsyncResult.Buffer. 
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[],System.Object)">
+            <summary>
+            Read bytes asynchronously and store them in <paramref name="buffer"/> until it is full.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Int32,System.Object)">
+            <summary>
+            Read <paramref name="count"/> bytes asynchronously and store them in the Async Results ResultsIVisaAsyncResult.Buffer. 
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">count</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[],System.Int64,System.Int64)">
+            <summary>
+            Read bytes asynchronously and store a maximum of <paramref name="count" /> elements into
+            <paramref name="buffer" /> starting at <paramref name="index" />.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="index">The index in <paramref name="buffer" /> to begin storing bytes</param>
+            <param name="count">The maximum number of bytes to read.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[],Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Read bytes asynchronously and store them in <paramref name="buffer"/> until it is full.
+            When done, notify the calling program via the <paramref name="callback"/> provided.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">buffer</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Int32,Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Read <paramref name="count"/> bytes asynchronously and store them in the Async Results ResultsIVisaAsyncResult.Buffer.
+            When done, notify the calling program via the <paramref name="callback"/> provided.
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">count</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[],System.Int64,System.Int64,System.Object)">
+            <summary>
+            Read bytes asynchronously and store a maximum of <paramref name="count" /> elements into
+            <paramref name="buffer" /> starting at <paramref name="index" />.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="index">The index in <paramref name="buffer" /> to begin storing bytes</param>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginRead(System.Byte[],System.Int64,System.Int64,Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Read bytes asynchronously and store a maximum of <paramref name="count" /> elements into
+            <paramref name="buffer" /> starting at <paramref name="index" />.
+            When done, notify the calling program via the <paramref name="callback" /> provided.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="index">The index in <paramref name="buffer" /> to begin storing bytes</param>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[])">
+            <summary>
+            Write the <paramref name="buffer" /> to the device asynchronously.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.String)">
+            <summary>
+            Write the <paramref name="buffer" /> to the device asynchronously.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[],System.Object)">
+            <summary>
+            Write the <paramref name="buffer" /> to the device asynchronously.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.String,System.Object)">
+            <summary>
+            Write the <paramref name="buffer" /> to the device asynchronously.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[],System.Int64,System.Int64)">
+            <summary>
+            Write <paramref name="count" /> bytes from <paramref name="buffer" /> to the device
+            asynchronously, starting at <paramref name="index" />.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="index">The index in <paramref name="buffer" /> to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[],Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Write the <paramref name="buffer" /> to the device asynchronously.
+            When done, notify the calling program via the <paramref name="callback" /> provided.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.String,Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Write the <paramref name="buffer"/> to the device asynchronously.
+            When done, notify the calling program via the <paramref name="callback"/> provided.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[],System.Int64,System.Int64,System.Object)">
+            <summary>
+            Write <paramref name="count" /> bytes from <paramref name="buffer" /> to the device
+            asynchronously, starting at <paramref name="index" />.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="index">The index in <paramref name="buffer" /> to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.BeginWrite(System.Byte[],System.Int64,System.Int64,Ivi.Visa.VisaAsyncCallback,System.Object)">
+            <summary>
+            Write <paramref name="count"/> bytes from <paramref name="buffer"/> to the device
+            asynchronously, starting at <paramref name="index"/>.
+            When done, notify the calling program via the <paramref name="callback"/> provided.
+            </summary>
+            <param name="buffer">The bytes to be written to the device.</param>
+            <param name="index">The index in <paramref name="buffer"/> to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <param name="callback">The method to call when the operation is complete.</param>
+            <param name="state">Information about the state of this particular asynchronous operation
+            that is attached to the Async Results.</param>
+            <returns>Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</returns>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            index
+            or
+            index or count
+            </exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.EndRead(Ivi.Visa.IVisaAsyncResult)">
+            <summary>
+            Clean up resources created and used as part of the asynchronous read operation.
+            </summary>
+            <param name="result">Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</param>
+            <returns>The number of bytes read during the read operation.</returns>
+            <exception cref="T:System.ArgumentNullException">result</exception>
+            <exception cref="T:Ivi.Visa.IOTimeoutException">-1 - null</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.EndReadString(Ivi.Visa.IVisaAsyncResult)">
+            <summary>
+            Clean up resources created and used as part of the asynchronous read operation and
+            return the string that was read.
+            </summary>
+            <param name="result">Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</param>
+            <returns>The string read during the read operation.</returns>
+            <exception cref="T:System.ArgumentNullException">result</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.EndWrite(Ivi.Visa.IVisaAsyncResult)">
+            <summary>
+            Clean up resources created and used as part of the asynchronous write operation.
+            </summary>
+            <param name="result">Information about the progress and results of the asynchronous
+            operation that is specific to, and identifies, that particular operation.</param>
+            <returns>The number of bytes written during the write operation.</returns>
+            <exception cref="T:System.ArgumentNullException">result</exception>
+            <exception cref="T:Ivi.Visa.IOTimeoutException">-1 - null</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ConvertToReadStatus(System.Int32)">
+            <summary>
+            Converts to read status.
+            </summary>
+            <param name="status">The status.</param>
+            <returns>ReadStatus.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read(System.Int64,Ivi.Visa.ReadStatus@,System.Int32@,System.Collections.Generic.LinkedList{System.Tuple{System.Int32,System.Byte[]}}@)">
+            <summary>
+            Reads data in chunks - starting with the chunk of ReadBufferSize and doubling it until it reaches 1000000 bytes
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO._Combine(System.Collections.Generic.IEnumerable{System.Tuple{System.Int32,System.Byte[]}},System.Int32)">
+            <summary>
+            Combines list of byte arrays to one byte array
+            </summary>
+            <param name="aList"></param>
+            <param name="iReadBytes"></param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO._GetChunkSize(System.Int32)">
+            <summary>
+            Calculates the next chunk size
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read">
+            <summary>
+            Read bytes until an END indicator or termination character is reached.
+            </summary>
+            <returns>An array of the bytes read.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read(System.Int64)">
+            <summary>
+            Read <paramref name="count" /> bytes, or until an END indicator or termination character
+            is reached, whichever comes first.
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <returns>An array of the bytes read.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read(System.Int64,Ivi.Visa.ReadStatus@)">
+            <summary>
+            Read <paramref name="count" /> bytes, or until an END indicator or termination character
+            is reached, whichever comes first.
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="readStatus">A status that indicates whether an END indicator or termination
+            character terminated the read operation.</param>
+            <returns>An array of the bytes read.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read(System.Byte*,System.Int64,System.Int64,System.Int64@,Ivi.Visa.ReadStatus@)">
+            <summary>
+            Read <paramref name="count"/> bytes into the <paramref name="buffer"/> buffer, starting
+            at <paramref name="index"/>, or until an END indicator or termination character is reached,
+            whichever comes first.
+            </summary>
+            <param name="buffer">A reference to an array of bytes allocated by the calling program.</param>
+            <param name="index">The index in <paramref name="buffer"/> to begin storing bytes</param>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="actualCount">The actual count of bytes stored in <paramref name="buffer"/>
+            during the read operation.</param>
+            <param name="readStatus">A status that indicates whether an END indicator or termination
+            character terminated the read operation.</param>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            index
+            or
+            count
+            </exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Read(System.Byte[],System.Int64,System.Int64,System.Int64@,Ivi.Visa.ReadStatus@)">
+            <summary>
+            Read <paramref name="count"/> bytes into the <paramref name="buffer"/> buffer, starting
+            at <paramref name="index"/>, or until an END indicator or termination character is reached,
+            whichever comes first.
+            </summary>
+            <param name="buffer">An array of bytes allocated by the calling program.</param>
+            <param name="index">The index in <paramref name="buffer"/> to begin storing bytes</param>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="actualCount">The actual count of bytes stored in <paramref name="buffer"/>
+            during the read operation.</param>
+            <param name="readStatus">A status that indicates whether an END indicator or termination
+            character terminated the read operation.</param>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            index
+            or
+            count
+            </exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ReadString">
+            <summary>
+            Read characters into the return string until an END indicator or termination character is reached.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ReadString(System.Int64)">
+            <summary>
+            Read <paramref name="count" /> characters into the return string, or until an END indicator or
+            termination character is reached, whichever comes first.
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <returns>The string read during the read operation.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ReadString(System.Int64,Ivi.Visa.ReadStatus@)">
+            <summary>
+            Read <paramref name="count"/> characters into the return string, or until an END indicator or
+            termination character is reached, whichever comes first.
+            </summary>
+            <param name="count">The maximum number of bytes to read.</param>
+            <param name="readStatus">A status that indicates whether an END indicator or termination
+            character terminated the read operation.</param>
+            <returns>The string read during the read operation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">count</exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.WriteRetCount(System.Byte[])">
+            <summary>
+             Like Write(byte[] buffer) but returns the number of written bytes
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Write(System.Byte[])">
+            <summary>
+            Write <paramref name="buffer" /> to the device.
+            </summary>
+            <param name="buffer">The bytes to be written.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Write(System.String)">
+            <summary>
+            Write <paramref name="buffer" /> to the device.
+            </summary>
+            <param name="buffer">The string to be written.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Write(System.Byte*,System.Int64,System.Int64)">
+            <summary>
+            Write <paramref name="count"/> bytes from <paramref name="buffer"/> to the device, starting
+            at <paramref name="index"/>.
+            </summary>
+            <param name="buffer">A reference to the bytes to be written.</param>
+            <param name="index">The index at which to start writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            index
+            or
+            count
+            </exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Write(System.Byte[],System.Int64,System.Int64)">
+            <summary>
+            Write <paramref name="count"/> bytes from <paramref name="buffer"/> to the device, starting
+            at <paramref name="index"/>.
+            </summary>
+            <param name="buffer">The bytes to be written.</param>
+            <param name="index">The index at which to start writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            index
+            or
+            index or count
+            </exception>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.Write(System.String,System.Int64,System.Int64)">
+            <summary>
+            Write <paramref name="count"/> characters from <paramref name="buffer"/> to the device,
+            starting at <paramref name="index"/>.
+            </summary>
+            <param name="buffer">The string to be written.</param>
+            <param name="index">The index at which to start writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <exception cref="T:System.ArgumentNullException">buffer</exception>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.ReadBufferSize">
+            <summary>
+            Gets/sets the size of the buffer for one read.
+            </summary>
+            <value>The size of the buffer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.Internal.NativeWrapperMessageBasedRawIO.TimeoutMilliseconds">
+            <summary>
+            Gets or sets the timeout milliseconds.
+            </summary>
+            <value>The timeout milliseconds.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.ResourceManager">
+            <summary>
+            The class for finding, enumerating, and creating VISA.NET I/O resources. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:Ivi.Visa.IResourceManager"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.#ctor">
+            <summary>
+            Creates a new object for finding, enumerating, and creating VISA.NET I/O resources.
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Find(System.String)">
+            <summary>
+            Method to find all the resources matching the pattern
+            </summary>
+            <param name="pattern">Pattern for all the returned resources to match</param>
+            <returns>String Enumerator with the list of found resources</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Find">
+            <summary>
+            Finds all the available resources. Equals to Find("?*")
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.FindTcpIpResources(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Compared to the mandatory Find() method, this method provides more detailed information about each resource.
+            Also, additional search mechanisms VXI11 broadcast and mDNS Bonjour are available.
+            </summary>
+            <param name="pattern">Pattern to search. Use "?*" to find all available resources.</param>
+            <param name="vxi11">Also use VXI-11 Broadcast mechanism.</param>
+            <param name="mDns">Also use mDNS Bonjour mechanism.</param>
+            <returns>Collection of found resources</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.SetFindResourceMode(System.Boolean,System.Boolean)">
+            <summary>
+            Rohde &amp; Schwarz special method for setting the mechanism used by Find() method 
+            </summary>
+            <param name="vxi11">Also use VXI-11 Broadcast mechanism.</param>
+            <param name="mDns">Also use mDNS Bonjour mechanism.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Open(System.String,Ivi.Visa.AccessModes,System.Int32,Ivi.Visa.ResourceOpenStatus@)">
+            <summary>
+            <para>Creates a new IVisaSession session. Supported interfaces and example of the resourceName string:</para>
+            <para>VXI-11: e.g. TCPIP::192.168.1.10::INSTR</para>
+            <para>HiSLIP: e.g. TCPIP::192.168.1.10::HISLIP</para>
+            <para>USB: e.g. USB::0x0AAD::0x0119::022019943::INSTR</para>
+            <para>SERIAL: e.g. ASRL3::INSTR</para>
+            <para>SOCKET: e.g. TCPIP::192.168.1.10::5025::SOCKET</para>
+            <para>RSIB: e.g. RSIB::192.168.1.10::INSTR</para>
+            <para>RSNRP: e.g. RSNRP::0x0003::100343::INSTR</para>
+            </summary>
+            <param name="resourceName">Resource string of the device.</param>
+            <param name="accessModes">Access Mode - most commonly used values are None, or Exclusive Lock</param>
+            <param name="timeoutMilliseconds">Timeout for opening (Not the VISA Timeout!!!)</param>
+            <param name="openStatus">Returned status (Success/Warning/Error)</param>
+            <returns>Visa Session Object</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Open(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            <para>Creates a new IVisaSession session. Supported interfaces and example of resourceName string:</para>
+            <para>VXI-11: e.g. TCPIP::192.168.1.10::INSTR</para>
+            <para>HiSLIP: e.g. TCPIP::192.168.1.10::HISLIP</para>
+            <para>USB: e.g. USB::0x0AAD::0x0119::022019943::INSTR</para>
+            <para>SERIAL: e.g. ASRL3::INSTR</para>
+            <para>SOCKET: e.g. TCPIP::192.168.1.10::5025::SOCKET</para>
+            <para>RSIB: e.g. RSIB::192.168.1.10::INSTR</para>
+            <para>RSNRP: e.g. RSNRP::0x0003::100343::INSTR</para>
+            </summary>
+            <param name="resourceName">Resource string of the device</param>
+            <param name="accessModes">Access Mode - most commonly used values are None, or Exclusive Lock</param>
+            <param name="timeoutMilliseconds">Timeout for opening (Not the VISA Timeout!!!)</param>
+            <returns>Visa Session Object</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Open(System.String)">
+            <summary>
+            <para>Creates a new IVisaSession session. Supported interfaces and example of resourceName string:</para>
+            <para>VXI-11: e.g. TCPIP::192.168.1.10::INSTR</para>
+            <para>HiSLIP: e.g. TCPIP::192.168.1.10::HISLIP</para>
+            <para>USB: e.g. USB::0x0AAD::0x0119::022019943::INSTR</para>
+            <para>SERIAL: e.g. ASRL3::INSTR</para>
+            <para>SOCKET: e.g. TCPIP::192.168.1.10::5025::SOCKET</para>
+            <para>RSIB: e.g. RSIB::192.168.1.10::INSTR</para>
+            <para>RSNRP: e.g. RSNRP::0x0003::100343::INSTR</para>
+            </summary>
+            <param name="resourceName">Resource string of the device</param>
+            <returns>Visa Session Object</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Parse(System.String)">
+            <summary>
+            This method parses a given Resource Name and return a structure with all its information
+            </summary>
+            <param name="resourceName">Resource name to parse</param>
+            <returns>Parse result object with all information about the Resource Name</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceManager.SessionHandle">
+            <summary>
+            rmSession handle for the Resource Manager
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceManager.ImplementationVersion">
+            <summary>
+            returns the Resource Manager implementation version
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceManager.SpecificationVersion">
+            <summary>
+            Returns the VISA.NET specification version based on which the Resource Manager was implemented
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceManager.ManufacturerId">
+            <summary>
+            Returns the Resource Manager Manufacturer ID (4015 for Rohde &amp; Schwarz)
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceManager.ManufacturerName">
+            <summary>
+            Returns the Resource Manager Manufacturer Name ("Rohde &amp; Schwarz")
+            </summary>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.LxiElement">
+            <summary>
+            Class that holds details for LXI instrument
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.LxiElement.ToString">
+            <summary>
+            Returns string representation of the LxiElement class
+            </summary>
+            <returns>String representation of the class</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.LxiElement.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Create a new LXI element
+            </summary>
+            <param name="manufacturer"></param>
+            <param name="model"></param>
+            <param name="serialNumber"></param>
+            <param name="version"></param>
+            <param name="description"></param>
+            <param name="hostName"></param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.LxiElement.IsValid">
+            <summary>
+            Returns true, if the data is valid LXI information
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.Manufacturer">
+            <summary>
+            Manufacturer of the instrument e.g. "Rohde &amp; Schwarz"
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.Model">
+            <summary>
+            Model of the instrument e.g. "FSW"
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.SerialNumber">
+            <summary>
+            Serial Number of the instrument e.g. "100123"
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.Version">
+            <summary>
+            Version of the LXI interface
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.Description">
+            <summary>
+            User-editable text on the instrument
+            </summary>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.LxiElement.HostName">
+            <summary>
+            Host name of the instrument on the network
+            </summary>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.ResourceElement">
+            <summary>
+            Class that holds ParseResult and extended LxiElement
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceElement.#ctor(Ivi.Visa.ParseResult,RohdeSchwarz.Visa.LxiElement)">
+            <summary>
+            Single Constructor of the ResourceElement
+            </summary>
+            <param name="basicInfo">Basic resource info defined in Ivi.Visa as ParseResult</param>
+            <param name="lxiInfo">Extended instrument info in case of a LXI instrument</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.ResourceElement.ToString">
+            <summary>
+            Returns string representation of the ResourceElement class
+            </summary>
+            <returns>String representation of the class</returns>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.ResourceElement.LxiInfo">
+            <summary>
+            Extended LXI information when available
+            </summary>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.RsNrpSession">
+            <summary>
+            Class RsNrpSession hosting Rohde &amp; Schwarz-specific RSIB session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+        </member>
+        <member name="F:RohdeSchwarz.Visa.RsNrpSession.DefinedInterfaceType">
+            <summary>
+            Defined Interface type for the RsNrp - 33024 0x8100
+            </summary>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsNrpSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsNrpSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz-specific NRP session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSNRP::0x0003::100343::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of RSNRP class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsNrpSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz - specific NRP-Z session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSNRP::0x0003::100343::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.RsNrpSession.#ctor(System.String)">
+            <summary>
+            Creates a new Rohde &amp; Schwarz-specific NRP session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. RSNRP::0x0003::100343::INSTR</param>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.ManufacturerId">
+            <summary>
+            Gets the sensor manufacturer ID. For Rohde &amp; Schwarz this number is 0xAAD.
+            </summary>
+            <value>The sensor manufacturer identifier.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.ManufacturerName">
+            <summary>
+            Gets the name of the sensor manufacturer.
+            </summary>
+            <value>The name of the sensor manufacturer.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.ModelCode">
+            <summary>
+            Gets the sensor model code.
+            </summary>
+            <value>The sensor model code.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.ModelName">
+            <summary>
+            Gets the sensor name of the model.
+            </summary>
+            <value>The sensor name of the model.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.UsbSerialNumber">
+            <summary>
+            Gets the sensor USB serial number.
+            </summary>
+            <value>The sensor USB serial number.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.RsNrpSession.RsNrpImplVersion">
+            <summary>
+            Gets the RSNRP implementation version.
+            </summary>
+            <value>The RSNRP implementation version.</value>
+        </member>
+        <member name="T:RohdeSchwarz.Visa.SerialSession">
+            <summary>
+            Class SerialSession hosting ASRL session. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:RohdeSchwarz.Visa.MessageBasedSession"/>
+            <seealso cref="T:Ivi.Visa.ISerialSession"/>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new Serial session with all the possible settings.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. ASRL3::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+            <param name="checkResourceType">If TRUE, an exception is thrown if the resourceName is not of ASRL class</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.#ctor(System.String,Ivi.Visa.AccessModes,System.Int32)">
+            <summary>
+            Creates a new Serial session.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. ASRL3::INSTR</param>
+            <param name="mode">Access Mode to open the session. Typically set to None</param>
+            <param name="timeoutMilliseconds">Opening timeout, not to be confused with VISA timeout</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.#ctor(System.String)">
+            <summary>
+            Creates a new Serial session with just a resource name.
+            </summary>
+            <param name="resourceName">Resource string used to open the session. e.g. ASRL3::INSTR</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.Flush(Ivi.Visa.IOBuffers,System.Boolean)">
+            <summary>
+            Flushes the read and write buffers associated with serial interfaces.
+            </summary>
+            <param name="buffers">The buffers to be flushed.</param>
+            <param name="discard">Specifies whether to discard the data or perform I/O to the device.</param>
+        </member>
+        <member name="M:RohdeSchwarz.Visa.SerialSession.SetBufferSize(Ivi.Visa.IOBuffers,System.Int32)">
+            <summary>
+            Sets the size of the read and/or write buffer for serial communication.
+            </summary>
+            <param name="buffers">The buffer(s) to be resized.</param>
+            <param name="size">The new size of the buffer(s) in bytes.</param>
+            <returns>Indicates whether the buffer size was successfully reset.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">size</exception>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.BaudRate">
+            <summary>
+            The baud rate of the interface.
+            </summary>
+            <value>The baud rate.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.BytesAvailable">
+            <summary>
+            The number of bytes available in the global receive buffer.
+            </summary>
+            <value>The bytes available.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.ClearToSendState">
+            <summary>
+            The current state of the Clear To Send (CTS) input signal.
+            </summary>
+            <value>The state of the clear to send.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.DataBits">
+            <summary>
+            The number of data bits contained in each frame (5, 6, 7, or 8).
+            </summary>
+            <value>The data bits.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.DataCarrierDetectState">
+            <summary>
+            The current state of the Data Carrier Detect (DCD) input signal.
+            </summary>
+            <value>The state of the data carrier detect.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.DataSetReadyState">
+            <summary>
+            The current state of the Data Set Ready (DSR) input signal.
+            </summary>
+            <value>The state of the data set ready.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.DataTerminalReadyState">
+            <summary>
+            The state of the Data Terminal Ready (DTR) output signal.
+            </summary>
+            <value>The state of the data terminal ready.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.FlowControl">
+            <summary>
+            Gets or sets the flow control.
+            </summary>
+            <value>The flow control.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.Parity">
+            <summary>
+            The parity used with every frame transmitted and received.
+            </summary>
+            <value>The parity.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.ReadTermination">
+            <summary>
+            The method used to terminate read operations.
+            </summary>
+            <value>The read termination.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.ReplacementCharacter">
+            <summary>
+            The character used to replace incoming characters that arrive with errors (such as
+            parity errors).
+            </summary>
+            <value>The replacement character.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.RequestToSendState">
+            <summary>
+            The current state of the Request To Send (RTS) output signal.
+            </summary>
+            <value>The state of the request to send.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.RingIndicatorState">
+            <summary>
+            The current state of the Ring Indicator (RI) input signal.
+            </summary>
+            <value>The state of the ring indicator.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.StopBits">
+            <summary>
+            The number of stop bits used to indicate the end of a frame.
+            </summary>
+            <value>The stop bits.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">value - Only values One/OneAndOneHalf/Two are allowed.</exception>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.WriteTermination">
+            <summary>
+            The method used to terminate write operations.
+            </summary>
+            <value>The write termination.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.XOffCharacter">
+            <summary>
+            Specifies the value of the XOFF character used for XON/XOFF flow control (both directions).
+            </summary>
+            <value>The x off character.</value>
+        </member>
+        <member name="P:RohdeSchwarz.Visa.SerialSession.XOnCharacter">
+            <summary>
+            Specifies the value of the XON character used for XON/XOFF flow control (both directions).
+            </summary>
+            <value>The x on character.</value>
+        </member>
+    </members>
+</doc>

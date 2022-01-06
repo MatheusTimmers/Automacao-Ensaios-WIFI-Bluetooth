@@ -1,0 +1,1137 @@
+FPAttributeValueFile
+
+n SubType="IVI"
+
+n SubVersion="1"
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrAlcSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_ALC_SOURCE_INTERNAL (1)
+  "The ALC is controlled by an internal measurement source."
+
+ IVIRFSIGGEN_VAL_ALC_SOURCE_EXTERNAL (2)
+  "The ALC is controlled by an external voltage."
+
+
+v attrAmExternalCouplingRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_AM_EXTERNAL_COUPLING_AC (1)
+  "The external source is coupled for AC only."
+
+ IVIRFSIGGEN_VAL_AM_EXTERNAL_COUPLING_DC (2)
+  "The external source is coupled for both DC and AC"
+
+
+v attrAmScalingRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_AM_SCALING_LINEAR (1)
+  "Enables linear attenuation for amplitude modulation."
+
+ IVIRFSIGGEN_VAL_AM_SCALING_LOGARITHMIC (2)
+  "Enables logarithmic attenuation for amplitude modulation."
+
+
+v attrArbExternalTriggerSlopeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_ARB_EXTERNAL_TRIGGER_SLOPE_POSITIVE (1)
+  "Enables rising edge triggering."
+
+ IVIRFSIGGEN_VAL_ARB_EXTERNAL_TRIGGER_SLOPE_NEGATIVE (2)
+  "Enables falling edge triggering."
+
+
+v attrArbTriggerSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_ARB_TRIGGER_SOURCE_IMMEDIATE (1)
+  "The ARB generator system does not wait for a trigger. The ARB runs "
+  "continuously."
+
+ IVIRFSIGGEN_VAL_ARB_TRIGGER_SOURCE_EXTERNAL (2)
+  "The sweep is started with an external signal."
+
+ IVIRFSIGGEN_VAL_ARB_TRIGGER_SOURCE_SOFTWARE (3)
+  "The sweep is started with a software programmable trigger."
+
+
+v attrDigitalModulationBaseDataSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_DATA_SOURCE_EXTERNAL (1)
+  "The data from an external device connected to the instrument is used."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_DATA_SOURCE_PRBS (2)
+  "The internal PRBS (Pseudo Random Binary Sequence) generator is used as "
+  "data source."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_DATA_SOURCE_BIT_SEQUENCE (3)
+  "A constant bit sequence is used as data source and repeated "
+  "continuously."
+
+
+v attrDigitalModulationBasePRBSTypeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS9 (1)
+  "Length of PRBS sequence is 2^9 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS11 (2)
+  "Length of PRBS sequence is 2^11 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS15 (3)
+  "Length of PRBS sequence is 2^15 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS16 (4)
+  "Length of PRBS sequence is 2^16 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS20 (5)
+  "Length of PRBS sequence is 2^20 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS21 (6)
+  "Length of PRBS sequence is 2^21 -1."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_PRBS_TYPE_PRBS23 (7)
+  "Length of PRBS sequence is 2^23 -1."
+
+
+v attrDigitalModulationBaseClockSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_CLOCK_SOURCE_INTERNAL (1)
+  "An internal clock generator is used."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_CLOCK_SOURCE_EXTERNAL (2)
+  "A connected external clock generator (bit or symbol clock frequency) is "
+  "used."
+
+
+v attrDigitalModulationBaseExternalClockTypeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_EXTERNAL_CLOCK_TYPE_BIT (1)
+  "The external clock frequency is equal to the bit clock frequency of the "
+  "digital modulation."
+
+ IVIRFSIGGEN_VAL_DIGITAL_MODULATION_BASE_EXTERNAL_CLOCK_TYPE_SYMBOL (2)
+  "The external clock frequency is equal to the symbol clock frequency of "
+  "the digital modulation."
+
+
+v attrCdmaClockSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_CDMA_CLOCK_SOURCE_INTERNAL (1)
+  "The internal clock generator is used."
+
+ IVIRFSIGGEN_VAL_CDMA_CLOCK_SOURCE_EXTERNAL (2)
+  "A connected external clock generator (bit or symbol clock frequency) is "
+  "used."
+
+
+v attrCdmaExternalTriggerSlopeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_CDMA_EXTERNAL_TRIGGER_SLOPE_POSITIVE (1)
+  "Enables rising edge triggering."
+
+ IVIRFSIGGEN_VAL_CDMA_EXTERNAL_TRIGGER_SLOPE_NEGATIVE (2)
+  "Enables falling edge triggering."
+
+
+v attrCdmaTriggerSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_CDMA_TRIGGER_SOURCE_IMMEDIATE (1)
+  "The CDMA generator system does not wait for a trigger. Each channel "
+  "coding is run continuously."
+
+ IVIRFSIGGEN_VAL_CDMA_TRIGGER_SOURCE_EXTERNAL (2)
+  "Each channel coding is started with an external signal."
+
+ IVIRFSIGGEN_VAL_CDMA_TRIGGER_SOURCE_SOFTWARE (3)
+  "Each channel coding is started with a software programmable trigger."
+
+
+v attrFmExternalCouplingRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_FM_EXTERNAL_COUPLING_AC (1)
+  "The external source is coupled for AC only."
+
+ IVIRFSIGGEN_VAL_FM_EXTERNAL_COUPLING_DC (2)
+  "The external source is coupled for both DC and AC."
+
+
+v attrFrequencyStepScalingRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_FREQUENCY_STEP_SCALING_LINEAR (1)
+  "Enables linear scaling."
+
+ IVIRFSIGGEN_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC (2)
+  "Enables logarithmic scaling."
+
+
+v attrIqSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_IQ_SOURCE_DIGITAL_MODULATION_BASE (1)
+  "The signal generator uses the internally generated digital modulation "
+  "signal to apply IQ modulation to the output RF signal."
+
+ IVIRFSIGGEN_VAL_IQ_SOURCE_CDMA_BASE (2)
+  "The signal generator uses the internally generated CDMA signal to apply "
+  "IQ modulation to the output RF signal."
+
+ IVIRFSIGGEN_VAL_IQ_SOURCE_TDMA_BASE (3)
+  "The signal generator uses the internally generated TDMA signal to apply "
+  "IQ modulation to the output RF signal."
+
+ IVIRFSIGGEN_VAL_IQ_SOURCE_ARB_GENERATOR (4)
+  "The signal generator uses the internally generated Arb signal to apply IQ "
+  "modulation to the output RF signal."
+
+ IVIRFSIGGEN_VAL_IQ_SOURCE_EXTERNAL (5)
+  "The signal generator uses data from an external source for IQ "
+  "modulation."
+
+
+v attrLfGeneratorWaveformRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_LF_GENERATOR_WAVEFORM_SINE (1)
+  "Configures the LF generator to produce a sinusoidal waveform."
+
+ IVIRFSIGGEN_VAL_LF_GENERATOR_WAVEFORM_SQUARE (2)
+  "Configures the LF generator to produce a square waveform."
+
+ IVIRFSIGGEN_VAL_LF_GENERATOR_WAVEFORM_TRIANGLE (3)
+  "Configures the LF generator to produce a triangle waveform."
+
+ IVIRFSIGGEN_VAL_LF_GENERATOR_WAVEFORM_RAMP_UP (4)
+  "Configures the LF generator to produce a rising ramp waveform."
+
+ IVIRFSIGGEN_VAL_LF_GENERATOR_WAVEFORM_RAMP_DOWN (5)
+  "Configures the LF generator to produce a falling ramp waveform."
+
+
+v attrPmExternalCouplingRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PM_EXTERNAL_COUPLING_AC (1)
+  "The external source is coupled for AC only."
+
+ IVIRFSIGGEN_VAL_PM_EXTERNAL_COUPLING_DC (2)
+  "The external source is coupled for both DC and AC."
+
+
+v attrPulseModulationSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PULSE_MODULATION_SOURCE_INTERNAL (1)
+  "An internal pulse generator (IviRFSigGenPulseGenerator Extension Group) "
+  "is used for modulation."
+
+ IVIRFSIGGEN_VAL_PULSE_MODULATION_SOURCE_EXTERNAL (2)
+  "An external generator is used for modulation."
+
+
+v attrPulseModulationExternalPolarityRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PULSE_MODULATION_EXTERNAL_POLARITY_NORMAL (1)
+  "The signal generator modulates the carrier signal with normal pulse "
+  "polarity."
+
+ IVIRFSIGGEN_VAL_PULSE_MODULATION_EXTERNAL_POLARITY_INVERSE (2)
+  "The signal generator modulates the carrier signal with inverted pulse "
+  "polarity."
+
+
+v attrPulseOutputPolarityRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PULSE_OUTPUT_POLARITY_NORMAL (1)
+  "Specifies normal polarity."
+
+ IVIRFSIGGEN_VAL_PULSE_OUTPUT_POLARITY_INVERSE (2)
+  "Specifies inverted polarity."
+
+
+v attrPulseExternalTriggerSlopeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PULSE_EXTERNAL_TRIGGER_SLOPE_POSITIVE (1)
+  "Enables rising edge triggering."
+
+ IVIRFSIGGEN_VAL_PULSE_EXTERNAL_TRIGGER_SLOPE_NEGATIVE (2)
+  "Enables falling edge triggering."
+
+
+v attrPulseTriggerSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_PULSE_TRIGGER_SOURCE_INTERNAL (1)
+  "No external trigger is used. The pulse period is specified by the "
+  "IVIRFSIGGEN_ATTR_PULSE_INTERNAL_TRIGGER_PERIOD [PG] "
+  "attribute."
+
+ IVIRFSIGGEN_VAL_PULSE_TRIGGER_SOURCE_EXTERNAL (2)
+  "The pulse is started with a trigger after the delay time specified by the "
+  "IVIRFSIGGEN_ATTR_PULSE_EXTERNAL_TRIGGER_DELAY [PG] "
+  "attribute."
+
+
+v attrReferenceOscillatorSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_REFERENCE_OSCILLATOR_SOURCE_INTERNAL (1)
+  "An internal reference oscillator is used."
+
+ IVIRFSIGGEN_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL (2)
+  "An external reference oscillator is used."
+
+
+v attrSweepModeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_SWEEP_MODE_NONE (1)
+  "The RF output of the signal generator is a non-swept signal (Continuous "
+  "Wave). Frequency and power level from base capability group is used."
+
+ IVIRFSIGGEN_VAL_SWEEP_MODE_FREQUENCY_SWEEP (2)
+  "The signal generator sweeps the RF output signal's frequency in an analog "
+  "form (non-stepped)."
+
+ IVIRFSIGGEN_VAL_SWEEP_MODE_POWER_SWEEP (3)
+  "The signal generator sweeps the RF output signal's power level in an "
+  "analog form (non-stepped)."
+
+ IVIRFSIGGEN_VAL_SWEEP_MODE_FREQUENCY_STEP (4)
+  "The signal generator sweeps the RF output signals frequency in steps."
+
+ IVIRFSIGGEN_VAL_SWEEP_MODE_POWER_STEP (5)
+  "The signal generator sweeps the RF output signals power level in steps."
+
+ IVIRFSIGGEN_VAL_SWEEP_MODE_LIST (6)
+  "The signal generator uses two lists with frequency and power level values "
+  "to sweep the RF output signals."
+
+
+v attrSweepTriggerSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_SWEEP_TRIGGER_SOURCE_IMMEDIATE (1)
+  "The sweep system does not wait for a trigger of any kind, so it is "
+  "running continuously."
+
+ IVIRFSIGGEN_VAL_SWEEP_TRIGGER_SOURCE_EXTERNAL (2)
+  "The sweep is started with an external signal."
+
+ IVIRFSIGGEN_VAL_SWEEP_TRIGGER_SOURCE_SOFTWARE (3)
+  "The sweep is started with a software programmable trigger."
+
+
+v attrTdmaClockSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_TDMA_CLOCK_SOURCE_INTERNAL (1)
+  "The internal clock generator is used."
+
+ IVIRFSIGGEN_VAL_TDMA_CLOCK_SOURCE_EXTERNAL (2)
+  "A connected external clock generator (bit or symbol clock frequency) is "
+  "used."
+
+
+v attrTdmaClockTypeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_TDMA_EXTERNAL_CLOCK_TYPE_BIT (1)
+  "The external clock frequency is equal to the bit clock frequency of the "
+  "digital modulation."
+
+ IVIRFSIGGEN_VAL_TDMA_EXTERNAL_CLOCK_TYPE_SYMBOL (2)
+  "The external clock frequency is equal to the symbol clock frequency of "
+  "the digital modulation."
+
+
+v attrTdmaExternalTriggerSlopeRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_TDMA_EXTERNAL_TRIGGER_SLOPE_POSITIVE (1)
+  "Enables rising edge triggering."
+
+ IVIRFSIGGEN_VAL_TDMA_EXTERNAL_TRIGGER_SLOPE_NEGATIVE (2)
+  "Enables falling edge triggering."
+
+
+v attrTdmaTriggerSourceRangeTable DataType="i"
+ IVIRFSIGGEN_VAL_TDMA_TRIGGER_SOURCE_IMMEDIATE (1)
+  "The TDMA generator system does not wait for a trigger of any kind, so it "
+  "is running the frames continuously."
+
+ IVIRFSIGGEN_VAL_TDMA_TRIGGER_SOURCE_EXTERNAL (2)
+  "Each frame is started with an external signal."
+
+ IVIRFSIGGEN_VAL_TDMA_TRIGGER_SOURCE_SOFTWARE (3)
+  "Each frame is started with a software programmable trigger."
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviRFSigGen_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviRFSigGen_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 IviRFSigGen_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviRFSigGen_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviRFSigGen_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 IviRFSigGen_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviRFSigGen_SetAttributeViString 3 4 false s DataType="ViString"
+0 IviRFSigGen_GetAttributeViString 3 5 false g DataType="ViString"
+0 IviRFSigGen_CheckAttributeViString 3 4 false s DataType="ViString"
+0 IviRFSigGen_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviRFSigGen_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 IviRFSigGen_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviRFSigGen_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 IviRFSigGen_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 IviRFSigGen_CheckAttributeViSession 3 4 false s DataType="ViSession"
+
+1 all "Inherent IVI Properties"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options"
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVIRFSIGGEN_ATTR_RANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that you "
+  "pass to driver functions.  Range checking parameters is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable range checking and maximize performance.\n"
+  "    The default value is VI_TRUE.   Use the IviRFSigGen_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVIRFSIGGEN_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable status checking and maximize performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is FALSE.   Use the IviRFSigGen_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVIRFSIGGEN_ATTR_CACHE ViBoolean gs Boolean_values
+  "Specifies whether to cache the value of attributes.  When caching is "
+  "enabled, the instrument driver keeps track of the current instrument "
+  "settings and avoids sending redundant commands to the instrument.  Thus, "
+  "you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_TRUE.  Use the IviRFSigGen_InitializeWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Simulate" IVIRFSIGGEN_ATTR_SIMULATE ViBoolean gs Boolean_values
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is VI_FALSE.   Use the IviRFSigGen_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Record Value Coercions" IVIRFSIGGEN_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for integer and real type attributes.  You call IviRFSigGen_GetNextCoercionRecord "
+  "function to extract and delete the oldest coercion record "
+  "from the list.\n"
+  "    The default value is VI_FALSE.   Use the IviRFSigGen_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVIRFSIGGEN_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings.\n"
+  "\n"
+  "The default value is VI_FALSE.\n"
+  "\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  You call IviRFSigGen "
+  "Get Next Interchange Warning to extract interchange warnings.  Call the "
+  "IviRFSigGen_ClearInterchangeWarnings function to clear the list of "
+  "interchangeability warnings without reading them.\n"
+  "Interchangeability checking logs a warning for each attribute you have not "
+  "set that affects the behavior of the instrument.\n"
+  "    "
+
+2 all "Driver Identification"
+  "Attributes that provide identity and version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Description" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific driver.\n"
+  "    "
+
+3 all "Driver Prefix" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_PREFIX ViString g
+  "A string that contains the prefix for the instrument driver.  The name of "
+  "each user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Driver Vendor" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "    "
+
+3 all "Revision" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_REVISION ViString g
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVIRFSIGGEN_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+2 all "Driver Capabilities"
+  "Attributes that provide information about the capabilities of this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Channel Count" IVIRFSIGGEN_ATTR_CHANNEL_COUNT ViInt32 g
+  "Indicates the number of channels that the specific instrument driver "
+  "supports.  \n"
+  "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag is set, "
+  "the IVI engine maintains a separate cache value for each channel.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVIRFSIGGEN_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g
+  "Contains a model code of the instrument. For drivers that support more "
+  "than one device, this attribute contains a comma-separated list of "
+  "supported instrument models.\n"
+  "    "
+
+3 all "Class Group Capabilities" IVIRFSIGGEN_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extention groups "
+  "that this driver implements.\n"
+  "    "
+
+2 all "Instrument Identification"
+  "Attributes that provide identity information about the instrument that "
+  "you are using.    "
+
+3 all "Manufacturer" IVIRFSIGGEN_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are "
+  "currently using.\n"
+  "    "
+
+3 all "Model" IVIRFSIGGEN_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that "
+  "you are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVIRFSIGGEN_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information for the "
+  "instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information"
+  "Attributes that contain additional information concerning the instrument "
+  "driver session.      "
+
+3 all "Logical Name" IVIRFSIGGEN_ATTR_LOGICAL_NAME ViString g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviRFSigGen_init or "
+  "IviRFSigGen_InitWithOptions functions.  The IVI Configuration "
+  "utility must contain an entry for the logical name.  The logical name "
+  "entry refers to a driver session section in the IVI Configuration "
+  "file.  The driver session section specifies a physical device and "
+  "initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVIRFSIGGEN_ATTR_IO_RESOURCE_DESCRIPTOR ViString g
+  "Indicates the resource descriptor the driver uses to identify the "
+  "physical device.\n"
+  "    If you initialize the driver with a logical name, this attribute "
+  "contains the resource descriptor that corresponds to the entry in the IVI "
+  "Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource descriptor, "
+  "this attribute contains that value.\n"
+  "    "
+
+3 all "Driver Setup" IVIRFSIGGEN_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver options at "
+  "initialization time.  An example of this is specifying a particular "
+  "instrument model from among a family of instruments that the driver "
+  "supports.  This is useful when using simulation.  You can specify "
+  "driver-specific options through the DriverSetup keyword in the "
+  "optionsString parameter to the IviRFSigGen_InitWithOptions "
+  "function.  If you open an instrument using a logical name, you can also "
+  "specify the options through the IVI Configuration Utility.\n"
+  "    The default value is an empty string.\n"
+  "    "
+
+1 all "RF"
+  "This group contains all of the fundamental attributes for the IviRFSigGen "
+  "class."
+
+2 all "Frequency" IVIRFSIGGEN_ATTR_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the generated RF output signal."
+
+2 all "Power Level" IVIRFSIGGEN_ATTR_POWER_LEVEL ViReal64 gs
+  "Specifies the amplitude (power level) of the RF output signal. The value "
+  "is in dBm."
+
+2 all "ALC Enabled" IVIRFSIGGEN_ATTR_ALC_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether to enable or disable Automatic Level Control (ALC)."
+
+2 all "Output Enabled" IVIRFSIGGEN_ATTR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether to enable or disable the RF output signal."
+
+1 all "Analog Modulation"
+  "This group contains all of the Analog Modulation attributes."
+
+2 all "AM"
+  "This group contains attributes for RF Signal Generators that can apply "
+  "amplitude modulation to the output signal."
+
+3 all "AM Enabled [AM]" IVIRFSIGGEN_ATTR_AM_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the signal generator applies amplitude modulation to "
+  "the RF output signal (VI_TRUE) or not (VI_FALSE)."
+
+3 all "AM Source [AM]" IVIRFSIGGEN_ATTR_AM_SOURCE ViString gs
+  "Specifies the source of the signal that is used as the modulating signal. "
+  "If more than one source is specified, the voltages of all sources "
+  "(internal and external) are summed.  Multiple source names are separated "
+  "by commas."
+
+3 all "AM Scaling [AM]" IVIRFSIGGEN_ATTR_AM_SCALING ViInt32 gs attrAmScalingRangeTable
+  "Specifies linear or logarithmic attenuation for amplitude modulation. The "
+  "unit of the IVIRFSIGGEN_ATTR_AM_DEPTH [AM] attribute is "
+  "changed with this setting."
+
+3 all "AM External Coupling [AM]" IVIRFSIGGEN_ATTR_AM_EXTERNAL_COUPLING ViInt32 gs attrAmExternalCouplingRangeTable
+  "Specifies the coupling of the external source of the modulating signal."
+
+3 all "AM Nominal Voltage [AM]" IVIRFSIGGEN_ATTR_AM_NOMINAL_VOLTAGE ViReal64 g
+  "This is the voltage at which the instrument achieves the amount of "
+  "modulation specified by the IVIRFSIGGEN_ATTR_AM_DEPTH "
+  "[AM] attribute.\n"
+  "\n"
+  "Note: This attribute is read only."
+
+3 all "AM Depth [AM]" IVIRFSIGGEN_ATTR_AM_DEPTH ViReal64 gs
+  "Specifies the extend of modulation the signal generator applies to the "
+  "RF-signal (carrier waveform) with the modulating signal as a result of "
+  "summing all sources, internal and external.\n"
+  "If the IVIRFSIGGEN_ATTR_AM_SCALING [AM] attribute is "
+  "set to Linear, then the units are percent (%). If the IVIRFSIGGEN_ATTR_AM_SCALING [AM] "
+  "attribute is set to logarithmic, then the "
+  "units are dBm."
+
+2 all "FM"
+  "This group contains attributes for RF Signal Generators that can apply "
+  "frequency modulation to the output signal."
+
+3 all "FM Enabled [FM]" IVIRFSIGGEN_ATTR_FM_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the signal generator applies frequency modulation to "
+  "the RF output signal (VI_TRUE) or not (VI_FALSE)."
+
+3 all "FM Source [FM]" IVIRFSIGGEN_ATTR_FM_SOURCE ViString gs
+  "Specifies the source of the signal that is used as the modulating signal. "
+  "If more than one source is specified, the voltages of all sources "
+  "(internal and external) are summed.  Multiple source names are separated "
+  "by commas."
+
+3 all "FM External Coupling [FM]" IVIRFSIGGEN_ATTR_FM_EXTERNAL_COUPLING ViInt32 gs attrFmExternalCouplingRangeTable
+  "Specifies the coupling of the external source of the modulating signal."
+
+3 all "FM Nominal Voltage [FM]" IVIRFSIGGEN_ATTR_FM_NOMINAL_VOLTAGE ViReal64 g
+  "This is the voltage at which the instrument achieves the amount of "
+  "modulation specified by the IVIRFSIGGEN_ATTR_FM_DEVIATION [FM] attribute.\n"
+  "\n"
+  "Note: This attribute is read only."
+
+3 all "FM Deviation [FM]" IVIRFSIGGEN_ATTR_FM_DEVIATION ViReal64 gs
+  "Specifies the extent of modulation (peak frequency deviation) the signal "
+  "generator applies to the RF-signal (carrier waveform) with the modulating "
+  "signal as a result of summing all sources,internal and external. \n"
+  "The units are Hz."
+
+2 all "PM"
+  "This group contains attributes for RF Signal Generators that can apply "
+  "phase modulation to the output signal."
+
+3 all "PM Enabled [PM]" IVIRFSIGGEN_ATTR_PM_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the signal generator applies phase modulation to the RF "
+  "output signal (VI_TRUE) or not (VI_FALSE)."
+
+3 all "PM Source [PM]" IVIRFSIGGEN_ATTR_PM_SOURCE ViString gs
+  "Specifies the source of the signal that is used as the modulating signal. "
+  "If more than one source is specified, the voltages of all sources "
+  "(internal and external) are summed.  Multiple source names are separated "
+  "by commas."
+
+3 all "PM External Coupling [PM]" IVIRFSIGGEN_ATTR_PM_EXTERNAL_COUPLING ViInt32 gs attrPmExternalCouplingRangeTable
+  "Specifies the coupling of the external source of the modulating signal."
+
+3 all "PM Nominal Voltage [PM]" IVIRFSIGGEN_ATTR_PM_NOMINAL_VOLTAGE ViReal64 g
+  "This is the voltage at which the instrument achieves the amount of "
+  "modulation specified by the IVIRFSIGGEN_ATTR_PM_DEVIATION [PM] attribute. \n"
+  "\n"
+  "Note: This attribute is read only."
+
+3 all "PM Deviation [PM]" IVIRFSIGGEN_ATTR_PM_DEVIATION ViReal64 gs
+  "Specifies the extent of modulation (peak phase deviation) the signal "
+  "generator applies to the RF-signal (carrier waveform) with the modulating "
+  "signal. The units are radians."
+
+2 all "Source"
+ "This group contains the repeated attributes for RF Signal Generators that can "
+ "apply analog modulation to the output signal."
+
+3 all "Analog Modulation Source Count [MS]" IVIRFSIGGEN_ATTR_ANALOG_MODULATION_SOURCE_COUNT ViInt32 g
+  "Specifies how many analog modulation sources are available."
+
+1 all "Pulse Modulation"
+  "This group contains attributes for RF Signal Generators that can apply "
+  "pulse modulation to the output signal."
+
+2 all "Pulse Modulation Enabled [PULM]" IVIRFSIGGEN_ATTR_PULSE_MODULATION_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the signal generator applies pulse modulation to the RF "
+  "output signal (VI_TRUE) or not (VI_FALSE)."
+
+2 all "Pulse Modulation Source [PULM]" IVIRFSIGGEN_ATTR_PULSE_MODULATION_SOURCE ViInt32 gs attrPulseModulationSourceRangeTable
+  "Specifies the source of the signal that is used as the modulating "
+  "signal."
+
+2 all "Pulse Modulation External Polarity [PULM]" IVIRFSIGGEN_ATTR_PULSE_MODULATION_EXTERNAL_POLARITY ViInt32 gs attrPulseModulationExternalPolarityRangeTable
+  "Specifies the polarity of the external source signal."
+
+1 all "LF Generator"
+  "This group contains all of the attributes to use a LF Generator (within "
+  "the RF Generator) as a source for modulation."
+
+2 all "Active LF Generator [LF]" IVIRFSIGGEN_ATTR_ACTIVE_LF_GENERATOR ViString gs
+  "Specifies the LF generator which is currently active. The values for this "
+  "attribute correspond to the LFGenerator repeated capability."
+
+2 all "LF Generator Count [LF]" IVIRFSIGGEN_ATTR_LF_GENERATOR_COUNT ViInt32 g
+  "Specifies the number of LF generator sources available for a particular "
+  "instrument."
+
+2 all "LF Generator Frequency [LF]" IVIRFSIGGEN_ATTR_LF_GENERATOR_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the active LF generator. The unit is Hz."
+
+2 all "LF Generator Waveform [LF]" IVIRFSIGGEN_ATTR_LF_GENERATOR_WAVEFORM ViInt32 gs attrLfGeneratorWaveformRangeTable
+  "Specifies the waveform of the active LF generator."
+
+2 all "LF Generator Outputs"
+  "This group contains attributes for using the LF Generator as a source for "
+  "external devices."
+
+3 all "LF Generator Output Amplitude [LFO]" IVIRFSIGGEN_ATTR_LF_GENERATOR_OUTPUT_AMPLITUDE ViReal64 gs
+  "Specifies the output voltage of the LF generator. The unit is V."
+
+3 all "LF Generator Output Enabled [LFO]" IVIRFSIGGEN_ATTR_LF_GENERATOR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the LF generator applies an output signal (VI_TRUE) or "
+  "not (VI_FALSE)."
+
+1 all "Pulse Generator"
+  "This group contains attributes to support the pulse generator within the "
+  "signal generator that is normally used as a source for the pulse "
+  "modulator."
+
+2 all "Pulse Internal Trigger Period [PG]" IVIRFSIGGEN_ATTR_PULSE_INTERNAL_TRIGGER_PERIOD ViReal64 gs
+  "Specifies the period of the pulse generators output signal (if Pulse "
+  "Trigger Source is set to Internal). The units are in seconds."
+
+2 all "Pulse Width [PG]" IVIRFSIGGEN_ATTR_PULSE_WIDTH ViReal64 gs
+  "Specifies the width of the output pulse. The units are in seconds."
+
+2 all "Pulse Gating Enabled [PG]" IVIRFSIGGEN_ATTR_PULSE_GATING_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether pulse gating is enabled(VI_TRUE) or "
+  "disabled(VI_FALSE)."
+
+2 all "Pulse Trigger Source [PG]" IVIRFSIGGEN_ATTR_PULSE_TRIGGER_SOURCE ViInt32 gs attrPulseTriggerSourceRangeTable
+  "Specifies the source of the signal the pulse generator uses to generate "
+  "one pulse."
+
+2 all "Pulse External Trigger Slope [PG]" IVIRFSIGGEN_ATTR_PULSE_EXTERNAL_TRIGGER_SLOPE ViInt32 gs attrPulseExternalTriggerSlopeRangeTable
+  "Specifies whether the event occurs on the rising or falling edge of the "
+  "input signal."
+
+2 all "Pulse External Trigger Delay [PG]" IVIRFSIGGEN_ATTR_PULSE_EXTERNAL_TRIGGER_DELAY ViReal64 gs
+  "Specifies the delay for starting the output pulse with respect to the "
+  "trigger input. The units are in seconds."
+
+2 all "Double Pulse Generators"
+  "This group contains attributes to support double pulse generation. It "
+  "requires implement of the IviRFSigGenPulseGenerator extension group."
+
+3 all "Pulse Double Enabled [DPG]" IVIRFSIGGEN_ATTR_PULSE_DOUBLE_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether double pulse mode is used (VI_TRUE) or not (VI_FALSE)."
+
+3 all "Pulse Double Delay [DPG]" IVIRFSIGGEN_ATTR_PULSE_DOUBLE_DELAY ViReal64 gs
+  "Specifies the delay of the second pulse. The units are in seconds."
+
+2 all "Pulse Generator Output"
+  "This group contains attributes to support pulse generator output. It "
+  "requires implement of the IviRFSigGenPulseGenerator extension group."
+
+3 all "Pulse Output Enabled [PGO]" IVIRFSIGGEN_ATTR_PULSE_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the output of the pulse generator is on  (VI_TRUE) or "
+  "off (VI_FALSE)."
+
+3 all "Pulse Output Polarity [PGO]" IVIRFSIGGEN_ATTR_PULSE_OUTPUT_POLARITY ViInt32 gs attrPulseOutputPolarityRangeTable
+  "Specifies the polarity of the output signal."
+
+1 all "Sweep"
+  "This group contains attributes to support signal generators with the "
+  "ability to sweep (or step) the frequency or the power of the RF output "
+  "signal."
+
+2 all "Sweep Mode [SWP]" IVIRFSIGGEN_ATTR_SWEEP_MODE ViInt32 gs attrSweepModeRangeTable
+  "Specifies the sweep mode applied to the output signal."
+
+2 all "Sweep Trigger Source [SWP]" IVIRFSIGGEN_ATTR_SWEEP_TRIGGER_SOURCE ViInt32 gs attrSweepTriggerSourceRangeTable
+  "Specifies the trigger used to start a sweep operation."
+
+2 all "Frequency Sweep"
+  "This group contains attributes to support the instrument that can apply "
+  "frequency sweep of the RF output signal, adjusting the frequency in a "
+  "continuous (non-stepped) way."
+
+3 all "Frequency Sweep Start [FSW]" IVIRFSIGGEN_ATTR_FREQUENCY_SWEEP_START ViReal64 gs
+  "Specifies the start frequency of the sweep. If the stop frequency is less "
+  "than the start frequency, the frequency decreases during the sweep. The "
+  "units are in Hz."
+
+3 all "Frequency Sweep Stop [FSW]" IVIRFSIGGEN_ATTR_FREQUENCY_SWEEP_STOP ViReal64 gs
+  "Specifies the stop frequency of the sweep. If the stop frequency is less "
+  "than the start frequency, the frequency decreases during the sweep. The "
+  "units are in Hz."
+
+3 all "Frequency Sweep Time [FSW]" IVIRFSIGGEN_ATTR_FREQUENCY_SWEEP_TIME ViReal64 gs
+  "Specifies the duration of one sweep from start to stop frequency. The "
+  "units are in seconds."
+
+2 all "Power Sweep"
+  "This group contains attributes to support the instrument that can apply "
+  "power sweep of the RF output signal, adjusting the power in a continuous "
+  "(non-stepped) way."
+
+3 all "Power Sweep Start [PSW]" IVIRFSIGGEN_ATTR_POWER_SWEEP_START ViReal64 gs
+  "Specifies the start power of the sweep. If the stop power is less than "
+  "the start power, the power decreases in value during the sweep. The units "
+  "are in dBm."
+
+3 all "Power Sweep Stop [PSW]" IVIRFSIGGEN_ATTR_POWER_SWEEP_STOP ViReal64 gs
+  "Specifies the stop power of the sweep. If the stop power is less than the "
+  "start power, the power decreases in value during the sweep. The units are "
+  "in dBm."
+
+3 all "Power Sweep Time [PSW]" IVIRFSIGGEN_ATTR_POWER_SWEEP_TIME ViReal64 gs
+  "Specifies the duration of one sweep from start to stop power. The units "
+  "are in seconds."
+
+2 all "Frequency Step"
+  "This group contains attributes to support the instrument that can vary "
+  "(sweep) the frequency of the RF output signal in steps."
+
+3 all "Frequency Step Start [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_START ViReal64 gs
+  "Specifies the start frequency of the stepped sweep. If the stop frequency "
+  "is less than the start frequency, the frequency decreases during the "
+  "sweep. The units are in Hz."
+
+3 all "Frequency Step Stop [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_STOP ViReal64 gs
+  "Specifies the stop frequency of the stepped sweep. If the stop frequency "
+  "is less than the start frequency, the frequency decreases during the "
+  "sweep. The units are in Hz."
+
+3 all "Frequency Step Scaling [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_SCALING ViInt32 gs attrFrequencyStepScalingRangeTable
+  "Specifies the spacing of the steps."
+
+3 all "Frequency Step Size [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_SIZE ViReal64 gs
+  "Specifies the step size. The units are in Hz when the "
+  "IVIRFSIGGEN_ATTR_FREQUENCY_STEP_SCALING [FST] attribute "
+  "is set to IVIRFSIGGEN_VAL_FREQUENCY_STEP_SCALING_LINEAR. \n"
+  "The value is unitless (factor) when the IVIRFSIGGEN_ATTR_FREQUENCY_STEP_SCALING [FST] "
+  "attribute is set to "
+  "IVIRFSIGGEN_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC."
+
+3 all "Frequency Step Single Step Enabled [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the trigger initiates the next step (VI_TRUE), or the "
+  "next step is taken after dwell time (VI_FALSE)."
+
+3 all "Frequency Step Dwell [FST]" IVIRFSIGGEN_ATTR_FREQUENCY_STEP_DWELL ViReal64 gs
+  "Specifies the duration time of one step. The units are in seconds.\n"
+  "Dwell time starts immediate after tigger or next step; no settling time is "
+  "added.\n"
+  "This attribute is ignored if Frequency Step Single Step Enabled is set to "
+  "VI_TRUE."
+
+2 all "Power Step"
+  "This group contains attributes to support the instrument that can vary "
+  "(sweep) the power of the RF output signal in steps."
+
+3 all "Power Step Start [PST]" IVIRFSIGGEN_ATTR_POWER_STEP_START ViReal64 gs
+  "Specifies the start power of the stepped sweep. If the stop power is less "
+  "than the start power, the power decreases in value during the sweep. The "
+  "units are in dBm."
+
+3 all "Power Step Stop [PST]" IVIRFSIGGEN_ATTR_POWER_STEP_STOP ViReal64 gs
+  "Specifies the stop power of the stepped sweep. If the stop power is less "
+  "than the start power, the power decreases in value during the sweep. The "
+  "units are in dBm."
+
+3 all "Power Step Size [PST]" IVIRFSIGGEN_ATTR_POWER_STEP_SIZE ViReal64 gs
+  "Specifies the step size. The units are in dBm."
+
+3 all "Single Step Enabled [PST]" IVIRFSIGGEN_ATTR_POWER_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the trigger initiates the next step (VI_TRUE), or the "
+  "next step is taken after dwell time (VI_FALSE)."
+
+3 all "Power Step Dwell [PST]" IVIRFSIGGEN_ATTR_POWER_STEP_DWELL ViReal64 gs
+  "Specifies the duration time of one step. The units are in seconds.\n"
+  "This attribute is ignored if Frequency Step Single Step Enabled is set to "
+  "VI_TRUE."
+
+2 all "List"
+  "This group contains attributes to support the instrument that can set the "
+  "frequency and power of the RF output signal to values given as a list of "
+  "values."
+
+3 all "List Selected Name [LST]" IVIRFSIGGEN_ATTR_LIST_SELECTED_NAME ViString gs
+  "Specifies the name of the selected list to become active. The name must "
+  "be one of the lists created ."
+
+3 all "List Single Step Enabled [LST]" IVIRFSIGGEN_ATTR_LIST_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+  "Enables or disables single step mode.\n"
+  "VI_TRUE: The list will advance when the next trigger event occurs.\n"
+  "VI_FALSE: The list will advance immediatly after the dwell time ends."
+
+3 all "List Dwell [LST]" IVIRFSIGGEN_ATTR_LIST_DWELL ViReal64 gs
+  "Specifies the duration time of one step. The units are in seconds.\n"
+  "This attribute is ignored if List Single Step Enabled is set to VI_TRUE."
+
+1 all "ALC"
+  "For generators with configurable Automatic Level Control."
+
+2 all "ALC Source [ALC]" IVIRFSIGGEN_ATTR_ALC_SOURCE ViInt32 gs attrAlcSourceRangeTable
+  "Specifies the source of the controlling voltage for the Automatic Level "
+  "Control."
+
+2 all "ALC Bandwidth [ALC]" IVIRFSIGGEN_ATTR_ALC_BANDWIDTH ViReal64 gs
+  "Specifies the bandwidth of Automatic Level Control."
+
+1 all "Reference Oscillator"
+  "This group supports signal generators with a configurable frequency "
+  "reference."
+
+2 all "Reference Oscillator Source [RO]" IVIRFSIGGEN_ATTR_REFERENCE_OSCILLATOR_SOURCE ViInt32 gs attrReferenceOscillatorSourceRangeTable
+  "Specifies the reference frequency source used to generate the exact RF "
+  "output frequency."
+
+2 all "Reference Oscillator External Frequency [RO]" IVIRFSIGGEN_ATTR_REFERENCE_OSCILLATOR_EXTERNAL_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the external signal, which is used as "
+  "reference for internal RF frequency generation. This value is used only if "
+  "the IVIRFSIGGEN_ATTR_REFERENCE_OSCILLATOR_SOURCE [RO] "
+  "attribute is set to External."
+
+1 all "IQ"
+  "This group supports RFSigGens that can apply IQ (vector) modulation to "
+  "the RF output signal. "
+
+2 all "IQ Enabled [MIQ]" IVIRFSIGGEN_ATTR_IQ_ENABLED ViBoolean gs Boolean_values
+  "Specifies whether the signal generator applies IQ (vector) modulation to "
+  "the output RF signal (VI_TRUE) or not (VI_FALSE)."
+
+2 all "IQ Nominal Voltage [MIQ]" IVIRFSIGGEN_ATTR_IQ_NOMINAL_VOLTAGE ViReal64 g
+  "This is the voltage at which the instrument achieves full modulation. The "
+  "value is calculated by SQRT(I^2+Q^2)."
+
+2 all "IQ Source [MIQ]" IVIRFSIGGEN_ATTR_IQ_SOURCE ViInt32 gs attrIqSourceRangeTable
+  "Specifies the source of the signal that the signal generator uses for IQ "
+  "modulation."
+
+2 all "IQSwap Enabled [MIQ]" IVIRFSIGGEN_ATTR_IQ_SWAP_ENABLED ViBoolean gs Boolean_values
+  "Enables or disables the inverse phase rotation of the IQ signal by "
+  "swapping the I and Q inputs.  If VI_TRUE, the RF signal generator applies "
+  "non-inverse phase rotation of the IQ signal.  If VI_FALSE, the RF signal "
+  "generator applies inverse phase rotation of the IQ signal."
+
+2 all "IQ Impairment"
+  "This group allows the user to simulate or correct impairment on IQ "
+  "(vector) modulation."
+
+3 all "IQ Impairment Enabled [IQI]" IVIRFSIGGEN_ATTR_IQ_IMPAIRMENT_ENABLED ViBoolean gs Boolean_values
+  "Enables IQ impairment. When set to VI_TRUE, the following impairment "
+  "attributes are applied.\n"
+  " \n"
+  "IVIRFSIGGEN_ATTR_IQ_I_OFFSET [IQI]\n"
+  "IVIRFSIGGEN_ATTR_IQ_Q_OFFSET [IQI]\n"
+  "IVIRFSIGGEN_ATTR_IQ_RATIO [IQI]\n"
+  "IVIRFSIGGEN_ATTR_IQ_SKEW [IQI]"
+
+3 all "IQ I Offset [IQI]" IVIRFSIGGEN_ATTR_IQ_I_OFFSET ViReal64 gs
+  "Specifies an origin offset voltage to the I signal. The range of values "
+  "allowed is -100% to +100%. The value is expressed as percentage (%)."
+
+3 all "IQ Q Offset [IQI]" IVIRFSIGGEN_ATTR_IQ_Q_OFFSET ViReal64 gs
+  "Specifies an origin offset voltage to the Q signal. The range of values "
+  "allowed is -100% to +100%. The value is expressed as percentage (%)."
+
+3 all "IQ Ratio [IQI]" IVIRFSIGGEN_ATTR_IQ_RATIO ViReal64 gs
+  "Specifies the gain imbalance between the I and Q channels. For no "
+  "imbalance this value is set to 0 %. The value is expressed as percentage "
+  "(%)."
+
+3 all "IQ Skew [IQI]" IVIRFSIGGEN_ATTR_IQ_SKEW ViReal64 gs
+  "Specifies the adjustment of the phase angle between the I and Q vectors. "
+  "If this skew is zero, the phase angle is 90 degrees. The units are "
+  "degrees."
+
+1 all "ARB Generator"
+  "This group contains the attributes to control the internal arbitrary "
+  "waveform generator."
+
+2 all "ARB Clock Frequency [ARB]" IVIRFSIGGEN_ATTR_ARB_CLOCK_FREQUENCY ViReal64 gs
+  "Specifies the sample frequency. The waveform is generated with this clock "
+  "frequency."
+
+2 all "ARB Filter Frequency [ARB]" IVIRFSIGGEN_ATTR_ARB_FILTER_FREQUENCY ViReal64 gs
+  "Specifies the cut-off frequency of the low pass filter. The waveform is "
+  "filtered before output with this filter for anti aliasing. The filter "
+  "frequency normally is lower than the clock frequency. The units are "
+  "Hertz."
+
+2 all "Waveform"
+  "The group contains attributes that return Waveform parameters."
+
+3 all "ARB Selected Waveform [ARB]" IVIRFSIGGEN_ATTR_ARB_SELECTED_WAVEFORM ViString gs
+  "Specifies the selected waveform from the pool of available waveforms."
+
+3 all "ARB Max Number Waveforms [ARB]" IVIRFSIGGEN_ATTR_ARB_MAX_NUMBER_WAVEFORMS ViInt32 g
+  "Returns the max number of waveforms the instrument can hold in the "
+  "memory. The number may depend on the length of the waveform already in the "
+  "pool of waveforms saved in the instrument. "
+
+3 all "ARB Waveform Quantum [ARB]" IVIRFSIGGEN_ATTR_ARB_WAVEFORM_QUANTUM ViInt32 g
+  "Returns the waveform quantum where the waveform length is a multiple of "
+  "this quantum. If the waveform quantum is 1, there is no restriction on the "
+  "waveform length other than min and max size."
+
+3 all "ARB Waveform Size Min [ARB]" IVIRFSIGGEN_ATTR_ARB_WAVEFORM_SIZE_MIN ViInt32 gs
+  "Returns the minimum size of the waveform length in number of samples. The "
+  "waveform length must equal or greater than this minimum size. If the "
+  "minimum size is 1, there is no restriction on the waveform length other "
+  "than max size and quantum."
+
+3 all "ARB Waveform Size Max [ARB]" IVIRFSIGGEN_ATTR_ARB_WAVEFORM_SIZE_MAX ViInt32 g
+  "Returns the maximum waveform length in the number of samples. The "
+  "waveform length must be equal or less than this maximum size."
+
+2 all "Trigger"
+  "This group contains attributes for configuring Arb waveform trigger."
+
+3 all "ARB Trigger Source [ARB]" IVIRFSIGGEN_ATTR_ARB_TRIGGER_SOURCE ViInt32 gs attrArbTriggerSourceRangeTable
+  "Specifies how the Arb waveform is started (triggered)."
+
+3 all "ARB External Trigger Slope [ARB]" IVIRFSIGGEN_ATTR_ARB_EXTERNAL_TRIGGER_SLOPE ViInt32 gs attrArbExternalTriggerSlopeRangeTable
+  "Specifies whether the trigger event occurs on the rising or falling edge "
+  "of the input signal."
+
+1 all "Digital Modulation"
+  "With IviRFSigGenDigitalModulationBase Extension Group the user can "
+  "generate signals conforming to wireless communication standards (e.g. "
+  "mobile cellular standards). The generated signals do not have TDMA framing "
+  "nor CDMA channel coding.  The functionality covers basic modulation "
+  "attributes such as IQ constellation, symbol mapping, etc. within a "
+  "specified communication standard. "
+
+2 all "DigitalModulationBase Standard Count [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_STANDARD_COUNT ViInt32 g
+  "Specifies the number of DigitalModulationBase standards available for a "
+  "particular instrument."
+
+2 all "DigitalModulationBase Selected Standard [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_SELECTED_STANDARD ViString gs
+  "Specifies the actual standard used by the instrument. The coding, "
+  "mapping, symbol rate or bit clock frequency, filter together with the "
+  "according filter. parameters, FSK deviation or ASK depth (in case of FSK "
+  "or ASK modulation) are set as defined in the selected standard. "
+
+2 all "DigitalModulationBase Data Source [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_DATA_SOURCE ViInt32 gs attrDigitalModulationBaseDataSourceRangeTable
+  "Specifies the source of data. The data is used to modulate the RF signal "
+  "according to the standard selected with the DigitalModulationBase Selected "
+  "Standard attribute."
+
+2 all "DigitalModulationBase PRBS Type [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_PRBS_TYPE ViInt32 gs attrDigitalModulationBasePRBSTypeRangeTable
+  "Specifies the type of the PRBS as defined in the CCITT-V.52 standard. The "
+  "PRBS (Pseudo Random Binary Sequence) is used only if DigitalModulationBase "
+  "Data Source is set to PRBS."
+
+2 all "DigitalModulationBase Selected Bit Sequence [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_SELECTED_BIT_SEQUENCE ViString gs
+  "Specifies name of the bit sequence (stream) used as data for digital "
+  "modulation. The sequence is used only if DigitalModulationBase Data Source "
+  "is set to BitSequence."
+
+2 all "DigitalModulationBase Clock Source [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_CLOCK_SOURCE ViInt32 gs attrDigitalModulationBaseClockSourceRangeTable
+  "Specifies the source of the clock signal used to generate the digital "
+  "modulation according to the selected standard."
+
+2 all "DigitalModulationBase External Clock Type [DMB]" IVIRFSIGGEN_ATTR_DIGITAL_MODULATION_BASE_EXTERNAL_CLOCK_TYPE ViInt32 gs attrDigitalModulationBaseExternalClockTypeRangeTable
+  "Specifies the type of the external clock signal used to generate the "
+  "digital modulation. This value is used only if the DigitalModulationBase "
+  "Clock Source attribute is set to External."
+
+1 all "CDMA"
+  "With IviRFSigGenCDMABaseFunctionality Extension Group the user can "
+  "simulate mobil (cell) phone modulation based on Code Division Muliple "
+  "Access (CDMA) standards."
+
+2 all "CDMA Standard Count [CDMA]" IVIRFSIGGEN_ATTR_CDMA_STANDARD_COUNT ViInt32 g
+  "Returns the number of CDMA standards available for a particular "
+  "instrument."
+
+2 all "CDMA Selected Standard [CDMA]" IVIRFSIGGEN_ATTR_CDMA_SELECTED_STANDARD ViString gs
+  "Specifies the actual standard used by the instrument. The modulation "
+  "type, bit clock frequency and filter together with the according filter "
+  "parameters are set as defined in the selected standard."
+
+2 all "CDMA Test Model Count [CDMA]" IVIRFSIGGEN_ATTR_CDMA_TEST_MODEL_COUNT ViInt32 g
+  "Returns the number of CDMA test models available for a particular "
+  "instrument."
+
+2 all "CDMA Selected Test Model [CDMA]" IVIRFSIGGEN_ATTR_CDMA_SELECTED_TEST_MODEL ViString gs
+  "Specifies the actual CDMA test model used by the instrument."
+
+2 all "CDMA Clock Source [CDMA]" IVIRFSIGGEN_ATTR_CDMA_CLOCK_SOURCE ViInt32 gs attrCdmaClockSourceRangeTable
+  "Specifies the source of the clock signal used to generate the digital "
+  "modulation according to the selected standard."
+
+2 all "Trigger"
+  "This group contains attributes for configuring CDMA trigger."
+
+3 all "CDMA Trigger Source [CDMA]" IVIRFSIGGEN_ATTR_CDMA_TRIGGER_SOURCE ViInt32 gs attrCdmaTriggerSourceRangeTable
+  "Specifies the source of the trigger signal that starts the channel coding "
+  "generation."
+
+3 all "CDMA External Trigger Slope [CDMA]" IVIRFSIGGEN_ATTR_CDMA_EXTERNAL_TRIGGER_SLOPE ViInt32 gs attrCdmaExternalTriggerSlopeRangeTable
+  "Specifies whether the trigger event occurs on the rising or falling edge "
+  "of the input signal."
+
+1 all "TDMA"
+  "With IviRFSigGenTDMABaseFunctionality Extension Group the user can "
+  "simulate mobil (cell) phone modulation based on Time Division Muliple "
+  "Access (TDMA) standards."
+
+2 all "TDMA Standard Count [TDMA]" IVIRFSIGGEN_ATTR_TDMA_STANDARD_Count ViInt32 g
+  "Specifies the number of TDMA standards available for a particular "
+  "instrument. "
+
+2 all "TDMA Selected Standard [TDMA]" IVIRFSIGGEN_ATTR_TDMA_SELECTED_STANDARD ViString gs
+  "Specifies the actual standard used by the instrument. The coding, "
+  "mapping, symbol rate or bit clock frequency, filter together with the "
+  "according filter parameters, FSK deviation or ASK depth (in case of FSK or "
+  "ASK modulation) are set as defined in the selected standard."
+
+2 all "TDMA Frame Count [TDMA]" IVIRFSIGGEN_ATTR_TDMA_FRAME_COUNT ViInt32 g
+  "Specifies the number of TDMA frames available for a particular "
+  "instrument."
+
+2 all "TDMA Selected Frame [TDMA]" IVIRFSIGGEN_ATTR_TDMA_SELECTED_FRAME ViString gs
+  "Specifies the actual frame used by the instrument. It is selected from "
+  "the list queried with the Get TDMA Frame Names function."
+
+2 all "TDMA Clock Source [TDMA]" IVIRFSIGGEN_ATTR_TDMA_CLOCK_SOURCE ViInt32 gs attrTdmaClockSourceRangeTable
+  "Specifies the source of the clock signal used to generate the digital "
+  "modulation according to the selected standard."
+
+2 all "TDMA External Clock Type [TDMA]" IVIRFSIGGEN_ATTR_TDMA_EXTERNAL_CLOCK_TYPE ViInt32 gs attrTdmaClockTypeRangeTable
+  "Specifies the type of the external clock signal used to generate the "
+  "digital modulation. This value is used only if the IVIRFSIGGEN_ATTR_TDMA_CLOCK_SOURCE [TDMA] "
+  "attribute is set to External."
+
+2 all "Trigger"
+  "This group contains attributes for configuring TDMA trigger."
+
+3 all "TDMA Trigger Source [TDMA]" IVIRFSIGGEN_ATTR_TDMA_TRIGGER_SOURCE ViInt32 gs attrTdmaTriggerSourceRangeTable
+  "Specifies the source of the trigger signal that starts the frame/slots "
+  "generation."
+
+3 all "TDMA External Trigger Slope [TDMA]" IVIRFSIGGEN_ATTR_TDMA_EXTERNAL_TRIGGER_SLOPE ViInt32 gs attrTdmaExternalTriggerSlopeRangeTable
+  "Specifies whether the trigger event occurs on the rising or falling edge "
+  "of the input signal."
+

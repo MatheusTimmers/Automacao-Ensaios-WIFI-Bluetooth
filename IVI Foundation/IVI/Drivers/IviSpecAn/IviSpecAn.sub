@@ -1,0 +1,617 @@
+FPAttributeValueFile
+
+n SubType="IVI"
+
+n SubVersion="1"
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrAmplitudeUnitsRangeTable DataType="i"
+ IVISPECAN_VAL_AMPLITUDE_UNITS_DBM (1)
+  "Sets the spectrum Analyzer to measure in decibels relative to 1 "
+  "milliwatt."
+
+ IVISPECAN_VAL_AMPLITUDE_UNITS_DBMV (2)
+  "Sets the spectrum analyzer to measure in decibels relative to 1 "
+  "millivolt."
+
+ IVISPECAN_VAL_AMPLITUDE_UNITS_DBUV (3)
+  "Sets the spectrum analyzer to measure in decibels relative to 1 "
+  "microvolt."
+
+ IVISPECAN_VAL_AMPLITUDE_UNITS_VOLT (4)
+  "Sets the spectrum analyzer to measure in volts."
+
+ IVISPECAN_VAL_AMPLITUDE_UNITS_WATT (5)
+  "Sets the spectrum analyzer to measure in watts."
+
+
+v attrDetectorTypeRangeTable DataType="i"
+ IVISPECAN_VAL_DETECTOR_TYPE_AUTO_PEAK (1)
+  "Allows the detector to capture better readings by using both positive and "
+  "negative peak values when noise is present."
+
+ IVISPECAN_VAL_DETECTOR_TYPE_AVERAGE (2)
+  "Average value of samples taken within the bin for a dedicated point on "
+  "the display."
+
+ IVISPECAN_VAL_DETECTOR_TYPE_MAX_PEAK (3)
+  "Obtains the maximum video signal between the last display point and the "
+  "present display point."
+
+ IVISPECAN_VAL_DETECTOR_TYPE_MIN_PEAK (4)
+  "Obtains the minimum video signal between the last display point and the "
+  "present display point."
+
+ IVISPECAN_VAL_DETECTOR_TYPE_SAMPLE (5)
+  "Pick one point within a bin."
+
+ IVISPECAN_VAL_DETECTOR_TYPE_RMS (6)
+  "RMS value of samples taken within the bin for a dedicated point on the "
+  "display."
+
+
+v attrExternalTriggerSlopeRangeTable DataType="i"
+ IVISPECAN_VAL_EXTERNAL_TRIGGER_SLOPE_POSITIVE (1)
+  "Sets positive slope."
+
+ IVISPECAN_VAL_EXTERNAL_TRIGGER_SLOPE_NEGATIVE (2)
+  "Sets negative slope."
+
+
+v attrMarkerTypeRangeTable DataType="i"
+ IVISPECAN_VAL_MARKER_TYPE_NORMAL (1)
+  "Regular marker used to make absolute measurements."
+
+ IVISPECAN_VAL_MARKER_TYPE_DELTA (2)
+  "Marker used in conjunction with the reference marker to make relative "
+  "measurements."
+
+
+v attrTraceTypeRangeTable DataType="i"
+ IVISPECAN_VAL_TRACE_TYPE_CLEAR_WRITE (1)
+  "Sets the spectrum analyzer to clear previous sweep data off the display "
+  "before performing a sweep.  Subsequent sweeps may or may not clear the "
+  "display first, but the data array at the end of the sweep is entirely "
+  "new."
+
+ IVISPECAN_VAL_TRACE_TYPE_MAX_HOLD (2)
+  "Sets the spectrum analyzer to keep the data from either the previous data "
+  "or the new sweep data, which ever is higher."
+
+ IVISPECAN_VAL_TRACE_TYPE_MIN_HOLD (3)
+  "Sets the spectrum analyzer to keep the data from either the previous data "
+  "or the new sweep data, which ever is lower."
+
+ IVISPECAN_VAL_TRACE_TYPE_VIDEO_AVERAGE (4)
+  "Sets the spectrum analyzer to maintain a running average of the swept "
+  "data."
+
+ IVISPECAN_VAL_TRACE_TYPE_VIEW (5)
+  "Disables acquisition into this trace but displays the existing trace "
+  "data."
+
+ IVISPECAN_VAL_TRACE_TYPE_STORE (6)
+  "Disables acquisition and disables the display of the existing trace "
+  "data."
+
+
+v attrTriggerSourceRangeTable DataType="i"
+ IVISPECAN_VAL_TRIGGER_SOURCE_EXTERNAL (1)
+  "The spectrum analyzer waits until it receives a trigger on the external "
+  "trigger connector."
+
+ IVISPECAN_VAL_TRIGGER_SOURCE_IMMEDIATE (2)
+  "The spectrum analyzer does not wait for a trigger of any kind. "
+
+ IVISPECAN_VAL_TRIGGER_SOURCE_SOFTWARE (3)
+  "The spectrum analyzer waits until the Send Software Trigger function "
+  "executes."
+
+ IVISPECAN_VAL_TRIGGER_SOURCE_AC_LINE (4)
+  "The spectrum analyzer waits until it receives a trigger on the AC line."
+
+ IVISPECAN_VAL_TRIGGER_SOURCE_VIDEO (5)
+  "The spectrum analyzer waits until it receives a video level."
+
+
+v attrVerticalScaleRangeTable DataType="i"
+ IVISPECAN_VAL_VERTICAL_SCALE_LINEAR (1)
+  "Sets the vertical scale in linear units."
+
+ IVISPECAN_VAL_VERTICAL_SCALE_LOGARITHMIC (2)
+  "Sets the vertical scale in logarithmic units."
+
+
+v attrVideoTriggerSlopeRangeTable DataType="i"
+ IVISPECAN_VAL_VIDEO_TRIGGER_SLOPE_POSITIVE (1)
+  "Sets positive slope."
+
+ IVISPECAN_VAL_VIDEO_TRIGGER_SLOPE_NEGATIVE (2)
+  "Sets negative slope."
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviSpecAn_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviSpecAn_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 IviSpecAn_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 IviSpecAn_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviSpecAn_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 IviSpecAn_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 IviSpecAn_SetAttributeViString 3 4 false s DataType="ViString"
+0 IviSpecAn_GetAttributeViString 3 5 false g DataType="ViString"
+0 IviSpecAn_CheckAttributeViString 3 4 false s DataType="ViString"
+0 IviSpecAn_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviSpecAn_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 IviSpecAn_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 IviSpecAn_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 IviSpecAn_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 IviSpecAn_CheckAttributeViSession 3 4 false s DataType="ViSession"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options"
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVISPECAN_ATTR_RANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that you "
+  "pass to driver functions.  Range checking parameters is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable range checking and maximize performance.\n"
+  "    The default value is TRUE.   Use the IviSpecAn_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVISPECAN_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "FALSE to disable status checking and maximize performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is FALSE.   Use the IviSpecAn_InitWithOptions"
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVISPECAN_ATTR_CACHE ViBoolean gs Boolean_values
+  "Specifies whether to cache the value of attributes.  When caching is "
+  "enabled, the instrument driver keeps track of the current instrument "
+  "settings and avoids sending redundant commands to the instrument.  Thus, "
+  "you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is TRUE.   Use the IviSpecAn_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Simulate" IVISPECAN_ATTR_SIMULATE ViBoolean gs Boolean_values
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is FALSE.   Use the IviSpecAn_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Record Value Coercions" IVISPECAN_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for integer and real type attributes.  You call IviSpecAn_GetNextCoercionRecord "
+  "function to extract and delete the oldest coercion record from "
+  "the list.\n"
+  "    The default value is FALSE.   Use the IviSpecAn_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVISPECAN_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings.\n"
+  "\n"
+  "The default value is FALSE.\n"
+  "\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  You call IviSpecAn_GetNextInterchangeWarning "
+  "function to extract interchange warnings.  Call the "
+  "IviSpecAn_ClearInterchangeWarnings function to clear the list of "
+  "interchangeability warnings without reading them.\n"
+  "Interchangeability checking logs a warning for each attribute you have not "
+  "set that affects the behavior of the instrument.\n"
+  "    "
+
+2 all "Driver Identification"
+  "Attributes that provide identity and version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Description" IVISPECAN_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific driver.\n"
+  "    "
+
+3 all "Driver Prefix" IVISPECAN_ATTR_SPECIFIC_DRIVER_PREFIX ViString g
+  "A string that contains the prefix for the instrument driver.  The name of "
+  "each user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Driver Vendor" IVISPECAN_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "    "
+
+3 all "Revision" IVISPECAN_ATTR_SPECIFIC_DRIVER_REVISION ViString g
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVISPECAN_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVISPECAN_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which this "
+  "driver is compliant.\n"
+  "    "
+
+2 all "Driver Capabilities"
+  "Attributes that provide information about the capabilities of this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Channel Count" IVISPECAN_ATTR_CHANNEL_COUNT ViInt32 g
+  "Indicates the number of channels that the specific instrument driver "
+  "supports.  \n"
+  "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag is set, "
+  "the IVI engine maintains a separate cache value for each channel.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVISPECAN_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g
+  "Contains a model code of the instrument. For drivers that support more "
+  "than one device, this attribute contains a comma-separated list of "
+  "supported instrument models.\n"
+  "    "
+
+3 all "Class Group Capabilities" IVISPECAN_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extention groups "
+  "that this driver implements.\n"
+  "    "
+
+2 all "Instrument Identification"
+  "Attributes that provide identity information about the instrument that "
+  "you are using.    "
+
+3 all "Manufacturer" IVISPECAN_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are "
+  "currently using.\n"
+  "    "
+
+3 all "Model" IVISPECAN_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that "
+  "you are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVISPECAN_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information for the "
+  "instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information"
+  "Attributes that contain additional information concerning the instrument "
+  "driver session.      "
+
+3 all "Logical Name" IVISPECAN_ATTR_LOGICAL_NAME ViString g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviSpecAn_init or "
+  "IviSpecAn_InitWithOptions functions.  The IVI Configuration "
+  "utility must contain an entry for the logical name.  The logical name "
+  "entry refers to a driver session section in the IVI Configuration "
+  "file.  The driver session section specifies a physical device and "
+  "initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVISPECAN_ATTR_IO_RESOURCE_DESCRIPTOR ViString g
+  "Indicates the resource descriptor the driver uses to identify the "
+  "physical device.\n"
+  "    If you initialize the driver with a logical name, this attribute "
+  "contains the resource descriptor that corresponds to the entry in the IVI "
+  "Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource descriptor, "
+  "this attribute contains that value.\n"
+  "    "
+
+3 all "Driver Setup" IVISPECAN_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver options at "
+  "initialization time.  An example of this is specifying a particular "
+  "instrument model from among a family of instruments that the driver "
+  "supports.  This is useful when using simulation.  You can specify "
+  "driver-specific options through the DriverSetup keyword in the "
+  "optionsString parameter to the IviSpecAn_InitWithOptions function. "
+  " If you open an instrument using a logical name, you can also specify the "
+  "options through the IVI Configuration Utility.\n"
+  "    The default value is an empty string.\n"
+  "    "
+
+1 all "Basic Operation"
+  "Attributes that control and define basic spectrum analyzer operation."
+
+2 all "Amplitude Units" IVISPECAN_ATTR_AMPLITUDE_UNITS ViInt32 gs attrAmplitudeUnitsRangeTable
+  "Specifies the amplitude units for input, output, and display amplitude."
+
+2 all "Attenuation" IVISPECAN_ATTR_ATTENUATION ViReal64 gs
+  "Specifies the input attenuation (in positive dB).  This means that if "
+  "10dB is selected, the result is a reduction in the signal level of 10 dB."
+
+2 all "Attenuation Auto" IVISPECAN_ATTR_ATTENUATION_AUTO ViBoolean gs Boolean_values
+  "Enables or disables auto attenuation."
+
+2 all "Detector Type" IVISPECAN_ATTR_DETECTOR_TYPE ViInt32 gs attrDetectorTypeRangeTable
+  "Specifies the detection method used to capture and process the signal. "
+  "This governs the data acquisition for a particular sweep, but does not "
+  "have any control over how multiple sweeps are processed."
+
+2 all "Detector Type Auto" IVISPECAN_ATTR_DETECTOR_TYPE_AUTO ViBoolean gs Boolean_values
+  "Enables the auto detector.\n"
+  "Note:\n"
+  "When the IVISPECAN_ATTR_DETECTOR_TYPE_AUTO attribute is set "
+  "to True, the relationship between the IVISPECAN_ATTR_TRACE_TYPE "
+  "attribute and the IVISPECAN_ATTR_DETECTOR_TYPE attribute "
+  "is not defined."
+
+2 all "Frequency Start" IVISPECAN_ATTR_FREQUENCY_START ViReal64 gs
+  "Specifies the left edge of the frequency domain in Hertz. This is used in "
+  "conjunction with the IVISPECAN_ATTR_FREQUENCY_STOP attribute "
+  "to define the frequency domain. If the IVISPECAN_ATTR_FREQUENCY_START "
+  "attribute value is equal to the "
+  "IVISPECAN_ATTR_FREQUENCY_STOP attribute value then the "
+  "spectrum analyzer's horizontal attributes are in time-domain."
+
+2 all "Frequency Stop" IVISPECAN_ATTR_FREQUENCY_STOP ViReal64 gs
+  "Specifies the right edge of the frequency domain in Hertz. This is used "
+  "in conjunction with the IVISPECAN_ATTR_FREQUENCY_START "
+  "attribute to define the frequency domain. If the IVISPECAN_ATTR_FREQUENCY_START "
+  "attribute value is equal to the "
+  "IVISPECAN_ATTR_FREQUENCY_STOP attribute value then the "
+  "spectrum analyzer's horizontal attributes are in time-domain."
+
+2 all "Frequency Offset" IVISPECAN_ATTR_FREQUENCY_OFFSET ViReal64 gs
+  "Specifies an offset value, in Hertz, that is added to the frequency "
+  "readout.  The offset is used to compensate for external frequency "
+  "conversion. Setting this attribute changes the IVISPECAN_ATTR_FREQUENCY_START "
+  "and IVISPECAN_ATTR_FREQUENCY_STOP "
+  "attributes. The following equations define the relationship of these "
+  "settings:\n"
+  "      Frequency Start = Actual Start Frequency + Frequency Offset\n"
+  "      Frequency Stop = Actual Stop Frequency + Frequency Offset\n"
+  "      Marker Position = Actual Marker Frequency + Frequency Offset\n"
+
+2 all "Input Impedance" IVISPECAN_ATTR_INPUT_IMPEDANCE ViReal64 gs
+  "Specifies the value of input impedance, in ohms, expected at the active "
+  "input port. This is typically 50 ohms or 75 ohms."
+
+2 all "Number of Sweeps" IVISPECAN_ATTR_NUMBER_OF_SWEEPS ViInt32 gs
+  "This attribute defines the number of sweeps. This attribute value has no "
+  "effect if the IVISPECAN_ATTR_TRACE_TYPE attribute is set to "
+  "the value Clear Write."
+
+2 all "Reference Level" IVISPECAN_ATTR_REFERENCE_LEVEL ViReal64 gs
+  "The calibrated vertical position of the captured data used as a reference "
+  "for amplitude measurements. This is typically set to a value slightly "
+  "higher than the highest expected signal level. The units are determined by "
+  "the IVISPECAN_ATTR_AMPLITUDE_UNITS attribute."
+
+2 all "Reference Level Offset" IVISPECAN_ATTR_REFERENCE_LEVEL_OFFSET ViReal64 gs
+  "Specifies an offset for the IVISPECAN_ATTR_REFERENCE_LEVEL "
+  "attribute in dB. This attribute adjusts the reference level for external "
+  "signal gain or loss.  A positive value corresponds to a gain while a "
+  "negative number corresponds to a loss. "
+
+2 all "Resolution Bandwidth" IVISPECAN_ATTR_RESOLUTION_BANDWIDTH ViReal64 gs
+  "This specifies the width of the IF filter in Hertz."
+
+2 all "Resolution Bandwidth Auto" IVISPECAN_ATTR_RESOLUTION_BANDWIDTH_AUTO ViBoolean gs Boolean_values
+  "Enables resolution bandwidth auto coupling."
+
+2 all "Sweep Mode Continuous" IVISPECAN_ATTR_SWEEP_MODE_CONTINUOUS ViBoolean gs Boolean_values
+  "Enables continuous sweep mode."
+
+2 all "Sweep Time" IVISPECAN_ATTR_SWEEP_TIME ViReal64 gs
+  "Specifies the length of time (in seconds) to sweep from the left edge to "
+  "the right edge of the current domain."
+
+2 all "Sweep Time Auto" IVISPECAN_ATTR_SWEEP_TIME_AUTO ViBoolean gs Boolean_values
+  "Enables sweep time auto."
+
+2 all "Trace Count" IVISPECAN_ATTR_TRACE_COUNT ViInt32 g
+  "Returns the number of traces.\n"
+  "Note:\n"
+  "For an instrument with only one Trace the driver may return an empty "
+  "string."
+
+2 all "Trace Size" IVISPECAN_ATTR_TRACE_SIZE ViInt32 g
+  "This trace-based attribute returns the number of points in the trace "
+  "array."
+
+2 all "Trace Type" IVISPECAN_ATTR_TRACE_TYPE ViInt32 gs attrTraceTypeRangeTable
+  "This trace-based attribute specifies the representation of the acquired "
+  "data."
+
+2 all "Vertical Scale" IVISPECAN_ATTR_VERTICAL_SCALE ViInt32 gs attrVerticalScaleRangeTable
+  "Specifies the vertical scale of the measurement hardware (use of log "
+  "amplifiers versus linear amplifiers)."
+
+2 all "Video Bandwidth" IVISPECAN_ATTR_VIDEO_BANDWIDTH ViReal64 gs
+  "Specifies the video bandwidth of the post-detection filter in Hertz."
+
+2 all "Video Bandwidth Auto" IVISPECAN_ATTR_VIDEO_BANDWIDTH_AUTO ViBoolean gs Boolean_values
+  "Enables video bandwidth auto coupling."
+
+1 all "Markers"
+  "Attributes that define and control markers.  Markers are a common "
+  "spectrum analyzer element used with traces."
+
+2 all "Active Marker [MKR]" IVISPECAN_ATTR_ACTIVE_MARKER ViString gs
+  "Specifies the marker which is currently active.  The values for this "
+  "attribute correspond to the Marker repeated capability."
+
+2 all "Marker Amplitude [MKR]" IVISPECAN_ATTR_MARKER_AMPLITUDE ViReal64 g
+  "Returns the amplitude of the active marker. The units are specified by "
+  "the IVISPECAN_ATTR_AMPLITUDE_UNITS attribute, except when the "
+  "IVISPECAN_ATTR_MARKER_TYPE [MKR] attribute is set to "
+  "Delta.  When the IVISPECAN_ATTR_MARKER_TYPE [MKR] "
+  "attribute is set to Delta the units are dB.  If the "
+  "IVISPECAN_ATTR_MARKER_ENABLED [MKR]attribute is set to False, any "
+  "attempt to read this attribute returns the Marker Not Enabled "
+  "error(0xBFFA2001)."
+
+2 all "Marker Enabled [MKR]" IVISPECAN_ATTR_MARKER_ENABLED ViBoolean gs Boolean_values
+  "Enables the active marker."
+
+2 all "Marker Frequency Counter Enabled [MKR]" IVISPECAN_ATTR_MARKER_FREQUENCY_COUNTER_ENABLED ViBoolean gs Boolean_values
+  "Enables the marker frequency counter for better marker measurement "
+  "accuracy. This attribute returns the Marker Not Enabled error (0xBFFA2001) "
+  "if the IVISPECAN_ATTR_MARKER_ENABLED [MKR] attribute is set to "
+  "False."
+
+2 all "Marker Frequency Counter Resolution [MKR]" IVISPECAN_ATTR_MARKER_FREQUENCY_COUNTER_RESOLUTION ViReal64 gs
+  "Specifies the resolution of the frequency counter in Hertz.  The "
+  "measurement gate time is the reciprocal of the specified resolution."
+
+2 all "Marker Position [MKR]" IVISPECAN_ATTR_MARKER_POSITION ViReal64 gs
+  "Specifies the frequency or time position of the active marker (depending "
+  "on the mode in which the analyzer is operating, frequency or time-domain). "
+  "This attribute returns the Marker Not Enabled error  (0xBFFA2001) if the "
+  "active marker is not enabled."
+
+2 all "Marker Threshold [MKR]" IVISPECAN_ATTR_MARKER_THRESHOLD ViReal64 gs
+  "Specifies the lower limit of the search domain vertical range for the "
+  "IviSpecAn_MarkerSearch [MKR] function."
+
+2 all "Marker Trace [MKR]" IVISPECAN_ATTR_MARKER_TRACE ViString gs
+  "Specifies the trace for the active marker."
+
+2 all "Number of Markers [MKR]" IVISPECAN_ATTR_MARKER_COUNT ViInt32 g
+  "Returns the number of markers available for the instrument."
+
+2 all "Peak Excursion [MKR]" IVISPECAN_ATTR_PEAK_EXCURSION ViReal64 gs
+  "Specifies the minimum amplitude variation of the signal in dB that the "
+  "IviSpecAn_MarkerSearch [MKR] function identifies as a peak."
+
+2 all "Signal Track Enabled [MKR]" IVISPECAN_ATTR_SIGNAL_TRACK_ENABLED ViBoolean gs Boolean_values
+  "Enables or disables signal tracking.  When signal tracking is turned on, "
+  "the spectrum analyzer centers the signal after each sweep.  This process "
+  "invalidates the the IVISPECAN_ATTR_FREQUENCY_START and "
+  "IVISPECAN_ATTR_FREQUENCY_STOP attributes.If the active marker "
+  "is not enabled, operations on this attribute return the Marker Not Enabled "
+  "(0xBFFA2001) error. \n"
+  "\n"
+  "Note: Signal tracking can only be enabled on one marker at any given "
+  "time."
+
+2 all "Marker Type"
+  "Attributes to control and configure the type of marker used by the "
+  "spectrum analyzer."
+
+3 all "Marker Type [MKT]" IVISPECAN_ATTR_MARKER_TYPE ViInt32 g attrMarkerTypeRangeTable
+  "Returns the marker type of the active marker."
+
+2 all "Delta Marker"
+  "Delta Marker attributes configuration"
+
+3 all "Reference Marker Amplitude [DMK]" IVISPECAN_ATTR_REFERENCE_MARKER_AMPLITUDE ViReal64 g
+  "Returns the reference marker amplitude when the active marker is a delta "
+  "marker. The units are specified by the IVISPECAN_ATTR_AMPLITUDE_UNITS "
+  "attribute. If the Marker Type attribute is not "
+  "Delta, this attribute returns the Not Delta Marker error (0xBFFA2002)."
+
+3 all "Reference Marker Position [DMK]" IVISPECAN_ATTR_REFERENCE_MARKER_POSITION ViReal64 g
+  "Returns the position of the reference marker, when the active marker is a "
+  "delta marker.  The units are Hertz for frequency domain measurements, and "
+  "seconds for time domain measurements.  If the Marker Type attribute is not "
+  "Delta, this attribute returns the Not Delta Marker error (0xBFFA2002)."
+
+1 all "Trigger"
+  "Attributes for trigger configuration and control."
+
+2 all "Trigger Source [TRG]" IVISPECAN_ATTR_TRIGGER_SOURCE ViInt32 gs attrTriggerSourceRangeTable
+  "Specifies the source of the trigger signal that causes the analyzer to "
+  "leave the Wait-For-Trigger state. "
+
+2 all "External Trigger"
+  "Attributes to configure and control external triggers"
+
+3 all "External Trigger Level [EXT]" IVISPECAN_ATTR_EXTERNAL_TRIGGER_LEVEL ViReal64 gs
+  "Specifies the level, in Volts, of the external trigger signal to trigger "
+  "an acquisition."
+
+3 all "External Trigger Slope [EXT]" IVISPECAN_ATTR_EXTERNAL_TRIGGER_SLOPE ViInt32 gs attrExternalTriggerSlopeRangeTable
+  "Specifies the slope of the external trigger signal to trigger an "
+  "acquisition."
+
+2 all "Video Trigger"
+  "Attributes to configure and control video triggers"
+
+3 all "Video Trigger Level [VT]" IVISPECAN_ATTR_VIDEO_TRIGGER_LEVEL ViReal64 gs
+  "Specifies the level of the video signal to trigger an acquisition.  The "
+  "units are specified by the IVISPECAN_ATTR_AMPLITUDE_UNITS "
+  "attribute."
+
+3 all "Video Trigger Slope [VT]" IVISPECAN_ATTR_VIDEO_TRIGGER_SLOPE ViInt32 gs attrVideoTriggerSlopeRangeTable
+  "Specifies the slope of the video signal to trigger an acquisition."
+
+1 all "Display Control"
+  "Attributes to configure and control the instrument's front panel "
+  "display."
+
+2 all "Units Per Division [DSP]" IVISPECAN_ATTR_UNITS_PER_DIVISION ViReal64 gs
+  "Specifies the number of vertical units in one screen division. This is "
+  "typically used in conjunction with the IVISPECAN_ATTR_REFERENCE_LEVEL "
+  "attribute to set the vertical range of the "
+  "spectrum analyzer."
+
+2 all "Number of Divisions [DSP]" IVISPECAN_ATTR_NUMBER_OF_DIVISIONS ViInt32 g
+  "Specifies the number of divisions."
+
+1 all "External Mixing"
+  "Attributes to configure anc control the use of an external mixer with the "
+  "spectrum analyzer."
+
+2 all "External Mixer Enabled [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_ENABLED ViBoolean gs Boolean_values
+  "Enables the external mixer."
+
+2 all "External Mixer Number of Ports [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_NUMBER_OF_PORTS ViInt32 gs
+  "Selects the number of ports used in external mixing."
+
+2 all "External Mixer Harmonic [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_HARMONIC ViInt32 gs
+  "Specifies the order n of the harmonic used for conversion. "
+
+2 all "External Mixer Average Conversion Loss [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_AVERAGE_CONVERSION_LOSS ViReal64 gs
+  "Specifies the average conversion loss."
+
+2 all "External Mixer Conversion Loss Table Enabled [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_CONVERSION_LOSS_TABLE_ENABLED ViBoolean gs Boolean_values
+  "Enables or disables the conversion loss table."
+
+2 all "Bias Enabled [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_BIAS_ENABLED ViBoolean gs Boolean_values
+  "Enables the external mixer's bias."
+
+2 all "Bias [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_BIAS ViReal64 gs
+  "Specifies the external mixer bias current in Amps."
+
+2 all "Bias Limit [EM]" IVISPECAN_ATTR_EXTERNAL_MIXER_BIAS_LIMIT ViReal64 gs
+  "Specifies the external mixer bias current limit in Amps."
+

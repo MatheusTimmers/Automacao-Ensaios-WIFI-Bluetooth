@@ -1,0 +1,757 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+v Boolean_values
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+v attrScanModeRangeTable DataType="i" 
+ IVISWTCH_VAL_NONE (0)
+  "No implicit action on connections when scanning"
+
+ IVISWTCH_VAL_BREAK_BEFORE_MAKE (1)
+  "When scanning, the switch module breaks existing connections before "
+  "making new connections."
+
+ IVISWTCH_VAL_BREAK_AFTER_MAKE (2)
+  "When scanning, the switch module breaks existing connections after "
+  "making new connections."
+
+v attrTriggerInputRangeTable DataType="i" 
+ IVISWTCH_VAL_IMMEDIATE (1)
+  "Immediate Trigger. The switch module does not wait "
+  "for a trigger before processing the next entry in the "
+  "scan list."
+
+ IVISWTCH_VAL_EXTERNAL (2)
+  "External Trigger. The switch module waits until it receives a trigger "
+  "from an external source through the external trigger input before "
+  "processing the next entry in the scan list."
+
+ IVISWTCH_VAL_SOFTWARE_TRIG (3)
+  "The switch module waits until you call the IviSwtch_SendSoftwareTrigger function "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL0 (111)
+  "The switch module waits until it receives a trigger on the VXIbus TTL0 or "
+  "PXI TRIG0 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL1 (112)
+  "The switch module waits until it receives a trigger on the VXIbus TTL1 or "
+  "PXI TRIG1 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL2 (113)
+  "The switch module waits until it receives a trigger on the VXIbus TTL2 or "
+  "PXI TRIG2 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL3 (114)
+  "The switch module waits until it receives a trigger on the VXIbus TTL3 or "
+  "PXI TRIG3 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL4 (115)
+  "The switch module waits until it receives a trigger on the VXIbus TTL4 or "
+  "PXI TRIG4 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL5 (116)
+  "The switch module waits until it receives a trigger on the VXIbus TTL5 or "
+  "PXI TRIG5 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL6 (117)
+  "The switch module waits until it receives a trigger on the VXIbus TTL6 or "
+  "PXI TRIG6 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_TTL7 (118)
+  "The switch module waits until it receives a trigger on the VXIbus TTL7 or "
+  "PXI TRIG7 line before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_ECL0 (119)
+  "The switch module waits until it receives a trigger on the VXIbus ECL0 line "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_ECL1 (120)
+  "The switch module waits until it receives a trigger on the VXIbus ECL1 line "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_PXI_STAR (125)
+  "The switch module waits until it receives a trigger on the PXI STAR trigger bus "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_0 (140)
+  "The switch module waits until it receives a trigger on RTSI line 0 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_1 (141)
+  "The switch module waits until it receives a trigger on RTSI line 1 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_2 (142)
+  "The switch module waits until it receives a trigger on RTSI line 2 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_3 (143)
+  "The switch module waits until it receives a trigger on RTSI line 3 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_4 (144)
+  "The switch module waits until it receives a trigger on RTSI line 4 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_5 (145)
+  "The switch module waits until it receives a trigger on RTSI line 5 "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_6 (146)
+  "The switch module waits until it receives a trigger on RTSI line 6 "
+  "before processing the next entry in the scan list."
+
+v attrScanAdvancedOutputRangeTable DataType="i" 
+ IVISWTCH_VAL_NONE (0)
+  "The switch module does not produce a Scan Advanced Output trigger."
+
+ IVISWTCH_VAL_EXTERNAL (2)
+  "External Trigger. The switch module produces the Scan Advanced Output "
+  "trigger on the external trigger output."
+
+ IVISWTCH_VAL_GPIB_SRQ (5)
+  "The switch module produces the GPIB Service Request "
+  "in place of the Scan Advanced Output trigger."
+
+ IVISWTCH_VAL_TTL0 (111)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL0 or "
+  "PXI TRIG0 line."
+
+ IVISWTCH_VAL_TTL1 (112)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL1 or "
+  "PXI TRIG1 line."
+
+ IVISWTCH_VAL_TTL2 (113)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL2 or "
+  "PXI TRIG2 line."
+
+ IVISWTCH_VAL_TTL3 (114)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL3 or "
+  "PXI TRIG3 line."
+
+ IVISWTCH_VAL_TTL4 (115)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL4 or "
+  "PXI TRIG4 line."
+
+ IVISWTCH_VAL_TTL5 (116)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL5 or "
+  "PXI TRIG5 line."
+
+ IVISWTCH_VAL_TTL6 (117)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL6 or "
+  "PXI TRIG6 line."
+
+ IVISWTCH_VAL_TTL7 (118)
+  "The switch module produces the Scan Advanced Output on the VXIbus TTL7 or "
+  "PXI TRIG7 line."
+
+ IVISWTCH_VAL_ECL0 (119)
+  "The switch module produces the Scan Advanced Output on the VXIbus ECL0 line."
+
+ IVISWTCH_VAL_ECL1 (120)
+  "The switch module produces the Scan Advanced Output on the VXIbus ECL1 line."
+
+ IVISWTCH_VAL_PXI_STAR (125)
+  "The switch module produces the Scan Advanced Output on the PXI STAR trigger bus "
+  "before processing the next entry in the scan list."
+
+ IVISWTCH_VAL_RTSI_0 (140)
+  "The switch module produces the Scan Advanced Output on RTSI line 0."
+
+ IVISWTCH_VAL_RTSI_1 (141)
+  "The switch module produces the Scan Advanced Output on RTSI line 1."
+
+ IVISWTCH_VAL_RTSI_2 (142)
+  "The switch module produces the Scan Advanced Output on RTSI line 2."
+
+ IVISWTCH_VAL_RTSI_3 (143)
+  "The switch module produces the Scan Advanced Output on RTSI line 3."
+
+ IVISWTCH_VAL_RTSI_4 (144)
+  "The switch module produces the Scan Advanced Output on RTSI line 4."
+
+ IVISWTCH_VAL_RTSI_5 (145)
+  "The switch module produces the Scan Advanced Output on RTSI line 5."
+
+ IVISWTCH_VAL_RTSI_6 (146)
+  "The switch module produces the Scan Advanced Output on RTSI line 6."
+
+v attrWireModeRangeTable DataType="i" 
+ IVISWTCH_VAL_1_WIRE (1)
+  "Single-wire mode. Each channel corresponds to one I/O line"
+
+ IVISWTCH_VAL_2_WIRE (2)
+  "Two-wire mode. Each channel corresponds to two I/O lines"
+
+ IVISWTCH_VAL_3_WIRE (3)
+  "Three-wire mode. Each channel corresponds to three I/O lines"
+
+ IVISWTCH_VAL_4_WIRE (4)
+  "Four-wire mode. Each channel corresponds to four I/O lines"
+
+0 IviSwtch_SetAttributeViInt32     3 4 false s  DataType="ViInt32"
+0 IviSwtch_GetAttributeViInt32     3 4 false g  DataType="ViInt32"
+0 IviSwtch_CheckAttributeViInt32   3 4 false s  DataType="ViInt32"
+0 IviSwtch_SetAttributeViReal64    3 4 false s  DataType="ViReal64"
+0 IviSwtch_GetAttributeViReal64    3 4 false g  DataType="ViReal64"
+0 IviSwtch_CheckAttributeViReal64  3 4 false s  DataType="ViReal64"
+0 IviSwtch_SetAttributeViString    3 4 false s  DataType="ViString"
+0 IviSwtch_GetAttributeViString    3 5 false g  DataType="ViString"
+0 IviSwtch_CheckAttributeViString  3 4 false s  DataType="ViString"
+0 IviSwtch_SetAttributeViBoolean   3 4 false s  DataType="ViBoolean"
+0 IviSwtch_GetAttributeViBoolean   3 4 false g  DataType="ViBoolean"
+0 IviSwtch_CheckAttributeViBoolean 3 4 false s  DataType="ViBoolean"
+0 IviSwtch_SetAttributeViSession   3 4 false s  DataType="ViSession"
+0 IviSwtch_GetAttributeViSession   3 4 false g  DataType="ViSession"
+0 IviSwtch_CheckAttributeViSession 3 4 false s  DataType="ViSession"
+
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVISWTCH_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that "
+ "you pass to driver functions.  Range checking "
+ "parameters is very useful for debugging.  After you validate your program, "
+ "you can set this attribute to VI_FALSE to disable range checking and "
+ "maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviSwtch_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVISWTCH_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful "
+ "for debugging.  After you validate your program, you can set this "
+ "attribute to VI_FALSE to disable status checking and maximize "
+ "performance\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is FALSE.   Use the "
+ "IviSwtch_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVISWTCH_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  "
+ "When caching is enabled, the instrument driver keeps track of "
+ "the current instrument settings and avoids sending redundant commands to "
+ "the instrument.  Thus, you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviSwtch_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Simulate" IVISWTCH_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O "
+ "operations.  If simulation is enabled, instrument driver "
+ "functions perform range checking and set and get attributes, "
+ "but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviSwtch_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVISWTCH_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVISWTCH_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Record Value Coercions" IVISWTCH_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVISWTCH_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVISWTCH_ATTR_SPY is set to VI_FALSE "
+ "you call IviSwtch_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviSwtch_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Interchange Check" IVISWTCH_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+  "Specifies whether to perform interchangeability checking and retrieve "
+ "interchangeability warnings when you call the "
+ "IviSwtch_Connect, IviSwtch_SetPath, and IviSwtch_InitiateScan functions.  "
+ "The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVISWTCH_ATTR_SPY is set to VI_FALSE, you call "
+ "IviSwtch_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviSwtch_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"
+ 
+ "If IVISWTCH_ATTR_SPY is set to VI_TRUE, you can use the NI I/O Trace utility to view "
+ "interchange warnings.\n"
+ 
+ "     Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviSwtch class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviSwtch "
+ "class.\n\n"
+
+ "(3) The IviSwtch class defines an attribute as read-only and you "  
+ "have set that attribute.\n\n"
+ 
+3 all "Spy" IVISWTCH_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVISWTCH_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVISWTCH_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVISWTCH_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Major Version" IVISWTCH_ATTR_CLASS_DRIVER_MAJOR_VERSION ViInt32 g 
+ "The major version number of the class driver.\n"
+ "    "
+
+3 all "Minor Version" IVISWTCH_ATTR_CLASS_DRIVER_MINOR_VERSION ViInt32 g 
+ "The minor version number of the class driver.\n"
+ "    "
+
+3 all "Revision" IVISWTCH_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVISWTCH_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVISWTCH_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVISWTCH_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVISWTCH_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVISWTCH_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVISWTCH_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVISWTCH_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVISWTCH_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVISWTCH_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviSwtch capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviSwtch\" - Supports fundamental switch capabilities.\n\n"
+ "\"IviSwtchScanner\" - Supports IviSwtch with the capability to scan "
+ "channels.\n\n"
+ "\"IviSwtchSoftwareTrigger\" - Supports IviSwtchScanner with the capability "
+ "to receive software triggers.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVISWTCH_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviSwtch functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviSwtch_init\"\n"
+ "    \"IviSwtch_close\"\n"
+ "    \"IviSwtch_reset\"\n"
+ "    \"IviSwtch_self_test\"\n"
+ "    \"IviSwtch_error_query\"\n"
+ "    \"IviSwtch_error_message\"\n"
+ "    \"IviSwtch_revision_query\"\n"
+ "    \"IviSwtch_Connect\"\n"
+ "    \"IviSwtch_Disconnect\"\n"
+ "    \"IviSwtch_GetPath\"\n"
+ "    \"IVISwtch_SetPath\"\n"
+ "    \"IviSwtch_CanConnect\"\n"
+ "    \"IviSwtch_DisconnectAll\"\n"
+ "    \"IviSwtch_IsDebounced\"\n"
+ "    \"IviSwtch_WaitForDebounce\"\n"
+ "    \"IviSwtch_InitiateScan\"\n"
+ "    \"IviSwtch_AbortScan\"\n"
+ "    \"IviSwtch_IsScanning\"\n"
+ "    \"IviSwtch_WaitForScanComplete\"\n"
+ "    \"IviSwtch_ConfigureScanList\"\n"
+ "    \"IviSwtch_ConfigureScanTrigger\"\n"
+ "    \"IviSwtch_SendSoftwareTrigger\"\n"
+ "    "
+
+3 all "Channel Count" IVISWTCH_ATTR_CHANNEL_COUNT ViInt32 g
+ "Indicates the number of channels that the specific driver supports.  \n"
+ "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag attribute "
+ "is set, the instrument driver maintains a separate cache value for each channel.\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVISWTCH_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVISWTCH_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVISWTCH_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVISWTCH_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviSwtch_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVISWTCH_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviSwtch_init or "
+ "IviSwtch_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVISWTCH_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+
+1 all "Channel Configuration"
+ "Attributes you use to configure the characteristics "
+ "of a particular channel on a switch module."
+ 
+2 all "Is Source Channel" IVISWTCH_ATTR_IS_SOURCE_CHANNEL ViBoolean gs Boolean_values
+ "This channel-based attribute specifies whether you want to identify the channel as a "
+ "source channel.  Typically, you set this attribute to VI_TRUE when "
+ "you attach the channel to a power supply, a function generator, or an active measurement "
+ "point on the unit under test, and you do not want to connect the channel to "
+ "another source.  The driver prevents source channels from connecting to each other.  The IviSwtch_Connect "
+ "function returns the IVISWTCH_ERROR_ATTEMPT_TO_CONNECT_SOURCES when you "
+ "attempt to connect two channels that you identify as source channels.\n"
+ ""    "
+
+2 all "Is Configuration Channel" IVISWTCH_ATTR_IS_CONFIGURATION_CHANNEL ViBoolean gs Boolean_values
+ "This channel-based attribute specifies whether to reserve the channel "
+ "for internal path creation.  A channel that is available for internal "
+ "path creation is called a configuration channel.  The driver may use "
+ "configuration channels to create paths between two channels you specify "
+ "in the IviSwtch_Connect function.  Configuration channels "
+ "are not available for external connections.\n"
+ "    Set this attribute to VI_TRUE to "
+ "mark the channel as a configuration channel.  Set this attribute to VI_FALSE "
+ "to mark the channel as available for external connections.\n"
+ "    After you identify a channel as a configuration channel, you cannot use that "
+ "channel for external connections.  The IviSwtch_Connect function returns the "
+ "IVISWTCH_ERROR_IS_CONFIGURATION_CHANNEL error when you attempt to "
+ "establish a connection between a configuration channel and any other channel.\n"
+ "    "
+
+1 all "Module Characteristics"
+ "Attributes you use to obtain the characteristics of the switch module.\n"
+ "    Note: These attributes are channel-based.  The characteristics of all "
+ "channels in a path determine the characteristics of the path.  For example, "
+ "the maximum current that a path can carry is the minimum of the maximum "
+ "carry currents of the individual switches in the path.\n"
+ "    "
+
+2 all "Is Debounced" IVISWTCH_ATTR_IS_DEBOUNCED ViBoolean g Boolean_values
+ "This attribute indicates whether the entire switch module has settled "
+ "since the last switching command.  A value of VI_TRUE indicates that "
+ "all signals going through the switch module are valid.\n"
+ "    "
+ 
+2 all "Settling Time" IVISWTCH_ATTR_SETTLING_TIME ViReal64 gs
+ "This channel-based attribute returns the maximum length of time from after "
+ "you make a connection until the signal flowing through the channel "
+ "settles.\n"
+ "    The units are seconds.\n"
+ "    "
+
+2 all "Bandwidth" IVISWTCH_ATTR_BANDWIDTH ViReal64 g
+ "This channel-based attribute returns the bandwidth for the channel.\n"
+ "    The units are hertz.\n"
+ "    "
+
+2 all "Maximum DC Voltage" IVISWTCH_ATTR_MAX_DC_VOLTAGE ViReal64 g
+ "This channel-based attribute returns the maximum DC voltage the channel "
+ "can switch.\n"
+ "    The units are volts.\n"
+ "    "
+
+2 all "Maximum AC Voltage" IVISWTCH_ATTR_MAX_AC_VOLTAGE ViReal64 g
+ "This channel-based attribute returns the maximum AC voltage the channel "
+ "can switch.\n"
+ "    The units are volts RMS.\n"
+ "    "
+
+2 all "Maximum Switching DC Current" IVISWTCH_ATTR_MAX_SWITCHING_DC_CURRENT ViReal64 g
+ "This channel-based attribute returns the maximum DC current the channel "
+ "can switch.\n"
+ "    The units are amperes.\n"
+ "    "
+
+2 all "Maximum Switching AC Current" IVISWTCH_ATTR_MAX_SWITCHING_AC_CURRENT ViReal64 g
+ "This channel-based attribute returns the maximum AC current the channel "
+ "can switch.\n"
+ "    The units are amperes RMS.\n"
+ "    "
+
+2 all "Maximum Carry DC Current" IVISWTCH_ATTR_MAX_CARRY_DC_CURRENT ViReal64 g
+ "This channel-based attribute returns the maximum DC current the channel "
+ "can carry.\n"
+ "    The units are amperes.\n"
+ "    "
+
+2 all "Maximum Carry AC Current" IVISWTCH_ATTR_MAX_CARRY_AC_CURRENT ViReal64 g
+ "This channel-based attribute returns the maximum AC current the channel "
+ "can carry.\n"
+ "    The units are amperes RMS.\n"
+ "    "
+
+2 all "Maximum Switching DC Power" IVISWTCH_ATTR_MAX_SWITCHING_DC_POWER ViReal64 g
+ "This channel-based attribute returns the maximum DC power the channel "
+ "can switch.\n"
+ "    The units are watts.\n"
+ "    "
+
+2 all "Maximum Switching AC Power" IVISWTCH_ATTR_MAX_SWITCHING_AC_POWER ViReal64 g
+ "This channel-based attribute returns the maximum AC power the channel "
+ "can switch.\n"
+ "    The units are volt-amperes.\n"
+ "    "
+
+2 all "Maximum Carry DC Power" IVISWTCH_ATTR_MAX_CARRY_DC_POWER ViReal64 g
+ "This channel-based attribute returns the maximum DC power the channel "
+ "can carry.\n"
+ "    The units are watts.\n"
+ "    "
+
+2 all "Maximum Carry AC Power" IVISWTCH_ATTR_MAX_CARRY_AC_POWER ViReal64 g
+ "This channel-based attribute returns the maximum AC power the channel "
+ "can carry.\n"
+ "    The units are volt-amperes.\n"
+ "    "
+
+2 all "Characteristic Impedance" IVISWTCH_ATTR_CHARACTERISTIC_IMPEDANCE ViReal64 g
+ "This channel-based attribute returns the characteristic impedance for "
+ "the channel.\n"
+ "    The units are ohms."
+ "    "
+
+1 all "Scanning Configuration"
+ "Attributes you use to configure a switch module using a scan list string.\n"
+ "    "
+ 
+2 all "Scan List [SCN]" IVISWTCH_ATTR_SCAN_LIST ViString gs
+ "This attribute contains a scan list, which is a string that specifies channel "
+ "connections and trigger conditions.  The IviSwtch_InitiateScan function makes "
+ "or breaks connections and waits for triggers according to the instructions "
+ "in the scan list.\n"
+ "    The scan list is comprised of channel names that you separate with special "
+ "characters.  These special characters determine the operations the scanner "
+ "performs on the channels when it executes this scan list.\n"
+ "\n"
+ "To create a path between two channels, use the following character "
+ "between the two channel names:\n"
+ "    -> (a dash followed by a '>' sign)\n" 
+ "Example: \"CH1->CH2\" tells the switch to make a path from channel CH1 "
+ "to channel CH2.\n"
+ "\n"
+ "To break or clear a path, use the following character as a prefix before the path:\n"
+ "    ~ (tilde)\n"
+ "Example: \"~CH1->CH2\" tells the switch to break the path "
+ "from channel CH1 to channel CH2.\n"
+ "\n" 
+ "To tell the switch module to wait for a trigger event, use the following "
+ "character as a separator between paths:\n"
+ "    ; (semicolon)\n"
+ "Example: \"CH1->CH2;CH3->CH4\" tells the switch to make the "
+ "path from channel CH1 to channel CH2, wait for a trigger, and then "
+ "make the path from CH3 to CH4.\n"
+ "\n"
+ "To tell the switch module to create multiple paths simultaneously, "
+ "use the following character as a separator between the paths:\n"
+ "    , (comma)\n"
+ "Example: \"A->B;CH1->CH2,CH3->CH4\" instructs the scanner to make the "
+ "path between channels A and B, wait for a trigger, and then simultaneously "
+ "make the paths between channels CH1 and CH2 and between channels CH3 "
+ "and CH4.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+ 
+2 all "Scan Mode [SCN]" IVISWTCH_ATTR_SCAN_MODE ViInt32 gs attrScanModeRangeTable
+ "This attribute specifies what happens to existing connections that conflict with "
+ "the connections you make in a scan list.  For example, if CH1 is already connected "
+ "to CH2 and the scan list instructs the switch module to connect CH1 to CH3, this attribute "
+ "specifies what happens to the connection between CH1 and CH2.\n"
+ "    If the value of this attribute is IVISWTCH_VAL_NONE, the switch module takes no action "
+ "on existing paths.  If the value is IVISWTCH_VAL_BREAK_BEFORE_MAKE, the "
+ "switch module breaks conflicting paths before making new ones.  If the value is "
+ "IVISWTCH_VAL_BREAK_AFTER_MAKE, the switch module breaks conflicting "
+ "paths after making new ones.\n" 
+ "    Most switch modules support only one of the possible values.  "
+ "In such cases, this attribute serves as an indicator of the module's behavior.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Continuous Scan [SCN]" IVISWTCH_ATTR_CONTINUOUS_SCAN ViBoolean gs Boolean_values 
+ "This attribute specifies whether the switch module continues scanning from the top of the scan list "
+ "after reaching the end of the list.  A value of VI_TRUE indicates that the switch module continuously scans."
+ "  A value of VI_FALSE indicates that the switch module does not continuously scan.\n"
+ "    If you set this attribute to VI_TRUE, the function IviSwtch_WaitForScanComplete"
+ " always times out, and you must call IviSwtch_AbortScan to stop the scan.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Trigger Input [SCN]" IVISWTCH_ATTR_TRIGGER_INPUT ViInt32 gs attrTriggerInputRangeTable
+ "This attribute specifies the source of the trigger for which the switch "
+ "module can wait when processing a scan list.  The switch module waits for "
+ "a trigger when it encounters a semicolon in a scan list.  When the trigger "
+ "occurs, the switch module advances to the next entry in the scan list.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Scan Advanced Output [SCN]" IVISWTCH_ATTR_SCAN_ADVANCED_OUTPUT ViInt32 gs attrScanAdvancedOutputRangeTable
+ "This attribute specifies the method you want to use to notify another "
+ "instrument that all signals going through the switch module have settled "
+ "following the processing of one entry in the scan list.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Is Scanning [SCN]" IVISWTCH_ATTR_IS_SCANNING ViBoolean g Boolean_values
+ "This attribute indicates whether the switch module has completed the "
+ "scan operation.  The value VI_TRUE indicates that the scan is complete.\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Scan Delay [SCN]" IVISWTCH_ATTR_SCAN_DELAY ViReal64 gs
+ "This attribute specifies the minimum amount of time the switch module "
+ "waits before it asserts the scan advanced output trigger after opening "
+ "or closing the switch.  The switch module always waits for debounce before "
+ "asserting the trigger.  Thus, the actual delay will always be the greater "
+ "value of the settling time and the value you specify as the switch delay.\n"
+ "The units are seconds.\n"
+ "    Due to different designs of the switch modules, the actual time "
+ "might be longer.  \n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+1 all "Matrix Configuration"
+ "Attributes you use to configure a matrix switch module.\n" 
+ "    "
+
+2 all "Number of Rows [SCN]" IVISWTCH_ATTR_NUM_OF_ROWS ViInt32 g
+ "This attribute returns the number of rows of a matrix or "
+ "scanner.  If the switch module is a scanner, this value is the number of "
+ "output channels.\n"
+ "    The IVISWTCH_ATTR_WIRE_MODE attribute affects the number "
+ "of available rows.  For example, if your module has 2 output lines and "
+ "you use the two-wire mode, then the number of rows you have available "
+ "is 1.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+
+2 all "Number of Columns [SCN]" IVISWTCH_ATTR_NUM_OF_COLUMNS ViInt32 g
+ "This attribute returns the number of columns of a matrix "
+ "or scanner.  If the switch module is a scanner, this value is the number "
+ "of input channels.\n"
+ "    The IVISWTCH_ATTR_WIRE_MODE attribute affects the number "
+ "of available columns.  For example, if your module has 8 input lines and "
+ "you use the four-wire mode, then the number of columns you have available "
+ "is 2.\n\n"
+ "Notes:\n\n"
+ "(1) This attribute is part of the IviSwtchScanner [SCN] extension group.\n"
+ "    "
+ 
+2 all "Wire mode" IVISWTCH_ATTR_WIRE_MODE ViInt32 g attrWireModeRangeTable
+ "This attribute specifies the wire mode of the switch module.\n"
+ "    This attribute affects the values of the IVISWTCH_ATTR_NUM_OF_ROWS "
+ "and IVISWTCH_ATTR_NUM_OF_COLUMNS attributes.   The actual number of input "
+ "and output lines on the switch module is fixed, but the number of channels "
+ "depends on how many lines constitute each channel.\n"
+ "    "

@@ -1,0 +1,1026 @@
+FPAttributeValueFile
+
+n  SubType="IVI" 
+
+n  SubVersion="1" 
+
+
+v attrAutoZeroRangeTable DataType="i" 
+ IVIDMM_VAL_AUTO_ZERO_OFF (0)
+  "Disables the DMM from taking any more Zero Readings.  The DMM subtracts "
+  "the last Zero Reading from all subsequent values it measures."
+
+ IVIDMM_VAL_AUTO_ZERO_ON (1)
+  "Configures the DMM to take a Zero Reading for each measurement.  The DMM "
+  "subtracts the Zero Reading from the value it measures."
+
+ IVIDMM_VAL_AUTO_ZERO_ONCE (2)
+  "Configures the DMM to take a Zero Reading immediately.  The DMM then "
+  "subtracts this Zero Reading from all subsequent values it measures."
+
+
+v attrFunctionRangeTable DataType="i" 
+ IVIDMM_VAL_DC_VOLTS (1)
+  "DC Volts"
+
+ IVIDMM_VAL_AC_VOLTS (2)
+  "AC Volts"
+
+ IVIDMM_VAL_DC_CURRENT (3)
+  "DC Current"
+
+ IVIDMM_VAL_AC_CURRENT (4)
+  "AC Current"
+
+ IVIDMM_VAL_2_WIRE_RES (5)
+  "2 Wire Resistance"
+
+ IVIDMM_VAL_4_WIRE_RES (101)
+  "4 Wire Resistance"
+
+ IVIDMM_VAL_AC_PLUS_DC_VOLTS (106)
+  "AC + DC Volts"
+
+ IVIDMM_VAL_AC_PLUS_DC_CURRENT (107)
+  "AC + DC Current"
+
+ IVIDMM_VAL_FREQ (104)
+  "Frequency"
+
+ IVIDMM_VAL_PERIOD (105)
+  "Period"
+
+ IVIDMM_VAL_TEMPERATURE (108)
+  "Temperature"
+
+
+v attrTempTransducerTypeRangeTable DataType="i" 
+ IVIDMM_VAL_THERMOCOUPLE (1)
+  "Thermocouple"
+
+ IVIDMM_VAL_THERMISTOR (2)
+  "Thermistor"
+
+ IVIDMM_VAL_2_WIRE_RTD (3)
+  "2-Wire Resistance Temperature Device"
+
+ IVIDMM_VAL_4_WIRE_RTD (4)
+  "4-Wire Resistance Temperature Device"
+
+
+v attrTempTcRefJuncTypeRangeTable DataType="i" 
+ IVIDMM_VAL_TEMP_REF_JUNC_INTERNAL (1)
+  "Internal Sensor"
+
+ IVIDMM_VAL_TEMP_REF_JUNC_FIXED (2)
+  "Fixed Value"
+
+
+v attrTempTcTypeRangeTable DataType="i" 
+ IVIDMM_VAL_TEMP_TC_B (1)
+  "B-type"
+
+ IVIDMM_VAL_TEMP_TC_C (2)
+  "C-type"
+
+ IVIDMM_VAL_TEMP_TC_D (3)
+  "D-type"
+
+ IVIDMM_VAL_TEMP_TC_E (4)
+  "E-type"
+
+ IVIDMM_VAL_TEMP_TC_G (5)
+  "G-type"
+
+ IVIDMM_VAL_TEMP_TC_J (6)
+  "J-type"
+
+ IVIDMM_VAL_TEMP_TC_K (7)
+  "K-type"
+
+ IVIDMM_VAL_TEMP_TC_N (8)
+  "N-type"
+
+ IVIDMM_VAL_TEMP_TC_R (9)
+  "R-type"
+
+ IVIDMM_VAL_TEMP_TC_S (10)
+  "S-type"
+
+ IVIDMM_VAL_TEMP_TC_T (11)
+  "T-type"
+
+ IVIDMM_VAL_TEMP_TC_U (12)
+  "U-type"
+
+ IVIDMM_VAL_TEMP_TC_V (13)
+  "V-type"
+
+
+v attrMeasCompleteDestRangeTable DataType="i" 
+ IVIDMM_VAL_NONE (-1)
+  "The DMM does not send the measurement-complete signal."
+
+ IVIDMM_VAL_EXTERNAL (2)
+  "The DMM sends the measurement-complete signal on the external trigger line."
+
+ IVIDMM_VAL_TTL0 (111)
+  "The DMM sends the measurement-complete signal on TTL0 line."
+
+ IVIDMM_VAL_TTL1 (112)
+  "The DMM sends the measurement-complete signal on TTL1 line."
+
+ IVIDMM_VAL_TTL2 (113)
+  "The DMM sends the measurement-complete signal on TTL2 line."
+
+ IVIDMM_VAL_TTL3 (114)
+  "The DMM sends the measurement-complete signal on TTL3 line."
+
+ IVIDMM_VAL_TTL4 (115)
+  "The DMM sends the measurement-complete signal on TTL4 line."
+
+ IVIDMM_VAL_TTL5 (116)
+  "The DMM sends the measurement-complete signal on TTL5 line."
+
+ IVIDMM_VAL_TTL6 (117)
+  "The DMM sends the measurement-complete signal on TTL6 line."
+
+ IVIDMM_VAL_TTL7 (118)
+  "The DMM sends the measurement-complete signal on TTL7 line."
+
+ IVIDMM_VAL_ECL0 (119)
+  "The DMM sends the measurement-complete signal on ECL0 line."
+
+ IVIDMM_VAL_ECL1 (120)
+  "The DMM sends the measurement-complete signal on ECL1 line."
+
+ IVIDMM_VAL_PXI_STAR (131)
+  "The DMM sends the measurement-complete signal on PXI STAR bus."
+
+ IVIDMM_VAL_RTSI_0 (140)
+  "The DMM sends the measurement-complete signal on RTSI line 0 ."
+
+ IVIDMM_VAL_RTSI_1 (141)
+  "The DMM sends the measurement-complete signal on RTSI line 1."
+
+ IVIDMM_VAL_RTSI_2 (142)
+  "The DMM sends the measurement-complete signal on RTSI line 2."
+
+ IVIDMM_VAL_RTSI_3 (143)
+  "The DMM sends the measurement-complete signal on RTSI line 3."
+
+ IVIDMM_VAL_RTSI_4 (144)
+  "The DMM sends the measurement-complete signal on RTSI line 4."
+
+ IVIDMM_VAL_RTSI_5 (145)
+  "The DMM sends the measurement-complete signal on RTSI line 5."
+
+ IVIDMM_VAL_RTSI_6 (146)
+  "The DMM sends the measurement-complete signal on RTSI line 6."
+  
+
+v attrSampleTriggerRangeTable DataType="i" 
+ IVIDMM_VAL_IMMEDIATE (1)
+  "The DMM does not wait for a trigger of any kind between measurements."
+
+ IVIDMM_VAL_EXTERNAL (2)
+  "The DMM waits between measurements for a trigger on the external trigger "
+  "input."
+
+ IVIDMM_VAL_SOFTWARE_TRIG (3)
+  "The DMM waits between measurements until you call the "
+  "IviDmm_SendSoftwareTrigger function."
+
+ IVIDMM_VAL_INTERVAL (10)
+  "The DMM waits between measurements for the length of time you specify "
+  "with the IVIDMM_ATTR_SAMPLE_INTERVAL attribute."
+
+ IVIDMM_VAL_TTL0 (111)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL0 line."
+
+ IVIDMM_VAL_TTL1 (112)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL1 line."
+
+ IVIDMM_VAL_TTL2 (113)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL2 line."
+
+ IVIDMM_VAL_TTL3 (114)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL3 line."
+
+ IVIDMM_VAL_TTL4 (115)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL4 line."
+
+ IVIDMM_VAL_TTL5 (116)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL5 line."
+
+ IVIDMM_VAL_TTL6 (117)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL6 line."
+
+ IVIDMM_VAL_TTL7 (118)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "TTL7 line."
+
+ IVIDMM_VAL_ECL0 (119)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "ECL0 line."
+
+ IVIDMM_VAL_ECL1 (120)
+  "The DMM waits between measurements until it receives a trigger on the "
+  "ECL1 line."
+
+ IVIDMM_VAL_PXI_STAR (131)
+  "The DMM waits between measurements until it receives a trigger on the PXI "
+  "STAR bus."
+
+ IVIDMM_VAL_RTSI_0 (140)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 0 ."
+
+ IVIDMM_VAL_RTSI_1 (141)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 1."
+
+ IVIDMM_VAL_RTSI_2 (142)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 2."
+
+ IVIDMM_VAL_RTSI_3 (143)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 3."
+
+ IVIDMM_VAL_RTSI_4 (144)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 4."
+
+ IVIDMM_VAL_RTSI_5 (145)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 5."
+
+ IVIDMM_VAL_RTSI_6 (146)
+  "The DMM waits between measurements until it receives a trigger on the RTSI line 6."
+
+v attrTriggerSlopeRangeTable DataType="i" 
+ IVIDMM_VAL_POSITIVE (0)
+  "Positive slope"
+
+ IVIDMM_VAL_NEGATIVE (1)
+  "Negative slope"
+
+
+v attrTriggerSourceRangeTable DataType="i" 
+ IVIDMM_VAL_IMMEDIATE (1)
+  "The DMM does not wait for a trigger of any kind."
+
+ IVIDMM_VAL_EXTERNAL (2)
+  "The DMM waits for a trigger on the external trigger input."
+
+ IVIDMM_VAL_SOFTWARE_TRIG (3)
+  "The DMM waits until you call the IviDmm_SendSoftwareTrigger function."
+
+ IVIDMM_VAL_TTL0 (111)
+  "The DMM waits until it receives a trigger on the PXI TRIG0 line (for PXI "
+  "instruments) or the VXI TTL0 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL1 (112)
+  "The DMM waits until it receives a trigger on the PXI TRIG1 line (for PXI "
+  "instruments) or the VXI TTL1 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL2 (113)
+  "The DMM waits until it receives a trigger on the PXI TRIG2 line (for PXI "
+  "instruments) or the VXI TTL2 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL3 (114)
+  "The DMM waits until it receives a trigger on the PXI TRIG3 line (for PXI "
+  "instruments) or the VXI TTL3 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL4 (115)
+  "The DMM waits until it receives a trigger on the PXI TRIG4 line (for PXI "
+  "instruments) or the VXI TTL4 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL5 (116)
+  "The DMM waits until it receives a trigger on the PXI TRIG5 line (for PXI "
+  "instruments) or the VXI TTL5 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL6 (117)
+  "The DMM waits until it receives a trigger on the PXI TRIG6 line (for PXI "
+  "instruments) or the VXI TTL6 line (for VXI instruments)."
+
+ IVIDMM_VAL_TTL7 (118)
+  "The DMM waits until it receives a trigger on the PXI TRIG7 line (for PXI "
+  "instruments) or the VXI TTL7 line (for VXI instruments)."
+
+ IVIDMM_VAL_ECL0 (119)
+  "The DMM waits until it receives a trigger on the VXI ECL0 line."
+
+ IVIDMM_VAL_ECL1 (120)
+  "The DMM waits until it receives a trigger on the VXI ECL1 line."
+
+ IVIDMM_VAL_PXI_STAR (131)
+  "The DMM waits until it receives a trigger on the PXI STAR trigger bus."
+
+ IVIDMM_VAL_RTSI_0 (140)
+  "The DMM waits until it receives a trigger on RTSI line 0 ."
+
+ IVIDMM_VAL_RTSI_1 (141)
+  "The DMM waits until it receives a trigger on RTSI line 1."
+
+ IVIDMM_VAL_RTSI_2 (142)
+  "The DMM waits until it receives a trigger on RTSI line 2."
+
+ IVIDMM_VAL_RTSI_3 (143)
+  "The DMM waits until it receives a trigger on RTSI line 3."
+
+ IVIDMM_VAL_RTSI_4 (144)
+  "The DMM waits until it receives a trigger on RTSI line 4."
+
+ IVIDMM_VAL_RTSI_5 (145)
+  "The DMM waits until it receives a trigger on RTSI line 5."
+
+ IVIDMM_VAL_RTSI_6 (146)
+  "The DMM waits until it receives a trigger on RTSI line 6."
+
+
+v attrTriggerDelayRangeTable DataType="d" 
+ IVIDMM_VAL_AUTO_DELAY_ON (-1.0)
+  "Configures the DMM to calculate the trigger delay before each measurement."
+
+ IVIDMM_VAL_AUTO_DELAY_OFF (-2.0)
+  "Stops the DMM from calculating the trigger delay.  Sets the trigger delay "
+  "to the last trigger delay the DMM calculated.\n"
+
+
+v attrApertureTimeUnitsRangeTable DataType="i" 
+ IVIDMM_VAL_SECONDS (0)
+  "Seconds"
+
+ IVIDMM_VAL_POWER_LINE_CYCLES (1)
+  "Power Line Cycles"
+
+
+v Boolean_values DataType="i" 
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviDmm_SetAttributeViInt32 3 4 false s DataType="ViInt32" 
+0 IviDmm_GetAttributeViInt32 3 4 false g DataType="ViInt32" 
+0 IviDmm_CheckAttributeViInt32 3 4 false s DataType="ViInt32" 
+0 IviDmm_SetAttributeViReal64 3 4 false s DataType="ViReal64" 
+0 IviDmm_GetAttributeViReal64 3 4 false g DataType="ViReal64" 
+0 IviDmm_CheckAttributeViReal64 3 4 false s DataType="ViReal64" 
+0 IviDmm_SetAttributeViSession 3 4 false s DataType="ViSession" 
+0 IviDmm_GetAttributeViSession 3 4 false g DataType="ViSession" 
+0 IviDmm_CheckAttributeViSession 3 4 false s DataType="ViSession" 
+0 IviDmm_SetAttributeViBoolean 3 4 false s DataType="ViBoolean" 
+0 IviDmm_GetAttributeViBoolean 3 4 false g DataType="ViBoolean" 
+0 IviDmm_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean" 
+0 IviDmm_SetAttributeViString 3 4 false s DataType="ViString" 
+0 IviDmm_GetAttributeViString 3 5 false g DataType="ViString" 
+0 IviDmm_CheckAttributeViString 3 4 false s DataType="ViString" 
+
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVIDMM_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that "
+ "you pass to driver functions.  Range checking "
+ "parameters is very useful for debugging.  After you validate your program, "
+ "you can set this attribute to VI_FALSE to disable range checking and "
+ "maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDmm_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVIDMM_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful "
+ "for debugging.  After you validate your program, you can set this "
+ "attribute to VI_FALSE to disable status checking and maximize "
+ "performance\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDmm_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVIDMM_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  "
+ "When caching is enabled, the instrument driver keeps track of "
+ "the current instrument settings and avoids sending redundant commands to "
+ "the instrument.  Thus, you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDmm_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Simulate" IVIDMM_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O "
+ "operations.  If simulation is enabled, instrument driver "
+ "functions perform range checking and set and get attributes, "
+ "but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDmm_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVIDMM_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVIDMM_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Record Value Coercions" IVIDMM_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVIDMM_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVIDMM_ATTR_SPY is set to VI_FALSE "
+ "you call IviDmm_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviDmm_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Interchange Check" IVIDMM_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to perform interchangeability checking and retrieve "
+ "interchangeability warnings when you call the "
+ "IviDmm_Initiate, IviDmm_Read, and IviDmm_ReadMultiPoint functions.  "
+ "The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVIDMM_ATTR_SPY is set to VI_FALSE, you call "
+ "IviDmm_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviDmm_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"
+ "If IVIDMM_ATTR_SPY is set to VI_TRUE, you can use the NI I/O Trace utility to view "
+ "interchange warnings.\n"
+ 
+ "     Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviDmm class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviDmm "
+ "class.\n\n"
+
+ "(3) The IviDmm class defines an attribute as read-only and you "  
+ "have set that attribute.\n\n"
+ 
+ "     The IviDmm class provides the following additional rules and "
+ "exceptions to these interchangeability checking rules.  They "
+ "are listed under the capability group to which they refer:\n\n"
+ 
+ "(1) IviDmmBase Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_FUNCTION attribute is set to IVIDMM_VAL_TEMPERATURE, "
+ "the IVIDMM_ATTR_RESOLUTION_ABSOLUTE attribute is not required to be in a user specified state.\n\n"
+ 
+ "(2) IviDmmACMeasurement Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_FUNCTION attribute is not set to IVIDMM_VAL_AC_VOLTS, "
+ "IVIDMM_VAL_AC_CURRENT, IVIDMM_VAL_AC_PLUS_DC_VOLTS, or IVIDMM_VAL_AC_PLUS_DC_CURRENT, "
+ "then the IVIDMM_ATTR_AC_MIN_FREQ and IVIDMM_ATTR_AC_MAX_FREQ attributes are not required "
+ "to be in a user specified state.\n\n"
+ 
+ "(3) IviDmmTemperatureMeasurement Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_FUNCTION attribute is not set to IVIDMM_VAL_TEMPERATURE, "
+ "the IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE attribute is not required to be in a user "
+ "specified state.\n\n"
+ 
+ "(4) IviDmmThermocouple Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE attribute is not set to "
+ "IVIDMM_VAL_THERMOCOUPLE, then the IVIDMM_ATTR_TEMP_TC_TYPE, "
+ "IVIDMM_ATTR_TEMP_TC_REF_JUNC_TYPE, and IVIDMM_ATTR_TEMP_TC_FIXED_REF_JUNC "
+ "attributes are not required to be in a user specified state.\n\n"
+ 
+ "(5) IviDmmResistanceTemperatureDevice Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE attribute is not set to "
+ "IVIDMM_VAL_2_WIRE_RTD or IVIDMM_VAL_4_WIRE_RTD, then the IVIDMM_ATTR_TEMP_RTD_ALPHA and "
+ "IVIDMM_ATTR_TEMP_RTD_RES attributes are not required to be in a user specified state.\n\n"
+ 
+ "(6) IviDmmThermistor Capabilities:\n\n"
+
+ " - If the IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE attribute is not set to IVIDMM_VAL_THERMISTOR, "
+ "the IVIDMM_ATTR_TEMP_THERMISTOR_RES attribute is not required to be in a user specified state.\n\n"
+ 
+ "(7) IviDmmMultiPoint Capabilities:\n\n"
+ 
+ " - If the IVIDMM_ATTR_SAMPLE_COUNT attribute is set to 1, then the "
+ "IVIDMM_ATTR_SAMPLE_TRIGGER attribute is not required to be in a user "
+ "specified state.\n\n"
+ 
+ " - If the IVIDMM_ATTR_SAMPLE_COUNT attribute is set 1 and the "
+ "IVIDMM_ATTR_SAMPLE_TRIGGER attribute is set to a value other than "
+ "IVIDMM_VAL_INTERVAL, then the IVIDMM_ATTR_SAMPLE_INTERVAL attribute "
+ "is not required to be in a user specified state.\n"
+ "    "
+
+3 all "Spy" IVIDMM_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVIDMM_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVIDMM_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVIDMM_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVIDMM_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDMM_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDMM_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVIDMM_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVIDMM_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVIDMM_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIDMM_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVIDMM_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDMM_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDMM_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVIDMM_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVIDMM_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviDmm capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviDmmBase\" - Supports fundamental dmm capabilities.\n\n"
+ "\"IviDmmACMeasurement\" - Supports IviDmmBase with the capability to take AC measurements.\n\n"
+ "\"IviDmmFrequencyMeasurement\" - Supports IviDmmBase with the capability to take frequency measurements.\n\n"
+ "\"IviDmmTemperatureMeasurement\" - Supports IviDmmBase with the capability to take temperature measurements.\n\n"
+ "\"IviDmmThermocouple\" - Supports IviDmmBase with the capability to take temperature measurements with a thermocouple.\n\n"
+ "\"IviDmmResistanceTemperatureDevice\" - Supports IviDmmBase with the capability to take temperature measurements with a resistance temperature device.\n\n"
+ "\"IviDmmThermistor\" - Supports IviDmmBase with the capability to take temperature measurements with a thermistor.\n\n"
+ "\"IviDmmMultiPoint\" - Supports IviDmm with the capability to accept multiple triggers and acquire multiple samples per trigger.\n\n"
+ "\"IviDmmTriggerSlope\" - Supports IviDmmBase with the capability to specify trigger slope.\n\n"
+ "\"IviDmmSoftwareTrigger\" - Supports IviDmmBase with the capability to send a software trigger.\n\n"
+ "\"IviDmmDeviceInfo\" - Supports IviDmmBase with the capability to return attributes that give extra information concerning the instrument's state such as aperture time.\n\n"
+ "\"IviDmmAutoRangeValue\" - Supports IviDmmBase with the capability to return the actual range when auto ranging.\n\n"
+ "\"IviDmmAutoZero\" - Supports IviDmmBase with the capability to take an auto-zero reading.\n\n"
+ "\"IviDmmPowerLineFrequency\" - Supports IviDmmBase with the capability to specify the power line frequency.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVIDMM_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviDmm functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviDmm_init\"\n"
+ "    \"IviDmm_close\"\n"
+ "    \"IviDmm_reset\"\n"
+ "    \"IviDmm_self_test\"\n"
+ "    \"IviDmm_error_query\"\n"
+ "    \"IviDmm_error_message\"\n"
+ "    \"IviDmm_revision_query\"\n"
+ "    \"IviDmm_ConfigureMeasurement\"\n"
+ "    \"IviDmm_ConfigureTrigger\"\n"
+ "    \"IviDmm_Read\"\n"
+ "    \"IviDmm_Fetch\"\n"
+ "    \"IviDmm_Abort\"\n"
+ "    \"IviDmm_Initiate\"\n"
+ "    \"IviDmm_IsOverRange\"\n"
+ "    \"IviDmm_ConfigureACBandwidth\"\n"
+ "    \"IviDmm_ConfigureFrequencyVoltageRange\"\n"
+ "    \"IviDmm_ConfigureTransducerType\"\n"
+ "    \"IviDmm_ConfigureFixedRefJunction\"\n"
+ "    \"IviDmm_ConfigureThermocouple\"\n"
+ "    \"IviDmm_ConfigureRTD\"\n"
+ "    \"IviDmm_ConfigureThermistor\"\n"
+ "    \"IviDmm_ConfigureMeasCompleteDest\"\n"
+ "    \"IviDmm_ConfigureMultiPoint\"\n"
+ "    \"IviDmm_ReadMultiPoint\"\n"
+ "    \"IviDmm_FetchMultiPoint\"\n"
+ "    \"IviDmm_ConfigureTriggerSlope\"\n"
+ "    \"IviDmm_SendSoftwareTrigger\"\n"
+ "    \"IviDmm_GetApertureTimeInfo\"\n"
+ "    \"IviDmm_GetAutoRangeValue\"\n"
+ "    \"IviDmm_ConfigureAutoZeroMode\"\n"
+ "    \"IviDmm_ConfigurePowerLineFrequency\"\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVIDMM_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVIDMM_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVIDMM_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVIDMM_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviDmm_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVIDMM_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviDmm_init or "
+ "IviDmm_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVIDMM_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+
+1 all "Basic Operation" 
+ "Attributes that control the basic features of the DMM."
+
+2 all "Function" IVIDMM_ATTR_FUNCTION ViInt32 gs attrFunctionRangeTable 
+ "Specifies the measurement function.\n"
+ "    "
+
+2 all "Range" IVIDMM_ATTR_RANGE ViReal64 gs 
+ "Specifies the measurement range.  You use positive values to represent the "
+ "absolute value of the maximum expected measurement.  The value is in units "
+ "appropriate for the current value of the IVIDMM_ATTR_FUNCTION attribute.  "
+ "For example, when you set the IVIDMM_ATTR_FUNCTION attribute to "
+ "IVIDMM_VAL_DC_VOLTS, the units are volts.  For example, setting this "
+ "attribute to 10.0 configures the DMM to measure DC voltages from -10.0 to "
+ "+10.0 volts.\n"
+ "    Negative values are reserved for controlling the DMM's auto-ranging "
+ "capability.\n"
+ "- IVIDMM_VAL_AUTO_RANGE_ON (-1.0) - Configures the DMM to calculate the "
+ "range before each measurement automatically.\n"
+ "- IVIDMM_VAL_AUTO_RANGE_OFF (-2.0) - Disables auto-ranging.  The DMM sets "
+ "the range to the value it most recently calculated.\n"
+ "- IVIDMM_VAL_AUTO_RANGE_ONCE (-3.0) - Configures the DMM to calculate the "
+ "range before the next measurement.  The DMM uses this range value for all "
+ "subsequent measurements.\n"
+ "    After you set this attribute to IVIDMM_VAL_AUTO_RANGE_OFF or "
+ "IVIDMM_VAL_AUTO_RANGE_ONCE, further queries of this attribute return the "
+ "actual range.\n"
+ "    When you set this attribute to IVIDMM_VAL_AUTO_RANGE_ON, you can "
+ "obtain the actual range the DMM is currently using by getting the value of "
+ "the IVIDMM_ATTR_AUTO_RANGE_VALUE attribute.\n"
+ "\n"
+ "   "
+
+2 all "Resolution" IVIDMM_ATTR_RESOLUTION_ABSOLUTE ViReal64 gs
+ "Specifies the the measurement resolution of the DMM in absolute units.\n"
+ "Setting this attribute to lower values increases the measurement "
+ "accuracy.  Setting this attribute to higher values increases the "
+ "measurement speed.\n\n"
+ "The valid range for this attribute depends on both the measurement function "
+ "and the value of the IVIDMM_ATTR_RANGE attribute.\n"
+ "    "
+
+1 all "Trigger" 
+ "Attributes that configure the triggering capabilities of the DMM.\n"
+ "    "
+
+2 all "Trigger Source" IVIDMM_ATTR_TRIGGER_SOURCE ViInt32 gs attrTriggerSourceRangeTable 
+ "Specifies the trigger source.  After you call either the IviDmm_Read or "
+ "IviDmm_Initiate functions, the DMM waits for the trigger you specify "
+ "with this attribute.  After it receives the trigger, the DMM waits the "
+ "length of time you specify with the IVIDMM_ATTR_TRIGGER_DELAY attribute."
+ "  The DMM then takes a measurement.\n"
+ "    "
+
+2 all "Trigger Delay" IVIDMM_ATTR_TRIGGER_DELAY ViReal64 gs 
+ "Specifies the length of time the DMM waits after it receives the trigger and "
+ "before it takes a measurement.  Use positive values to set the trigger "
+ "delay in seconds.  Negative values are reserved for configuring the DMM to "
+ "calculate the trigger delay automatically.\n"
+ "    Setting this attribute to IVIDMM_VAL_AUTO_DELAY_ON configures the DMM "
+ "to calculate the trigger delay before each measurement.  Setting this "
+ "attribute to IVIDMM_VAL_AUTO_DELAY_OFF stops the DMM from calculating the "
+ "trigger delay and sets the trigger delay to the last automatically "
+ "calculated value.\n"
+ "    "
+
+2 all "Trigger Slope [TS]" IVIDMM_ATTR_TRIGGER_SLOPE ViInt32 gs attrTriggerSlopeRangeTable 
+ "Specifies if the trigger occurs on the rising edge "
+ "(IVIDMM_VAL_POSITIVE) or on the falling edge (IVIDMM_VAL_NEGATIVE) "
+ "of the external trigger source.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmTriggerSlope [TS] extension group.\n"
+ "    "
+
+1 all "AC Measurements" 
+ "Attributes that configure additional parameters for AC "
+ "volts and AC current measurements.\n"
+ "    "
+
+2 all "AC Minimum Frequency [AC]" IVIDMM_ATTR_AC_MIN_FREQ ViReal64 gs  
+ "Specifies the minimum frequency component of the input signal for AC "
+ "measurements. The value of this attribute affects instrument behavior only "
+ "when you set the IVIDMM_ATTR_FUNCTION attribute to an AC measurement.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmAcMeasurement [AC] extension group.\n"
+ "    "
+
+2 all "AC Maximum Frequency [AC]" IVIDMM_ATTR_AC_MAX_FREQ ViReal64 gs 
+ "Specifies the maximum frequency component of the input signal for AC "
+ "measurements. The value of this attribute affects instrument behavior only "
+ "when you set the IVIDMM_ATTR_FUNCTION attribute to an AC measurement.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmAcMeasurement [AC] extension group.\n"
+ "    "
+
+1 all "Frequency Measurements" 
+ "Attributes that configure additional parameters for "
+ "frequency and period measurements.\n"
+ "    "
+
+2 all "Frequency Voltage Range [FRQ]" IVIDMM_ATTR_FREQ_VOLTAGE_RANGE ViReal64 gs  
+ "Specifies the expected maximum value of the input signal for "
+ "frequency and period measurements.  The value of this attribute affects "
+ "instrument behavior only when the IVIDMM_ATTR_FUNCTION attribute is set "
+ "to IVIDMM_VAL_FREQ or IVIDMM_VAL_PERIOD.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmFrequencyMeasurement [FRQ] extension group.\n"
+ "    "
+
+1 all "Temperature Measurements" 
+ "Attribues that configure additional parameters for temperature "
+ "measurements.\n"
+ "    "
+
+2 all "Transducer Type [TMP]" IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE ViInt32 gs attrTempTransducerTypeRangeTable
+ "Specifies the device used to measure the temperature.  The value of this "
+ "attribute affects instrument behavior only when the IVIDMM_ATTR_FUNCTION "
+ "attribute is set to IVIDMM_VAL_TEMPERATURE.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmTemperatureMeasurement [TMP] extension group.\n"
+ "    "
+
+2 all "Thermocouple" 
+ "Attributes for configuring the thermocoulple transducer type.\n"
+ "    "
+
+3 all "Thermocouple Type [TC]" IVIDMM_ATTR_TEMP_TC_TYPE ViInt32 gs attrTempTcTypeRangeTable
+ "Specifies the type of thermocouple used to measure the temperature.  The "
+ "value of this attribute affects instrument behavior only when the "
+ "IVIDMM_VAL_TEMP_TRANSDUCER_TYPE is set to IVIDMM_VAL_THERMOCOUPLE.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmThermocouple [TC] extension group.\n"
+ "    "
+
+3 all "Reference Junction Type [TC]" IVIDMM_ATTR_TEMP_TC_REF_JUNC_TYPE ViInt32 gs attrTempTcRefJuncTypeRangeTable
+ "Specifies the type of reference junction to be used in the reference "
+ "junction compensation of a thermocouple measurement.  The value of this "
+ "attribute affects instrument behavior only when the IVIDMM_VAL_TEMP_TRANSDUCER_TYPE "
+ "attribute is set to IVIDMM_VAL_THERMOCOUPLE.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmThermocouple [TC] extension group.\n"
+ "    "
+
+3 all "Fixed Reference Junction [TC]" IVIDMM_ATTR_TEMP_TC_FIXED_REF_JUNC ViReal64 gs
+ "Specifies the external reference junction temperature when a fixed reference "
+ "junction type thermocouple is used to take the temperature measurement.  The "
+ "temperature is specified in degrees Celsius.  The value of this attribute "
+ "affects instrument behavior only when the IVIDMM_ATTR_TEMP_TC_REF_JUNC_TYPE "
+ "attribute is set to IVIDMM_VAL_TEMP_REF_JUNC_FIXED.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmThermocouple [TC] extension group.\n"
+ "    "
+
+2 all "Resistance Temperature Device" 
+ "Attributes that configure the RTD transducer type.\n"
+ "    "
+
+3 all "RTD Alpha [RTD]" IVIDMM_ATTR_TEMP_RTD_ALPHA ViReal64 gs
+ "Specifies the alpha parameter for a resistance temperature device.  "
+ "The value of this attribute affects instrument behavior only when the "
+ "IVIDMM_VAL_TEMP_TRANSDUCER_TYPE attribute is set to IVIDMM_VAL_2_WIRE_RTD "
+ "or IVIDMM_VAL_4_WIRE_RTD.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmResistanceTemperatureDevice [RTD] extension group.\n"
+ "    "
+
+3 all "RTD Resistance [RTD]" IVIDMM_ATTR_TEMP_RTD_RES ViReal64 gs
+ "Specifies the R0 parameter (resistance) for a resistance temperature "
+ "device (RTD).  The RTD resistance is also known as the RTD reference value.  "
+ "The value of this attribute affects instrument behavior only when the "
+ "IVIDMM_VAL_TEMP_TRANSDUCER_TYPE attribute is set to IVIDMM_VAL_2_WIRE_RTD "
+ "or IVIDMM_VAL_4_WIRE_RTD.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmResistanceTemperatureDevice [RTD] extension group.\n"
+ "    "
+
+2 all "Thermistor" 
+ "Attributes that configure the thermistor transducer type.\n"
+ "    "
+
+3 all "Thermistor Resistance [THM]" IVIDMM_ATTR_TEMP_THERMISTOR_RES ViReal64 gs
+ "Specifies the resistance of the thermistor in Ohms.  The value of this "
+ "attribute affects instrument behavior only when the IVIDMM_ATTR_TEMP_TRANSDUCER_TYPE "
+ "attribute is set to IVIDMM_VAL_THERMISTOR.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmThermistor [THM] extension group.\n"
+ "    "
+
+1 all "Multi-Point Acquisition" 
+ "Attributes for acquiring data on multiple triggers and acquiring multiple "
+ "measurements per trigger.\n"
+ "    "
+
+2 all "Trigger Count [MP]" IVIDMM_ATTR_TRIGGER_COUNT ViInt32 gs 
+ "Specifies the number of triggers the DMM accepts before it returns to the "
+ "idle state.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmMultiPoint [MP] extension group.\n"
+ "    "
+
+2 all "Sample Count [MP]" IVIDMM_ATTR_SAMPLE_COUNT ViInt32 gs 
+ "Specifies the number of measurements the DMM takes each time it receives a "
+ "trigger.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmMultiPoint [MP] extension group.\n"
+ "    "
+
+2 all "Sample Trigger [MP]" IVIDMM_ATTR_SAMPLE_TRIGGER ViInt32 gs attrSampleTriggerRangeTable 
+ "Specifies the sample trigger source. This attribute affects instrument "
+ "operation only when the IVIDMM_ATTR_SAMPLE_COUNT attribute is greater than "
+ "1.\n"
+ "When the DMM takes a measurement and the IVIDMM_ATTR_SAMPLE_COUNT "
+ "attribute is greater than 1, the DMM does not take the next measurement "
+ "until the event you specify with this attribute occurs.\n"
+ "    When you set this attribute to IVIDMM_VAL_IMMEDIATE, the DMM does not "
+ "wait for a trigger of any kind between measurements.  When you set this "
+ "attribute to IVIDMM_VAL_EXTERNAL, the DMM waits for a trigger on the "
+ "external trigger input before it takes the next measurement.  When you set "
+ "this attribute to IVIDMM_VAL_SOFTWARE_TRIG, the DMM waits until you call "
+ "the IviDmm_SendSoftwareTrigger function before it takes the next measurement.  "
+ "When you set this attribute to IVIDMM_VAL_INTERVAL, the DMM waits the "
+ "length of time you specify with the IVIDMM_ATTR_SAMPLE_INTERVAL attribute "
+ "before it takes the next measurement.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmMultiPoint [MP] extension group.\n"
+ "    "
+
+2 all "Sample Interval [MP]" IVIDMM_ATTR_SAMPLE_INTERVAL ViReal64 gs 
+ "Specifies the interval between samples in seconds. This attribute affects "
+ "instrument operation only when the IVIDMM_ATTR_SAMPLE_COUNT attribute is "
+ "greater than 1 and the IVIDMM_ATTR_SAMPLE_TRIGGER attribute is set to "
+ "IVIDMM_VAL_INTERVAL.  In this case, the DMM waits between measurements for "
+ "the length the time you specify with this attribute.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmMultiPoint [MP] extension group.\n"
+ "    "
+
+2 all "Meas Complete Destination [MP]" IVIDMM_ATTR_MEAS_COMPLETE_DEST ViInt32 gs attrMeasCompleteDestRangeTable 
+ "After each measurement, the DMM generates a measurement-complete signal.  "
+ "This attributes specifies the destination of the measurement-complete "
+ "signal.  This signal is commonly referred to as Voltmeter Complete.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmMultiPoint [MP] extension group.\n"
+ "    "
+
+1 all "Configuration Information" 
+ "Attributes that return information about the current configuration of the DMM."
+
+2 all "Auto Range Value [ARV]" IVIDMM_ATTR_AUTO_RANGE_VALUE ViReal64 g 
+ "Always returns the actual range the DMM is currently using, even when the "
+ "DMM is auto-ranging.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmAutoRangeValue [ARV] extension group.\n"
+ "    "
+
+2 all "Aperture Time [DI]" IVIDMM_ATTR_APERTURE_TIME ViReal64 g 
+ "Returns the measurement aperture time for the current configuration.  The "
+ "units for this attribute are either seconds or powerline cycles (PLCs) and "
+ "are determined by the value of the IVIDMM_ATTR_APERTURE_TIME_UNITS "
+ "attribute.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmDeviceInfo [DI] extension group.\n"
+ "    "
+
+2 all "Aperture Time Units [DI]" IVIDMM_ATTR_APERTURE_TIME_UNITS ViInt32 g 
+ "Returns the units for the attribute IVIDMM_ATTR_APERTURE_TIME.  Possible "
+ "values are the following:\n"
+ "\n"
+ "Defined Values:\n"
+ "    IVIDMM_VAL_SECONDS (0) - The units for the IVIDMM_ATTR_APERTURE_TIME "
+ "attribute are seconds.\n"
+ "    IVIDMM_VAL_POWER_LINE_CYCLES (1) - The units for the "
+ "IVIDMM_ATTR_APERTURE_TIME attribute are powerline cycles.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmDeviceInfo [DI] extension group.\n"
+ "    "
+
+1 all "Measurement Operation Options" 
+ "Attributes that configure different measurement operations.\n"
+ "    "
+
+2 all "Auto Zero [AZ]" IVIDMM_ATTR_AUTO_ZERO ViInt32 gs attrAutoZeroRangeTable 
+ "Specifies the auto-zero mode.  In general, the auto-zero capability of a "
+ "DMM normalizes all measurements based on a Zero Reading.  When "
+ "auto-zeroing is enabled, the DMM internally disconnects the input signal "
+ "and takes a Zero Reading.  The DMM then subtracts the Zero Reading from "
+ "the measurement.  This prevents offset voltages present in the DMM's input "
+ "circuitry from affecting measurement accuracy.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmAutoZero [AZ] extension group.\n"
+ "    "
+
+2 all "Powerline Frequency [PLF]" IVIDMM_ATTR_POWERLINE_FREQ ViReal64 gs
+ "Specifies the power line frequency in hertz.\n\n"
+ "Note:\n"
+ "(1) This attribute is part of the IviDmmPowerLineFrequency [PLF] extension group.\n"
+ "    "
+

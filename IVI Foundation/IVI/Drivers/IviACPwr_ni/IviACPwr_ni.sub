@@ -1,0 +1,531 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrDCModeRangeTable DataType="i"
+ IVIACPWR_VAL_MODE_AC_ONLY (0)
+  "AC Only voltage generation."
+
+ IVIACPWR_VAL_MODE_DC_ONLY (1)
+  "DC Only voltage generation."
+
+ IVIACPWR_VAL_MODE_AC_DC (2)
+  "DC Only voltage generation."
+
+
+0 IviACPwr_SetAttributeViInt32     3 4 false s  DataType="ViInt32"
+0 IviACPwr_GetAttributeViInt32     3 4 false g  DataType="ViInt32"
+0 IviACPwr_CheckAttributeViInt32   3 4 false s  DataType="ViInt32"
+0 IviACPwr_SetAttributeViInt64     3 4 false s  DataType="ViInt64"
+0 IviACPwr_GetAttributeViInt64     3 4 false g  DataType="ViInt64"
+0 IviACPwr_CheckAttributeViInt64   3 4 false s  DataType="ViInt64"
+0 IviACPwr_SetAttributeViReal64    3 4 false s  DataType="ViReal64"
+0 IviACPwr_GetAttributeViReal64    3 4 false g  DataType="ViReal64"
+0 IviACPwr_CheckAttributeViReal64  3 4 false s  DataType="ViReal64"
+0 IviACPwr_SetAttributeViString    3 4 false s  DataType="ViString"
+0 IviACPwr_GetAttributeViString    3 5 false g  DataType="ViString"
+0 IviACPwr_CheckAttributeViString  3 4 false s  DataType="ViString"
+0 IviACPwr_SetAttributeViBoolean   3 4 false s  DataType="ViBoolean"
+0 IviACPwr_GetAttributeViBoolean   3 4 false g  DataType="ViBoolean"
+0 IviACPwr_CheckAttributeViBoolean 3 4 false s  DataType="ViBoolean"
+0 IviACPwr_SetAttributeViSession   3 4 false s  DataType="ViSession"
+0 IviACPwr_GetAttributeViSession   3 4 false g  DataType="ViSession"
+0 IviACPwr_CheckAttributeViSession 3 4 false s  DataType="ViSession"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" IVIACPWR_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that "
+  "you pass to driver functions.  Range checking parameters is very useful "
+  "for debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable range checking and maximize performance.\n"
+  "    The default value is VI_TRUE.  Use the IviACPwr_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Query Instrument Status" IVIACPWR_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful "
+  "for debugging.  After you validate your program, you can set this "
+  "attribute to VI_FALSE to disable status checking and maximize "
+  "performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_FALSE.  Use the IviACPwr_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Cache" IVIACPWR_ATTR_CACHE ViBoolean gs Boolean_values 
+  "Specifies whether to cache the value of attributes.  "
+  "When caching is enabled, the instrument driver keeps track of "
+  "the current instrument settings and avoids sending redundant commands to "
+  "the instrument.  Thus, you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_TRUE.  Use the IviACPwr_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+ 
+3 all "Simulate" IVIACPWR_ATTR_SIMULATE ViBoolean gs Boolean_values 
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver "
+  "functions perform range checking and call Ivi_GetAttribute and "
+  "Ivi_SetAttribute functions, but they do not perform instrument I/O.  "
+  "For output parameters that represent instrument data, the instrument "
+  "driver functions return calculated values.\n"
+  "    The default value is VI_FALSE.  Use the IviACPwr_InitWithOptions "
+  "function to override this value.\n"
+  "    "
+
+3 all "Use Specific Simulation" IVIACPWR_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVIACPWR_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+ 
+3 all "Record Value Coercions" IVIACPWR_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+  "Specifies whether the instrument driver keeps a list of the value coercions it "
+  "makes for ViInt32 and ViReal64 attributes. If IVIACPWR_ATTR_SPY is set to VI_TRUE, you use "
+  "the NI-Spy utility to view coercion information. If IVIACPWR_ATTR_SPY is set to VI_FALSE "
+  "you call IviACPwr_GetNextCoercionRecord to extract and delete the oldest coercion record "
+  "from the list.\n"
+  "    The default value is VI_FALSE. Use the IVI Configuration utility or the "
+  "IviACPwr_InitWithOptions function to override this value.\n"
+  "    "
+
+3 all "Interchange Check" IVIACPWR_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings when you call the "
+  "IviACPwr_ConfigureOutputEnabled, IviACPwr_ConfigureWaveform, and IviACPwr_InitiateMeasurement functions.  "
+  "The default value is VI_FALSE.  "
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  "
+  "If IVIACPWR_ATTR_SPY is set to VI_FALSE, you call "
+  "IviACPwr_GetNextInterchangeWarning to extract interchange warnings.  "
+  "Call the IviACPwr_ClearInterchangeWarnings function to clear the list "
+  "of interchangeability warnings without reading them.\n"	
+
+  "If IVIACPWR_ATTR_SPY is set to VI_TRUE, you can use the NI Spy utility to view "
+  "interchange warnings.\n" 
+
+  "     Interchangeability checking examines the attributes in a "
+  "capability group only if you specify a value for at least one "
+  "attribute within that group.  Interchangeability warnings can "
+  "occur under the following conditions:\n\n"
+
+  "(1) An attribute affects the behavior of the instrument and you "
+  "have not set that attribute.\n\n"
+
+  "(2) The IviACPwr class defines values for an attribute and you "
+  "have set that attribute to a value not defined by the IviACPwr "
+  "class.\n\n"
+
+  "(3) The IviACPwr class defines an attribute as read-only and you "  
+  "have set that attribute.\n\n"
+  "    "
+
+3 all "Spy" IVIACPWR_ATTR_SPY ViBoolean gs Boolean_values 
+  "Specifies whether to log class function calls to the NI Spy utility.  If spying is "
+  "enabled, you can use NI Spy to view the input and output parameters, return values, "
+  "coercion records, and interchangeability warnings of class function calls.\n"
+  "    The default value is VI_TRUE.\n"
+  "    "
+
+2 all "Class Driver Identification"
+  "Attributes that provide identity and version information about the class driver.\n"
+  "    "
+
+3 all "Description" IVIACPWR_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the class "
+  "driver.\n"
+  "    "
+
+3 all "Class Driver Prefix" IVIACPWR_ATTR_CLASS_DRIVER_PREFIX ViString g  
+  "A string that contains the prefix for the class driver.  The name of each "
+  "user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Class Driver Vendor" IVIACPWR_ATTR_CLASS_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this class driver.\n"
+  "    "
+
+3 all "Revision" IVIACPWR_ATTR_CLASS_DRIVER_REVISION ViString g 
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVIACPWR_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which the class driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVIACPWR_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which the class driver is compliant.\n"
+  "    "
+
+2 all "Specific Driver Identification"
+  "Attributes that provide identity and version information about the specific driver.\n"
+  "    "
+
+3 all "Description" IVIACPWR_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific "
+  "driver.\n"
+  "    "
+
+3 all "Specific Driver Prefix" IVIACPWR_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+  "A string that contains the prefix for the instrument driver.  The name of each "
+  "user-callable function in this driver starts with this prefix.\n"
+  "    "
+
+3 all "Specific Driver Locator" IVIACPWR_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+  "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIACPWR_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "    "
+
+3 all "Revision" IVIACPWR_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+  "A string that contains additional version information about the "
+  "specific driver.\n"
+  "    "
+
+3 all "Class Specification Major Version" IVIACPWR_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which the specific driver is compliant.\n"
+  "    "
+
+3 all "Class Specification Minor Version" IVIACPWR_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which the specific driver is compliant.\n"
+  "    "
+
+2 all "Specific Driver Capabilities"
+  "Attributes that provide information about the capabilities of the specific driver.\n"
+  "    "
+
+3 all "Supported Instrument Models" IVIACPWR_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+  "Contains a model code of the instrument. For drivers that support more than one device, this "
+  "attribute contains a comma-separated list of supported instrument "
+  "models.\n"
+  "    "
+
+3 all "Group Capabilities" IVIACPWR_ATTR_GROUP_CAPABILITIES ViString g
+  "Indicates the IviACPwr capability groups that the specific instrument driver "
+  "supports. This attribute is a comma-delimited list of the following group names:\n\n"
+  "\"IviACPwrBase\" - Supports fundamental AC power capabilities.\n\n"
+  "\"IviACPwrMeasurement\" - Supports the ability to query the instrument for the measurement characteristics of the output signal provides the capability to take measurements on the output signal.\n\n"
+  "\"IviACPwrPhase\" - Supports the ability to set and measure output phase relationship.\n\n"
+  "\"IviACPwrExternalSync\" - Supports the ability of synchronizing the output frequency of an AC power source with an external signal.\n\n"
+  "\"IviACPwrCurrentProtection\" - Supports the ability to program current protection.\n\n"
+  "\"IviACPwrVoltageProtection\" - Supports the ability to program voltage protection.\n\n"
+  "\"IviACPwrArbWaveform\" - Supports the ability to produce waveforms other than sine waves on the output signal.\n\n"
+  "\"IviACPwrImpedance\" - Supports the ability to set and query the instrument for the output impedance characteristics of the output signal.\n\n"
+  "\"IviACPwrDCGeneration\" - Supports the ability to configure the output of the AC power source with DC content.\n\n"
+  "\"IviACPwrVoltageRamp\" - Supports the ability to configure a linear voltage ramp with starting and ending voltage in volts (RMS) and ramp duration in seconds.\n\n"
+  "\"IviACPwrCurrentRamp\" - Supports the ability to configure a current ramp starting and ending current and ramp duration in seconds.\n\n"
+  "\"IviACPwrFrequencyRamp\" - Supports the ability to configure a linear frequency ramp with starting and ending Frequencies and ramp duration.\n\n"
+  "    "
+
+3 all "Function Capabilities" IVIACPWR_ATTR_FUNCTION_CAPABILITIES ViString g  
+  "Indicates the IviACPwr functions that the specific instrument driver supports.  "
+  "This attribute is a comma-delimited list of the following functions:\n\n"
+  "    \"IviACPwr_init\"\n"
+  "    \"IviACPwr_close\"\n"
+  "    \"IviACPwr_reset\"\n"
+  "    \"IviACPwr_self_test\"\n"
+  "    \"IviACPwr_error_query\"\n"
+  "    \"IviACPwr_error_message\"\n"
+  "    \"IviACPwr_revision_query\"\n"  
+  "    \"IviACPwr_InitWithOptions\"\n"
+  "    \"IviACPwr_ConfigureCurrentLimit\"\n"
+  "    \"IviACPwr_ConfigureOutputEnabled\"\n"
+  "    \"IviACPwr_ConfigureVoltageLevel\"\n"
+  "    \"IviACPwr_ConfigureVoltageRange\"\n"
+  "    \"IviACPwr_ConfigureFrequency\"\n"
+  "    \"IviACPwr_ConfigureFrequencyRange\"\n"
+  "    \"IviACPwr_ConfigureWaveform\"\n"
+  "    \"IviACPwr_QueryVoltageRangeCapabilities\"\n"
+  "    \"IviACPwr_QueryFrequencyRangeCapabilities\"\n"
+  "    \"IviACPwr_GetOutputPhaseName\"\n"
+  "    \"IviACPwr_InitiateMeasurement\"\n"
+  "    \"IviACPwr_FetchMeasurement\"\n"
+  "    \"IviACPwr_FetchMeasurementArray\"\n"
+  "    \"IviACPwr_ConfigurePhaseAngle\"\n"
+  "    \"IviACPwr_ConfigureExternalSync\"\n"
+  "    \"IviACPwr_QueryExternalSyncLocked\"\n"
+  "    \"IviACPwr_QueryCurrentProtectionTripped\"\n"
+  "    \"IviACPwr_ResetCurrentProtection\"\n"
+  "    \"IviACPwr_ConfigureCurrentProtection\"\n"
+  "    \"IviACPwr_QueryVoltageProtectionTripped\"\n"
+  "    \"IviACPwr_ResetVoltageProtection\"\n"
+  "    \"IviACPwr_ConfigureVoltageProtection\"\n"
+  "    \"IviACPwr_ClearArbWaveform\"\n"
+  "    \"IviACPwr_WriteArbWaveform\"\n"
+  "    \"IviACPwr_QueryArbWaveformCatalog\"\n"
+  "    \"IviACPwr_ConfigureOutputImpedance\"\n"
+  "    \"IviACPwr_QueryOutputImpedanceCapabilities\"\n"
+  "    \"IviACPwr_ConfigureDC\"\n"
+  "    \"IviACPwr_ConfigureDCRange\"\n"
+  "    \"IviACPwr_QueryDCCapabilities\"\n"
+  "    \"IviACPwr_RampVoltage\"\n"
+  "    \"IviACPwr_QueryVoltageRampBusy\"\n"
+  "    \"IviACPwr_AbortVoltageRamp\"\n"
+  "    \"IviACPwr_RampCurrent\"\n"
+  "    \"IviACPwr_QueryCurrentRampBusy\"\n"
+  "    \"IviACPwr_AbortCurrentRamp\"\n"
+  "    \"IviACPwr_RampFrequency\"\n"
+  "    \"IviACPwr_QueryFrequencyRampBusy\"\n"
+  "    \"IviACPwr_AbortFrequencyRamp\"\n"
+  "    "
+
+2 all "Instrument Identification" 
+  "Attributes that provide identity information about the instrument that you are using."
+  "    "
+
+3 all "Manufacturer" IVIACPWR_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are currently "
+  "using.\n"
+  "    "
+
+3 all "Model" IVIACPWR_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that you "
+  "are currently using.\n"
+  "    "
+
+3 all "Firmware Revision" IVIACPWR_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information "
+  "for the instrument you are currently using.\n"
+  "    "
+
+2 all "Advanced Session Information" 
+  "Attributes that contain additional information concerning the instrument driver session.  "
+  "    "
+
+3 all "Driver Setup" IVIACPWR_ATTR_DRIVER_SETUP ViString g
+  "Some cases exist where you must specify instrument driver "
+  "options at initialization time.  An example of this is specifying "
+  "a particular instrument model from among a family of instruments "
+  "that the driver supports.  This is useful when using simulation.  "
+  "You can specify driver-specific options through "
+  "the DriverSetup keyword in the optionsString parameter to the "
+  "IviACPwr_InitWithOptions function.  If you open an instrument "
+  "using a logical name, you can also specify the options "
+  "through the IVI Configuration Utility.\n" 
+  "    The default value is an empty string.\n"
+  "    "
+
+3 all "Logical Name" IVIACPWR_ATTR_LOGICAL_NAME ViString  g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the IviACPwr_init or "
+  "IviACPwr_InitWithOptions functions.  "
+  "The IVI Configuration utility must contain an entry for the logical name.  "
+  "The logical name entry refers to a virtual instrument section in the "
+  "IVI Configuration file.  The virtual instrument section specifies a physical "
+  "device and initial user options.\n"
+  "    "
+
+3 all "I/O Resource Descriptor" IVIACPWR_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+  "Indicates the resource descriptor the driver "
+  "uses to identify the physical device.\n"
+  "    If you initialize the driver with a logical name, this "
+  "attribute contains the resource descriptor that corresponds "
+  "to the entry in the IVI Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource "
+  "descriptor, this attribute contains that value.\n"
+  "    "
+
+1 all "Output"
+ "Supports the ability to generate an AC power signal, to specify output limits, and to control the behavior of the power source when the output is greater than or equal to one of the limits. All attributes in this category affect the specified output phase."
+
+2 all "Current Limit [OUT]" IVIACPWR_ATTR_CURRENT_LIMIT ViReal64 gs
+ "Specifies the output current limit. The units are in amps. The RMS behavior of this attribute is vendor specific."
+
+2 all "Waveform [OUT]" IVIACPWR_ATTR_WAVEFORM ViString gs
+ "Specifies the waveform name used to generate output voltage. For more information about waveforms, refer to the IviACPwrArbWaveform Extension Group topic."
+
+2 all "Output Enabled [OUT]" IVIACPWR_ATTR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the output of the AC power source. When you set this attribute to False, the output of the AC power source is effectively disconnected from the load."
+
+2 all "Voltage Range [OUT]" IVIACPWR_ATTR_VOLTAGE_RANGE ViReal64 gs
+ "Specifies the voltage range of the AC power source based on a specified maximum voltage. The driver coerces this value to the upper limit of the lowest range that supports that voltage.\n"
+ "\n"
+ "Use the IviACPwr_QueryVoltageRangeCapabilities function to determine the minimum and maximum RMS voltages supported by a particular range and waveform."
+
+2 all "Num Voltage Ranges [OUT]" IVIACPWR_ATTR_NUM_VOLTAGE_RANGES ViInt32 g
+ "Returns the number of output voltage ranges supported by the AC power source. Use the IVIACPWR_ATTR_VOLTAGE_RANGE attribute to read or change the output voltage range."
+
+2 all "Voltage Level [OUT]" IVIACPWR_ATTR_VOLTAGE_LEVEL ViReal64 gs
+ "Specifies the line-to-neutral output voltage level of the AC power source when operating in constant voltage mode. The units are volts RMS. The power source reduces the actual output voltage to limit the output current to the value specified by the IVIACPWR_ATTR_CURRENT_LIMIT attribute.\n"
+ "\n"
+ "Use the IviACPwr_QueryVoltageRangeCapabilities function to determine the minimum and maximum allowable values for the IVIACPWR_ATTR_VOLTAGE_LEVEL attribute for a particular voltage range and waveform."
+
+1 all "Phase Angle"
+ "Phase Extension Group: Defines extensions for AC power sources that support multiple phase operation."
+
+2 all "Phase Angle [PHA]" IVIACPWR_ATTR_PHASE_ANGLE ViReal64 gs
+ "Specifies the phase angle of the output phase in relation to Phase A. The units are in degrees."
+
+1 all "Outputs"
+ "Supports the ability to specify the frequency and frequency range and to query the phase count. All attributes in this category affect all output phases."
+
+2 all "Frequency [OUTS]" IVIACPWR_ATTR_FREQUENCY ViReal64 gs
+ "Specifies the frequency the AC output voltage waveform. The units are in hertz."
+
+2 all "Frequency Range [OUTS]" IVIACPWR_ATTR_FREQUENCY_RANGE ViReal64 gs
+ "Specifies the frequency range of the AC power source based on a specified maximum frequency. The driver coerces this value to the upper limit of the lowest range that supports that frequency.\n"
+ "\n"
+ "Use the IviACPwr_QueryFrequencyRangeCapabilities function to determine the minimum and maximum frequency supported by a particular range."
+
+2 all "Num Frequency Ranges [OUTS]" IVIACPWR_ATTR_NUM_FREQUENCY_RANGES ViInt32 g
+ "Returns the number of output frequency ranges supported by the AC power source. Use the IVIACPWR_ATTR_FREQUENCY_RANGE attribute to read or change the output frequency range."
+
+2 all "Num Phases [OUTS]" IVIACPWR_ATTR_NUM_PHASES ViInt32 g
+ "Returns the number of physical output phases of the AC power source the user can connect to their load for this phase group (driver session). The number of phases returned by this attribute does not include the special \"AllPhases\" output phase name used to set all output phases.\n"
+ "\n"
+ "AC power sources that support single or multi phase operation can only be configured when opening a new driver session using the \"NumPhases\" token in the DriverSetup string or in the configuration store. Otherwise, the present number of phases configured in the AC power source is used."
+
+2 all "Output Phase Count [OUTS]" IVIACPWR_ATTR_OUTPUT_PHASE_COUNT ViInt32 g
+ "Returns the number of output phase names supported by the power source."
+
+1 all "Voltage Ramp"
+ "Voltage Ramp Extension Group: Defines extensions for AC power sources with the capability to configure a linear voltage ramp with a starting and ending voltage in volts RMS and duration in seconds.\n"
+ "\n"
+ "The Start Voltage value takes effect immediately then the voltage ramps linearly to the End Voltage value for the duration specified."
+
+2 all "Voltage Ramp Busy [VR]" IVIACPWR_ATTR_VOLTAGE_RAMP_BUSY ViBoolean g Boolean_values
+ "Indicates whether a voltage ramp is in progress (busy)."
+
+1 all "Current Ramp"
+ "Current Ramp Extension Group: Defines extensions for AC power sources with the capability to configure a linear current ramp with a starting and ending current in amps and duration in seconds.\n"
+ "\n"
+ "The Start Current value takes effect immediately then the current ramps linearly to the End Current value for the duration specified."
+
+2 all "Current Ramp Busy [CR]" IVIACPWR_ATTR_CURRENT_RAMP_BUSY ViBoolean g Boolean_values
+ "Indicates whether a current ramp is in progress (busy)."
+
+1 all "Frequency Ramp"
+ "Frequency Ramp Extension Group: Defines extensions for AC power sources with the capability to configure a linear frequency ramp starting and ending frequency in hertz and duration in seconds.\n"
+ "\n"
+ "The Start Frequency value takes effect immediately then the frequency ramps linearly to the End Frequency value for the duration specified."
+
+2 all "Frequency Ramp Busy [FR]" IVIACPWR_ATTR_FREQUENCY_RAMP_BUSY ViBoolean g Boolean_values
+ "Indicates whether a frequency ramp is in progress (busy)."
+
+1 all "Arb Waveform"
+ "Arb Waveform Extension Group: Defines an AC power source capable of producing user-defined arbitrary waveforms."
+
+2 all "Num Waveforms Max [ARB]" IVIACPWR_ATTR_NUM_WAVEFORMS_MAX ViInt32 g
+ "Returns the maximum number of arbitrary waveforms the power source can store including user-defined waveforms and fixed vendor-defined waveforms."
+
+2 all "Num Optimal Data Points [ARB]" IVIACPWR_ATTR_NUM_OPTIMAL_DATA_POINTS ViInt32 g
+ "Returns the optimal (native) number of data points the AC power source uses for arbitrary waveforms.\n"
+ "\n"
+ "The driver automatically resamples the waveform data array passed to the IviACPwr_WriteArbWaveform function to fit the optimal number of data points supported by the AC power source. To minimize the effects of resampling and to maximize the waveform resolution, allocate user defined waveform data using the optimal number of data points of the AC power source."
+
+2 all "Fixed Waveform Count [ARB]" IVIACPWR_ATTR_FIXED_WAVEFORM_COUNT ViInt32 g
+ "Returns the number of fixed vendor defined arbitrary waveforms stored in the power source."
+
+2 all "User Waveform Count [ARB]" IVIACPWR_ATTR_USER_WAVEFORM_COUNT ViInt32 g
+ "Returns the number of user defined arbitrary waveforms stored in the power source."
+
+2 all "Available Waveform Count [ARB]" IVIACPWR_ATTR_AVAILABLE_WAVEFORM_COUNT ViInt32 g
+ "Returns the number of additional arbitrary waveforms the user can store in the power source. Use the IviACPwr_ClearArbWaveform function to increase the number of user-defined arbitrary waveforms the power source can store.\n"
+ "\n"
+ "You also can use the following attributes to calculate the number of available waveforms:\n"
+ "\n"
+ "Available Waveforms = IVIACPWR_ATTR_NUM_WAVEFORMS_MAX - IVIACPWR_ATTR_FIXED_WAVEFORM_COUNT - IVIACPWR_ATTR_USER_WAVEFORM_COUNT"
+
+1 all "Impedance"
+ "Impedance Extension Group: Defines extensions for AC power sources with the ability to configure the output impedance."
+
+2 all "Impedance Inductive [IMP]" IVIACPWR_ATTR_OUTPUT_IMPEDANCE_INDUCTIVE ViReal64 gs
+ "Specifies the inductive output impedance value in henries. This value affects the power source output when the IVIACPWR_ATTR_OUTPUT_IMPEDANCE_ENABLED attribute is set to True."
+
+2 all "Impedance Resistive [IMP]" IVIACPWR_ATTR_OUTPUT_IMPEDANCE_RESISTIVE ViReal64 gs
+ "Specifies the resistive output impedance value in ohms. This value affects the power source output when the IVIACPWR_ATTR_OUTPUT_IMPEDANCE_ENABLED attribute is set to True."
+
+2 all "Impedance Enabled [IMP]" IVIACPWR_ATTR_OUTPUT_IMPEDANCE_ENABLED ViBoolean gs Boolean_values
+ "When set to True, this attribute allows the IVIACPWR_ATTR_OUTPUT_IMPEDANCE_RESISTIVE and IVIACPWR_ATTR_OUTPUT_IMPEDANCE_INDUCTIVE attribute values to affect the power source output."
+
+1 all "Voltage Protection"
+ "Voltage Protection Extension Group: Defines extensions for AC power sources that allow programmable voltage protection."
+
+2 all "Over Voltage Protection Enabled [VP]" IVIACPWR_ATTR_OVER_VOLTAGE_PROTECTION_ENABLED ViBoolean gs Boolean_values
+ "When set to True, voltage protection mode is triggered when the output voltage is above the value specified in the Over Voltage Limit parameter of the IviACPwr_ConfigureVoltageProtection function."
+
+2 all "Over Voltage Protection Limit [VP]" IVIACPWR_ATTR_OVER_VOLTAGE_PROTECTION_LIMIT ViReal64 gs
+ "Specifies the output over voltage protection limit value. The units are in volts RMS."
+
+2 all "Under Voltage Protection Enabled [VP]" IVIACPWR_ATTR_UNDER_VOLTAGE_PROTECTION_ENABLED ViBoolean gs Boolean_values
+ "When set to True, voltage protection mode is triggered when the output voltage is below the value specified in the Under Voltage Limit parameter of the IviACPwr_ConfigureVoltageProtection function."
+
+2 all "Under Voltage Protection Limit [VP]" IVIACPWR_ATTR_UNDER_VOLTAGE_PROTECTION_LIMIT ViReal64 gs
+ "Specifies the output under voltage protection limit value. The units are in volts RMS."
+
+2 all "Voltage Protection Tripped [VP]" IVIACPWR_ATTR_VOLTAGE_PROTECTION_TRIPPED ViBoolean g Boolean_values
+ "Indicates whether voltage protection has tripped. Use the IviACPwr_ResetVoltageProtection function to reset the voltage protection state."
+
+1 all "Current Protection"
+ "Current Protection Extension Group: Defines extensions for AC power sources that allow programmable current protection."
+
+2 all "Current Protection Delay [CP]" IVIACPWR_ATTR_CURRENT_PROTECTION_DELAY ViReal64 gs
+ "Specifies the time the output current must exceed the current protection threshold until current protection mode is triggered. The units are in seconds."
+
+2 all "Current Protection Enabled [CP]" IVIACPWR_ATTR_CURRENT_PROTECTION_ENABLED ViBoolean gs Boolean_values
+ "When set to True, current protection mode is triggered when the output current exceeds the current protection threshold for the time specified by the current protection delay."
+
+2 all "Current Protection Threshold [CP]" IVIACPWR_ATTR_CURRENT_PROTECTION_THRESHOLD ViReal64 gs
+ "Specifies the output current threshold that triggers current protection. The units are in amps RMS."
+
+2 all "Current Protection Tripped [CP]" IVIACPWR_ATTR_CURRENT_PROTECTION_TRIPPED ViBoolean g Boolean_values
+ "Indicates whether current protection has tripped. Current protection trips when the output current exceeds the value of the current protection threshold attribute for the time specified by the current protection delay attribute. Use the IviACPwr_ResetCurrentProtection function to reset the current protection state."
+
+1 all "DC Generation"
+ "DC Generation Extension Group: Defines extensions for AC power sources capable of producing a DC output."
+
+2 all "Mode [DG]" IVIACPWR_ATTR_DC_MODE ViInt32 gs attrDCModeRangeTable
+ "Configures output voltage generation as AC only, DC only, or a combination of AC plus DC output.\n\n" 
+ "The mode you specify determines when the IVIACPWR_ATTR_VOLTAGE_LEVEL and the IVIACPWR_ATTR_DC_VOLTAGE_LEVEL attributes are used:\n\n"
+ "- If you specify AC Only mode, the IVIACPWR_ATTR_VOLTAGE_LEVEL attribute sets the RMS value of the AC voltage.\n"
+ "- If you specify DC Only mode, the IVIACPWR_ATTR_DC_VOLTAGE_LEVEL attribute sets the DC voltage.\n"
+ "- If you specify AC DC mode, the IVIACPWR_ATTR_VOLTAGE_LEVEL attribute sets the RMS value of the AC voltage and the IVIACPWR_ATTR_DC_VOLTAGE_LEVEL attribute sets the DC offset voltage."
+
+2 all "DC Voltage Level [DG]" IVIACPWR_ATTR_DC_VOLTAGE_LEVEL ViReal64 gs
+ "If you specify AC Only for the Mode parameter of the IviACPwr_ConfigureDC function, this attribute sets the DC voltage.\n\n"
+ "If you specify AC DC for the Mode parameter of the IviACPwr_ConfigureDC function, this attribute sets the DC offset."
+
+2 all "Range Min [DG]" IVIACPWR_ATTR_DC_RANGE_MIN ViReal64 g
+ "Returns the minimum DC voltage supported by the power source for the present DC voltage range. Use the IviACPwr_ConfigureDCRange function to set the DC voltage range."
+
+2 all "Range Max [DG]" IVIACPWR_ATTR_DC_RANGE_MAX ViReal64 g
+ "Returns the maximum DC voltage supported by the power source for the present DC voltage range. Use the IviACPwr_ConfigureDCRange function to set the DC voltage range."
+
+2 all "Num Ranges [DG]" IVIACPWR_ATTR_DC_NUM_RANGES ViInt32 g
+ "Returns the number of DC ranges supported by the power source."
+
+1 all "External Sync"
+ "External Sync Extension Group: Defines extensions for AC power sources with the ability to use an external signal to synchronize the power source output frequency."
+
+2 all "Enabled [ES]" IVIACPWR_ATTR_EXTERNAL_SYNC_ENABLED ViBoolean gs Boolean_values
+ "Specifies whether to enable or disable synchronization to an external signal."
+
+2 all "Phase Offset [ES]" IVIACPWR_ATTR_EXTERNAL_SYNC_PHASE_OFFSET ViReal64 gs
+ "Specifies the phase angle offset (degrees) of the power sources output relative to the external synchronization signal.\n"
+ "\n"
+ "A positive external sync phase offset value means the output of a single phase power source, or phase A of a multiphase power source, leads the external sync signal; a negative phase offset value means it lags the external sync signal. For multiphase power sources, the phase relationship between output phases is always exclusively determined by the IviACPwrPhase extension group."
+
+2 all "Locked [ES]" IVIACPWR_ATTR_EXTERNAL_SYNC_LOCKED ViBoolean g Boolean_values
+ "Indicates whether the AC power source is locked to the external synchronization signal."

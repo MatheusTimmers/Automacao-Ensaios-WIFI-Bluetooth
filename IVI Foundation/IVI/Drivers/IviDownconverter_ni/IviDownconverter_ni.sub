@@ -1,0 +1,772 @@
+FPAttributeValueFile
+
+n  SubType="IVI" 
+
+n  SubVersion="1" 
+   
+v Boolean_values DataType="i" 
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrRFInputCouplingRangeTable DataType="i" 
+ IVIDOWNCONVERTER_VAL_INPUT_COUPLING_AC (0)
+  "The downconverter AC couples the RF input signal."
+
+ IVIDOWNCONVERTER_VAL_INPUT_COUPLING_DC (1)
+  "The downconverter DC couples the RF input signal."
+
+
+v attrFrequencyStepScalingRangeTable DataType="i" 
+ IVIDOWNCONVERTER_VAL_FREQUENCY_STEP_SCALING_LINEAR (0)
+  "Enables linear scaling for step sizes in stepped sweeps."
+
+ IVIDOWNCONVERTER_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC (1)
+  "Enables logarithmic scaling for step sizes in stepped sweeps."
+
+
+v attrFrequencySweepModeRangeTable DataType="i" 
+ IVIDOWNCONVERTER_VAL_FREQUENCY_SWEEP_MODE_NONE (0)
+  "The RF input of the downconverter is a non-swept signal "
+  "(continuous wave). The driver uses frequency settings from "
+  "the base capability group."
+
+ IVIDOWNCONVERTER_VAL_FREQUENCY_SWEEP_MODE_SWEEP (1)
+  "The downconverter sweeps the RF input signal frequency in "
+  "analog form (non-stepped). Refer to the "
+  "IviDownconverterAnalogyFrequencySweep extension group."
+
+ IVIDOWNCONVERTER_VAL_FREQUENCY_SWEEP_MODE_STEP (2)
+  "Sweeps the RF input signal frequency in steps. Refer to the "
+  "IviDownconverterFrequencyStep extension group."	
+
+ IVIDOWNCONVERTER_VAL_FREQUENCY_SWEEP_MODE_LIST (3)
+  "Uses a list to sweep the RF input signal frequency. Refer to the "
+  "IviDownconverterFrequencySweepList extension group."	
+  
+  
+v attrReferenceOscillatorSourceRangeTable DataType="i" 
+ IVIDOWNCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_INTERNAL (0)
+  "The downconverter uses the internal reference oscillator."
+
+ IVIDOWNCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL (1)
+  "The downconverter uses an external reference oscillator."
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+0 IviDownconverter_SetAttributeViInt32     3 4 false s DataType="ViInt32" 
+0 IviDownconverter_GetAttributeViInt32     3 4 false g DataType="ViInt32" 
+0 IviDownconverter_CheckAttributeViInt32   3 4 false s DataType="ViInt32" 
+0 IviDownconverter_SetAttributeViReal64    3 4 false s DataType="ViReal64" 
+0 IviDownconverter_GetAttributeViReal64    3 4 false g DataType="ViReal64" 
+0 IviDownconverter_CheckAttributeViReal64  3 4 false s DataType="ViReal64" 
+0 IviDownconverter_SetAttributeViSession   3 4 false s DataType="ViSession" 
+0 IviDownconverter_GetAttributeViSession   3 4 false g DataType="ViSession" 
+0 IviDownconverter_CheckAttributeViSession 3 4 false s DataType="ViSession" 
+0 IviDownconverter_SetAttributeViBoolean   3 4 false s DataType="ViBoolean" 
+0 IviDownconverter_GetAttributeViBoolean   3 4 false g DataType="ViBoolean" 
+0 IviDownconverter_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean" 
+0 IviDownconverter_SetAttributeViString    3 4 false s DataType="ViString" 
+0 IviDownconverter_GetAttributeViString    3 5 false g DataType="ViString" 
+0 IviDownconverter_CheckAttributeViString  3 4 false s DataType="ViString" 
+  
+1 all "Inherent IVI Attributes" "Attributes common to all IVI instrument drivers."
+
+2 all "User Options" 
+ "Attributes you can set to affect the operation of this instrument driver.\n"
+ "    "
+
+3 all "Range Check" IVIDOWNCONVERTER_ATTR_RANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to validate attribute values and function parameters.  "
+ "If enabled, the instrument driver validates the parameter values that "
+ "you pass to driver functions.  Range checking "
+ "parameters is very useful for debugging.  After you validate your program, "
+ "you can set this attribute to VI_FALSE to disable range checking and "
+ "maximize performance.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDownconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Query Instrument Status" IVIDOWNCONVERTER_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values 
+ "Specifies whether the instrument driver queries the instrument status "
+ "after each operation.  Querying the instrument status is very useful "
+ "for debugging.  After you validate your program, you can set this "
+ "attribute to VI_FALSE to disable status checking and maximize "
+ "performance\n"
+ "    The instrument driver can choose to ignore status checking for "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDownconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Cache" IVIDOWNCONVERTER_ATTR_CACHE ViBoolean gs Boolean_values 
+ "Specifies whether to cache the value of attributes.  "
+ "When caching is enabled, the instrument driver keeps track of "
+ "the current instrument settings and avoids sending redundant commands to "
+ "the instrument.  Thus, you can significantly increase execution speed.\n"
+ "    The instrument driver can choose always to cache or never to cache "
+ "particular attributes regardless of the setting of this attribute.\n"
+ "    The default value is VI_TRUE.   Use the "
+ "IviDownconverter_InitWithOptions function to override this value.\n"
+ "    "
+ 
+3 all "Simulate" IVIDOWNCONVERTER_ATTR_SIMULATE ViBoolean gs Boolean_values 
+ "Specifies whether or not to simulate instrument driver I/O "
+ "operations.  If simulation is enabled, instrument driver "
+ "functions perform range checking and set and get attributes, "
+ "but they do not perform instrument I/O.  "
+ "For output parameters that represent instrument data, the instrument "
+ "driver functions return calculated values.\n"
+ "    The default value is VI_FALSE.   Use the "
+ "IviDownconverter_InitWithOptions function to override this value.\n"
+ "    "
+ 
+
+3 all "Use Specific Simulation" IVIDOWNCONVERTER_ATTR_USE_SPECIFIC_SIMULATION ViBoolean gs Boolean_values 
+ "Specifies whether to simulate instrument driver I/O operations in the "
+ "specific or class driver.  This attribute affects instrument driver "
+ "operation only when the IVIDOWNCONVERTER_ATTR_SIMULATE attribute is set to VI_TRUE.\n"
+ "    The default value is VI_FALSE.\n"
+ "    "
+
+3 all "Record Value Coercions" IVIDOWNCONVERTER_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values       
+ "Specifies whether the instrument driver keeps a list of the value coercions it "
+ "makes for ViInt32 and ViReal64 attributes.  If IVIDOWNCONVERTER_ATTR_SPY is set to VI_TRUE, you use "
+ "the NI I/O Trace utility to view coercion information.  If IVIDOWNCONVERTER_ATTR_SPY is set to VI_FALSE "
+ "you call IviDownconverter_GetNextCoercionRecord to extract and delete the oldest coercion record "
+ "from the list.\n"
+ "    The default value is VI_FALSE.   Use the IVI Configuration utility or the "
+ "IviDownconverter_InitWithOptions function to override this value.\n"
+ "    "
+
+3 all "Interchange Check" IVIDOWNCONVERTER_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values 
+ "Specifies whether to perform interchangeability checking and retrieve "
+ "interchangeability warnings when you call the "
+ "IviDownconverter_WaitUntilSettled function.  "
+ "The default value is VI_FALSE.  "
+ "Interchangeability warnings indicate that using your application with a "
+ "different instrument might cause different behavior.  "
+ "If IVIDOWNCONVERTER_ATTR_SPY is set to VI_FALSE, you call "
+ "IviDownconverter_GetNextInterchangeWarning to extract interchange warnings.  "
+ "Call the IviDownconverter_ClearInterchangeWarnings function to clear the list "
+ "of interchangeability warnings without reading them.\n"	
+
+ "If IVIDOWNCONVERTER_ATTR_SPY is set to VI_TRUE, you can use the NI I/O Trace utility to view "
+ "interchange warnings.\n" 
+
+ "     Interchangeability checking examines the attributes in a "
+ "capability group only if you specify a value for at least one "
+ "attribute within that group.  Interchangeability warnings can "
+ "occur under the following conditions:\n\n"
+
+ "(1) An attribute affects the behavior of the instrument and you "
+ "have not set that attribute.\n\n"
+
+ "(2) The IviDownconverter class defines values for an attribute and you "
+ "have set that attribute to a value not defined by the IviDownconverter "
+ "class.\n\n"
+
+ "(3) The IviDownconverter class defines an attribute as read-only and you "  
+ "have set that attribute.\n\n"
+ 
+3 all "Spy" IVIDOWNCONVERTER_ATTR_SPY ViBoolean gs Boolean_values 
+ "Specifies whether to log class function calls to the NI I/O Trace utility.  If spying is "
+ "enabled, you can use NI I/O Trace to view the input and output parameters, return values, "
+ "coercion records, and interchangeability warnings of class function calls.\n"
+ "    The default value is VI_TRUE.\n"
+ "    "
+
+2 all "Class Driver Identification"
+ "Attributes that provide identity and version information about the class driver.\n"
+ "    "
+
+3 all "Description" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the class "
+ "driver\n"
+ "    "
+
+3 all "Class Driver Prefix" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the class driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Class Driver Vendor" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this class driver.\n"
+ "    "
+
+3 all "Revision" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "class driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDOWNCONVERTER_ATTR_CLASS_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the class driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Identification"
+ "Attributes that provide identity and version information about the specific driver.\n"
+ "    "
+
+3 all "Description" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+ "A string that contains a brief description of the specific "
+ "driver\n"
+ "    "
+
+3 all "Specific Driver Prefix" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_PREFIX ViString g  
+ "A string that contains the prefix for the instrument driver.  The name of each "
+ "user-callable function in this driver starts with this prefix.\n"
+ "    "
+
+3 all "Specific Driver Locator" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_LOCATOR ViString g
+ "Indicates the location at which the class driver attempts to find the specific driver module file.\n"
+
+3 all "Specific Driver Vendor" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+ "A string that contains the name of the vendor that supplies this driver.\n"
+ "    "
+
+3 all "Revision" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "A string that contains additional version information about the "
+ "specific driver.\n"
+ "    "
+
+3 all "Class Specification Major Version" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+ "The major version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+3 all "Class Specification Minor Version" IVIDOWNCONVERTER_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+ "The minor version number of the class specification with which the specific driver is compliant.\n"
+ "    "
+
+2 all "Specific Driver Capabilities"
+ "Attributes that provide information about the capabilities of the specific driver.\n"
+ "    "
+
+3 all "Supported Instrument Models" IVIDOWNCONVERTER_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString  g
+ "Contains a model code of the instrument. For specific drivers that support more than one device, this "
+ "attribute contains a comma-separated list of supported instrument "
+ "models.\n"
+ "    "
+
+3 all "Group Capabilities" IVIDOWNCONVERTER_ATTR_GROUP_CAPABILITIES ViString g  
+ "Indicates the IviDownconverter capability groups that the specific instrument driver "
+ "supports.  This attribute is a comma-delimited list of the following group names:\n\n"
+ "\"IviDownconverterBase\" - Supports fundamental downconverter capabilities.\n\n"
+ "\"IviDownconverterBypass\" - Supports IviDownconverterBase with the capability to route the RF input completely around the downconverter.\n\n"
+ "\"IviDownconverterExternalMixer\" - Supports IviDownconverterBase with the capability to use an external mixer.\n\n"
+ "\"IviDownconverterFrequencyStep\" - Supports IviDownconverterBase with the capability to sweep the frequency of the RF input signal in steps.\n\n"
+ "\"IviDownconverterFrequencySweep\" - Supports IviDownconverterBase with the capability to apply a sweep to the RF input frequency.\n\n"
+ "\"IviDownconverterFrequencySweepList\" - Supports IviDownconverterBase with the capability to set the frequency of the RF input signal to values given as a list of values.\n\n"
+ "\"IviDownconverterBandCrossingInformation\" - Supports IviDownconverterBase with the capability to return frequency band information for frequency sweeps.\n\n"
+ "\"IviDownconverterSoftwareTrigger\" - Supports IviDownconverterBase with the capability to generate output based on a software trigger signal.\n\n"
+ "\"IviDownconverterIFFilter\" - Supports IviDownconverterBase with the capability to configure a filter on the IF output.\n\n"
+ "\"IviDownconverterPreselector\" - Supports IviDownconverterBase with the capability to bypass the preselection filter.\n\n"
+ "\"IviDownconverterVideoDetectorBandwidth\" - Supports IviDownconverterBase with the capability to apply video bandwidth detection at the IF output.\n\n"
+ "\"IviDownconverterCalibration\" - Supports IviDownconverterBase with the capability to perform self-calibration.\n\n"
+ "\"IviDownconverterReferenceOscillator\" - Supports IviDownconverterBase with the capability to configure frequency reference.\n\n"
+ "    "
+
+3 all "Function Capabilities" IVIDOWNCONVERTER_ATTR_FUNCTION_CAPABILITIES ViString g  
+ "Indicates the IviDownconverter functions that the specific instrument driver supports.  "
+ "This attribute is a comma-delimited list of the following functions:\n\n"
+ "    \"IviDownconverter_init\"\n"
+ "    \"IviDownconverter_close\"\n"
+ "    \"IviDownconverter_reset\"\n"
+ "    \"IviDownconverter_self_test\"\n"
+ "    \"IviDownconverter_error_query\"\n"
+ "    \"IviDownconverter_error_message\"\n"
+ "    \"IviDownconverter_revision_query\"\n"  
+ "    \"IviDownconverter_InitWithOptions\"\n"
+ "    \"IviDownconverter_ConfigureIFOutputEnabled\"\n"
+ "    \"IviDownconverter_ConfigureIFOutputGain\"\n"
+ "    \"IviDownconverter_GetIFOutputName\"\n"
+ "    \"IviDownconverter_SetActiveIFOutput\"\n"
+ "    \"IviDownconverter_ConfigureRFInputAttenuation\"\n"
+ "    \"IviDownconverter_ConfigureRFInputFrequency\"\n"
+ "    \"IviDownconverter_GetRFInputName\"\n"
+ "    \"IviDownconverter_SetActiveRFInput\"\n"
+ "    \"IviDownconverter_WaitUntilSettled\"\n"
+ "    \"IviDownconverter_ConfigureBypass\"\n"
+ "    \"IviDownconverter_ConfigureExternalMixerBias\"\n"
+ "    \"IviDownconverter_ConfigureFrequencyStepDwell\"\n"
+ "    \"IviDownconverter_ConfigureFrequencyStepStartStop\"\n"
+ "    \"IviDownconverter_ResetFrequencyStep\"\n"
+ "    \"IviDownconverter_ConfigureFrequencySweep\"\n"
+ "    \"IviDownconverter_ConfigureFrequencySweepStartStop\"\n"
+ "    \"IviDownconverter_ConfigureFrequencySweepTime\"\n"  
+ "    \"IviDownconverter_WaitUntilFrequencySweepComplete\"\n"
+ "    \"IviDownconverter_ClearAllFrequencySweepLists\"\n"
+ "    \"IviDownconverter_ConfigureFrequencySweepListDwell\"\n"
+ "    \"IviDownconverter_CreateFrequencySweepList\"\n"
+ "    \"IviDownconverter_ResetFrequencySweepList\"\n"		
+ "    \"IviDownconverter_GetBandCrossingInfo\"\n"
+ "    \"IviDownconverter_SendSoftwareTrigger\"\n"
+ "    \"IviDownconverter_ConfigureIFOutputFilterBandwidth\"\n"
+ "    \"IviDownconverter_ConfigurePreselectorEnabled\"\n"
+ "    \"IviDownconverter_ConfigureIFOutputVideoDetectorBandwidth\"\n"
+ "    \"IviDownconverter_Calibrate\"\n"
+ "    \"IviDownconverter_IsCalibrationComplete\"\n"
+ "    \"IviDownconverter_IsCalibrated\"\n"
+ "    \"IviDownconverter_ConfigureReferenceOscillator\"\n"
+ "    \"IviDownconverter_ConfigureReferenceOscillatorOutputEnabled\"\n"
+ "    "
+
+2 all "Instrument Identification" 
+ "Attributes that provide identity information about the instrument that you are using."
+ "    "
+
+3 all "Manufacturer" IVIDOWNCONVERTER_ATTR_INSTRUMENT_MANUFACTURER ViString g
+ "A string that contains the name of the instrument manufacturer you are currently "
+ "using.\n"
+ "    "
+
+3 all "Model" IVIDOWNCONVERTER_ATTR_INSTRUMENT_MODEL ViString g
+ "A string that contains the model number or name of the instrument that you "
+ "are currently using.\n"
+ "    "
+
+3 all "Firmware Revision" IVIDOWNCONVERTER_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+ "A string that contains the firmware revision information "
+ "for the instrument you are currently using.\n"
+ "    "
+
+2 all "Advanced Session Information" 
+ "Attributes that contain additional information concerning the instrument driver session.  "
+ "    "
+
+3 all "Driver Setup" IVIDOWNCONVERTER_ATTR_DRIVER_SETUP ViString g
+ "Some cases exist where you must specify instrument driver "
+ "options at initialization time.  An example of this is specifying "
+ "a particular instrument model from among a family of instruments "
+ "that the driver supports.  This is useful when using simulation.  "
+ "You can specify driver-specific options through "
+ "the DriverSetup keyword in the optionsString parameter to the "
+ "IviDownconverter_InitWithOptions function.  If you open an instrument "
+ "using a logical name, you can also specify the options "
+ "through the IVI Configuration Utility.\n" 
+ "    The default value is an empty string.\n"
+ "    "
+
+3 all "Logical Name" IVIDOWNCONVERTER_ATTR_LOGICAL_NAME ViString  g
+ "A string containing the logical name you specified when opening the "
+ "current IVI session.\n"
+ "     You may pass a logical name to the IviDownconverter_init or "
+ "IviDownconverter_InitWithOptions functions.  "
+ "The IVI Configuration utility must contain an entry for the logical name.  "
+ "The logical name entry refers to a driver session section in the "
+ "IVI Configuration file.  The driver session section specifies a physical "
+ "device and initial user options.\n"
+ "    "
+
+3 all "IO Resource Descriptor" IVIDOWNCONVERTER_ATTR_IO_RESOURCE_DESCRIPTOR ViString  g
+ "Indicates the resource descriptor the driver "
+ "uses to identify the physical device.\n"
+ "    If you initialize the driver with a logical name, this "
+ "attribute contains the resource descriptor that corresponds "
+ "to the entry in the IVI Configuration utility.  \n"
+ "    If you initialize the instrument driver with the resource "
+ "descriptor, this attribute contains that value.\n"
+ "    "
+ 
+1 all "RF Input" 
+ "Attributes that control the RF input of the downconverter.\n"
+ "    "
+ 
+2 all "Active RF Input" IVIDOWNCONVERTER_ATTR_ACTIVE_RF_INPUT ViString gs 
+ "Specifies the RF input that is currently active. Subsequent calls to functions "
+ "and attributes that are based on the RF Input repeated capability will be "
+ "applied to the active RF input you specify with this value. The values for this attribute "
+ "correspond to the allowed repeated capability names for the RF Input repeated "
+ "capability. If the driver defines a qualified RF Input name, this attribute "
+ "returns the qualified name. Use the IviDownconverter_GetRFInputName function "
+ "to read the allowed values for this attribute.\n"
+ "   "
+ 
+2 all "Bypass [BP]" IVIDOWNCONVERTER_ATTR_BYPASS ViBoolean gs Boolean_values 
+ "Specifies whether the RF input signal bypasses the entire downconverter.\n\n"
+ "When you set this attribute to True, the RF input signal is routed directly to the IF output "
+ "indicated by the value of the IVIDOWNCONVERTER_ATTR_ACTIVE_IF_OUTPUT attribute. "
+ "When you set set this attribute to False, the RF input signal is routed into the front end of the "
+ "downconverter and follows the normal signal path, as dictated by other downstream "
+ "path control attributes, such as IVIDOWNCONVERTER_ATTR_PRESELECTOR_ENABLED.\n"
+ "    "
+ 
+2 all "RF Input Corrections Enabled" IVIDOWNCONVERTER_ATTR_RF_INPUT_CORRECTIONS_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables automatic global corrections on the device.\n"
+ "    " 
+ 
+2 all "Frequency Sweep" 
+ "This group contains attributes to support the instrument that can apply a sweep "
+ "to the RF input frequency.\n"
+ "    "
+ 
+3 all "Frequency Sweep Mode [FSW]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_MODE ViInt32 gs attrFrequencySweepModeRangeTable 
+ "Specifies the sweep mode of the RF input signal.\n"
+ "    "
+ 
+3 all "Frequency Sweep Trigger Source [FSW]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_TRIGGER_SOURCE ViString gs
+ "Specifies the trigger used to start an LO sweep operation.\n"
+ "    \n"
+ "Trigger Sources:\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_NONE (\"\") - "
+ "No trigger source.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_IMMEDIATE (\"Immediate\") - "
+ "Trigger immediately.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_EXTERNAL (\"External\") - "
+ "External trigger source.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_INTERNAL (\"Internal\") - "
+ "Internal trigger source.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_SOFTWARE (\"Software\") - "
+ "Software trigger.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN0 (\"LAN0\") - "
+ "LAN0 (LXI defined \"LAN0\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN1 (\"LAN1\") - "
+ "LAN1 (LXI defined \"LAN1\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN2 (\"LAN2\") - "
+ "LAN2 (LXI defined \"LAN2\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN3 (\"LAN3\") - "
+ "LAN3 (LXI defined \"LAN3\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN4 (\"LAN4\") - "
+ "LAN4 (LXI defined \"LAN4\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN5 (\"LAN5\") - "
+ "LAN5 (LXI defined \"LAN5\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN6 (\"LAN6\") - "
+ "LAN6 (LXI defined \"LAN6\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LAN7 (\"LAN7\") - "
+ "LAN7 (LXI defined \"LAN7\" LAN message).\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI0 (\"LXI0\") - "
+ "LXI Trigger Bus Line 0.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI1 (\"LXI1\") - "
+ "LXI Trigger Bus Line 1.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI2 (\"LXI2\") - "
+ "LXI Trigger Bus Line 2.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI3 (\"LXI3\") - "
+ "LXI Trigger Bus Line 3.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI4 (\"LXI4\") - "
+ "LXI Trigger Bus Line 4.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI5 (\"LXI5\") - "
+ "LXI Trigger Bus Line 5.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI6 (\"LXI6\") - "
+ "LXI Trigger Bus Line 6.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_LXI7 (\"LXI7\") - "
+ "LXI Trigger Bus Line 7.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL0 (\"TTL0\") - "
+ "TTL Interface 0.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL1 (\"TTL1\") - "
+ "TTL Interface 1.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL2 (\"TTL2\") - "
+ "TTL Interface 2.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL3 (\"TTL3\") - "
+ "TTL Interface 3.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL4 (\"TTL4\") - "
+ "TTL Interface 4.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL5 (\"TTL5\") - "
+ "TTL Interface 5.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL6 (\"TTL6\") - "
+ "TTL Interface 6.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_TTL7 (\"TTL7\") - "
+ "TTL Interface 7.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_STAR (\"PXI_STAR\") - "
+ "PXI Star Interface.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG0 (\"PXI_TRIG0\") - "
+ "PXI Trigger Bus Line 0.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG1 (\"PXI_TRIG1\") - "
+ "PXI Trigger Bus Line 1.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG2 (\"PXI_TRIG2\") - "
+ "PXI Trigger Bus Line 2.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG3 (\"PXI_TRIG3\") - "
+ "PXI Trigger Bus Line 3.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG4 (\"PXI_TRIG4\") - "
+ "PXI Trigger Bus Line 4.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG5 (\"PXI_TRIG5\") - "
+ "PXI Trigger Bus Line 5.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG6 (\"PXI_TRIG6\") - "
+ "PXI Trigger Bus Line 6.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXI_TRIG7 (\"PXI_TRIG7\") - "
+ "PXI Trigger Bus Line 7.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARA (\"PXIe_DSTARA\") - "
+ "PXI Express DStar Line A.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARB (\"PXIe_DSTARB\") - "
+ "PXI Express DStar Line B.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_PXIE_DSTARC (\"PXIe_DSTARC\") - "
+ "PXI Express DStar Line C.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI0 (\"RTSI0\") - "
+ "RTSI Bus Line 0.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI1 (\"RTSI1\") - "
+ "RTSI Bus Line 1.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI2 (\"RTSI2\") - "
+ "RTSI Bus Line 2.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI3 (\"RTSI3\") - "
+ "RTSI Bus Line 3.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI4 (\"RTSI4\") - "
+ "RTSI Bus Line 4.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI5 (\"RTSI5\") - "
+ "RTSI Bus Line 5.\n"
+ "    IVIDOWNCONVERTER_VAL_TRIGGER_SOURCE_RTSI6 (\"RTSI6\") - "
+ "RTSI Bus Line 6.\n"
+ "    "
+ 
+3 all "Is Sweeping [FSW]" IVIDOWNCONVERTER_ATTR_IS_SWEEPING ViBoolean g Boolean_values
+ "Indicates if the downconverter is currently sweeping the RF input frequency.\n"
+ "    "
+ 
+3 all "Number of Bands [BCI]" IVIDOWNCONVERTER_ATTR_NUM_BANDS ViInt32 g
+ "Returns the number of frequency bands returned from a call to the "
+ "IviDownconverter_GetBandCrossingInfo function.  The count returned "
+ "indicates the number of start-stop frequency pairs.\n"
+ "    "
+ 
+3 all "Analog" 
+ "Attributes that control the analog frequency sweep of the downconverter.\n"
+ "    "
+ 
+4 all "Frequency Sweep Start [FSW]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_START ViReal64 gs
+ "Specifies the start frequency of the LO sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are in hertz.\n"
+ "    "
+ 
+4 all "Frequency Sweep Stop [FSW]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_STOP ViReal64 gs
+ "Specifies the stop frequency of the LO sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are in hertz.\n"
+ "    "
+ 
+4 all "Frequency Sweep Time [FSW]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_TIME ViReal64 gs
+ "Specifies the duration of one LO sweep from start to stop frequency. The units "
+ "are in seconds.\n"
+ "    "
+ 
+3 all "Step" 
+ "This group contains attributes to support the instrument that can sweep the "
+ "frequency of the RF input signal in steps.\n"
+ "    "
+ 
+4 all "Frequency Step Dwell [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_DWELL ViReal64 gs  
+ "Specifies the duration of one step. The units are in seconds.\n\n"
+ "The dwell time starts immediately at the start of each step. No settling time is "
+ "added. This attribute is valid only when the "
+ "IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SINGLE_STEP_ENABLED attribute is set to "
+ "VI_FALSE.\n"
+ "    "
+
+4 all "Frequency Step Scaling [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SCALING ViInt32 gs attrFrequencyStepScalingRangeTable
+ "Specifies the spacing of the steps.\n"
+ "    "
+ 
+4 all "Frequency Step Single Step Enabled [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+ 
+4 all "Frequency Step Size [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SIZE ViReal64 gs
+ "Specifies the step size. The units are in hertz if you set the "
+ "IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SCALING attribute to "
+ "IVIDOWNCONVERTER_VAL_FREQUENCY_STEP_SCALING_LINEAR and unitless (factor) if you set "
+ "the IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_SCALING attribute to "
+ "IVIDOWNCONVERTER_VAL_FREQUENCY_STEP_SCALING_LOGARITHMIC.\n"
+ "    "
+ 
+4 all "Frequency Step Start [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_START ViReal64 gs
+ "Specifies the start frequency of the stepped sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are in hertz.\n"
+ "    "
+ 
+4 all "Frequency Step Stop [FST]" IVIDOWNCONVERTER_ATTR_FREQUENCY_STEP_STOP ViReal64 gs
+ "Specifies the stop frequency of the stepped sweep.\n\n"
+ "If the stop frequency is less than the start frequency, the frequency decreases "
+ "during the sweep. The units are in hertz.\n"
+ "    "
+ 
+3 all "List" 
+ "This group contains attributes to support the instrument that can set the "
+ "frequency of the RF input signal to values given as a list of values.\n"
+ "    "
+
+4 all "Frequency Sweep List Dwell [FSL]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_LIST_DWELL ViReal64 gs
+ "Specifies the duration of one step. The units are in seconds.\n\n"
+ "This attribute is valid only when the "
+ "IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_LIST_SINGLE_STEP_ENABLED attribute is set "
+ "to VI_FALSE.\n"
+ "    "
+
+4 all "Frequency Sweep List Selected Name [FSL]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_LIST_SELECTED_NAME ViString gs
+ "Specifies the name of the selected list to become active. The name will be one "
+ "of the lists created.\n"
+ "    "
+
+4 all "Frequency Sweep List Single Step Enabled [FSL]" IVIDOWNCONVERTER_ATTR_FREQUENCY_SWEEP_LIST_SINGLE_STEP_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables single step mode.\n"
+ "    "
+ 
+2 all "Preselector Enabled [PS]" IVIDOWNCONVERTER_ATTR_PRESELECTOR_ENABLED ViBoolean gs Boolean_values 
+ "Enables or disables bypassing the preselection filter for the active RF input.\n"
+ "    "
+ 
+2 all "RF Input Attenuation" IVIDOWNCONVERTER_ATTR_RF_INPUT_ATTENUATION ViReal64 gs
+ "Specifies the amount of attenuation or gain to apply to the active RF input of the "
+ "downconverter. The units are in dB.\n\n"
+ "Positive values for this attribute represent attenuation, while negative values "
+ "represent gain.\n"
+ "    " 
+ 
+2 all "RF Input Count" IVIDOWNCONVERTER_ATTR_RF_INPUT_COUNT ViInt32 g
+ "Returns the number of RF inputs available on the device.\n"
+ "    " 
+ 
+2 all "RF Input Coupling" IVIDOWNCONVERTER_ATTR_RF_INPUT_COUPLING ViInt32 gs attrRFInputCouplingRangeTable
+ "Specifies the coupling applied to the active RF input.\n"
+ "    " 
+ 
+2 all "RF Input Frequency" IVIDOWNCONVERTER_ATTR_RF_INPUT_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the active RF input. The units are in hertz.\n"
+ "    " 
+ 
+1 all "IF Output" 
+ "Attributes that control the IF output of the downconverter.\n"
+ "    "
+ 
+2 all "Active IF Output" IVIDOWNCONVERTER_ATTR_ACTIVE_IF_OUTPUT ViString gs 
+ "Specifies the IF output that is currently active. Subsequent calls to functions "
+ "and attributes that are based on the IF Output repeated capability will be "
+ "applied to the active IF output you specify with this value. The values for this attribute "
+ "correspond to the allowed repeated capability names for the IF Output repeated "
+ "capability. If the driver defines a qualified IF Output name, this attribute "
+ "returns the qualified name. Use the IviDownconverter_GetIFOutputName function "
+ "to read the allowed values for this attribute.\n\n"
+ "Note that this attribute does not enable the specified output. "
+ "This attribute only controls the IF Output repeated capability instance to which "
+ "other functions and attributes apply. Use the IF Output Enabled atribute to route "
+ "the IF signal to a specific output.\n"
+ "    "
+ 
+2 all "IF Output Filter Bandwidth [IFF]" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_FILTER_BANDWIDTH ViReal64 gs
+ "Specifies the maximum effective IF signal bandwidth that the downconverter's active IF output can "
+ "present to the digitizer. The units are in hertz.\n\n"
+ "This value is a measure of the spectral width between two points for which the "
+ "amplitude profile is 3 dB below a peak close to mid band.\n"
+ "    "
+ 
+2 all "IF Output Count" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_COUNT ViInt32 g
+ "Returns the number of IF outputs available on the device.\n"
+ "    "	
+
+2 all "IF Output Enabled" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the active IF output. You can enable only a single IF output at a time. "
+ "Thus, when you set this attribute to True for a particular IF output, all other IF "
+ "outputs are disabled.\n"
+ "    "	  	
+
+2 all "IF Output Frequency" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_FREQUENCY ViReal64 g
+ "Returns the frequency of the active IF output. The units are in hertz.\n"
+ "    "	  
+
+2 all "IF Output Gain" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_GAIN ViReal64 gs
+ "Specifies the amount of gain or attenuation to apply to the active IF output of the "
+ "downconverter. The units are in dB.\n\n"
+ "Positive values for this attribute represent signal gain, while negative values "
+ "represent attenuation.\n"
+ "    "	
+ 
+2 all "IF Output Video Detector Bandwidth [VDB]" IVIDOWNCONVERTER_ATTR_IF_OUTPUT_VIDEO_DETECTOR_BANDWIDTH ViReal64 gs
+ "Specifies the 3 dB bandwidth of the active IF output video detection filter. The units "
+ "are in hertz.\n"
+ "    "
+ 
+2 all "Is Settled" IVIDOWNCONVERTER_ATTR_IS_SETTLED ViBoolean g Boolean_values
+ "Indicates whether the downconverter has settled from changes to either the RF "
+ "input signal or changes to device control parameters, such as IF output gain, "
+ "IF frequency, or RF attenuation. This attribute indicates whether the active "
+ "IF output is valid for processing by another downstream system component, such "
+ "as a digitizer.\n"
+ "    "	 
+
+1 all "External LO" 
+ "Attributes that control the external LO of the downconverter.\n"
+ "    "
+ 
+2 all "External LO Enabled" IVIDOWNCONVERTER_ATTR_EXTERNAL_LO_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the external LO. If the driver does not support an external "
+ "LO and this attribute is set to True, then the driver returns the Invalid Value "
+ "error. You also can set this attribute using the optionsString parameter.\n"
+ "    "	 
+
+2 all "External LO Frequency" IVIDOWNCONVERTER_ATTR_EXTERNAL_LO_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the external LO. The units are in hertz.\n"
+ "This attribute is normally read-only so that the driver can supply "
+ "the correct external LO frequency for a given requested RF input "
+ "frequency. Some downconverters can support multiple LO frequencies "
+ "for a single RF frequency to help minimize images. For these cases, "
+ "this attribute is writeable."
+ "    "	
+ 
+1 all "External Mixer" 
+ "This group contains attributes to support the instrument that can use an external "
+ "mixer.\n"
+ "    "
+ 
+2 all "Bias" 
+ "This group contains attributes to support the instrument that can use an external "
+ "mixer.\n"
+ "    "
+
+3 all "External Mixer Bias Enabled [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_BIAS_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the external mixer bias.\n"
+ "    "
+
+3 all "External Mixer Bias Level [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_BIAS_LEVEL ViReal64 gs
+ "Specifies the external mixer bias current. The units are in amps.\n"
+ "    "
+ 
+3 all "External Mixer Bias Limit [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_BIAS_LIMIT ViReal64 gs
+ "Specifies the external mixer bias current limit. The units are in amps.\n"
+ "    "
+ 
+2 all "External Mixer Enabled [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the external mixer.\n"
+ "    "
+ 
+2 all "External Mixer Harmonic [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_HARMONIC ViInt32 gs
+ "Specifies the order n of the harmonic used for conversion.\n"
+ "    "
+ 
+2 all "External Mixer Number of Ports [EM]" IVIDOWNCONVERTER_ATTR_EXTERNAL_MIXER_NUMBER_OF_PORTS ViInt32 gs
+ "Specifies the number of ports.\n"
+ "    "
+
+1 all "Reference Oscillator" 
+ "This group contains attributes to support the instrument that can configure "
+ "frequency reference.\n"
+ "    "
+
+2 all "Reference Oscillator External Frequency [RO]" IVIDOWNCONVERTER_ATTR_REFERENCE_OSCILLATOR_EXTERNAL_FREQUENCY ViReal64 gs
+ "Specifies the frequency of the external signal used as the reference for internal "
+ "IF frequency generation. The units are in hertz.\n\n"
+ "This attribute is valid only when you set "
+ "IVIDOWNCONVERTER_ATTR_REFERENCE_OSCILLATOR_SOURCE to 
+ "IVIDOWNCONVERTER_VAL_REFERENCE_OSCILLATOR_SOURCE_EXTERNAL.\n"
+ "    " 
+ 
+2 all "Reference Oscillator Source [RO]" IVIDOWNCONVERTER_ATTR_REFERENCE_OSCILLATOR_SOURCE ViInt32 gs attrReferenceOscillatorSourceRangeTable 
+ "Specifies the reference oscillator source used to generate the precise RF output "
+ "frequency.\n"
+ "    " 
+
+2 all "Reference Oscillator Output Enabled [RO]" IVIDOWNCONVERTER_ATTR_REFERENCE_OSCILLATOR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+ "Enables or disables the reference output. Many downconverters support the ability "
+ "to output their frequency reference. Use this attribute to enable or disable "
+ "that output.\n"
+ "    " 
