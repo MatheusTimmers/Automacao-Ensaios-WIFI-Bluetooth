@@ -16,18 +16,18 @@
             instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
         }
 
-        public void CriaPasta(string Na, string Np)
+        public void CriaPastaEArquivo(string nomeArquivo, string nomePasta)
         {
             //---------------------------------------------------------------
             //Cria Uma pasta para salvar os valores
             //---------------------------------------------------------------
 
-            // Cria uma subPasta na pasta teste Automação
+            // 
             // Adicionando o nome Valores do Marker dentro da variavel Nome Pasta
-            Np = System.IO.Path.Combine(Na, Np);
+            nomePasta = System.IO.Path.Combine(nomeArquivo, nomePasta);
 
             //Cria pasta
-            System.IO.Directory.CreateDirectory(Np);
+            System.IO.Directory.CreateDirectory(nomePasta);
 
             // Verifica o Caminho
         }
@@ -109,12 +109,10 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
+                CriaPastaEArquivo(nomeArquivo, nomePasta);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
@@ -133,14 +131,12 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
+                CriaPastaEArquivo(nomeArquivo, nomePasta);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
 
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
             }
@@ -157,12 +153,10 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
+                CriaPastaEArquivo(nomeArquivo, nomePasta);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
                 File.AppendAllText(nomePasta, valor2.ToString() + ";");
