@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeySightLib", "KeySigthLLib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomacaoN9010A", "AutomacaoN9010A\AutomacaoN9010A.csproj", "{35BAD11C-B754-4586-8DA0-243559ACE454}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automacao Form", "Automacao N9010A\Automacao Form.csproj", "{4694BA6C-7C4C-47A7-B067-C683BF906409}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automacao WIFI", "Automacao N9010A\Automacao WIFI.csproj", "{4694BA6C-7C4C-47A7-B067-C683BF906409}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,6 +10,7 @@ namespace Automacao_N9010A
         string Att = "35";
 
 
+
         public Principal()
         {
             InitializeComponent();
@@ -19,6 +20,8 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            
+
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -387,11 +390,16 @@ namespace Automacao_N9010A
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtConfirmar_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ListaEnsaiosItem11.CheckedItems.Count; i++)
+            Item_11 it11;
+            Item_12 it12;
+            it11 = new Item_11();
+            it12 = new Item_12();
+
+            for (int i = 0; i < it11.GetQuantidadeEnsaios(); i++)
             {
-                switch (ListaEnsaiosItem11.CheckedItems[i])
+                switch (it11.GetEnsaios(i))
                 {
                     case "Largura de faixa a 6 dB":
                         MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 6 dB");
@@ -428,9 +436,9 @@ namespace Automacao_N9010A
                         continue;
                 }
             }
-            for (int i = 0; i < ListaEnsaiosItem12.CheckedItems.Count; i++)
+            for (int i = 0; i < it12.GetQuantidadeEnsaios(); i++)
             {
-                switch (ListaEnsaiosItem12.CheckedItems[i])
+                switch (it12.GetEnsaios(i))
                 {
                     case "Potência de saída":
 
@@ -442,48 +450,30 @@ namespace Automacao_N9010A
                 }
             }
 
-
-
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void BtSelTodos_Click(object sender, EventArgs e)
         {
-
+             for (int i = 0; i < ListaTecnologias.Items.Count; i++)
+             {
+                ListaTecnologias.SetItemChecked(i, true);
+             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void BtLimpar_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < ListaTecnologias.Items.Count; i++)
+            {
+                ListaTecnologias.SetItemChecked(i, false);
+            }
         }
 
-        private void BtVoltar_Click(object sender, EventArgs e)
+        private void BtItem10_Click(object sender, EventArgs e)
         {
+            Item_11 it11;
+            it11 = new Item_11();
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LTecnologias_Click(object sender, EventArgs e)
-        {
-
+            it11.
         }
     }
 }

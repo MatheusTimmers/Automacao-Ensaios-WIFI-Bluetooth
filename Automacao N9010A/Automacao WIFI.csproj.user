@@ -7,6 +7,9 @@
     <Compile Update="Item 11.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Principal.cs">
       <SubType>Form</SubType>
     </Compile>

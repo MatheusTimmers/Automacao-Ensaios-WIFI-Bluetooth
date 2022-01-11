@@ -31,6 +31,8 @@ namespace Automacao_N9010A
         {
             this.LEnsaiosItem11 = new System.Windows.Forms.Label();
             this.ListaEnsaiosItem11 = new System.Windows.Forms.CheckedListBox();
+            this.BtSelTodos = new System.Windows.Forms.Button();
+            this.BtLimpar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LEnsaiosItem11
@@ -63,12 +65,34 @@ namespace Automacao_N9010A
             this.ListaEnsaiosItem11.Size = new System.Drawing.Size(294, 130);
             this.ListaEnsaiosItem11.TabIndex = 4;
             // 
+            // BtSelTodos
+            // 
+            this.BtSelTodos.Location = new System.Drawing.Point(13, 204);
+            this.BtSelTodos.Name = "BtSelTodos";
+            this.BtSelTodos.Size = new System.Drawing.Size(132, 30);
+            this.BtSelTodos.TabIndex = 6;
+            this.BtSelTodos.Text = "Selecionar Todos";
+            this.BtSelTodos.UseVisualStyleBackColor = true;
+            this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
+            // 
+            // BtLimpar
+            // 
+            this.BtLimpar.Location = new System.Drawing.Point(166, 204);
+            this.BtLimpar.Name = "BtLimpar";
+            this.BtLimpar.Size = new System.Drawing.Size(141, 30);
+            this.BtLimpar.TabIndex = 7;
+            this.BtLimpar.Text = "Limpar";
+            this.BtLimpar.UseVisualStyleBackColor = true;
+            this.BtLimpar.Click += new System.EventHandler(this.BtLimpar_Click);
+            // 
             // Item_11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(321, 220);
+            this.ClientSize = new System.Drawing.Size(321, 246);
+            this.Controls.Add(this.BtLimpar);
+            this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.LEnsaiosItem11);
             this.Controls.Add(this.ListaEnsaiosItem11);
             this.Name = "Item_11";
@@ -82,5 +106,7 @@ namespace Automacao_N9010A
 
         private System.Windows.Forms.Label LEnsaiosItem11;
         private System.Windows.Forms.CheckedListBox ListaEnsaiosItem11;
+        private System.Windows.Forms.Button BtSelTodos;
+        private System.Windows.Forms.Button BtLimpar;
     }
 }

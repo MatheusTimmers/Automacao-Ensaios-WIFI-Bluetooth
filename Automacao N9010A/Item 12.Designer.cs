@@ -1,7 +1,7 @@
 ﻿
 namespace Automacao_N9010A
 {
-    partial class Form3
+    partial class Item_12
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,8 @@ namespace Automacao_N9010A
         {
             this.ListaEnsaiosItem12 = new System.Windows.Forms.CheckedListBox();
             this.LEnsaiosItem12 = new System.Windows.Forms.Label();
+            this.BtLimpar = new System.Windows.Forms.Button();
+            this.BtSelTodos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListaEnsaiosItem12
@@ -59,12 +61,34 @@ namespace Automacao_N9010A
             this.LEnsaiosItem12.TabIndex = 6;
             this.LEnsaiosItem12.Text = "Ensaios para 5150 a 5350MHz e 5470 a 5725MHz.. \r\nItem 12 da norma 6506.";
             // 
+            // BtLimpar
+            // 
+            this.BtLimpar.Location = new System.Drawing.Point(166, 172);
+            this.BtLimpar.Name = "BtLimpar";
+            this.BtLimpar.Size = new System.Drawing.Size(141, 30);
+            this.BtLimpar.TabIndex = 9;
+            this.BtLimpar.Text = "Limpar";
+            this.BtLimpar.UseVisualStyleBackColor = true;
+            this.BtLimpar.Click += new System.EventHandler(this.BtLimpar_Click);
+            // 
+            // BtSelTodos
+            // 
+            this.BtSelTodos.Location = new System.Drawing.Point(13, 172);
+            this.BtSelTodos.Name = "BtSelTodos";
+            this.BtSelTodos.Size = new System.Drawing.Size(132, 30);
+            this.BtSelTodos.TabIndex = 8;
+            this.BtSelTodos.Text = "Selecionar Todos";
+            this.BtSelTodos.UseVisualStyleBackColor = true;
+            this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(321, 186);
+            this.ClientSize = new System.Drawing.Size(321, 210);
+            this.Controls.Add(this.BtLimpar);
+            this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem12);
             this.Controls.Add(this.LEnsaiosItem12);
             this.Name = "Form3";
@@ -78,5 +102,7 @@ namespace Automacao_N9010A
 
         private System.Windows.Forms.CheckedListBox ListaEnsaiosItem12;
         private System.Windows.Forms.Label LEnsaiosItem12;
+        private System.Windows.Forms.Button BtLimpar;
+        private System.Windows.Forms.Button BtSelTodos;
     }
 }

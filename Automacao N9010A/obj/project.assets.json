@@ -94,9 +94,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj",
-      "projectName": "Automacao Form",
-      "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao Form.csproj",
+      "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
+      "projectName": "Automacao WIFI",
+      "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
       "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\Automacao N9010A\\obj\\",
       "projectStyle": "PackageReference",
