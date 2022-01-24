@@ -96,7 +96,7 @@ namespace Automacao_N9010A
             this.Controls.Add(this.LEnsaiosItem11);
             this.Controls.Add(this.ListaEnsaiosItem11);
             this.Name = "Item_11";
-            this.Text = "Item_11";
+            this.Text = "Item 11";
             this.ResumeLayout(false);
             this.PerformLayout();
 

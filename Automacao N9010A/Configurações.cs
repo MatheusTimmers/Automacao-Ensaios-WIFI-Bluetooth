@@ -12,6 +12,8 @@ namespace Automacao_N9010A
 {
     public partial class Configurações : Form
     {
+
+        public string  RefLevel, Att;
         public Configurações()
         {
             InitializeComponent();
@@ -56,5 +58,19 @@ namespace Automacao_N9010A
                 }
             }
         }
+
+        public string GetRef()
+        {
+            return RefLevel;
+        }
+
+        public string GetAtt()
+        {
+            return Att;
+        }
+
+
+        
+        
     }
 }

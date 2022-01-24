@@ -147,6 +147,7 @@ namespace Automacao_N9010A
             this.BtConfig.TabIndex = 15;
             this.BtConfig.Text = "Configurações";
             this.BtConfig.UseVisualStyleBackColor = false;
+            this.BtConfig.Click += new System.EventHandler(this.BtConfig_Click);
             // 
             // LogoLabelo
             // 
@@ -195,6 +196,7 @@ namespace Automacao_N9010A
             this.BtItem11.TabIndex = 19;
             this.BtItem11.Text = "Item 11";
             this.BtItem11.UseVisualStyleBackColor = false;
+            this.BtItem11.Click += new System.EventHandler(this.BtItem11_Click);
             // 
             // BtItem12
             // 
@@ -207,6 +209,7 @@ namespace Automacao_N9010A
             this.BtItem12.TabIndex = 20;
             this.BtItem12.Text = "Item 12";
             this.BtItem12.UseVisualStyleBackColor = false;
+            this.BtItem12.Click += new System.EventHandler(this.BtItem12_Click);
             // 
             // TextBoxTecnologias
             // 

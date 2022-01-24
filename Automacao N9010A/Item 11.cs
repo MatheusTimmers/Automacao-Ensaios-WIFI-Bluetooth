@@ -17,6 +17,7 @@ namespace Automacao_N9010A
             InitializeComponent();
         }
 
+
         public int GetQuantidadeEnsaios()
         {
             return ListaEnsaiosItem11.CheckedItems.Count;
@@ -27,6 +28,7 @@ namespace Automacao_N9010A
             return ListaEnsaiosItem11.CheckedItems[i];
         }
 
+   
         
 
         private void BtLimpar_Click(object sender, EventArgs e)

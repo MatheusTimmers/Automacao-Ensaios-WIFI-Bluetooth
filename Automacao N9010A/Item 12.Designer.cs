@@ -81,7 +81,7 @@ namespace Automacao_N9010A
             this.BtSelTodos.UseVisualStyleBackColor = true;
             this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
             // 
-            // Form3
+            // Item_12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,8 +91,8 @@ namespace Automacao_N9010A
             this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem12);
             this.Controls.Add(this.LEnsaiosItem12);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "Item_12";
+            this.Text = "Item 12";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,22 +6,26 @@ namespace Automacao_N9010A
 {
     public partial class Principal : Form
     {
-        string RefLevel = "20";
-        string Att = "35";
-
-
+        string RefLevel;
+        string Att;
+        
 
         public Principal()
         {
             InitializeComponent();
+            
         }
 
         public void Ensaio_Largura_de_faixa_a_6_dB(string valFreq, string ip)
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
-            
 
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -85,6 +89,11 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -146,6 +155,11 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -207,6 +221,11 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -269,6 +288,12 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
+
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -331,6 +356,11 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
+            Configurações config;
+            config = new Configurações();
+
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
 
             for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
             {
@@ -470,10 +500,54 @@ namespace Automacao_N9010A
 
         private void BtItem10_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("EM BREVE!");
+            //Item_10 it10;
+            //it10 = new Item_10();
+            //.Show();
+        }
+
+        private void BtItem11_Click(object sender, EventArgs e)
+        {
             Item_11 it11;
             it11 = new Item_11();
+            if (Application.OpenForms["Item_11"] == null)
+            {
+                it11.Show();
+            }
+            else
+            {
+                MessageBox.Show("Aba já está aberta");
+            }
+        }
 
-            it11.
+        private void BtItem12_Click(object sender, EventArgs e)
+        {
+            Item_12 it12;
+            it12 = new Item_12();
+            if (Application.OpenForms["Item_12"] == null)
+            {
+                it12.Show();
+            }
+            else
+            {
+                MessageBox.Show("Aba já está aberta");
+            }
+            
+        }
+
+        private void BtConfig_Click(object sender, EventArgs e)
+        {
+            Configurações config;
+            config = new Configurações();
+            if (Application.OpenForms["Configurações"] == null)
+            {
+                config.Show();
+            }
+            else
+            {
+
+                MessageBox.Show("Aba já está aberta");
+            }
         }
     }
 }
