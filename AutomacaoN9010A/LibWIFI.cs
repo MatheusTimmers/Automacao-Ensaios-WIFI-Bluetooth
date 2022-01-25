@@ -18,19 +18,31 @@ namespace MatheusProductions.AutomacaoN9010A
 
     public class AutomacaoN9010A
     {
-        public void Largura_6dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public bool ConectaIP(string ip)
         {
             Keysight radical;
             ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager(); 
+            rm = new ResourceManager();
+            instr = new FormattedIO488();
+
+
+            return radical.Inicializacao(instr, rm, ip);
+        }
+
+
+        public void Largura_6dB(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        {
+            Keysight radical;
+            FormattedIO488 instr;
+
+            radical = new Keysight();
             instr = new FormattedIO488();
 
             string nomePasta = @"\\A-N9010A-00151\prints\Largura 6";
-
-            radical.Inicializacao(instr, rm, ip);
+      
 
             try 
             {
@@ -60,19 +72,16 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Largura_26dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Largura_26dB(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
             Keysight radical;
-            ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager();
             instr = new FormattedIO488();
 
             string nomePasta = @"\\A-N9010A-00151\prints\Largura 26";
 
-            radical.Inicializacao(instr, rm, ip);
 
             try
             {
@@ -104,21 +113,18 @@ namespace MatheusProductions.AutomacaoN9010A
         }
 
 
-        public void Pico_da_densidade_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Pico_da_densidade_de_potência(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
             Keysight radical;
-            ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager(); // Obtenha um identificador para o gerenciador de recursos padrão
             instr = new FormattedIO488(); // Criando o Objeto
 
             // Nome da pasta que vai salvar os valores.
             string nomePasta = @"\\A-N9010A-00151\prints\Pico da densidade de potencia";
 
             //"TCPIP0::192.168.1.100::hislip0::INSTR";
-            radical.Inicializacao(instr, rm, ip);
 
             try // Try o bloco para capturar qualquer RsInstrumentException()
             {
@@ -144,19 +150,16 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
             Keysight radical;
-            ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager();
             instr = new FormattedIO488();
 
             string nomePasta = @"\\A-N9010A-00151\prints\Valor Medio Densidade Espectral";
 
-            radical.Inicializacao(instr, rm, ip);
             try
             {
                 instr.WriteString("*RST;*CLS");
@@ -184,19 +187,16 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Potência_de_pico_máxima(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Potência_de_pico_máxima(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
             Keysight radical;
-            ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager();
             instr = new FormattedIO488();
 
             string nomePasta = @"\\A-N9010A-00151\prints\Potência_de_pico_máxima";
 
-            radical.Inicializacao(instr, rm, ip);
             try
             {
                 instr.WriteString("*RST;*CLS");
@@ -228,19 +228,16 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
             Keysight radical;
-            ResourceManager rm;
             FormattedIO488 instr;
 
             radical = new Keysight();
-            rm = new ResourceManager();
             instr = new FormattedIO488();
 
             string nomePasta = @"\\A-N9010A-00151\prints\Valor Médio da Potência Máxima De Saída";
 
-            radical.Inicializacao(instr, rm, ip);
             try
             {
                 instr.WriteString("*RST;*CLS");

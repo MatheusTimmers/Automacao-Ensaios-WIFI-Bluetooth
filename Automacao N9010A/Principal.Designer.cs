@@ -46,6 +46,8 @@ namespace Automacao_N9010A
             this.TextBoxTecnologias = new System.Windows.Forms.GroupBox();
             this.BtSelTodos = new System.Windows.Forms.Button();
             this.GrupoDasNormas = new System.Windows.Forms.GroupBox();
+            this.BtConectado = new System.Windows.Forms.Button();
+            this.LConecta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoLabelo)).BeginInit();
             this.TextBoxTecnologias.SuspendLayout();
             this.GrupoDasNormas.SuspendLayout();
@@ -70,7 +72,7 @@ namespace Automacao_N9010A
             "802.11ax (160)"});
             this.ListaTecnologias.Location = new System.Drawing.Point(12, 26);
             this.ListaTecnologias.Name = "ListaTecnologias";
-            this.ListaTecnologias.Size = new System.Drawing.Size(292, 174);
+            this.ListaTecnologias.Size = new System.Drawing.Size(361, 174);
             this.ListaTecnologias.TabIndex = 0;
             // 
             // BtConfirmar
@@ -78,9 +80,9 @@ namespace Automacao_N9010A
             this.BtConfirmar.BackColor = System.Drawing.SystemColors.Control;
             this.BtConfirmar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtConfirmar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtConfirmar.Location = new System.Drawing.Point(222, 477);
+            this.BtConfirmar.Location = new System.Drawing.Point(277, 533);
             this.BtConfirmar.Name = "BtConfirmar";
-            this.BtConfirmar.Size = new System.Drawing.Size(91, 29);
+            this.BtConfirmar.Size = new System.Drawing.Size(108, 33);
             this.BtConfirmar.TabIndex = 6;
             this.BtConfirmar.Text = "Confirmar";
             this.BtConfirmar.UseVisualStyleBackColor = false;
@@ -141,9 +143,9 @@ namespace Automacao_N9010A
             this.BtConfig.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtConfig.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtConfig.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtConfig.Location = new System.Drawing.Point(109, 211);
+            this.BtConfig.Location = new System.Drawing.Point(138, 211);
             this.BtConfig.Name = "BtConfig";
-            this.BtConfig.Size = new System.Drawing.Size(91, 29);
+            this.BtConfig.Size = new System.Drawing.Size(108, 29);
             this.BtConfig.TabIndex = 15;
             this.BtConfig.Text = "Configurações";
             this.BtConfig.UseVisualStyleBackColor = false;
@@ -164,9 +166,9 @@ namespace Automacao_N9010A
             this.BtLimpar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtLimpar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtLimpar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtLimpar.Location = new System.Drawing.Point(210, 211);
+            this.BtLimpar.Location = new System.Drawing.Point(265, 211);
             this.BtLimpar.Name = "BtLimpar";
-            this.BtLimpar.Size = new System.Drawing.Size(91, 29);
+            this.BtLimpar.Size = new System.Drawing.Size(108, 29);
             this.BtLimpar.TabIndex = 17;
             this.BtLimpar.Text = "Limpar";
             this.BtLimpar.UseVisualStyleBackColor = false;
@@ -179,7 +181,7 @@ namespace Automacao_N9010A
             this.BtItem10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BtItem10.Location = new System.Drawing.Point(12, 26);
             this.BtItem10.Name = "BtItem10";
-            this.BtItem10.Size = new System.Drawing.Size(91, 29);
+            this.BtItem10.Size = new System.Drawing.Size(108, 29);
             this.BtItem10.TabIndex = 18;
             this.BtItem10.Text = "Item 10";
             this.BtItem10.UseVisualStyleBackColor = false;
@@ -190,9 +192,9 @@ namespace Automacao_N9010A
             this.BtItem11.BackColor = System.Drawing.SystemColors.Control;
             this.BtItem11.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtItem11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtItem11.Location = new System.Drawing.Point(109, 26);
+            this.BtItem11.Location = new System.Drawing.Point(138, 26);
             this.BtItem11.Name = "BtItem11";
-            this.BtItem11.Size = new System.Drawing.Size(91, 29);
+            this.BtItem11.Size = new System.Drawing.Size(108, 29);
             this.BtItem11.TabIndex = 19;
             this.BtItem11.Text = "Item 11";
             this.BtItem11.UseVisualStyleBackColor = false;
@@ -203,9 +205,9 @@ namespace Automacao_N9010A
             this.BtItem12.BackColor = System.Drawing.SystemColors.Control;
             this.BtItem12.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtItem12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtItem12.Location = new System.Drawing.Point(210, 26);
+            this.BtItem12.Location = new System.Drawing.Point(265, 26);
             this.BtItem12.Name = "BtItem12";
-            this.BtItem12.Size = new System.Drawing.Size(91, 29);
+            this.BtItem12.Size = new System.Drawing.Size(108, 29);
             this.BtItem12.TabIndex = 20;
             this.BtItem12.Text = "Item 12";
             this.BtItem12.UseVisualStyleBackColor = false;
@@ -218,9 +220,9 @@ namespace Automacao_N9010A
             this.TextBoxTecnologias.Controls.Add(this.BtLimpar);
             this.TextBoxTecnologias.Controls.Add(this.ListaTecnologias);
             this.TextBoxTecnologias.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxTecnologias.Location = new System.Drawing.Point(12, 130);
+            this.TextBoxTecnologias.Location = new System.Drawing.Point(12, 180);
             this.TextBoxTecnologias.Name = "TextBoxTecnologias";
-            this.TextBoxTecnologias.Size = new System.Drawing.Size(313, 248);
+            this.TextBoxTecnologias.Size = new System.Drawing.Size(379, 248);
             this.TextBoxTecnologias.TabIndex = 21;
             this.TextBoxTecnologias.TabStop = false;
             this.TextBoxTecnologias.Text = "Tecnologias para ensaio";
@@ -230,9 +232,9 @@ namespace Automacao_N9010A
             this.BtSelTodos.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BtSelTodos.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtSelTodos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtSelTodos.Location = new System.Drawing.Point(9, 211);
+            this.BtSelTodos.Location = new System.Drawing.Point(12, 211);
             this.BtSelTodos.Name = "BtSelTodos";
-            this.BtSelTodos.Size = new System.Drawing.Size(91, 29);
+            this.BtSelTodos.Size = new System.Drawing.Size(108, 29);
             this.BtSelTodos.TabIndex = 18;
             this.BtSelTodos.Text = "Sel. Todos";
             this.BtSelTodos.UseVisualStyleBackColor = false;
@@ -244,12 +246,37 @@ namespace Automacao_N9010A
             this.GrupoDasNormas.Controls.Add(this.BtItem10);
             this.GrupoDasNormas.Controls.Add(this.BtItem11);
             this.GrupoDasNormas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GrupoDasNormas.Location = new System.Drawing.Point(12, 396);
+            this.GrupoDasNormas.Location = new System.Drawing.Point(12, 446);
             this.GrupoDasNormas.Name = "GrupoDasNormas";
-            this.GrupoDasNormas.Size = new System.Drawing.Size(310, 65);
+            this.GrupoDasNormas.Size = new System.Drawing.Size(379, 65);
             this.GrupoDasNormas.TabIndex = 22;
             this.GrupoDasNormas.TabStop = false;
             this.GrupoDasNormas.Text = "Ensaios da Norma 6506";
+            // 
+            // BtConectado
+            // 
+            this.BtConectado.BackColor = System.Drawing.SystemColors.Control;
+            this.BtConectado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtConectado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BtConectado.Location = new System.Drawing.Point(160, 130);
+            this.BtConectado.Name = "BtConectado";
+            this.BtConectado.Size = new System.Drawing.Size(117, 29);
+            this.BtConectado.TabIndex = 23;
+            this.BtConectado.Text = "Conectar";
+            this.BtConectado.UseVisualStyleBackColor = false;
+            this.BtConectado.Click += new System.EventHandler(this.BtConectado_Click);
+            // 
+            // LConecta
+            // 
+            this.LConecta.AutoSize = true;
+            this.LConecta.BackColor = System.Drawing.Color.Transparent;
+            this.LConecta.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LConecta.ForeColor = System.Drawing.Color.Red;
+            this.LConecta.Location = new System.Drawing.Point(283, 105);
+            this.LConecta.Name = "LConecta";
+            this.LConecta.Size = new System.Drawing.Size(93, 13);
+            this.LConecta.TabIndex = 24;
+            this.LConecta.Text = "SEM CONEXÃO";
             // 
             // Principal
             // 
@@ -258,7 +285,9 @@ namespace Automacao_N9010A
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(342, 528);
+            this.ClientSize = new System.Drawing.Size(403, 588);
+            this.Controls.Add(this.LConecta);
+            this.Controls.Add(this.BtConectado);
             this.Controls.Add(this.BtConfirmar);
             this.Controls.Add(this.GrupoDasNormas);
             this.Controls.Add(this.LIP);
@@ -304,6 +333,8 @@ namespace Automacao_N9010A
         private System.Windows.Forms.GroupBox TextBoxTecnologias;
         private System.Windows.Forms.Button BtSelTodos;
         private System.Windows.Forms.GroupBox GrupoDasNormas;
+        private System.Windows.Forms.Button BtConectado;
+        private System.Windows.Forms.Label LConecta;
     }
 }
 

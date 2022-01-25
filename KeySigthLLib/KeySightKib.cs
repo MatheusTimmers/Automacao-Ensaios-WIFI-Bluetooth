@@ -32,7 +32,7 @@
             // Verifica o Caminho
         }
 
-        public void Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
         {
             try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
             {
@@ -42,13 +42,14 @@
                 // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
                 instr.IO = (IMessage)rm.Open(ip);
                 instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
+                return true;
             }
             catch (RsInstrumentException e)
             {
                 Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
                 Console.WriteLine("Pressione qualquer tecla para sair.");
                 Console.ReadKey();
-                return;
+                return false;
             }
         }
 
