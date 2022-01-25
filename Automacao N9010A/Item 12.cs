@@ -12,9 +12,17 @@ namespace Automacao_N9010A
 {
     public partial class Item_12 : Form
     {
+        bool[] ensaiosSalvos = new bool[3];
+
         public Item_12()
         {
             InitializeComponent();
+
+            for (int i = 0; i < ListaEnsaiosItem12.Items.Count; i++)
+            {
+                ListaEnsaiosItem12.SetItemChecked(i, ensaiosSalvos[i]);
+            }
+
         }
 
         private void BtSelTodos_Click(object sender, EventArgs e)
@@ -42,6 +50,16 @@ namespace Automacao_N9010A
             {
                 ListaEnsaiosItem12.SetItemChecked(i, false);
             }
+        }
+
+        private void BtSalvar_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ListaEnsaiosItem12.Items.Count; i++)
+            {
+
+                ensaiosSalvos[i] = ListaEnsaiosItem12.GetItemChecked(i);
+            }
+            MessageBox.Show("Valores salvos");
         }
     }
 }

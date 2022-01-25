@@ -8,11 +8,27 @@ namespace Automacao_N9010A
     {
         string RefLevel;
         string Att;
-        
+        public int[] ensaiosItem11 = new int[7];
+        bool[] ensaiosItem12 = new bool[3];
 
         public Principal()
         {
             InitializeComponent();  
+        }
+
+        public void SalvaEnsaios11()
+        {
+            Item_11 it11;
+            it11 = new Item_11();
+            for (int i = 0; i < it11.GetQuantidadeEnsaios(); i++)
+            {
+                ensaiosItem11[i] = it11.GetEstadoEnsaios(i);
+            }
+        }
+
+        public int CarregaEnsaios11(int i)
+        {
+            return ensaiosItem11[i];
         }
 
         public void Ensaio_Largura_de_faixa_a_6_dB(string valFreq, string ip, string ensaioAtual)

@@ -33,6 +33,7 @@ namespace Automacao_N9010A
             this.LEnsaiosItem12 = new System.Windows.Forms.Label();
             this.BtLimpar = new System.Windows.Forms.Button();
             this.BtSelTodos = new System.Windows.Forms.Button();
+            this.BtSalvar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListaEnsaiosItem12
@@ -45,7 +46,7 @@ namespace Automacao_N9010A
             this.ListaEnsaiosItem12.Location = new System.Drawing.Point(13, 72);
             this.ListaEnsaiosItem12.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ListaEnsaiosItem12.Name = "ListaEnsaiosItem12";
-            this.ListaEnsaiosItem12.Size = new System.Drawing.Size(295, 94);
+            this.ListaEnsaiosItem12.Size = new System.Drawing.Size(307, 94);
             this.ListaEnsaiosItem12.TabIndex = 7;
             // 
             // LEnsaiosItem12
@@ -54,7 +55,7 @@ namespace Automacao_N9010A
             this.LEnsaiosItem12.BackColor = System.Drawing.Color.Transparent;
             this.LEnsaiosItem12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LEnsaiosItem12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LEnsaiosItem12.Location = new System.Drawing.Point(13, 24);
+            this.LEnsaiosItem12.Location = new System.Drawing.Point(13, 27);
             this.LEnsaiosItem12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LEnsaiosItem12.Name = "LEnsaiosItem12";
             this.LEnsaiosItem12.Size = new System.Drawing.Size(307, 32);
@@ -63,9 +64,9 @@ namespace Automacao_N9010A
             // 
             // BtLimpar
             // 
-            this.BtLimpar.Location = new System.Drawing.Point(166, 172);
+            this.BtLimpar.Location = new System.Drawing.Point(116, 172);
             this.BtLimpar.Name = "BtLimpar";
-            this.BtLimpar.Size = new System.Drawing.Size(141, 30);
+            this.BtLimpar.Size = new System.Drawing.Size(100, 40);
             this.BtLimpar.TabIndex = 9;
             this.BtLimpar.Text = "Limpar";
             this.BtLimpar.UseVisualStyleBackColor = true;
@@ -75,18 +76,29 @@ namespace Automacao_N9010A
             // 
             this.BtSelTodos.Location = new System.Drawing.Point(13, 172);
             this.BtSelTodos.Name = "BtSelTodos";
-            this.BtSelTodos.Size = new System.Drawing.Size(132, 30);
+            this.BtSelTodos.Size = new System.Drawing.Size(100, 40);
             this.BtSelTodos.TabIndex = 8;
             this.BtSelTodos.Text = "Selecionar Todos";
             this.BtSelTodos.UseVisualStyleBackColor = true;
             this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
+            // 
+            // BtSalvar
+            // 
+            this.BtSalvar.Location = new System.Drawing.Point(220, 172);
+            this.BtSalvar.Name = "BtSalvar";
+            this.BtSalvar.Size = new System.Drawing.Size(100, 40);
+            this.BtSalvar.TabIndex = 10;
+            this.BtSalvar.Text = "Salvar";
+            this.BtSalvar.UseVisualStyleBackColor = true;
+            this.BtSalvar.Click += new System.EventHandler(this.BtSalvar_Click);
             // 
             // Item_12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(321, 210);
+            this.ClientSize = new System.Drawing.Size(328, 224);
+            this.Controls.Add(this.BtSalvar);
             this.Controls.Add(this.BtLimpar);
             this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem12);
@@ -104,5 +116,6 @@ namespace Automacao_N9010A
         private System.Windows.Forms.Label LEnsaiosItem12;
         private System.Windows.Forms.Button BtLimpar;
         private System.Windows.Forms.Button BtSelTodos;
+        private System.Windows.Forms.Button BtSalvar;
     }
 }
