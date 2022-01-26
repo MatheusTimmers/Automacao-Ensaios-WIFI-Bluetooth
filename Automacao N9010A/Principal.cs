@@ -8,31 +8,61 @@ using System.IO;
 
 namespace Automacao_N9010A
 {
-    public class Save
-    {
-        public bool[] EnsaiosItem10 { get; set; }
-        public bool[] EnsaiosItem11 { get; set; }
-        public bool[] EnsaiosItem12 { get; set; }
-        public string RefLevel { get; set; }
-        public string Att { get; set; }
-        public bool AtivarPrints { get; set; }
-    }
+    
 
     public partial class Principal : Form
     {
         string RefLevel;
         string Att;
-        string caminhoJson = @"C:\Users\80400197\source\repos\Automacao N9010A";
+        string caminhoJson = @"C:\Users\80400197\Documents\GitHub\Automacao-N9010A";
         Keysight ks;
+        string jsonString;
+        FileStream json;
 
 
         public Principal()
         {
             InitializeComponent();
             ks = new Keysight();
-            if (!System.IO.File.Exists(caminhoJson))
+            if (!System.IO.File.Exists(caminhoJson + @"\" + "save.json"))
             {
-                ks.CriaPastaEArquivo("save.json",caminhoJson);
+                json = ks.CriaArquivo(caminhoJson, "save.json");
+                json.Close();
+                caminhoJson =  System.IO.Path.Combine(caminhoJson, "save.json");
+                jsonString =
+                @"{
+                  ""EnsaiosItem10"": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                    ],
+                  ""EnsaiosItem11"": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                    ],
+                  ""EnsaiosItem12"": [
+                    false,
+                    false,
+                    false
+                    ],
+                  ""RefLevel"": ""35"",
+                  ""Att"": ""20"",
+                  ""AtivarPrints"": true
+                }
+                ";
+                File.WriteAllText(caminhoJson, jsonString);
+
+            }
+            else
+            {
+                caminhoJson = System.IO.Path.Combine(caminhoJson, "save.json");
             }
         }
 
@@ -48,7 +78,7 @@ namespace Automacao_N9010A
 
         public bool CarregaEnsaios11(int i)
         {
-            string jsonString = File.ReadAllText(caminhoJson);
+            jsonString = File.ReadAllText(caminhoJson);
             Save salvo = JsonSerializer.Deserialize<Save>(jsonString);
 
             return salvo.EnsaiosItem11[i];
@@ -696,5 +726,14 @@ namespace Automacao_N9010A
             }
 
         }
+    }
+    public class Save
+    {
+        public bool[] EnsaiosItem10 { get; set; }
+        public bool[] EnsaiosItem11 { get; set; }
+        public bool[] EnsaiosItem12 { get; set; }
+        public string RefLevel { get; set; }
+        public string Att { get; set; }
+        public bool AtivarPrints { get; set; }
     }
 }

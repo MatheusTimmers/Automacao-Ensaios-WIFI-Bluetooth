@@ -156,7 +156,7 @@ namespace Automacao_N9010A
             // 
             this.LogoLabelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.LogoLabelo.Image = ((System.Drawing.Image)(resources.GetObject("LogoLabelo.Image")));
-            this.LogoLabelo.Location = new System.Drawing.Point(-4, -31);
+            this.LogoLabelo.Location = new System.Drawing.Point(35, -31);
             this.LogoLabelo.Name = "LogoLabelo";
             this.LogoLabelo.Size = new System.Drawing.Size(265, 99);
             this.LogoLabelo.TabIndex = 16;

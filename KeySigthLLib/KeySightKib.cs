@@ -3,9 +3,11 @@
     using System.IO;
     using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
     using Ivi.Visa.Interop;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 
-    namespace MatheusProductions.keysight
+namespace MatheusProductions.keysight
     {
 
     public class Keysight
@@ -16,7 +18,7 @@
             instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
         }
 
-        public void CriaPastaEArquivo(string nomeArquivo, string nomePasta)
+        public void CriaPasta(string nomePasta, string nomeSubPasta = "")
         {
             //---------------------------------------------------------------
             //Cria Uma pasta para salvar os valores
@@ -24,7 +26,7 @@
 
             // 
             // Adicionando o nome Valores do Marker dentro da variavel Nome Pasta
-            nomePasta = System.IO.Path.Combine(nomeArquivo, nomePasta);
+            nomePasta = System.IO.Path.Combine(nomePasta, nomeSubPasta);
 
             //Cria pasta
             System.IO.Directory.CreateDirectory(nomePasta);
@@ -32,7 +34,14 @@
             // Verifica o Caminho
         }
 
-        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public FileStream CriaArquivo(string nomePasta, string nomeArquivo)
+        {
+            nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+
+            return File.Create(nomePasta);
+        }
+
+            public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
         {
             try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
             {
@@ -110,7 +119,7 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPastaEArquivo(nomeArquivo, nomePasta);
+                CriaPasta(nomePasta, nomeArquivo);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
@@ -132,7 +141,7 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPastaEArquivo(nomeArquivo, nomePasta);
+                CriaPasta(nomePasta, nomeArquivo);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
 
@@ -154,7 +163,7 @@
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPastaEArquivo(nomeArquivo, nomePasta);
+                CriaPasta(nomePasta, nomeArquivo);
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
