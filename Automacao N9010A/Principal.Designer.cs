@@ -48,6 +48,7 @@ namespace Automacao_N9010A
             this.GrupoDasNormas = new System.Windows.Forms.GroupBox();
             this.BtConectado = new System.Windows.Forms.Button();
             this.LConecta = new System.Windows.Forms.Label();
+            this.LAPrints = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoLabelo)).BeginInit();
             this.TextBoxTecnologias.SuspendLayout();
             this.GrupoDasNormas.SuspendLayout();
@@ -278,6 +279,18 @@ namespace Automacao_N9010A
             this.LConecta.TabIndex = 24;
             this.LConecta.Text = "SEM CONEXÃO";
             // 
+            // LAPrints
+            // 
+            this.LAPrints.AutoSize = true;
+            this.LAPrints.BackColor = System.Drawing.Color.Transparent;
+            this.LAPrints.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LAPrints.ForeColor = System.Drawing.Color.Green;
+            this.LAPrints.Location = new System.Drawing.Point(143, 542);
+            this.LAPrints.Name = "LAPrints";
+            this.LAPrints.Size = new System.Drawing.Size(115, 13);
+            this.LAPrints.TabIndex = 25;
+            this.LAPrints.Text = "PRINTS ATIVADOS";
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -286,6 +299,7 @@ namespace Automacao_N9010A
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(403, 588);
+            this.Controls.Add(this.LAPrints);
             this.Controls.Add(this.LConecta);
             this.Controls.Add(this.BtConectado);
             this.Controls.Add(this.BtConfirmar);
@@ -335,6 +349,7 @@ namespace Automacao_N9010A
         private System.Windows.Forms.GroupBox GrupoDasNormas;
         private System.Windows.Forms.Button BtConectado;
         private System.Windows.Forms.Label LConecta;
+        private System.Windows.Forms.Label LAPrints;
     }
 }
 

@@ -2,7 +2,6 @@ C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\n
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Configurações.resources
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Item_11.resources
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Item_12.resources
-C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Principal.resources
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Properties.Resources.resources
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao WIFI.csproj.GenerateResource.cache
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao WIFI.GeneratedMSBuildEditorConfig.editorconfig
@@ -28,3 +27,5 @@ C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\n
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\ref\Automacao WIFI.dll
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao WIFI.pdb
 C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao WIFI.genruntimeconfig.cache
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.Save.resources
+C:\Users\80400197\source\repos\Automacao N9010A\Automacao N9010A\obj\x64\Debug\net5.0-windows\Automacao_N9010A.TelaLoading.resources

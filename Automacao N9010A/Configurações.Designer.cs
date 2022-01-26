@@ -37,6 +37,8 @@ namespace Automacao_N9010A
             this.LAttRLevel = new System.Windows.Forms.Label();
             this.TextBoxAtt = new System.Windows.Forms.TextBox();
             this.TextBoxRefLevel = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LValorAtualAtt
@@ -103,9 +105,9 @@ namespace Automacao_N9010A
             this.LAttRLevel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.LAttRLevel.Location = new System.Drawing.Point(19, 21);
             this.LAttRLevel.Name = "LAttRLevel";
-            this.LAttRLevel.Size = new System.Drawing.Size(389, 27);
+            this.LAttRLevel.Size = new System.Drawing.Size(151, 27);
             this.LAttRLevel.TabIndex = 11;
-            this.LAttRLevel.Text = "Configurar o Ref Level e a Attenuation";
+            this.LAttRLevel.Text = "Configurações";
             // 
             // TextBoxAtt
             // 
@@ -123,12 +125,37 @@ namespace Automacao_N9010A
             this.TextBoxRefLevel.Size = new System.Drawing.Size(100, 23);
             this.TextBoxRefLevel.TabIndex = 9;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(99, 217);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(19, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 15);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Ativar Prints:";
+            // 
             // Configurações
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(464, 202);
+            this.ClientSize = new System.Drawing.Size(464, 273);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.LValorAtualAtt);
             this.Controls.Add(this.LValorAtualRLevel);
             this.Controls.Add(this.BtSalvar);
@@ -154,5 +181,7 @@ namespace Automacao_N9010A
         private System.Windows.Forms.Label LAttRLevel;
         private System.Windows.Forms.TextBox TextBoxAtt;
         private System.Windows.Forms.TextBox TextBoxRefLevel;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

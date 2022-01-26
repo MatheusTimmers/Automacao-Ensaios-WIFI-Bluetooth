@@ -64,6 +64,11 @@ namespace Automacao_N9010A
             return RefLevel;
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public string GetAtt()
         {
             return Att;

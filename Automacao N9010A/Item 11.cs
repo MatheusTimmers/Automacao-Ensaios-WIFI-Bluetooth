@@ -21,7 +21,7 @@ namespace Automacao_N9010A
             pr = new Principal();
             for (int i = 0; i < ListaEnsaiosItem11.Items.Count; i++)
             {
-                if (pr.CarregaEnsaios11(i) == 1)
+                if (pr.CarregaEnsaios11(i))
                 {
                     ListaEnsaiosItem11.SetItemChecked(i, true);
                 }
@@ -33,27 +33,28 @@ namespace Automacao_N9010A
         }
 
 
+        public int GetQuantidadeTotalEnsaios()
+        {
+            return ListaEnsaiosItem11.Items.Count;
+        }
+
         public int GetQuantidadeEnsaios()
         {
             return ListaEnsaiosItem11.CheckedItems.Count;
         }
 
-        public object GetEnsaios(int i)
+
+        public string GetEnsaios(int i)
         {
-            return ListaEnsaiosItem11.CheckedItems[i];
+            return (string)ListaEnsaiosItem11.CheckedItems[i];
         }
 
-        public int GetEstadoEnsaios(int i)
+        public bool GetEstadoEnsaio(int i)
         {
-            if (ListaEnsaiosItem11.GetItemChecked(i))
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-                
+           
+           MessageBox.Show(ListaEnsaiosItem11.GetItemCheckState(i).ToString());
+
+            return ListaEnsaiosItem11.GetItemChecked(i);
         }
 
 
@@ -80,11 +81,14 @@ namespace Automacao_N9010A
             
             Principal pr;
             pr = new Principal();
-            pr.SalvaEnsaios11();
+            for (int i = 0; i < ListaEnsaiosItem11.Items.Count; i++)
+            {
+                pr.SalvaEnsaios11(ListaEnsaiosItem11.GetItemChecked(i), i);
+            }
             MessageBox.Show("Valores salvos");
-            
-         
 
+
+            
         }
     }
 }

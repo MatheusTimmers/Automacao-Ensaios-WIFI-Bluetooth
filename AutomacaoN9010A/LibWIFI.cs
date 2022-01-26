@@ -251,7 +251,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT");
                 string nomeArquivo = "Valores do ensaio.csv";
                 //Pega os Valores
-                Thread.Sleep(5000);
+                instr.WriteString("LIST:SWE:TIME?");
+                int tempo = (int)instr.ReadNumber();
+                Thread.Sleep((tempo*1000)+1000);
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
                 string val = instr.ReadString();

@@ -1,34 +1,57 @@
 ﻿using MatheusProductions.AutomacaoN9010A;
 using System;
 using System.Windows.Forms;
+using MatheusProductions.keysight;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
 
 namespace Automacao_N9010A
 {
+    public class Save
+    {
+        public bool[] EnsaiosItem10 { get; set; }
+        public bool[] EnsaiosItem11 { get; set; }
+        public bool[] EnsaiosItem12 { get; set; }
+        public string RefLevel { get; set; }
+        public string Att { get; set; }
+        public bool AtivarPrints { get; set; }
+    }
+
     public partial class Principal : Form
     {
         string RefLevel;
         string Att;
-        public int[] ensaiosItem11 = new int[7];
-        bool[] ensaiosItem12 = new bool[3];
+        string caminhoJson = @"C:\Users\80400197\source\repos\Automacao N9010A";
+        Keysight ks;
+
 
         public Principal()
         {
-            InitializeComponent();  
-        }
-
-        public void SalvaEnsaios11()
-        {
-            Item_11 it11;
-            it11 = new Item_11();
-            for (int i = 0; i < it11.GetQuantidadeEnsaios(); i++)
+            InitializeComponent();
+            ks = new Keysight();
+            if (!System.IO.File.Exists(caminhoJson))
             {
-                ensaiosItem11[i] = it11.GetEstadoEnsaios(i);
+                ks.CriaPastaEArquivo("save.json",caminhoJson);
             }
         }
 
-        public int CarregaEnsaios11(int i)
+        public void SalvaEnsaios11(bool EstadoEnsaio, int i)
         {
-            return ensaiosItem11[i];
+            Save salva;
+            salva = new Save();
+            
+            salva.EnsaiosItem11[i] = EstadoEnsaio;
+            JsonSerializer.Serialize(salva);
+
+        }
+
+        public bool CarregaEnsaios11(int i)
+        {
+            string jsonString = File.ReadAllText(caminhoJson);
+            Save salvo = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salvo.EnsaiosItem11[i];
         }
 
         public void Ensaio_Largura_de_faixa_a_6_dB(string valFreq, string ip, string ensaioAtual)
