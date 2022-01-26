@@ -75,11 +75,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+      "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
       "projectName": "AutomacaoN9010A",
-      "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+      "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
       "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\obj\\",
+      "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -100,8 +100,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj": {
-              "projectPath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\KeySigthLLib\\KeySightLib.csproj"
+            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
             }
           }
         }
