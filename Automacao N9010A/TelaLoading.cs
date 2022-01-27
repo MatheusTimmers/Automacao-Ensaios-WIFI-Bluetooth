@@ -16,5 +16,19 @@ namespace Automacao_N9010A
         {
             InitializeComponent();
         }
+
+        public void setValorPB(int valor)
+        {
+            PbEnsaioEmAndamento.Value = PbEnsaioEmAndamento.Value + valor;
+        }
+
+        private void TelaLoading_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (PbEnsaioEmAndamento.Value != 100)
+            {
+                MessageBox.Show("Ensaio em Andamento");
+                e.Cancel = true;
+            }
+        }
     }
 }

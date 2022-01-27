@@ -12,15 +12,24 @@ namespace Automacao_N9010A
 {
     public partial class Configurações : Form
     {
-
+        Principal pr;
         public string  RefLevel, Att;
         public Configurações()
         {
             InitializeComponent();
+            pr = new Principal();
+            RefLevel = pr.CarregaRefLevel();
+            Att = pr.CarregaAtt();
+            CBPrints.Checked = pr.CarregaAPrints();
+            LValorAtualRLevel.Text = "Atual:" + RefLevel;
+            LValorAtualAtt.Text = "Atual:" + Att; ;
+            TextBoxAtt.Text = "";
+            TextBoxRefLevel.Text = "";
         }
 
         private void BtSalvar_Click(object sender, EventArgs e)
         {
+            pr = new Principal();
             if (TextBoxRefLevel.Text == "" & TextBoxAtt.Text == "")
             {
                 MessageBox.Show("Por favor insira valores válidos");
@@ -34,6 +43,7 @@ namespace Automacao_N9010A
                     LValorAtualRLevel.Text = "Atual:" + TextBoxRefLevel.Text;
                     TextBoxAtt.Text = "";
                     TextBoxRefLevel.Text = "";
+                    pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
                 }
                 else
                 {
@@ -44,6 +54,7 @@ namespace Automacao_N9010A
                         LValorAtualAtt.Text = "Atual:" + TextBoxAtt.Text;
                         TextBoxAtt.Text = "";
                         TextBoxRefLevel.Text = "";
+                        pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
                     }
                     else
                     {
@@ -54,6 +65,7 @@ namespace Automacao_N9010A
                         LValorAtualAtt.Text = "Atual:" + TextBoxAtt.Text;
                         TextBoxAtt.Text = "";
                         TextBoxRefLevel.Text = "";
+                        pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
                     }
                 }
             }
@@ -64,10 +76,25 @@ namespace Automacao_N9010A
             return RefLevel;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
 
+
+        private void CBPrints_MouseClick(object sender, MouseEventArgs e)
+        {
+            pr = new Principal();
+            if (CBPrints.Checked)
+            {
+                MessageBox.Show("Prints Ativados");
+                pr.pega("PRINTS ATIVADOS");
+                pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
+            }
+            else
+            {
+                MessageBox.Show("Prints Desativados");
+                pr.pega("PRINTS DESATIVADOS");
+                //pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
+            }
         }
+
 
         public string GetAtt()
         {

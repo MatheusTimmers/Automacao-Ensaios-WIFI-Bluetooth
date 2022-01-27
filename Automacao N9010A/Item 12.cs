@@ -17,10 +17,11 @@ namespace Automacao_N9010A
         public Item_12()
         {
             InitializeComponent();
-
+            Principal pr;
+            pr = new Principal();
             for (int i = 0; i < ListaEnsaiosItem12.Items.Count; i++)
             {
-                ListaEnsaiosItem12.SetItemChecked(i, ensaiosSalvos[i]);
+                ListaEnsaiosItem12.SetItemChecked(i, pr.CarregaEnsaios12(i));
             }
 
         }
@@ -54,10 +55,11 @@ namespace Automacao_N9010A
 
         private void BtSalvar_Click(object sender, EventArgs e)
         {
+            Principal pr;
+            pr = new Principal();
             for (int i = 0; i < ListaEnsaiosItem12.Items.Count; i++)
             {
-
-                ensaiosSalvos[i] = ListaEnsaiosItem12.GetItemChecked(i);
+                pr.SalvaEnsaios12(ListaEnsaiosItem12.GetItemChecked(i), i);
             }
             MessageBox.Show("Valores salvos");
         }

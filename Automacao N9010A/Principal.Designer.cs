@@ -285,7 +285,7 @@ namespace Automacao_N9010A
             this.LAPrints.BackColor = System.Drawing.Color.Transparent;
             this.LAPrints.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LAPrints.ForeColor = System.Drawing.Color.Green;
-            this.LAPrints.Location = new System.Drawing.Point(143, 542);
+            this.LAPrints.Location = new System.Drawing.Point(131, 542);
             this.LAPrints.Name = "LAPrints";
             this.LAPrints.Size = new System.Drawing.Size(115, 13);
             this.LAPrints.TabIndex = 25;
@@ -320,6 +320,7 @@ namespace Automacao_N9010A
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ensaio Wifi Bluetooth";
+            this.Shown += new System.EventHandler(this.Principal_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.LogoLabelo)).EndInit();
             this.TextBoxTecnologias.ResumeLayout(false);
             this.GrupoDasNormas.ResumeLayout(false);

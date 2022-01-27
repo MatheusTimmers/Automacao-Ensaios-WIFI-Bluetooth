@@ -20,15 +20,8 @@ namespace Automacao_N9010A
             Principal pr;
             pr = new Principal();
             for (int i = 0; i < ListaEnsaiosItem11.Items.Count; i++)
-            {
-                if (pr.CarregaEnsaios11(i))
-                {
-                    ListaEnsaiosItem11.SetItemChecked(i, true);
-                }
-                else
-                {
-                    ListaEnsaiosItem11.SetItemChecked(i, false);
-                }
+            { 
+                ListaEnsaiosItem11.SetItemChecked(i, pr.CarregaEnsaios11(i));
             }
         }
 
@@ -51,10 +44,8 @@ namespace Automacao_N9010A
 
         public bool GetEstadoEnsaio(int i)
         {
-           
            MessageBox.Show(ListaEnsaiosItem11.GetItemCheckState(i).ToString());
-
-            return ListaEnsaiosItem11.GetItemChecked(i);
+           return ListaEnsaiosItem11.GetItemChecked(i);
         }
 
 

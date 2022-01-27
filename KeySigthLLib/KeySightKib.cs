@@ -119,8 +119,8 @@ namespace MatheusProductions.keysight
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta, nomeArquivo);
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                CriaPasta(nomePasta);
+
                 //Criando o arquivo e adicionando os Valores
                 Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
@@ -141,18 +141,23 @@ namespace MatheusProductions.keysight
             if (!System.IO.File.Exists(nomePasta))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta, nomeArquivo);
+                CriaPasta(nomePasta);
+                //Criando o arquivo e adicionando os Valores
+                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                fs.Close();
+
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
-
-                //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
+
+                
+
+
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                using System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
             }

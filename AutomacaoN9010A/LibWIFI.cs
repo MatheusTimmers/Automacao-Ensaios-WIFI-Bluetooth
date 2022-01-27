@@ -18,12 +18,13 @@ namespace MatheusProductions.AutomacaoN9010A
 
     public class AutomacaoN9010A
     {
+        Keysight radical;
+        ResourceManager rm;
+        FormattedIO488 instr;
+
         public bool ConectaIP(string ip)
         {
-            Keysight radical;
-            ResourceManager rm;
-            FormattedIO488 instr;
-
+           
             radical = new Keysight();
             rm = new ResourceManager();
             instr = new FormattedIO488();
@@ -33,13 +34,9 @@ namespace MatheusProductions.AutomacaoN9010A
         }
 
 
-        public void Largura_6dB(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Largura_6dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
-
-            radical = new Keysight();
-            instr = new FormattedIO488();
+            ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Largura 6";
       
@@ -56,11 +53,10 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT");
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
-                string nomeArquivo = "Valores do ensaio.csv";
                 radical.SalvaPrints(instr, nomePasta, nomePrint);
                 instr.WriteString("FETC:OBW:OBW?");
                 string val = instr.ReadString();
-                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq);
+                radical.SalvaValores("Valores do ensaio.csv", nomePasta, val, valFreq);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
@@ -72,13 +68,10 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Largura_26dB(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Largura_26dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
 
-            radical = new Keysight();
-            instr = new FormattedIO488();
+            ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Largura 26";
 
@@ -113,13 +106,10 @@ namespace MatheusProductions.AutomacaoN9010A
         }
 
 
-        public void Pico_da_densidade_de_potência(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Pico_da_densidade_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
 
-            radical = new Keysight();
-            instr = new FormattedIO488(); // Criando o Objeto
+            ConectaIP(ip);
 
             // Nome da pasta que vai salvar os valores.
             string nomePasta = @"\\A-N9010A-00151\prints\Pico da densidade de potencia";
@@ -150,13 +140,10 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
 
-            radical = new Keysight();
-            instr = new FormattedIO488();
+            ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Valor Medio Densidade Espectral";
 
@@ -187,13 +174,9 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Potência_de_pico_máxima(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Potência_de_pico_máxima(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
-
-            radical = new Keysight();
-            instr = new FormattedIO488();
+            ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Potência_de_pico_máxima";
 
@@ -228,13 +211,9 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
-            Keysight radical;
-            FormattedIO488 instr;
-
-            radical = new Keysight();
-            instr = new FormattedIO488();
+            ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Valor Médio da Potência Máxima De Saída";
 
@@ -252,8 +231,8 @@ namespace MatheusProductions.AutomacaoN9010A
                 string nomeArquivo = "Valores do ensaio.csv";
                 //Pega os Valores
                 instr.WriteString("LIST:SWE:TIME?");
-                int tempo = (int)instr.ReadNumber();
-                Thread.Sleep((tempo*1000)+1000);
+                string tempo = instr.ReadString();
+                //Thread.Sleep((tempo*1000)+1000));
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
                 string val = instr.ReadString();

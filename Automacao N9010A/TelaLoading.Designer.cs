@@ -60,8 +60,11 @@ namespace Automacao_N9010A
             this.ClientSize = new System.Drawing.Size(322, 159);
             this.Controls.Add(this.LLoading);
             this.Controls.Add(this.PbEnsaioEmAndamento);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TelaLoading";
             this.Text = "TelaLoading";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaLoading_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
