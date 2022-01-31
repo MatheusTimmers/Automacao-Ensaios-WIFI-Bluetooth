@@ -24,7 +24,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         public bool ConectaIP(string ip)
         {
-           
+            
             radical = new Keysight();
             rm = new ResourceManager();
             instr = new FormattedIO488();
@@ -153,10 +153,16 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT:CONT ON");
                 instr.WriteString("DISP:ENAB ON");
                 // Seta as configurções basicas
+
                 double Span = int.Parse(largura_Banda) * 1.5;
                 radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN");
                 instr.IO.Timeout = 2000;
                 instr.WriteString("INIT");
+                instr.WriteString("SWE:TIME?");
+                double tempo = (double)instr.ReadNumber();
+                Thread.Sleep(15000);
+                instr.WriteString("INIT:CONT OFF");
+                Thread.Sleep((int)tempo * 1000);
                 string nomeArquivo = "Valores do ensaio.csv";
                 //Salvando os Valores do Marker
                 //Cria uma variavel com o nome do arquivo que quer criar
@@ -213,6 +219,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
         {
+            
             ConectaIP(ip);
 
             string nomePasta = @"\\A-N9010A-00151\prints\Valor Médio da Potência Máxima De Saída";
@@ -230,9 +237,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT");
                 string nomeArquivo = "Valores do ensaio.csv";
                 //Pega os Valores
-                instr.WriteString("LIST:SWE:TIME?");
-                string tempo = instr.ReadString();
-                //Thread.Sleep((tempo*1000)+1000));
+                Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
                 string val = instr.ReadString();

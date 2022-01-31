@@ -41,25 +41,25 @@ namespace MatheusProductions.keysight
             return File.Create(nomePasta);
         }
 
-            public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
         {
-            try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
-            {
-                //-----------------------------------------------------------
-                // Inicialização:
-                //-----------------------------------------------------------
-                // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
-                instr.IO = (IMessage)rm.Open(ip);
-                instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
-                return true;
-            }
-            catch (RsInstrumentException e)
-            {
-                Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
-                Console.WriteLine("Pressione qualquer tecla para sair.");
-                Console.ReadKey();
-                return false;
-            }
+        try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
+        {
+            //-----------------------------------------------------------
+            // Inicialização:
+            //-----------------------------------------------------------
+            // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
+            instr.IO = (IMessage)rm.Open(ip);
+            instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
+            return true;
+        }
+        catch (RsInstrumentException e)
+        {
+            Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
+            Console.WriteLine("Pressione qualquer tecla para sair.");
+            Console.ReadKey();
+            return false;
+        }
         }
 
         public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
@@ -116,20 +116,22 @@ namespace MatheusProductions.keysight
         public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC)
         {
 
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
-
                 //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
+                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                fs.Close();
+
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
@@ -138,7 +140,7 @@ namespace MatheusProductions.keysight
 
         public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC)
         {
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
@@ -151,13 +153,10 @@ namespace MatheusProductions.keysight
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
 
-                
-
-
             }
             else
             {
-                using System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
             }
@@ -165,20 +164,22 @@ namespace MatheusProductions.keysight
 
         public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC)
         {
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta, nomeArquivo);
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
+                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                fs.Close();
+
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
                 File.AppendAllText(nomePasta, valor2.ToString() + ";");
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
                 File.AppendAllText(nomePasta, valor2.ToString() + ";");
@@ -207,19 +208,12 @@ namespace MatheusProductions.keysight
                     New_markerX = (double)instr.ReadNumber();
                     instr.WriteString("CALC1:MARK1:Y?");
                     New_markerY = (double)instr.ReadNumber();
-                    Console.WriteLine("Espere 10 segundos.");
                     Thread.Sleep(10000);
-                    Console.WriteLine($"Frequencia do Marker  {New_markerX:F3} Hz, Level {New_markerY:F2} dBm");
                 }
 
             }
             else
             {
-                instr.WriteString("AVER:COUN?");
-                string aux = instr.ReadString();
-                Thread.Sleep(3000);
-                instr.WriteString("AVER:COUN?");
-                aux = instr.ReadString();
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
                 instr.WriteString("CALC1:MARK1:X?");

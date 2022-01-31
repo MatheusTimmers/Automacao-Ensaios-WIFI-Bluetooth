@@ -19,14 +19,18 @@ namespace Automacao_N9010A
         string jsonString;
         FileStream json;
         Save salva;
-
-
+        TelaLoading tl;
+        AutomacaoN9010A radical;
+        Configurações config;
+        Item_11 it11;
 
 
         public Principal()
         {
             InitializeComponent();
+            tl = new TelaLoading();
             ks = new Keysight();
+            radical = new AutomacaoN9010A();
             if (!System.IO.File.Exists(caminhoJson + @"\" + "save.json"))
             {
                 json = ks.CriaArquivo(caminhoJson, "save.json");
@@ -154,10 +158,6 @@ namespace Automacao_N9010A
 
         public void Ensaio_Largura_de_faixa_a_6_dB(string valFreq, string ip, string ensaioAtual)
         {
-            AutomacaoN9010A radical;
-            radical = new AutomacaoN9010A();
-
-            Configurações config;
             config = new Configurações();
 
             Att = config.GetAtt();
@@ -529,52 +529,48 @@ namespace Automacao_N9010A
 
         private void ListaDeEnsaios(string ensaioAtual)
         {
-            TelaLoading tl;
-            tl = new TelaLoading();
-            Item_11 it11;
-            it11 = new Item_11();
             jsonString = File.ReadAllText(caminhoJson);
             salva = JsonSerializer.Deserialize<Save>(jsonString);
             if (salva.EnsaiosItem11[0] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 6 dB");
                 Ensaio_Largura_de_faixa_a_6_dB(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios())/ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios())/ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[1] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 26 dB");
                 Ensaio_Largura_de_faixa_a_26_dB(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[2] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Potência de Pico Máxima, Utilizando o Método de ensaio de Integração do Item 9.1.8 da norma 6506");
                 Ensaio_Potencia_de_Pico_Maxima(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[3] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Valor Médio da Potência Máxima de Saída, Utilizando o Método de ensaio de Integração do Item 9.1.8 da norma 6506");
                 Ensaio_Valor_médio_da_potência_máxima_de_saída(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[4] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Pico da Densidade de Potência");
                 Ensaio_pico_da_densidade_de_potência(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show(@"valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[5] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio Valor Médio da Densidade Espectral de Potência");
                 Ensaio_Valor_Medio_Densidade_Espectral(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual);
-                tl.setValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
                 MessageBox.Show(@"valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[6] == true)
@@ -587,62 +583,84 @@ namespace Automacao_N9010A
 
         private void BtConfirmar_Click(object sender, EventArgs e)
         {
-            TelaLoading tl;
-            tl = new TelaLoading();
-            tl.Show();
-            for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
+            if(ListaTecnologias.CheckedItems.Count != 0)
             {
-                switch (ListaTecnologias.CheckedItems[i])
+                if (TextBoxFreqC.Text != "")
                 {
-                    case "802.11a":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11a, configure o aparelho");
-                        ListaDeEnsaios("802.11a");
-                        continue;
-                    case "802.11b":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11b, configure o aparelho");
-                        ListaDeEnsaios("802.11b");
-                        continue;
-                    case "802.11n (20)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11n (20), configure o aparelho");
-                        ListaDeEnsaios("802.11n (20)");;
-                        continue;
-                    case "802.11n (40)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11n (40), configure o aparelho");
-                        ListaDeEnsaios("802.11n (40)");
-                        continue;
-                    case "802.11n (80)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11n (80), configure o aparelho");
-                        ListaDeEnsaios("802.11n (80)");
-                        continue;
-                    case "802.11ac (20)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ac (20), configure o aparelho");
-                        ListaDeEnsaios("802.11ac (20)");
-                        continue;
-                    case "802.11ac (40)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ac (40), configure o aparelho");
-                        ListaDeEnsaios("802.11ac (40)");
-                        continue;
-                    case "802.11ac (80)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ac (80), configure o aparelho");
-                        ListaDeEnsaios("802.11ac (80)");
-                        continue;
-                    case "802.11ax (20)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ax (20), configure o aparelho");
-                        ListaDeEnsaios("802.11ax (20)");
-                        continue;
-                    case "802.11ax (40)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ax (40), configure o aparelho");
-                        ListaDeEnsaios("802.11ax (40)");
-                        continue;
-                    case "802.11ax (80)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ax (80), configure o aparelho");
-                        ListaDeEnsaios("802.11ax (80)");
-                        continue;
-                    case "802.11ax (160)":
-                        MessageBox.Show("Iniciando o Ensaio do 802.11ax (160), configure o aparelho");
-                        ListaDeEnsaios("802.11ax (160)");
-                        continue;
+                    if (LConecta.Text == "CONECTADO")
+                    {
+                        TelaLoading tl;
+                        tl = new TelaLoading();
+                        tl.Show();
+                        for (int i = 0; i < ListaTecnologias.CheckedItems.Count; i++)
+                        {
+                            switch (ListaTecnologias.CheckedItems[i])
+                            {
+                                case "802.11a":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11a, configure o aparelho");
+                                    ListaDeEnsaios("802.11a");
+                                    continue;
+                                case "802.11b":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11b, configure o aparelho");
+                                    ListaDeEnsaios("802.11b");
+                                    continue;
+                                case "802.11n (20)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11n (20), configure o aparelho");
+                                    ListaDeEnsaios("802.11n (20)"); ;
+                                    continue;
+                                case "802.11n (40)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11n (40), configure o aparelho");
+                                    ListaDeEnsaios("802.11n (40)");
+                                    continue;
+                                case "802.11n (80)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11n (80), configure o aparelho");
+                                    ListaDeEnsaios("802.11n (80)");
+                                    continue;
+                                case "802.11ac (20)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ac (20), configure o aparelho");
+                                    ListaDeEnsaios("802.11ac (20)");
+                                    continue;
+                                case "802.11ac (40)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ac (40), configure o aparelho");
+                                    ListaDeEnsaios("802.11ac (40)");
+                                    continue;
+                                case "802.11ac (80)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ac (80), configure o aparelho");
+                                    ListaDeEnsaios("802.11ac (80)");
+                                    continue;
+                                case "802.11ax (20)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ax (20), configure o aparelho");
+                                    ListaDeEnsaios("802.11ax (20)");
+                                    continue;
+                                case "802.11ax (40)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ax (40), configure o aparelho");
+                                    ListaDeEnsaios("802.11ax (40)");
+                                    continue;
+                                case "802.11ax (80)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ax (80), configure o aparelho");
+                                    ListaDeEnsaios("802.11ax (80)");
+                                    continue;
+                                case "802.11ax (160)":
+                                    MessageBox.Show("Iniciando o Ensaio do 802.11ax (160), configure o aparelho");
+                                    ListaDeEnsaios("802.11ax (160)");
+                                    continue;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhuma Maquina Conectada");
+                    }
+                    
                 }
+                else
+                {
+                    MessageBox.Show("Selecione uma Frequencia");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma Tecnologia");
             }
 
         }
@@ -720,18 +738,31 @@ namespace Automacao_N9010A
         {
             AutomacaoN9010A radical;
             radical = new AutomacaoN9010A();
-
-            if (radical.ConectaIP(TextBoxIP.Text) == true)
+            if (LConecta.Text == "CONECTADO")
             {
-                LConecta.Text = "CONECTADO";
-                LConecta.ForeColor = System.Drawing.Color.Green;
+                MessageBox.Show("Aparelho já conectado");
             }
             else
             {
-                MessageBox.Show("Erro ao se conectar com o aparelho");
-                LConecta.Text = "SEM CONEXÃO";
-                LConecta.ForeColor = System.Drawing.Color.Red;
+                if (radical.ConectaIP(TextBoxIP.Text) == true)
+                {       
+                    LConecta.Text = "CONECTADO";
+                    LConecta.ForeColor = System.Drawing.Color.Green;
+                    while (LConecta.Text != "CONECTADO")
+                    {
+                        LConecta.Text = "CONECTANDO";
+                        LConecta.ForeColor = System.Drawing.Color.Yellow;
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao se conectar com o aparelho");
+                    LConecta.Text = "SEM CONEXÃO";
+                    LConecta.ForeColor = System.Drawing.Color.Red;
+                }
             }
+            
 
         }
 

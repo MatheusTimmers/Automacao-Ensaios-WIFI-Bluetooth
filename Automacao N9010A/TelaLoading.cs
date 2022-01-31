@@ -17,9 +17,12 @@ namespace Automacao_N9010A
             InitializeComponent();
         }
 
-        public void setValorPB(int valor)
+        public void SetValorPB(int valor)
         {
-            PbEnsaioEmAndamento.Value = PbEnsaioEmAndamento.Value + valor;
+            Application.DoEvents();
+            PbEnsaioEmAndamento.Value += valor;
+            Application.DoEvents();
+
         }
 
         private void TelaLoading_FormClosing(object sender, FormClosingEventArgs e)
