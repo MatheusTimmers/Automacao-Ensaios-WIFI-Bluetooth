@@ -1,0 +1,28 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "RsInstrument/1.15.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/RsInstrument.dll": {
+            "assemblyVersion": "1.15.0.67",
+            "fileVersion": "1.15.0.67"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RsInstrument/1.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/z7cFPjm7Fxz5j7QuNH0ojjZl2Z08QuFV+oIRWcz8/m5okAvfjxhzLpLUD4NklOfpUhju6lINx6S3gyPMZ7i0g==",
+      "path": "rsinstrument/1.15.0",
+      "hashPath": "rsinstrument.1.15.0.nupkg.sha512"
+    }
+  }
+}

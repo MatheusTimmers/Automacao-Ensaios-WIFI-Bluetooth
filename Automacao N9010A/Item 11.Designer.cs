@@ -31,6 +31,9 @@ namespace Automacao_N9010A
         {
             this.LEnsaiosItem11 = new System.Windows.Forms.Label();
             this.ListaEnsaiosItem11 = new System.Windows.Forms.CheckedListBox();
+            this.BtSelTodos = new System.Windows.Forms.Button();
+            this.BtLimpar = new System.Windows.Forms.Button();
+            this.BtSalvar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LEnsaiosItem11
@@ -60,19 +63,55 @@ namespace Automacao_N9010A
             this.ListaEnsaiosItem11.Location = new System.Drawing.Point(13, 68);
             this.ListaEnsaiosItem11.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ListaEnsaiosItem11.Name = "ListaEnsaiosItem11";
-            this.ListaEnsaiosItem11.Size = new System.Drawing.Size(294, 130);
+            this.ListaEnsaiosItem11.Size = new System.Drawing.Size(306, 130);
             this.ListaEnsaiosItem11.TabIndex = 4;
+            // 
+            // BtSelTodos
+            // 
+            this.BtSelTodos.Location = new System.Drawing.Point(13, 204);
+            this.BtSelTodos.Name = "BtSelTodos";
+            this.BtSelTodos.Size = new System.Drawing.Size(100, 40);
+            this.BtSelTodos.TabIndex = 6;
+            this.BtSelTodos.Text = "Selecionar Todos";
+            this.BtSelTodos.UseVisualStyleBackColor = true;
+            this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
+            // 
+            // BtLimpar
+            // 
+            this.BtLimpar.Location = new System.Drawing.Point(116, 204);
+            this.BtLimpar.Name = "BtLimpar";
+            this.BtLimpar.Size = new System.Drawing.Size(100, 40);
+            this.BtLimpar.TabIndex = 7;
+            this.BtLimpar.Text = "Limpar";
+            this.BtLimpar.UseVisualStyleBackColor = true;
+            this.BtLimpar.Click += new System.EventHandler(this.BtLimpar_Click);
+            // 
+            // BtSalvar
+            // 
+            this.BtSalvar.Location = new System.Drawing.Point(219, 204);
+            this.BtSalvar.Name = "BtSalvar";
+            this.BtSalvar.Size = new System.Drawing.Size(100, 40);
+            this.BtSalvar.TabIndex = 8;
+            this.BtSalvar.Text = "Salvar";
+            this.BtSalvar.UseVisualStyleBackColor = true;
+            this.BtSalvar.Click += new System.EventHandler(this.BtSalvar_Click);
             // 
             // Item_11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(321, 220);
+            this.ClientSize = new System.Drawing.Size(339, 257);
+            this.Controls.Add(this.BtSalvar);
+            this.Controls.Add(this.BtLimpar);
+            this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.LEnsaiosItem11);
             this.Controls.Add(this.ListaEnsaiosItem11);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Item_11";
-            this.Text = "Item_11";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Item 11";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,5 +121,8 @@ namespace Automacao_N9010A
 
         private System.Windows.Forms.Label LEnsaiosItem11;
         private System.Windows.Forms.CheckedListBox ListaEnsaiosItem11;
+        private System.Windows.Forms.Button BtSelTodos;
+        private System.Windows.Forms.Button BtLimpar;
+        private System.Windows.Forms.Button BtSalvar;
     }
 }

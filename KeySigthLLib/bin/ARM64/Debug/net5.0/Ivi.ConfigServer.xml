@@ -1,0 +1,1517 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.ConfigServer</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.ConfigServer.ConfigStore">
+            <summary>
+            The parent class for a creating and maintaining a complete set of configuration store data, together with 
+            the ability to serialize and deserialize configuration store XML files.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.SchemaLocation">
+            <summary>
+            The location of the schema file for IVI configuration store XML files.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.LoadWithoutValidation(Ivi.ConfigServer.ConfigStoreLocation)">
+            <summary>
+            Deserialize a configuration store XML file, validating it aginst the schema in the process.
+            </summary>
+            <param name="location">The location of the configuration store file to load.</param>
+            <returns>A fully initialized ConfigStore object.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.LoadWithoutValidation(System.String)">
+            <summary>
+            Deserialize a configuration store XML file without validating it aginst the schema.
+            </summary>
+            <param name="location">The file name and path of the configuration store XML file to be loaded.</param>
+            <returns>A fully initialized ConfigStore object.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Load(Ivi.ConfigServer.ConfigStoreLocation)">
+            <summary>
+            Deserialize a configuration store XML file, validating it aginst the schema in the process.
+            </summary>
+            <param name="location">The location of the configuration store file to load.</param>
+            <returns>A fully initialized ConfigStore object.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Load(System.String)">
+            <summary>
+            Deserialize a configuration store XML file, validating it aginst the schema in the process.
+            </summary>
+            <param name="location">The file name and path of the configuration store XML file to be loaded.</param>
+            <returns>A fully initialized ConfigStore object.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Validate(Ivi.ConfigServer.ConfigStoreLocation)">
+            <summary>
+            Validate a configuration store XML file against the schema.
+            </summary>
+            <param name="location">The location of the configuration store file to validate.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Validate(System.String)">
+            <summary>
+            Validate a configuration store XML file against the schema.
+            </summary>
+            <param name="location">The location of the configuration store file to validate.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.#ctor(Ivi.ConfigServer.Entity[])">
+            <summary>
+            Creates an instance of the ConfigStore.
+            </summary>
+            <param name="children">
+            One or more items to add to the config store.  The allowed items that can be immediate children of the
+            config store are <see cref="T:Ivi.ConfigServer.PublishedApi"/>, <see cref="T:Ivi.ConfigServer.SoftwareModule"/>, <see cref="T:Ivi.ConfigServer.HardwareAsset"/>,
+            <see cref="T:Ivi.ConfigServer.DriverSession"/>, <see cref="T:Ivi.ConfigServer.Session"/>, and <see cref="T:Ivi.ConfigServer.LogicalName"/>.
+            </param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Add(Ivi.ConfigServer.Entity[])">
+            <summary>
+            Adds one or more items to the config store.
+            </summary>
+            <param name="children">
+            One or more items to add to the config store.  The allowed items that can be immediate children of the
+            config store are <see cref="T:Ivi.ConfigServer.PublishedApi"/>, <see cref="T:Ivi.ConfigServer.SoftwareModule"/>, <see cref="T:Ivi.ConfigServer.HardwareAsset"/>,
+            <see cref="T:Ivi.ConfigServer.DriverSession"/>, <see cref="T:Ivi.ConfigServer.Session"/>, and <see cref="T:Ivi.ConfigServer.LogicalName"/>.
+            </param>
+            <remarks>
+            <page>Entities must be added in order to make sure that referenced entities are 
+            added before the entities that reference them.  The order is:</page>
+            <page>1. PublishedAPI</page>
+            <page>2. HardwareAsset</page>
+            <page>3. SoftwareModule</page>
+            <page>4. Session</page>
+            <page>5. DriverSession</page>
+            <page>6. LogicalName</page>
+            </remarks>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.ActualLocation">
+            <summary>
+            The full pathname of the configuration store file that is currently being edited.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.Description">
+            <summary>
+            The description of the Configuration Server component. 
+            </summary>
+            <remarks>
+            The default value for this string is “The IVI Configuration Server allows access to and modification 
+            of an IVI configuration store.”  The default may be changed.
+            </remarks>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.Revision">
+            <summary>
+            The current revision of the Configuration Server.  
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.MasterLocation">
+            <summary>
+            Specifies the full pathname of the master configuration store.  This includes the file name, which is 
+            always IviConfigurationStore.xml.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.ProcessDefaultLocationFromEnvironment">
+            <summary>
+            Specifies the full pathname of the default configuration store for the process in which this property 
+            is used.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.ProcessDefaultLocation">
+            <summary>
+            Specifies the full pathname of the default configuration store for the process in which this property is used.  
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.SpecificationMajorVersion">
+            <summary>
+            The major version of the Configuration Server specification supported by this Configuration Server 
+            component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.SpecificationMinorVersion">
+            <summary>
+            The minor version of the Configuration Server specification supported by this Configuration Server 
+            component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.Name">
+            <summary>
+            The descriptive name of the Configuration Server executable.  The name indicates the bitness and the 
+            ConfigurationServer technology (C, COM, or .NET).
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.Vendor">
+            <summary>
+            The vendor of the Configuration Server component, “IVI Foundation, Inc.”.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.PublishedApis">
+            <summary>
+            The global collection of all published APIs in the configuration store.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.SoftwareModules">
+            <summary>
+            The global collection of all software modules in the configuration store.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.HardwareAssets">
+            <summary>
+            The global collection of all hardware assets in the configuration store.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.DriverSessions">
+            <summary>
+            The global collection of all driver sessions in the configuration store.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.Sessions">
+            <summary>
+            The global collection of all sessions in the configuration store.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigStore.LogicalNames">
+            <summary>
+            The global collection of all logical names in the configuration store.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Reads a configuration store file from a data source location, parses the data, and creates the 
+            corresponding Configuration Server representation.  
+            </summary>
+            <param name="reader"></param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Save(Ivi.ConfigServer.ConfigStoreLocation)">
+            <summary>
+            Serializes a configuration store from the Configuration Server to a data source location.
+            </summary>
+            <param name="location">The location of the saved configuration store file.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.Save(System.String)">
+            <summary>
+            Serializes a configuration store from the Configuration Server to a data source location.
+            </summary>
+            <param name="location">The location of the saved configuration store file.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.GetSession(System.String)">
+            <summary>
+            Returns a reference to a session, given a name that identifies the session.
+            </summary>
+            <param name="name">The Name of the Session, or a logical name that refers to the Session.</param>
+            <returns>A reference to the session designated by the name, or null if the session could not be 
+            found.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.ConfigStore.GetDriverSession(System.String)">
+            <summary>
+            Returns a reference to a driver session, given a name that identifies the session.
+            </summary>
+            <param name="name">The Name of the Driver Session, or a logical name that refers to the Driver 
+            Session.</param>
+            <returns>A reference to the driver session designated by the name, or null if the driver session 
+            could not be found.</returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.ConfigStoreLocation">
+            <summary>
+            The set of "standard" locations for config store files.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.ConfigStoreLocation.Master">
+            <summary>
+            The master location
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.ConfigStoreLocation.ProcessDefault">
+            <summary>
+            The default location for the current process.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.ConfigurableComponent">
+            <summary>
+            The base class hardware assets, software modules, sessions, and driver sessions.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigurableComponent.Description">
+            <summary>
+            A human readable description of the configurable component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.ConfigurableComponent.DataComponents">
+            <summary>
+            A collection of references to additional properties.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.DataComponent">
+            <summary>
+            The base class for data components.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.Description">
+            <summary>
+            A description of the IVI Data Component.  The default value is the empty string.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.ReadOnly">
+            <summary>
+            If true, a Configuration Utility must not allow the user to modify the contents of the 
+            data component object.  If false, the associated data component objects may be read or written. 
+            The default value is false.
+            </summary>
+            <remarks>
+            The Configuration Server attaches no significance to this property and does not enforce any 
+            protocol regarding write access to data components.  This property is primarily guidance for 
+            configuration utilities.
+            </remarks>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.UsedInSession">
+            <summary>
+            Indicates whether or not a data component associated with a software module must be copied 
+            (“Required”), may be copied (“Optional”), or may not be copied (“None”) to any associated 
+            sessions.  When associated with a hardware asset, UsedInSession is always “None”.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.Type">
+            <summary>
+            Identifies the type of this IVI Data Component.  Possible values are “Structure”, “Boolean”, 
+            “Real”, “Integer”, “String”, or “APIReference”.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.HelpContextId">
+            <summary>
+            The context ID of the help topic for this data component.  The default value is 0.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.HelpFilePath">
+            <summary>
+            The fully qualified help file pathname for the help file in which the help topic for this data 
+            component may be found.  The default value is the empty string.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DataComponent.SoftwareModuleKey">
+            <summary>
+            An string that is meaningful to the software module that identifies the data component or type of 
+            data component to the software module.  The default value is the empty string.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.DataComponent.Clone">
+            <summary>
+            Creates a clone of the DataComponent.
+            </summary>
+            <returns>A cloned instance of the DataComponent.</returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.DriverSession">
+            <summary>
+            Provides the information needed to configure a software module.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.DriverSession.#ctor(System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new DriverSession object.
+            </summary>
+            <param name="name">An arbitrary name for the DriverSession.  Name uniquely identifies the 
+            DriverSession in a DriverSessionCollection.</param>
+            <param name="children">The list of children may include VirtualName objects and DataComponent 
+            objects (which are owned by the session), a reference to a single HardwareAsset object that is 
+            already a member of the parent ConfigStore's HardwareAssets collection, and a reference to a 
+            single SoftwareModule object that is already a member of the parent ConfigStore's 
+            SoftwareModule's collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.Cache">
+            <summary>
+            Indicates whether the session should cache instrument values.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.DriverSetup">
+            <summary>
+            The driver setup string that is added to the options when the driver is initialized.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.InterchangeCheck">
+            <summary>
+            Indicates whether the session should perform interchange checks.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.QueryInstrStatus">
+            <summary>
+            Indicates whether the session should query the instrument status after IO operations.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.RangeCheck">
+            <summary>
+            Indicates whether the session should validate attribute values.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.RecordCoercions">
+            <summary>
+            Indicates whether the driver should track value coercions for later retrieval.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.DriverSession.Simulate">
+            <summary>
+            Indicates whether the driver should simulate IO to/from the instrument.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.EntityCollection`1">
+            <summary>
+            The base class for a collection.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.EntityCollection`1.Item(System.String)">
+            <summary>
+            The indexer for the collection
+            </summary>
+            <param name="name">The key value of the item retrieved by the indexer.</param>
+            <returns>The item in the collection with key equal to name.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollection`1.ContainsKey(System.String)">
+            <summary>
+            Indicates whether the collection contains an element with key equal to name.
+            </summary>
+            <param name="name">The key value of the item to be checked.</param>
+            <returns>True if there is an item with key equal to name, otherwise false.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollection`1.Remove(System.String)">
+            <summary>
+            Remove the element with key equal to name.
+            </summary>
+            <param name="name">The key value of the item to be removed.</param>
+            <returns>True if there is an item with key equal to name which was successfully removed, otherwise 
+            false.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollection`1.TryGetValue(System.String,`0@)">
+            <summary>
+            If the collection contains an element with key equal to name, retrieve the value.
+            </summary>
+            <param name="name">The key value of the item to be retrieved.</param>
+            <param name="value">Returns the retrieved item if it exists.</param>
+            <returns>True if there is an item with key equal to name which was successfully retrieved, otherwise 
+            false.</returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviPublishedApiName">
+            <summary>
+            PublishedAPI names for IVI-defined classes.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviDmm">
+            <summary>
+            The name of the IviDmm class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviDriver">
+            <summary>
+            The name of the IviDriver class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviScope">
+            <summary>
+            The name of the IviScope class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviFgen">
+            <summary>
+            The name of the IviFgen class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviDCPwr">
+            <summary>
+            The name of the IviDCPwr class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviACPwr">
+            <summary>
+            The name of the IviACPwr class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviSwtch">
+            <summary>
+            The name of the IviSwtch class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviPwrMeter">
+            <summary>
+            The name of the IviPwrMeter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviSpecAn">
+            <summary>
+            The name of the IviSpecAn class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviRFSigGen">
+            <summary>
+            The name of the IviRFSigGen class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviCounter">
+            <summary>
+            The name of the IviCounter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviDownConverter">
+            <summary>
+            The name of the IviDownConverter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviUpconverter">
+            <summary>
+            The name of the IviUpconverter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviDigitizer">
+            <summary>
+            The name of the IviDigitizer class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiName.IviLxiSync">
+            <summary>
+            The name of the IviLxiSync class
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviPublishedApiType">
+            <summary>
+            PublishedAPI types for IVI-defined classes.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiType.IviCom">
+            <summary>
+            The type of IVI-COM APIs
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiType.IviNet">
+            <summary>
+            The type of IVI.NET APIs
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiType.IviC">
+            <summary>
+            The type of IVI-C APIs
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviPublishedApiTypeNames">
+            <summary>
+            PublishedAPI types for IVI-defined classes.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiTypeNames.IviCom">
+            <summary>
+            The type of IVI-COM APIs
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiTypeNames.IviNet">
+            <summary>
+            The type of IVI.NET APIs
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiTypeNames.IviC">
+            <summary>
+            The type of IVI-C APIs
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviCSoftwareModule">
+            <summary>
+            The IviCSoftwareModule class describes an IVI-C software component.  IVI-C software components 
+            include, but are not limited to, IVI-C drivers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviCSoftwareModule.#ctor(System.String,System.String,System.String,System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new IviCSoftwareModule object.
+            </summary>
+            <param name="name">The name of the IviCSoftwareModule.  The empty string is not a legal value.</param>
+            <param name="prefix">The prefix of the software module.</param>
+            <param name="modulePath32">The path to the native 32-bit IVI-C DLL.</param>
+            <param name="modulePath64">The path to the native 64-bit IVI-C DLL.</param>
+            <param name="children">The list of children may include PhysicalName objects and DataComponent 
+            objects owned by the software module, and references to PublishedAPI objects that are 
+            already members of the parent ConfigStore's PublishedAPIs collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviCSoftwareModule.ModulePath32">
+            <summary>
+            The simple filename or the full pathname of the native 32-bit software module DLL.  
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviCSoftwareModule.ModulePath64">
+            <summary>
+            The simple filename or the full pathname of the native 64-bit software module DLL.  
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.DataComponentTypeNames">
+            <summary>
+            DataComponent types.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.Structure">
+            <summary>
+            The DataComponent is an IviStructure object.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.Integer">
+            <summary>
+            The DataComponent is an IviInteger object.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.Real">
+            <summary>
+            The DataComponent is an IviReal object.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.Boolean">
+            <summary>
+            The DataComponent is an IviBoolean object.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.String">
+            <summary>
+            The DataComponent is an IviString object.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.DataComponentTypeNames.APIReference">
+            <summary>
+            The DataComponent is an IviAPIReference object.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviPublishedApiNames">
+            <summary>
+            PublishedAPI names for IVI-defined classes.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviDmm">
+            <summary>
+            The name of the IviDmm class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviDriver">
+            <summary>
+            The name of the IviDriver class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviScope">
+            <summary>
+            The name of the IviScope class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviFgen">
+            <summary>
+            The name of the IviFgen class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviDCPwr">
+            <summary>
+            The name of the IviDCPwr class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviACPwr">
+            <summary>
+            The name of the IviACPwr class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviSwtch">
+            <summary>
+            The name of the IviSwtch class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviPwrMeter">
+            <summary>
+            The name of the IviPwrMeter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviSpecAn">
+            <summary>
+            The name of the IviSpecAn class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviRFSigGen">
+            <summary>
+            The name of the IviRFSigGen class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviCounter">
+            <summary>
+            The name of the IviCounter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviDownConverter">
+            <summary>
+            The name of the IviDownConverter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviUpconverter">
+            <summary>
+            The name of the IviUpconverter class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviDigitizer">
+            <summary>
+            The name of the IviDigitizer class
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.IviPublishedApiNames.IviLxiSync">
+            <summary>
+            The name of the IviLxiSync class
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.LogicalName">
+            <summary>
+            IVI LogicalName objects map an arbitrary name to a Session or DriverSession, introducing an additional 
+            level of indirection that allows calling programs to use a logical name and change the underlying session.  
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.LogicalName.#ctor(System.String,Ivi.ConfigServer.Session)">
+            <summary>
+            Create a new LogicalName object.
+            </summary>
+            <param name="name">An arbitrary name.</param>
+            <param name="session">A reference to a Session object that is already a member of the parent 
+            ConfigStore's Sessions collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.LogicalName.Description">
+            <summary>
+            A descripiton of the logical name.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.LogicalName.Session">
+            <summary>
+            A reference to a Session object that is already a member of the parent ConfigStore's Sessions 
+            collection.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.LogicalNameCollection">
+            <summary>
+            A collection of LogicalName objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.PhysicalRange">
+            <summary>
+            The IVI PhysicalRange class allows multiple physical identifiers to be defined with a minimum of effort.  
+            Physical Ranges are used with a referencing IVI PhysicalName to create a set of physical repeated capability 
+            identifiers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.PhysicalRange.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Create a new PhysicalRange object.
+            </summary>
+            <param name="name">The name of the IVI PhysicalRange.  Name uniquely identifies the range in a 
+            PhysicalRangeCollection, and is not used in creating the set of physical identifiers.</param>
+            <param name="min">The lower bound of a range of integers to be appended to the Name property of 
+            the referencing IVI PhysicalName object to create a set of physical repeated capability 
+            identifiers.</param>
+            <param name="max">The upper bound of a range of integers to be appended to the Name property of 
+            the referencing IVI PhysicalName object to create a set of physical repeated capability 
+            identifiers.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalRange.Min">
+            <summary>
+            The lower bound of a range of integers to be appended to the Name property of the referencing 
+            IVI PhysicalName object to create a set of physical repeated capability identifiers.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalRange.Max">
+            <summary>
+            The upper bound of a range of integers to be appended to the Name property of the referencing 
+            IVI PhysicalName object to create a set of physical repeated capability identifiers.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.SessionUsage">
+            <summary>
+            When a session references a software module, the data components referenced by the software module may need to
+            have session specific values.  This enumeration describes the options for creating session-specific values.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.SessionUsage.None">
+            <summary>
+            A session does not need to define a value for this data component.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.SessionUsage.Required">
+            <summary>
+            A session may define a value for this data component.
+            </summary>
+        </member>
+        <member name="F:Ivi.ConfigServer.SessionUsage.Optional">
+            <summary>
+            A session must define a value for this data component.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviNetSoftwareModule">
+            <summary>
+            The IviNetSoftwareModule class describes an IVI.NET software component.  IVI.NET software components 
+            include, but are not limited to, IVI.NET drivers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviNetSoftwareModule.#ctor(System.String,System.String,System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new IviNetSoftwareModule object.
+            </summary>
+            <param name="name">The name of the IviNetSoftwareModule.  The empty string is not a legal value.</param>
+            <param name="prefix">The component identifier of the software module.</param>
+            <param name="assemblyQualifiedClassName">The assembly qualified class name of the IVI.NET 
+            component.</param>
+            <param name="children">The list of children may include PhysicalName objects and DataComponent 
+            objects owned by the software module, and references to PublishedAPI objects that are 
+            already members of the parent ConfigStore's PublishedAPIs collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviNetSoftwareModule.AssemblyQualifiedClassName">
+            <summary>
+            For .NET software modules, the assembly qualified class name of the default .NET class of the software 
+            module.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviComSoftwareModule">
+            <summary>
+            The IviComSoftwareModule class describes an IVI-COM software component.  IVI-COM software components 
+            include, but are not limited to, IVI-COM drivers with or without IVI-C wrappers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviComSoftwareModule.#ctor(System.String,System.String,System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new IviComSoftwareModule object.
+            </summary>
+            <param name="name">The name of the IviComSoftwareModule.  The empty string is not a legal value.</param>
+            <param name="prefix">The component identifier of the software module.</param>
+            <param name="progId">The version independent ProgID of the main class of the IVI-COM component.</param>
+            <param name="children">The list of children may include PhysicalName objects and DataComponent 
+            objects owned by the software module, and references to PublishedAPI objects that are 
+            already members of the parent ConfigStore's PublishedAPIs collection.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviComSoftwareModule.#ctor(System.String,System.String,System.String,System.String,System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new IviComSoftwareModule object.
+            </summary>
+            <param name="name">The name of the IviComSoftwareModule.  The empty string is not a legal value.</param>
+            <param name="prefix">The component identifier of the software module.</param>
+            <param name="progId">The version independent ProgID of the main class of the IVI-COM component.</param>
+            <param name="modulePath32">The path to the native 32-bit IVI-C wrapper DLL.</param>
+            <param name="modulePath64">The path to the native 64-bit IVI-C wrapper DLL.</param>
+            <param name="children">The list of children may include PhysicalName objects and DataComponent 
+            objects (which are owned by the software module), and references to PublishedAPI objects that are 
+            already members of the parent ConfigStore's PublishedAPIs collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviComSoftwareModule.ModulePath32">
+            <summary>
+            For C wrappers, either the simple filename or the full pathname of the native 32-bit software 
+            module DLL.  For software modules that do not include a C wrapper, this is the empty string.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviComSoftwareModule.ModulePath64">
+            <summary>
+            For C wrappers, either the simple filename or the full pathname of the native 64-bit software 
+            module DLL.  For software modules that do not include a C wrapper, this is the empty string.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviComSoftwareModule.ProgID">
+            <summary>
+            For COM software modules, a string that specifies the version-independent COM ProgID of the software 
+            module.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.VirtualRange">
+            <summary>
+            The IVI VirtualRange class allows multiple virtual identifiers to be defined with a minimum of effort.  
+            Virtual Ranges are used with a referencing IVI VirtualName to create a set of virtual repeated capability 
+            identifiers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.VirtualRange.#ctor(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create a new VirtualRange object.
+            </summary>
+            <param name="name">The name of the IVI VirtualRange.  Name uniquely identifies the range in a 
+            VirtualRangeCollection, and is not used in creating the set of virtual identifiers.</param>
+            <param name="min">The lower bound of a range of integers to be appended to the Name property of 
+            the referencing IVI VirtualName object to create a set of virtual repeated capability identifiers.</param>
+            <param name="max">The upper bound of a range of integers to be appended to the Name property of 
+            the referencing IVI VirtualName object to create a set of virtual repeated capability identifiers.</param>
+            <param name="startingPhysicalIndex">When a range of integers is appended to the Name property of 
+            the referencing IVI VirtualName object to create a set of virtual repeated capability identifiers, 
+            startingPhysicalIndex is added to each integer in the range, and the result is appended to the 
+            VirtualName.MapTo property to obtain the corresponding set of physical identifiers.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualRange.Min">
+            <summary>
+            The lower bound of a range of integers to be appended to the Name property of 
+            the referencing IVI VirtualName object to create a set of virtual repeated capability identifiers.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualRange.Max">
+            <summary>
+            The upper bound of a range of integers to be appended to the Name property of 
+            the referencing IVI VirtualName object to create a set of virtual repeated capability identifiers.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualRange.StartingPhysicalIndex">
+            <summary>
+            When a range of integers is appended to the Name property of the referencing IVI VirtualName object 
+            to create a set of virtual repeated capability identifiers,  StartingPhysicalIndex is added to 
+            each integer in the range, and the result is appended to the VirtualName.MapTo property to obtain 
+            the corresponding set of physical identifiers.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.VirtualRangeCollection">
+            <summary>
+            A collection of VirtualRange objects.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualRangeCollection.VirtualName">
+            <summary>
+            The <see cref="P:Ivi.ConfigServer.VirtualRangeCollection.VirtualName"/> parenting this collection.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.PhysicalRangeCollection">
+            <summary>
+            A collection of PhysicalRange objects.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalRangeCollection.PhysicalName">
+            <summary>
+            The <see cref="P:Ivi.ConfigServer.PhysicalRangeCollection.PhysicalName"/> parenting this collection.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.VirtualName">
+            <summary>
+            IVI VirtualName objects describe repeated capability virtual identifiers defined by the user for a 
+            particular session.  
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.VirtualName.#ctor(System.String,System.String,Ivi.ConfigServer.VirtualRange[])">
+            <summary>
+            Create a new VirtualName object.
+            </summary>
+            <param name="name">The Name of the VirtualName.  Name is used to create a set of virtual identifiers 
+            that map to physical identifiers.  Name uniquely identifies the VirtualName in a 
+            VirtualNameCollection.</param>
+            <param name="mapTo">The string that is substituted by the software module for Name whenever it is 
+            encountered in a repeated capability selector. The empty string is a legal value for this property only if
+            the virtual range collection is non-empty.</param>
+            <param name="virtualRanges">VirtualRange objects used with this VirtualName to create a set of 
+            virtual identifiers that may be used by a session.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualName.MapTo">
+            <summary>
+            MapTo, along with virtual and physical range information, determines the physical names to which 
+            this set of virtual identifiers is mapped.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualName.VirtualRanges">
+            <summary>
+            VirtualRange objects used with this VirtualName to create a set of virtual identifiers that may 
+            be used by a session.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.VirtualNameCollection">
+            <summary>
+            A collection of VirtualName objects.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.VirtualNameCollection.Session">
+            <summary>
+            The <see cref="P:Ivi.ConfigServer.VirtualNameCollection.Session"/> parenting this collection.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.Session">
+            <summary>
+            The IVI Session class provides the information needed to configure a software module.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.Session.#ctor(System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new Session object.
+            </summary>
+            <param name="name">An arbitrary name for the Session.  Name uniquely identifies the Session in a 
+            SessionCollection.</param>
+            <param name="children">The list of children may include VirtualName objects and DataComponent 
+            objects owned by the session, a reference to a single HardwareAsset object that is 
+            already a member of the parent ConfigStore's HardwareAssets collection, and a reference to a 
+            single SoftwareModule object that is already a member of the parent ConfigStore's 
+            SoftwareModule's collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.Session.VirtualNames">
+            <summary>
+            References a collection of all the IVI Virtual Name objects used by the Session.  All VirtualNames are 
+            specific to this session.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.Session.HardwareAsset">
+            <summary>
+            The HardwareAsset used by the Session.  HarwareAsset references a member of the parent ConfigStore's 
+            HardwareAssets collection 
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.Session.SoftwareModule">
+            <summary>
+            The SoftwareModule used by the Session.  SoftwareModule references a member of the parent ConfigStore's 
+            SoftwareModules collection 
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.Session.SoftwareModuleName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.SessionCollection">
+            <summary>
+            A collection of Session objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.HardwareAsset">
+            <summary>
+            The IVI HardwareAsset class identifies a physical asset available to the system.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.HardwareAsset.#ctor(System.String,System.String,Ivi.ConfigServer.DataComponent[])">
+            <summary>
+            Create a new HardwareAsset object.
+            </summary>
+            <param name="name">The name of the HardwareAsset.  The empty string is not a legal value.</param>
+            <param name="ioResourceDescriptor">A string that specifies the address of the hardware asset that can 
+            be recognized by I/O used by a software module that will access the hardware.</param>
+            <param name="dataComponents"> DataComponent objects owned by the hardware asset).</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.HardwareAsset.IOResourceDescriptor">
+            <summary>
+            The address of the hardware asset that can be used by an associated software module to access the 
+            hardware.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.DriverSessionCollection">
+            <summary>
+            A collection of VirtualName objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.HardwareAssetCollection">
+            <summary>
+            A collection of HardwareAsset objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.EntityCollectionBase`1">
+            <summary>
+            The base class for a collection of a objects that derive from Entity.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Ivi.ConfigServer.EntityCollectionBase`1.Count">
+            <summary>
+            The number of items in the collection
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollectionBase`1.Add(`0)">
+            <summary>
+            Add a new item to the collection.
+            </summary>
+            <param name="value">The item to add.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollectionBase`1.Clear">
+            <summary>
+            Remove all items from the collection
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.EntityCollectionBase`1.GetEnumerator">
+            <summary>
+            Return the collection enumerator.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.Entity">
+            <summary>
+            The base class for classes that represent config store data.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.Entity.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates an instance of the entity.
+            </summary>
+            <param name="name">The name of the entity.</param>
+            <param name="allowEmptyName">Indicates if an empty name is allowed for the entity.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.Entity.#ctor">
+            <summary>
+            This constructor is only intended to be used by derived internal ctors that are used only for 
+            deserialization.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.Entity.Name">
+            <summary>
+            Gets the name of the item.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.DataComponentCollection">
+            <summary>
+            A collection of objects that derive from DataComponent.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviApiReference.#ctor(System.String,System.String,Ivi.ConfigServer.PublishedApi,System.Boolean,Ivi.ConfigServer.SessionUsage)">
+            <summary>
+            When owned by a SoftwareModule, an IviApiReference indicates that the module uses an instance of the 
+            PublishedApi to which it refers, but does not indicate how the instance is to be instantiated.  When 
+            owned by a Session or DriverSession, an IviApiReference indicates both that the associated SoftwareModule 
+            uses an instance of the PublishedApi to which it refers and the name of the Session or DriverSession 
+            that should be used to provide the instance of the PublishedApi.  IviApiReference components are not 
+            used by HardwareAssets
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="value">A logical name, session name, or driver session name.</param>
+            <param name="publishedApi">A reference to a single PublishedAPI object that is already a member of the 
+            parent ConfigStore's PublishedAPIs collection.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviApiReference.Value">
+            <summary>
+            A session name or a logical name (which resolves to a session name).  This value is only used if this 
+            API reference data component is owned by a Session or DriverSession.  Otherwise the value is ignored and 
+            should be the empty string.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviApiReference.PublishedApi">
+            <summary>
+            A reference to a Published API object to be used by the configured software module.  This reference is 
+            only used if this API reference data component is owned by a SoftwareModule, Session or DriverSession.  
+            Otherwise the value is ignored and should be null.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviApiReference.Type">
+            <summary>
+            The type of IviStructure data components is always "APIReference".
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviBoolean">
+            <summary>
+            The IviBoolean data component.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviBoolean.#ctor(System.String,System.Boolean,System.Boolean,Ivi.ConfigServer.SessionUsage)">
+            <summary>
+            Create a new IviBoolean data component object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="value">The Boolean value associated with this data component.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviBoolean.Value">
+            <summary>
+            The Boolean value associated with this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviBoolean.XmlElementName">
+            <summary>
+            The type of IviStructure data components is always "Boolean".
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviInteger">
+            <summary>
+            The IviInteger data component.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviInteger.#ctor(System.String,System.Int64,System.String,System.Boolean,Ivi.ConfigServer.SessionUsage)">
+            <summary>
+            Create a new IviInteger data component object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="value">The integer value associated with this data component.</param>
+            <param name="units">The units associated with the integer value of this data component.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviInteger.Value">
+            <summary>
+            The integer value associated with this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviInteger.Units">
+            <summary>
+            The units associated with the integer value of this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviInteger.Type">
+            <summary>
+            The type of IviStructure data components is always "Integer".
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviReal">
+            <summary>
+            The IviReal data component.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviReal.#ctor(System.String,System.Double,System.String,System.Boolean,Ivi.ConfigServer.SessionUsage)">
+            <summary>
+            Create a new IviReal data component object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="value">The real value associated with this data component.</param>
+            <param name="units">The units associated with the real value of this data component.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviReal.Value">
+            <summary>
+            The real value associated with this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviReal.Units">
+            <summary>
+            The units associated with the real value of this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviReal.Type">
+            <summary>
+            The type of IviStructure data components is always "Real".
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviString">
+            <summary>
+            The IviString data component.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviString.#ctor(System.String,System.String,System.Boolean,Ivi.ConfigServer.SessionUsage)">
+            <summary>
+            Create a new IviString data component object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="value">The string value associated with this data component.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviString.Value">
+            <summary>
+            The string value associated with this data component.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviString.Type">
+            <summary>
+            The type of IviStructure data components is always "String".
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.IviStructure">
+            <summary>
+            The IviStructure data component references a collection of data components.  Using this class, hierarchies 
+            of data components can be defined.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviStructure.#ctor(System.String,Ivi.ConfigServer.DataComponent[])">
+            <summary>
+            Create a new IviStructure data component object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="dataComponents">A list of DataComponent objects for child data components, which are owned 
+            by this IviStructure.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviStructure.#ctor(System.String,System.Boolean,Ivi.ConfigServer.SessionUsage,Ivi.ConfigServer.DataComponent[])">
+            <summary>
+            Create a new IviStructure object.
+            </summary>
+            <param name="name">The name of the IVI Data Component.  The empty string is not a legal value for this 
+            property.</param>
+            <param name="readOnly">If false, the value of the data component may be changed in a configuration 
+            store GUI.</param>
+            <param name="usedInSession">Determines whether a data component associated with a software module is 
+            used in a session that references the software module.</param>
+            <param name="dataComponents">A list of DataComponent objects for child data components, which are owned 
+            by this IviStructure.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviStructure.DataComponents">
+            <summary>
+            A collection of DataComponents.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.IviStructure.Type">
+            <summary>
+            The type of IviStructure data components is always "Structure".
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.IviStructure.Clone">
+            <summary>
+            Copies the child data components to a new DataComponentsCollection.  This should be only used to copy 
+            the data components defined by a SoftwareModule to the data components defined for the corresponding 
+            Session or DriverSession, as ReadOnly is changed to false for each data component copied.
+            </summary>
+            <returns>A clone of this IviStructure.</returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.PhysicalName">
+            <summary>
+            IVI PhysicalName objects describe repeated capability physical identifiers defined by the user for 
+            a particular software Module.  
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.PhysicalName.#ctor(System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new PhysicalName object.
+            </summary>
+            <param name="name">The Name of the PhysicalName.  Name is used to create a set of physical identifiers.  
+            Name uniquely identifies the PhysicalName in a PhysicalNameCollection.</param>
+            <param name="children">The list of params may include PhysicalName objects for child repeated 
+            capabilities, and PhysicalRange objects that are associated with this PhysicalName.  Both are owned 
+            by this PhysicalName.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalName.RCName">
+            <summary>
+            The associated repeated capability name as defined in the software module.  
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalName.PhysicalNames">
+            <summary>
+            PhysicalName objects used with this PhysicalName to create a set of physical identifiers for child
+            repeated capabilities.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PhysicalName.PhysicalRanges">
+            <summary>
+            PhysicalRange objects used with this PhysicalName to create a set of physical identifiers that may 
+            be used by a software module.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.PublishedApi">
+            <summary>
+            The PublishedAPI class describes APIs that are supported across several products, and as such are 
+            published independently of any one component that implements them.  
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.TryParseType(System.String,Ivi.ConfigServer.IviPublishedApiType@)">
+            <summary>
+            Converts the supplied API type name to the corresponding enum value.
+            </summary>
+            <param name="typeName">
+            Must be one of: "IVI.NET", "IVI-COM", or "IVI-C", else this function returns False and 
+            <paramref name="type"/> is undefined.
+            </param> 
+            <param name="type">
+            The IVI-defined API type corresponding to <paramref name="typeName"/>, if one exists.  Otherwise, this 
+            value is undefined.</param>
+            <returns>True if the conversion was successful.  False otherwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.ParseType(System.String)">
+            <summary>
+            Converts the supplied API type name to the corresponding enum value, if one exists.
+            </summary>
+            <param name="typeName">
+            Must be one of: "IVI.NET", "IVI-COM", or "IVI-C", else an <seealso cref="T:System.ArgumentException"/>is thrown.
+            </param> 
+            <returns>The enum value corresponding to the supplied <paramref name="typeName"/>, if one exists.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.TypeToString(Ivi.ConfigServer.IviPublishedApiType)">
+            <summary>
+            Converts the supplied <paramref name="type"/> enumeration to one of the corresponding IVI-defined values.
+            </summary>
+            <param name="type">The API type to convert to a string.</param>
+            <returns>One of: "IVI.NET", "IVI-COM", or "IVI-C".</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.TryParseName(System.String,Ivi.ConfigServer.IviPublishedApiName@)">
+            <summary>
+            Converts the supplied API name to the corresponding enum value, if one exists.
+            </summary>
+            <param name="name">
+            Must be one of the IVI-defined values.  See <see cref="T:Ivi.ConfigServer.IviPublishedApiNames"/> for a list of IVI-defined 
+            API names.
+            </param>
+            <param name="iviName">The IVI-defined API name corresponding to <paramref name="name"/>, if one exists.  
+            Otherwise, this value is undefined.</param>
+            <returns>True if the conversion was successful.  False otherwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.ParseName(System.String)">
+            <summary>
+            Converts the supplied API name to the corresponding enum value, if one exists.
+            </summary>
+            <param name="name">
+            Must be one of the IVI-defined values.  See <see cref="T:Ivi.ConfigServer.IviPublishedApiNames"/> for a list of IVI-defined 
+            API names.
+            </param>
+            <returns>The enum value corresponding to the supplied <paramref name="name"/>, if one exists.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.#ctor(Ivi.ConfigServer.IviPublishedApiName,Ivi.ConfigServer.IviPublishedApiType,System.Int32,System.Int32)">
+            <summary>
+            Create a new PublishedAPI object using one of the standard IVI-defined API names and one of the three 
+            standard IVI-defined types.
+            </summary>
+            <param name="name">The name of the standard IVI-defined API.</param>
+            <param name="type">The technology of the API.</param>
+            <param name="majorVersion">The major version of the revision of the published API.</param>
+            <param name="minorVersion">The minor version of the revision of the published API.</param>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApi.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Create a new PublishedAPI object using a custom API type.  For creating standard IVI types (IVI.NET,
+            IVI-COM, or IVI-C), use the constructor that accepts an enumeration for the type.
+            </summary>
+            <param name="name">The name of the API.  IVI defined APIs start with "Ivi".,</param>
+            <param name="type">The technology of the API.  For IVI defined APIs, type may be “IVI.NET”, “IVI-C”, 
+            or “IVI-COM”.</param>
+            <param name="majorVersion">The major version of the revision of the published API.</param>
+            <param name="minorVersion">The minor version of the revision of the published API.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.PublishedApi.MajorVersion">
+            <summary>
+            The major version of this revision of the published API.  This is determined by the person or group 
+            who publishes the API.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PublishedApi.MinorVersion">
+            <summary>
+            The minor version of this revision of the published API.  This is determined by the person or group 
+            who publishes the API.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PublishedApi.Type">
+            <summary>
+            The technology of the API.  This is determined by the person or group who publishes the API.  
+            For IVI defined APIs, type may be “IVI.NET”, “IVI-C”, or “IVI-COM”.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.PublishedApiCollection">
+            <summary>
+            A collection of PublishedApi objects.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.PublishedApiCollection.Item(Ivi.ConfigServer.IviPublishedApiName,Ivi.ConfigServer.IviPublishedApiType,System.Int32,System.Int32)">
+            <summary>
+            The indexer for the collection.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>The item in the collection with the specified name, type, major version, and minor version.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.ContainsKey(Ivi.ConfigServer.IviPublishedApiName,Ivi.ConfigServer.IviPublishedApiType,System.Int32,System.Int32)">
+            <summary>
+            Indicates if the collection contains an item with the specified name, type, major version, and minor version.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>True if the item exists in the collection.  False otherwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.Remove(Ivi.ConfigServer.IviPublishedApiName,Ivi.ConfigServer.IviPublishedApiType,System.Int32,System.Int32)">
+            <summary>
+            Removes the item with the specified name, type, major version, and minor version, if one exists.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>True if the item was removed.  False otehrwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.TryGetValue(Ivi.ConfigServer.IviPublishedApiName,Ivi.ConfigServer.IviPublishedApiType,System.Int32,System.Int32,Ivi.ConfigServer.PublishedApi@)">
+            <summary>
+            Retrieves the item with the specified name, type, major version, and minor version, if one exists.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <param name="value">The item in the collection with the specified name, type, major version, and minor version.</param>
+            <returns>True if the item was found.  False otherwise.</returns>
+        </member>
+        <member name="P:Ivi.ConfigServer.PublishedApiCollection.Item(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Indicates if the collection contains an item with the specified name, type, major version, and minor version.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>True if the item exists in the collection.  False otherwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.ContainsKey(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Indicates if the collection contains an item with the specified name, type, major version, and minor version.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>True if the item exists in the collection.  False otherwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.Remove(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Removes the item with the specified name, type, major version, and minor version, if one exists.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <returns>True if the item was removed.  False otehrwise.</returns>
+        </member>
+        <member name="M:Ivi.ConfigServer.PublishedApiCollection.TryGetValue(System.String,System.String,System.Int32,System.Int32,Ivi.ConfigServer.PublishedApi@)">
+            <summary>
+            Retrieves the item with the specified name, type, major version, and minor version, if one exists.
+            </summary>
+            <param name="name">The name of the published API.</param>
+            <param name="type">The published API type.</param>
+            <param name="majorVersion">The major version number of the published API.</param>
+            <param name="minorVersion">The minor version number of the published API.</param>
+            <param name="value">The item in the collection with the specified name, type, major version, and minor version.</param>
+            <returns>True if the item was found.  False otherwise.</returns>
+        </member>
+        <member name="T:Ivi.ConfigServer.PhysicalNameCollection">
+            <summary>
+            A collection of PhysicalNameName objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.SoftwareModuleCollection">
+            <summary>
+            A collection of SoftwareModule objects.
+            </summary>
+        </member>
+        <member name="T:Ivi.ConfigServer.SoftwareModule">
+            <summary>
+            The SoftwareModule class describes an IVI software component.  IVI software components include, 
+            but are not limited to, various types of IVI drivers.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.SoftwareModule.#ctor(System.String,System.String,Ivi.ConfigServer.Entity[])">
+            <summary>
+            Create a new SoftwareModule object.
+            </summary>
+            <param name="name">The name of the SoftwareModule.  The empty string is not a legal value.</param>
+            <param name="prefix">The prefix (for IVI-C components) or the component identifier (for IVI-COM and 
+            IVI.NET components) of the software module.</param>
+            <param name="children">The list of children may include PhysicalName objects and DataComponent 
+            objects owned by the software module, and references to PublishedAPI objects that are 
+            already members of the parent ConfigStore's PublishedAPIs collection.</param>
+        </member>
+        <member name="P:Ivi.ConfigServer.SoftwareModule.Prefix">
+            <summary>
+            The prefix (for IVI-C components) or the component identifier (for IVI-COM and IVI.NET components) of 
+            the software module.  When the software module is an IVI driver, this value matches the value returned 
+            by the Prefix attribute or the ComponentIdentifier attributes of the corresponding IVI drivers.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.SoftwareModule.SupportedInstrumentModels">
+            <summary>
+            A comma-separated string that specifies the instrument models supported by the software module.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.SoftwareModule.PhysicalNames">
+            <summary>
+            A collection of physical names used by the repeated capabilities of this software module.
+            </summary>
+        </member>
+        <member name="P:Ivi.ConfigServer.SoftwareModule.PublishedAPIs">
+            <summary>
+            A collection of published APIs implemented by this software module.
+            </summary>
+        </member>
+        <member name="M:Ivi.ConfigServer.SoftwareModule.AfterDeserializeEntityDefinition">
+            <summary>
+            This method examines the set of published APIs to determine which concrete type of SoftwareModule should be
+            returned.
+            </summary>
+        </member>
+    </members>
+</doc>

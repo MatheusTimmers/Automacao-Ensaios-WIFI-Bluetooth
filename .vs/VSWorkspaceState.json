@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Automacao N9010A"
   ],
-  "SelectedNode": "\\Automacao N9010A.sln",
+  "SelectedNode": "\\Automacao N9010A\\Principal.cs",
   "PreviewInSolutionExplorer": false
 }

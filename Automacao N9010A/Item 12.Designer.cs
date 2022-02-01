@@ -1,7 +1,7 @@
 ﻿
 namespace Automacao_N9010A
 {
-    partial class Form3
+    partial class Item_12
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,9 @@ namespace Automacao_N9010A
         {
             this.ListaEnsaiosItem12 = new System.Windows.Forms.CheckedListBox();
             this.LEnsaiosItem12 = new System.Windows.Forms.Label();
+            this.BtLimpar = new System.Windows.Forms.Button();
+            this.BtSelTodos = new System.Windows.Forms.Button();
+            this.BtSalvar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListaEnsaiosItem12
@@ -43,7 +46,7 @@ namespace Automacao_N9010A
             this.ListaEnsaiosItem12.Location = new System.Drawing.Point(13, 72);
             this.ListaEnsaiosItem12.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ListaEnsaiosItem12.Name = "ListaEnsaiosItem12";
-            this.ListaEnsaiosItem12.Size = new System.Drawing.Size(295, 94);
+            this.ListaEnsaiosItem12.Size = new System.Drawing.Size(307, 94);
             this.ListaEnsaiosItem12.TabIndex = 7;
             // 
             // LEnsaiosItem12
@@ -52,23 +55,58 @@ namespace Automacao_N9010A
             this.LEnsaiosItem12.BackColor = System.Drawing.Color.Transparent;
             this.LEnsaiosItem12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LEnsaiosItem12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LEnsaiosItem12.Location = new System.Drawing.Point(13, 24);
+            this.LEnsaiosItem12.Location = new System.Drawing.Point(13, 27);
             this.LEnsaiosItem12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LEnsaiosItem12.Name = "LEnsaiosItem12";
             this.LEnsaiosItem12.Size = new System.Drawing.Size(307, 32);
             this.LEnsaiosItem12.TabIndex = 6;
             this.LEnsaiosItem12.Text = "Ensaios para 5150 a 5350MHz e 5470 a 5725MHz.. \r\nItem 12 da norma 6506.";
             // 
-            // Form3
+            // BtLimpar
+            // 
+            this.BtLimpar.Location = new System.Drawing.Point(116, 172);
+            this.BtLimpar.Name = "BtLimpar";
+            this.BtLimpar.Size = new System.Drawing.Size(100, 40);
+            this.BtLimpar.TabIndex = 9;
+            this.BtLimpar.Text = "Limpar";
+            this.BtLimpar.UseVisualStyleBackColor = true;
+            this.BtLimpar.Click += new System.EventHandler(this.BtLimpar_Click);
+            // 
+            // BtSelTodos
+            // 
+            this.BtSelTodos.Location = new System.Drawing.Point(13, 172);
+            this.BtSelTodos.Name = "BtSelTodos";
+            this.BtSelTodos.Size = new System.Drawing.Size(100, 40);
+            this.BtSelTodos.TabIndex = 8;
+            this.BtSelTodos.Text = "Selecionar Todos";
+            this.BtSelTodos.UseVisualStyleBackColor = true;
+            this.BtSelTodos.Click += new System.EventHandler(this.BtSelTodos_Click);
+            // 
+            // BtSalvar
+            // 
+            this.BtSalvar.Location = new System.Drawing.Point(220, 172);
+            this.BtSalvar.Name = "BtSalvar";
+            this.BtSalvar.Size = new System.Drawing.Size(100, 40);
+            this.BtSalvar.TabIndex = 10;
+            this.BtSalvar.Text = "Salvar";
+            this.BtSalvar.UseVisualStyleBackColor = true;
+            this.BtSalvar.Click += new System.EventHandler(this.BtSalvar_Click);
+            // 
+            // Item_12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(321, 186);
+            this.ClientSize = new System.Drawing.Size(328, 224);
+            this.Controls.Add(this.BtSalvar);
+            this.Controls.Add(this.BtLimpar);
+            this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem12);
             this.Controls.Add(this.LEnsaiosItem12);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "Item_12";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Item 12";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,5 +116,8 @@ namespace Automacao_N9010A
 
         private System.Windows.Forms.CheckedListBox ListaEnsaiosItem12;
         private System.Windows.Forms.Label LEnsaiosItem12;
+        private System.Windows.Forms.Button BtLimpar;
+        private System.Windows.Forms.Button BtSelTodos;
+        private System.Windows.Forms.Button BtSalvar;
     }
 }

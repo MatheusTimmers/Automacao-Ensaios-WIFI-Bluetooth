@@ -1,55 +1,70 @@
-﻿    using System;
-    using System.Threading;
-    using System.IO;
-    using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
-    using Ivi.Visa.Interop;
+﻿using System;
+using System.Threading;
+using System.IO;
+using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
+using Ivi.Visa.Interop;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 
-    namespace MatheusProductions.keysight
+namespace MatheusProductions.keysight
     {
 
     public class Keysight
     {
-        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint)
+        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints)
         {
-            nomePasta = nomePasta + @"\" + nomePrint;
-            instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
+ 
+            if (tPrints)
+            {
+                nomePasta = nomePasta + @"\" + nomePrint;
+                instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
+            }
+            
         }
 
-        public void CriaPasta(string Na, string Np)
+        public void CriaPasta(string nomePasta, string nomeSubPasta = "")
         {
             //---------------------------------------------------------------
             //Cria Uma pasta para salvar os valores
             //---------------------------------------------------------------
 
-            // Cria uma subPasta na pasta teste Automação
+            // 
             // Adicionando o nome Valores do Marker dentro da variavel Nome Pasta
-            Np = System.IO.Path.Combine(Na, Np);
+            nomePasta = System.IO.Path.Combine(nomePasta, nomeSubPasta);
 
             //Cria pasta
-            System.IO.Directory.CreateDirectory(Np);
+            System.IO.Directory.CreateDirectory(nomePasta);
 
             // Verifica o Caminho
         }
 
-        public void Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
         {
-            try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
-            {
-                //-----------------------------------------------------------
-                // Inicialização:
-                //-----------------------------------------------------------
-                // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
-                instr.IO = (IMessage)rm.Open(ip);
-                instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
-            }
-            catch (RsInstrumentException e)
-            {
-                Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
-                Console.WriteLine("Pressione qualquer tecla para sair.");
-                Console.ReadKey();
-                return;
-            }
+            nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+
+            return File.Create(nomePasta);
+        }
+
+        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        {
+        try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
+        {
+            //-----------------------------------------------------------
+            // Inicialização:
+            //-----------------------------------------------------------
+            // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
+            instr.IO = (IMessage)rm.Open(ip);
+            instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
+            return true;
+        }
+        catch (RsInstrumentException e)
+        {
+            Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
+            Console.WriteLine("Pressione qualquer tecla para sair.");
+            Console.ReadKey();
+            return false;
+        }
         }
 
         public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
@@ -103,80 +118,86 @@
             instr.WriteString($"OBW:DET {detector}"); //Configura o Trace
         }
 
-        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC)
+        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
 
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                fs.Close();
+
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC)
+        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
+                CriaPasta(nomePasta);
+                //Criando o arquivo e adicionando os Valores
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                fs.Close();
+
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
-
-                //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
+                File.AppendAllText(nomePasta, valor.ToString() + "\n");
+
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
+                File.AppendAllText(nomePasta, valor.ToString() + "\n");
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC)
+        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta))
+            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomeArquivo, nomePasta);
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                Console.WriteLine("Criando o arquivo \"{0}\" e adicionando os valores", nomeArquivo);
-                using (System.IO.FileStream fs = System.IO.File.Create(nomePasta))
-                { }
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                fs.Close();
+
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + ";");
+                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
             }
             else
             {
-                Console.WriteLine("O arquivo \"{0}\" Ja existe. Apenas inserindo os valores", nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + ";");
+                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
             }
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace)
+        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
         {
             // Inicia as variaveis do marker, com valores padrao para entrar no While
             double markerX = 1;
@@ -198,19 +219,12 @@
                     New_markerX = (double)instr.ReadNumber();
                     instr.WriteString("CALC1:MARK1:Y?");
                     New_markerY = (double)instr.ReadNumber();
-                    Console.WriteLine("Espere 10 segundos.");
                     Thread.Sleep(10000);
-                    Console.WriteLine($"Frequencia do Marker  {New_markerX:F3} Hz, Level {New_markerY:F2} dBm");
                 }
 
             }
             else
             {
-                instr.WriteString("AVER:COUN?");
-                string aux = instr.ReadString();
-                Thread.Sleep(3000);
-                instr.WriteString("AVER:COUN?");
-                aux = instr.ReadString();
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
                 instr.WriteString("CALC1:MARK1:X?");
@@ -218,7 +232,7 @@
                 instr.WriteString("CALC1:MARK1:Y?");
                 New_markerY = (double)instr.ReadNumber();
             }
-            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC);
+            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
     }
 }

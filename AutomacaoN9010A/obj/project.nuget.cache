@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I3cNYoBLZLuMrVjfNNFn1evXAZKIpl1T2cyI1pwPlTZ3Wu9D+5MzW72TvHXd/k5dJv5V5rr2GAXmdkIn9MWd5w==",
+  "dgSpecHash": "BSSXQmykNj0tokQ8Z+jN+uIzylr3Dpmzku9rQxiYz5gM26YFrps3y2JTjLBSM7RXa3gZZd5rdlBu8gDGGCkikw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\80400197\\source\\repos\\Automacao N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+  "projectFilePath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\80400197\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512"
   ],
