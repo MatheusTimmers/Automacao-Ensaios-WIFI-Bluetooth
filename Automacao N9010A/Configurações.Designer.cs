@@ -174,6 +174,7 @@ namespace Automacao_N9010A
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(464, 254);
             this.Controls.Add(this.groupBox1);
@@ -181,6 +182,7 @@ namespace Automacao_N9010A
             this.Controls.Add(this.CBPrints);
             this.Controls.Add(this.LAttRLevel);
             this.Name = "Configurações";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

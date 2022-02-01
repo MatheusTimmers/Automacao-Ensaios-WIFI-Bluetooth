@@ -56,6 +56,7 @@ namespace Automacao_N9010A
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(322, 159);
             this.Controls.Add(this.LLoading);
@@ -63,8 +64,8 @@ namespace Automacao_N9010A
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaLoading";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaLoading";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelaLoading_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

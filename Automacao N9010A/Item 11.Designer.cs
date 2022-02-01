@@ -100,6 +100,7 @@ namespace Automacao_N9010A
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(339, 257);
             this.Controls.Add(this.BtSalvar);
@@ -107,7 +108,9 @@ namespace Automacao_N9010A
             this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.LEnsaiosItem11);
             this.Controls.Add(this.ListaEnsaiosItem11);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Item_11";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item 11";
             this.ResumeLayout(false);
             this.PerformLayout();

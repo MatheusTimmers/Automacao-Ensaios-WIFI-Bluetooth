@@ -1,8 +1,8 @@
-﻿    using System;
-    using System.Threading;
-    using System.IO;
-    using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
-    using Ivi.Visa.Interop;
+﻿using System;
+using System.Threading;
+using System.IO;
+using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
+using Ivi.Visa.Interop;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -12,10 +12,15 @@ namespace MatheusProductions.keysight
 
     public class Keysight
     {
-        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint)
+        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints)
         {
-            nomePasta = nomePasta + @"\" + nomePrint;
-            instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
+ 
+            if (tPrints)
+            {
+                nomePasta = nomePasta + @"\" + nomePrint;
+                instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
+            }
+            
         }
 
         public void CriaPasta(string nomePasta, string nomeSubPasta = "")
@@ -34,7 +39,7 @@ namespace MatheusProductions.keysight
             // Verifica o Caminho
         }
 
-        public FileStream CriaArquivo(string nomePasta, string nomeArquivo)
+        public FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
         {
             nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
@@ -113,7 +118,7 @@ namespace MatheusProductions.keysight
             instr.WriteString($"OBW:DET {detector}"); //Configura o Trace
         }
 
-        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC)
+        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
 
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
@@ -121,10 +126,11 @@ namespace MatheusProductions.keysight
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
                 fs.Close();
 
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
@@ -132,61 +138,66 @@ namespace MatheusProductions.keysight
             else
             {
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, markerX.ToString() + ";");
                 File.AppendAllText(nomePasta, markerY.ToString() + "\n");
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC)
+        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
                 fs.Close();
 
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
+                File.AppendAllText(nomePasta, valor.ToString() + "\n");
 
             }
             else
             {
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
+                File.AppendAllText(nomePasta, valor.ToString() + "\n");
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC)
+        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
                 CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomePasta, nomeArquivo);
+                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
                 fs.Close();
 
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + ";");
+                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
             }
             else
             {
+                File.AppendAllText(nomePasta, nome.ToString() + ";");
                 nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
                 File.AppendAllText(nomePasta, freqC.ToString() + ";");
                 File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + ";");
+                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
             }
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace)
+        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
         {
             // Inicia as variaveis do marker, com valores padrao para entrar no While
             double markerX = 1;
@@ -221,7 +232,7 @@ namespace MatheusProductions.keysight
                 instr.WriteString("CALC1:MARK1:Y?");
                 New_markerY = (double)instr.ReadNumber();
             }
-            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC);
+            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MatheusProductions.AutomacaoN9010A
         }
 
 
-        public void Largura_6dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Largura_6dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
             ConectaIP(ip);
 
@@ -53,10 +53,10 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT");
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
-                instr.WriteString("FETC:OBW:OBW?");
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+                instr.WriteString("FETC:OBW:XDB?");
                 string val = instr.ReadString();
-                radical.SalvaValores("Valores do ensaio.csv", nomePasta, val, valFreq);
+                radical.SalvaValores("Valores do ensaio.csv", nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
@@ -68,7 +68,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Largura_26dB(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Largura_26dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
 
             ConectaIP(ip);
@@ -89,14 +89,14 @@ namespace MatheusProductions.AutomacaoN9010A
                 string nomeArquivo = "Valores do ensaio.csv";
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
-                instr.WriteString("FETC:OBW:OBW?");
+                instr.WriteString("FETC:OBW:XDB?");
                 string val = instr.ReadString();
                 Thread.Sleep(5000);
-                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq);
+                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 
             }
             catch (RsInstrumentException e)
@@ -106,7 +106,7 @@ namespace MatheusProductions.AutomacaoN9010A
         }
 
 
-        public void Pico_da_densidade_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Pico_da_densidade_de_potência(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
 
             ConectaIP(ip);
@@ -130,9 +130,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 //Cria uma variavel com o nome do arquivo que quer criar
                 string nomeArquivo = "Valores do ensaio.csv";
                 instr.WriteString("INIT:CONT OFF");
-                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH");
+                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH", nome);
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
             }
             catch (RsInstrumentException e)
             {
@@ -140,7 +140,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_densidade_espectral_de_potência(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
 
             ConectaIP(ip);
@@ -166,11 +166,11 @@ namespace MatheusProductions.AutomacaoN9010A
                 string nomeArquivo = "Valores do ensaio.csv";
                 //Salvando os Valores do Marker
                 //Cria uma variavel com o nome do arquivo que quer criar
-                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "AVER");
+                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "AVER", nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
 
             }
             catch (RsInstrumentException e)
@@ -180,7 +180,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Potência_de_pico_máxima(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Potência_de_pico_máxima(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
             ConectaIP(ip);
 
@@ -203,11 +203,11 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
                 string val = instr.ReadString();
-                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq);
+                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
 
             }
             catch (RsInstrumentException e)
@@ -217,7 +217,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         }
 
-        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nomePrint, string largura_Banda, string RefLevel, string Att)
+        public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
             
             ConectaIP(ip);
@@ -241,11 +241,11 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
                 string val = instr.ReadString();
-                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq);
+                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                 // -----------------------------------------------------------
-                radical.SalvaPrints(instr, nomePasta, nomePrint);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
 
             }
             catch (RsInstrumentException e)
