@@ -7,6 +7,9 @@
     <Compile Update="Configurações.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Item 10.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Item 11.cs">
       <SubType>Form</SubType>
     </Compile>

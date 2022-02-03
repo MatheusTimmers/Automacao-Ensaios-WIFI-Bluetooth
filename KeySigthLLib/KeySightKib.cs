@@ -216,9 +216,9 @@ namespace MatheusProductions.keysight
                     markerY = New_markerY;
                     instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
                     instr.WriteString("CALC1:MARK1:X?");
-                    New_markerX = (double)instr.ReadNumber();
+                    New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     instr.WriteString("CALC1:MARK1:Y?");
-                    New_markerY = (double)instr.ReadNumber();
+                    New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     Thread.Sleep(10000);
                 }
 
@@ -228,11 +228,11 @@ namespace MatheusProductions.keysight
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
                 instr.WriteString("CALC1:MARK1:X?");
-                New_markerX = (double)instr.ReadNumber();
+                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 instr.WriteString("CALC1:MARK1:Y?");
-                New_markerY = (double)instr.ReadNumber();
+                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
             }
-            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
+            SalvaMarkers(nomeArquivo, nomePasta, New_markerX/1000, New_markerY/1000, freqC, nome);
         }
     }
 }

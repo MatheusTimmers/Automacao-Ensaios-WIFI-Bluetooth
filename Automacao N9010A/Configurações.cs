@@ -83,16 +83,15 @@ namespace Automacao_N9010A
 
         private void CBPrints_MouseClick(object sender, MouseEventArgs e)
         {
+            pr = new Principal();
             if (CBPrints.Checked)
             {
                 MessageBox.Show("Prints Ativados");
-                pr.Pega("PRINTS ATIVADOS");
                 pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
             }
             else
             {
                 MessageBox.Show("Prints Desativados");
-                pr.Pega("PRINTS DESATIVADOS");
                 pr.SalvaConfig(RefLevel, Att, CBPrints.Checked);
             }
         }

@@ -55,7 +55,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("INIT:CONT OFF");
                 radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 instr.WriteString("FETC:OBW:XDB?");
-                string val = instr.ReadString();
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000;
+                string val = Convert.ToString(aux);
                 radical.SalvaValores("Valores do ensaio.csv", nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
@@ -90,7 +92,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:OBW:XDB?");
-                string val = instr.ReadString();
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000;
+                string val = Convert.ToString(aux);
                 Thread.Sleep(5000);
                 radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
@@ -159,7 +163,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.IO.Timeout = 2000;
                 instr.WriteString("INIT");
                 instr.WriteString("SWE:TIME?");
-                double tempo = (double)instr.ReadNumber();
+                double tempo = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 Thread.Sleep(15000);
                 instr.WriteString("INIT:CONT OFF");
                 Thread.Sleep((int)tempo * 1000);
@@ -202,7 +206,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
-                string val = instr.ReadString();
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000;
+                string val = Convert.ToString(aux);
                 radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
@@ -240,7 +246,9 @@ namespace MatheusProductions.AutomacaoN9010A
                 Thread.Sleep(5000);
                 instr.WriteString("INIT:CONT OFF");
                 instr.WriteString("FETC:CHP:CHP?");
-                string val = instr.ReadString();
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000;
+                string val = Convert.ToString(aux);
                 radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                 // -----------------------------------------------------------
                 // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
@@ -253,6 +261,85 @@ namespace MatheusProductions.AutomacaoN9010A
                 Console.WriteLine(e.Message);
             }
 
+        }
+
+        public void Potencia_De_Saida(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
+        {
+            ConectaIP(ip);
+
+            string nomePasta = @"\\A-N9010A-00151\prints\Potencia de Saida";
+
+
+            try
+            {
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
+                instr.WriteString("DISP:ENAB ON");
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "OBW", "99", "-26");
+                instr.IO.Timeout = 2000;
+                instr.WriteString("INIT");
+                Thread.Sleep(5000);
+                instr.WriteString("INIT:CONT OFF");
+                instr.WriteString("FETC:OBW:XDB?");
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000000;
+                string aux1 = Convert.ToString(aux);
+                radical.ConfiguraInstr(instr, valFreq, "DBM", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "AVER", "RMS", "CHP", aux1);
+                instr.WriteString("INIT");
+                Thread.Sleep(10000);
+                instr.WriteString("INIT:CONT OFF");
+                instr.WriteString("FETC:CHP:CHP?");
+                double aux2 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux2 /= 1000;
+                string val = Convert.ToString(aux2);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+                radical.SalvaValores("Valores do ensaio.csv", nomePasta, val, valFreq, nome);
+                // -----------------------------------------------------------
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                //radical.SalvaPrints(instr, nomePasta, nomePrint);
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Densidade_Espectral_de_Potencia(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
+        {
+            ConectaIP(ip);
+
+            string nomePasta = @"\\A-N9010A-00151\prints\Densidade_Espectral_de_Potencia";
+
+
+            try
+            {
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
+                instr.WriteString("DISP:ENAB ON");
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "AVER", "RMS", "SAN");
+                instr.WriteString("SWE:TIME?");
+                double tempo = (double)instr.ReadNumber();
+                Thread.Sleep(15000);
+                instr.WriteString("INIT:CONT OFF");
+                Thread.Sleep((int)tempo * 1000);
+                string nomeArquivo = "Valores do ensaio.csv";
+                //Salvando os Valores do Marker
+                //Cria uma variavel com o nome do arquivo que quer criar
+                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "AVER", nome);
+                // -----------------------------------------------------------
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
     }

@@ -58,8 +58,10 @@ namespace Automacao_N9010A
             this.ListaTecnologias.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ListaTecnologias.FormattingEnabled = true;
             this.ListaTecnologias.Items.AddRange(new object[] {
+            "Bluetooth Low Energy",
             "802.11a",
             "802.11b",
+            "802.11g",
             "802.11n (20)",
             "802.11n (40)",
             "802.11n (80)",

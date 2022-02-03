@@ -22,6 +22,7 @@ namespace Automacao_N9010A
         TelaLoading tl;
         AutomacaoN9010A radical;
         Configurações config;
+        Item_10 it10;
         Item_11 it11;
         Item_12 it12;
 
@@ -34,7 +35,7 @@ namespace Automacao_N9010A
             {
                 json = ks.CriaArquivo("save.json", caminhoJson);
                 json.Close();
-                caminhoJson =  System.IO.Path.Combine(caminhoJson, "save.json");
+                caminhoJson = System.IO.Path.Combine(caminhoJson, "save.json");
                 jsonString =
                 @"{
                   ""EnsaiosItem10"": [
@@ -70,10 +71,8 @@ namespace Automacao_N9010A
             {
                 caminhoJson = System.IO.Path.Combine(caminhoJson, "save.json");
             }
-            
-
-
         }
+
 
         public void SalvaEnsaios11(bool EstadoEnsaio, int i)
         {
@@ -91,6 +90,24 @@ namespace Automacao_N9010A
             salva = JsonSerializer.Deserialize<Save>(jsonString);
 
             return salva.EnsaiosItem11[i];
+        }
+
+        public bool CarregaEnsaios10(int i)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salva.EnsaiosItem10[i];
+        }
+
+        public void SalvaEnsaios10(bool EstadoEnsaio, int i)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            salva.EnsaiosItem10[i] = EstadoEnsaio;
+            string novoSave = JsonSerializer.Serialize(salva);
+            File.WriteAllText(caminhoJson, novoSave);
         }
 
         public void SalvaEnsaios12(bool EstadoEnsaio, int i)
@@ -158,15 +175,20 @@ namespace Automacao_N9010A
         public void Ensaio_Largura_de_faixa_a_6_dB(string valFreq, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
-            //config = new Configurações();
             Att = config.GetAtt();
             RefLevel = config.GetRef();
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Largura_6dB(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Largura_6dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Largura_6dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Largura_6dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -212,10 +234,16 @@ namespace Automacao_N9010A
 
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Largura_26dB(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Largura_26dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Largura_26dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Largura_26dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -260,10 +288,16 @@ namespace Automacao_N9010A
 
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -307,10 +341,16 @@ namespace Automacao_N9010A
 
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -355,10 +395,16 @@ namespace Automacao_N9010A
 
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -402,10 +448,16 @@ namespace Automacao_N9010A
 
             switch (ensaioAtual)
             {
+                case "Bluetooth Low Energy":
+                    radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
                 case "802.11a":
                     radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11b":
+                    radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
                     radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
                     break;
                 case "802.11n (20)":
@@ -447,12 +499,11 @@ namespace Automacao_N9010A
         private void ListaDeEnsaios(string ensaioAtual, TelaLoading tl, Configurações config)
         {
             it11 = new Item_11();
+            it12 = new Item_12();
             jsonString = File.ReadAllText(caminhoJson);
             salva = JsonSerializer.Deserialize<Save>(jsonString);
             if (salva.EnsaiosItem11[0] == true)
             {
-     
-                
                 MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 6 dB");
                 Ensaio_Largura_de_faixa_a_6_dB(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios())/ListaTecnologias.CheckedItems.Count);
@@ -497,7 +548,136 @@ namespace Automacao_N9010A
             {
                 //EM BREVE!!!!
             }
+            if (salva.EnsaiosItem12[0] == true)
+            {
+                MessageBox.Show("Iniciando o Ensaio de Potencia de Saida, Utilizando o método 1, verifique se o aparelho encontra-se em transmissão continua");
+                Ensaio_Potencia_de_Saida(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                MessageBox.Show("valores Salvos na pasta");
+            }
+            if (salva.EnsaiosItem12[1] == true)
+            {
+                MessageBox.Show("Iniciando o Ensaio de Densidade espectral de potencia, Utilizando o método 1, verifique se o aparelho encontra-se em transmissão continua");
+                Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologias.CheckedItems.Count);
+                MessageBox.Show("valores Salvos na pasta");
+            }
+            if (salva.EnsaiosItem12[2] == true)
+            {
+                //EM BREVE!!
+            }
+
         }
+
+        public void Ensaio_Potencia_de_Saida(string valFreq, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
+
+            switch (ensaioAtual)
+            {
+                case "Bluetooth Low Energy":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11a":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11b":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (20)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (40)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (80)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (20)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (40)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (80)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (20)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (40)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (80)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (160)":
+                    radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "160", RefLevel, Att, config.GetTPrints());
+                    break;
+            }
+
+        }
+
+
+        public void Ensaio_Densidade_Espectral_de_Potencia(string valFreq, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = config.GetAtt();
+            RefLevel = config.GetRef();
+
+            switch (ensaioAtual)
+            {
+                case "Bluetooth Low Energy":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11a":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11b":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11g":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (20)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (40)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11n (80)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (20)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (40)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ac (80)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (20)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (40)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "40", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (80)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "80", RefLevel, Att, config.GetTPrints());
+                    break;
+                case "802.11ax (160)":
+                    radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "160", RefLevel, Att, config.GetTPrints());
+                    break;
+            }
+
+        }
+
 
 
 
@@ -606,10 +786,15 @@ namespace Automacao_N9010A
 
         private void BtItem10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("EM BREVE!");
-            //Item_10 it10;
-            //it10 = new Item_10();
-            //.Show();
+            it10 = new Item_10();
+            if (Application.OpenForms["Item_10"] == null)
+            {
+                it10.Show();
+            }
+            else
+            {
+                MessageBox.Show("Aba já está aberta");
+            }
         }
 
         private void BtItem11_Click(object sender, EventArgs e)
@@ -691,7 +876,7 @@ namespace Automacao_N9010A
 
         public string LAP { get; set; }
 
-        
+    
     }
     public class Save
     {
