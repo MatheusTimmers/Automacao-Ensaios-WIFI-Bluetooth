@@ -70,6 +70,125 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
+        public void Largura_20dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
+        {
+
+            ConectaIP(ip);
+
+            string nomePasta = @"\\A-N9010A-00151\prints\Largura 20";
+
+
+            try
+            {
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
+                instr.WriteString("DISP:ENAB ON");
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "30", "100", "ON", "MAXH", "POS", "OBW", "99", "-20");
+                instr.IO.Timeout = 5000;
+                instr.WriteString("INIT");
+                string nomeArquivo = "Valores do ensaio.csv";
+                Thread.Sleep(5000);
+                instr.WriteString("INIT:CONT OFF");
+                instr.WriteString("FETC:OBW:XDB?");
+                double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                aux /= 1000;
+                string val = Convert.ToString(aux);
+                Thread.Sleep(5000);
+                radical.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
+                // -----------------------------------------------------------
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        public void Separação_Entre_Canais_de_Salto(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, int numMarkers)
+        {
+
+            ConectaIP(ip);
+
+            string nomePasta = @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto";
+
+
+            try
+            {   
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
+                instr.WriteString("DISP:ENAB ON");
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
+                instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
+                instr.WriteString("INIT"); // Comece a varredura
+                //Salvando os Valores do Marker
+                //Cria uma variavel com o nome do arquivo que quer criar
+                Thread.Sleep(15000);
+                string nomeArquivo = "Valores do ensaio.csv";
+                instr.WriteString("INIT:CONT OFF");
+                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH", nome, numMarkers);
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+                // -----------------------------------------------------------
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Numero_De_Frequencia_de_Salto(string valFreqI, string valFreqF, string valFreqI2, string valFreqF2, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, int numMarkers)
+        {
+
+            ConectaIP(ip);
+
+            string nomePasta = @"\\A-N9010A-00151\prints\Numero De Frequencia de Salto";
+
+
+            try
+            {
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
+                instr.WriteString("DISP:ENAB ON");
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstrSalto(instr, valFreqI, valFreqF, "Dbm", Att, RefLevel, Span.ToString(), "100", "100", "ON", "MAXH", "POS", "SAN");
+                Thread.Sleep(15000);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
+                radical.ConfiguraInstrSalto(instr, valFreqI2, valFreqF2, "Dbm", Att, RefLevel, Span.ToString(), "100", "100", "ON", "MAXH", "POS", "SAN");
+                Thread.Sleep(15000);
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
+                instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
+                instr.WriteString("INIT"); // Comece a varredura
+                //Salvando os Valores do Marker
+                //Cria uma variavel com o nome do arquivo que quer criar
+                instr.WriteString("INIT:CONT OFF");
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                // -----------------------------------------------------------
+                
+
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+
         public void Largura_26dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
         {
 
@@ -102,6 +221,42 @@ namespace MatheusProductions.AutomacaoN9010A
                 // -----------------------------------------------------------
                 radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 
+            }
+            catch (RsInstrumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Tempo_de_Ocupação(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints)
+        {
+
+            ConectaIP(ip);
+
+            // Nome da pasta que vai salvar os valores.
+            string nomePasta = @"\\A-N9010A-00151\prints\Tempo de Ocupação";
+
+            //"TCPIP0::192.168.1.100::hislip0::INSTR";
+
+            try // Try o bloco para capturar qualquer RsInstrumentException()
+            {
+                instr.WriteString("*RST;*CLS"); // Reinicialize o instrumento, limpe a fila de erros
+                instr.WriteString("INIT:CONT ON"); // Desliga a varredura contínua
+                instr.WriteString("DISP:ENAB ON"); // Display update ON - Desligar após a depuração              
+                // Seta as configurções basicas
+                double Span = int.Parse(largura_Banda) * 1.5;
+                radical.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "1000", "ON", "MAXH", "POS", "SAN");
+                instr.WriteString("FREQ:SPAN 0");
+                radical.AchaSinalZeroSpan(instr);
+                instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
+                instr.WriteString("INIT"); // Comece a varredura
+                //Salvando os Valores do Marker
+                //Cria uma variavel com o nome do arquivo que quer criar
+                string nomeArquivo = "Valores do ensaio.csv";
+                instr.WriteString("INIT:CONT OFF");
+                radical.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH", nome);
+                // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
+                radical.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
             }
             catch (RsInstrumentException e)
             {
