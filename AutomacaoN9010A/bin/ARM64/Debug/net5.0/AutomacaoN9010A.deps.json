@@ -9,6 +9,7 @@
       "AutomacaoN9010A/1.0.0": {
         "dependencies": {
           "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0",
           "RsInstrument": "1.15.0",
           "Ivi.Driver": "1.5.0.0",
           "Ivi.Scope": "1.4.0.0",
@@ -32,6 +33,14 @@
         },
         "runtime": {
           "KeySightLib.dll": {}
+        }
+      },
+      "RodheLib/1.0.0": {
+        "dependencies": {
+          "RsInstrument": "1.15.0"
+        },
+        "runtime": {
+          "RodheLib.dll": {}
         }
       },
       "Ivi.Driver/1.5.0.0": {
@@ -82,6 +91,11 @@
       "hashPath": "rsinstrument.1.15.0.nupkg.sha512"
     },
     "KeySightLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RodheLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

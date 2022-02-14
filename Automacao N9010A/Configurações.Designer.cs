@@ -40,6 +40,8 @@ namespace Automacao_N9010A
             this.CBPrints = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CBModelos = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,7 @@ namespace Automacao_N9010A
             // 
             this.BtSalvar.BackColor = System.Drawing.Color.Transparent;
             this.BtSalvar.ForeColor = System.Drawing.Color.Black;
-            this.BtSalvar.Location = new System.Drawing.Point(273, 56);
+            this.BtSalvar.Location = new System.Drawing.Point(276, 76);
             this.BtSalvar.Name = "BtSalvar";
             this.BtSalvar.Size = new System.Drawing.Size(98, 32);
             this.BtSalvar.TabIndex = 14;
@@ -136,7 +138,7 @@ namespace Automacao_N9010A
             this.CBPrints.AutoSize = true;
             this.CBPrints.Checked = true;
             this.CBPrints.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CBPrints.Location = new System.Drawing.Point(262, 218);
+            this.CBPrints.Location = new System.Drawing.Point(263, 254);
             this.CBPrints.Name = "CBPrints";
             this.CBPrints.Size = new System.Drawing.Size(15, 14);
             this.CBPrints.TabIndex = 17;
@@ -149,7 +151,7 @@ namespace Automacao_N9010A
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(168, 217);
+            this.label1.Location = new System.Drawing.Point(169, 253);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 14);
             this.label1.TabIndex = 18;
@@ -157,6 +159,8 @@ namespace Automacao_N9010A
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CBModelos);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.BtSalvar);
             this.groupBox1.Controls.Add(this.TextBoxAtt);
             this.groupBox1.Controls.Add(this.TextBoxRefLevel);
@@ -166,9 +170,33 @@ namespace Automacao_N9010A
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(19, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 145);
+            this.groupBox1.Size = new System.Drawing.Size(417, 184);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            // 
+            // CBModelos
+            // 
+            this.CBModelos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBModelos.FormattingEnabled = true;
+            this.CBModelos.Items.AddRange(new object[] {
+            "N9010A",
+            "ESR"});
+            this.CBModelos.Location = new System.Drawing.Point(94, 147);
+            this.CBModelos.Name = "CBModelos";
+            this.CBModelos.Size = new System.Drawing.Size(100, 23);
+            this.CBModelos.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(6, 150);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 14);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Modelo:";
             // 
             // Configurações
             // 
@@ -176,7 +204,7 @@ namespace Automacao_N9010A
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(464, 254);
+            this.ClientSize = new System.Drawing.Size(464, 291);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CBPrints);
@@ -204,5 +232,7 @@ namespace Automacao_N9010A
         private System.Windows.Forms.CheckBox CBPrints;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox CBModelos;
+        private System.Windows.Forms.Label label2;
     }
 }

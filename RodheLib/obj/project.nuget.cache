@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ma42/Vu3+aNAidY4DSVuP646a8K4EWul0lBUKQbqtxVp0yUHYpMNntuWzqEv1UMgIUCNZ5fbNEbH73rfDz6pPQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\80400197\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512"
+  ],
+  "logs": []
+}

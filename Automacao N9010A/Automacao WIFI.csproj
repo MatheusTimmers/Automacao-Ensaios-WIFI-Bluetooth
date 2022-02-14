@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AutomacaoN9010A\AutomacaoN9010A.csproj" />
     <ProjectReference Include="..\KeySigthLLib\KeySightLib.csproj" />
+    <ProjectReference Include="..\RodheLib\RodheLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

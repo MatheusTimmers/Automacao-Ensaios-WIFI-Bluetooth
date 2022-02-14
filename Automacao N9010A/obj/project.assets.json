@@ -16,6 +16,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0",
           "RsInstrument": "1.15.0"
         },
         "compile": {
@@ -36,6 +37,19 @@
         },
         "runtime": {
           "bin/placeholder/KeySightLib.dll": {}
+        }
+      },
+      "RodheLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "RsInstrument": "1.15.0"
+        },
+        "compile": {
+          "bin/placeholder/RodheLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RodheLib.dll": {}
         }
       }
     }
@@ -79,12 +93,18 @@
       "type": "project",
       "path": "../KeySigthLLib/KeySightLib.csproj",
       "msbuildProject": "../KeySigthLLib/KeySightLib.csproj"
+    },
+    "RodheLib/1.0.0": {
+      "type": "project",
+      "path": "../RodheLib/RodheLib.csproj",
+      "msbuildProject": "../RodheLib/RodheLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "AutomacaoN9010A >= 1.0.0",
-      "KeySightLib >= 1.0.0"
+      "KeySightLib >= 1.0.0",
+      "RodheLib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -124,6 +144,9 @@
             },
             "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
               "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
+            },
+            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
+              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj"
             }
           }
         }

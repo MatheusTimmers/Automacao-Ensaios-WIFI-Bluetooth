@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 
-namespace MatheusProductions.keysight
+namespace MatheusProductions.KeysightLib
     {
 
     public class Keysight
@@ -82,8 +82,10 @@ namespace MatheusProductions.keysight
             instr.WriteString($"SENS:DET:TRAC {detector}"); //Configura o Trace
         }
 
+
         public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
         {
+            //Channel Power
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
             instr.WriteString($"CHP:BAND:INT {integBW} Mhz"); // Configura a largura de banda
             instr.WriteString($"UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
@@ -96,7 +98,6 @@ namespace MatheusProductions.keysight
             instr.WriteString($"CHP:SWE:TIME:AUTO {sweepAuto}"); // Configura o sweep points
             instr.WriteString($"TRAC:CHP:TYPE {trace}"); //Configura o Trace
             instr.WriteString($"CHP:DET {detector}"); //Configura o Trace
-
         }
 
 
