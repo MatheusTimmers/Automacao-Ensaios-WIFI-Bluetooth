@@ -105,15 +105,25 @@ namespace Automacao_N9010A
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Salvando os novos valores para o Reference Level e a Attenuation, e alterando o Modelo");
-                                    RefLevel = TextBoxRefLevel.Text;
-                                    Att = TextBoxAtt.Text;
-                                    marca = GetMarca();
-                                    LValorAtualRLevel.Text = "Atual:" + TextBoxRefLevel.Text;
-                                    LValorAtualAtt.Text = "Atual:" + TextBoxAtt.Text;
-                                    TextBoxAtt.Text = "";
-                                    TextBoxRefLevel.Text = "";
-                                    pr.SalvaConfig(RefLevel, Att, CBPrints.Checked, marca);
+                                    if (TextBoxRefLevel.Text == "" & TextBoxAtt.Text == "" & CBModelos.SelectedIndex != -1)
+                                    {
+                                        MessageBox.Show("Alterando o Modelo de Ensaio");
+                                        marca = GetMarca();
+                                        pr.SalvaConfig(RefLevel, Att, CBPrints.Checked, marca);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Salvando os novos valores para o Reference Level e a Attenuation, e alterando o Modelo");
+                                        RefLevel = TextBoxRefLevel.Text;
+                                        Att = TextBoxAtt.Text;
+                                        marca = GetMarca();
+                                        LValorAtualRLevel.Text = "Atual:" + TextBoxRefLevel.Text;
+                                        LValorAtualAtt.Text = "Atual:" + TextBoxAtt.Text;
+                                        TextBoxAtt.Text = "";
+                                        TextBoxRefLevel.Text = "";
+                                        pr.SalvaConfig(RefLevel, Att, CBPrints.Checked, marca);
+                                    }
+                                    
                                 }
                             }
                         }  

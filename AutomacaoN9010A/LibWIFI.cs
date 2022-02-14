@@ -36,7 +36,6 @@ namespace MatheusProductions.AutomacaoN9010A
             return radicalKeysigth.Inicializacao(instr, rm, ip);
         }
 
-
         public void Largura_6dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
             ConectaIP(ip);
@@ -142,14 +141,10 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-
         public void Separação_Entre_Canais_de_Salto(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, int numMarkers, string marca)
         {
 
             ConectaIP(ip);
-
-            
-
 
             try
             {   
@@ -161,7 +156,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 if (marca == "Agilent")
                 {
                     string nomePasta = @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto";
-                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -245,8 +240,6 @@ namespace MatheusProductions.AutomacaoN9010A
                 Console.WriteLine(e.Message);
             }
         }
-
-
 
         public void Largura_26dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
@@ -355,7 +348,6 @@ namespace MatheusProductions.AutomacaoN9010A
                 Console.WriteLine(e.Message);
             }
         }
-
 
         public void Pico_da_densidade_de_potência(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {

@@ -322,10 +322,6 @@ namespace MatheusProductions.RodheLib
 
         }
 
-
-
-
-
         public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
         {
 
