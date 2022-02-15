@@ -170,7 +170,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 else
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Separação Entre Canais de Salto";
-                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -263,6 +263,10 @@ namespace MatheusProductions.AutomacaoN9010A
                     Thread.Sleep(5000);
                     instr.WriteString("INIT:CONT OFF");
                     instr.WriteString("FETC:OBW:XDB?");
+                    double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                    aux /= 1000;
+                    string val = Convert.ToString(aux);
+                    radicalRodhe.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                     radicalKeysigth.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 }
                 else
@@ -312,7 +316,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 if (marca == "Agilent")
                 {
                     string nomePasta = @"\\A-N9010A-00151\prints\Tempo de Ocupação";
-                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "1000", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "1000", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("FREQ:SPAN 0");
                     radicalKeysigth.AchaSinalZeroSpan(instr);
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
@@ -328,7 +332,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 else
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Tempo de Ocupação";
-                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "1000", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "1000", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("FREQ:SPAN 0");
                     radicalKeysigth.AchaSinalZeroSpan(instr);
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
@@ -367,7 +371,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\A-N9010A-00151\prints\Pico da densidade de potencia";
                     string nomeArquivo = "Valores do ensaio.csv";
-                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -381,7 +385,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Pico da densidade de potencia";
                     string nomeArquivo = "Valores do ensaio.csv";
-                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN", marca);
+                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -416,7 +420,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\A-N9010A-00151\prints\Valor Medio Densidade Espectral";
                     string nomeArquivo = "Valores do ensaio.csv";
-                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN", marca);
+                    radicalKeysigth.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN");
                     instr.IO.Timeout = 2000;
                     instr.WriteString("INIT");
                     instr.WriteString("SWE:TIME?");
@@ -436,7 +440,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Valor Medio Densidade Espectral";
                     string nomeArquivo = "Valores do ensaio.csv";
-                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN", marca);
+                    radicalRodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN");
                     instr.IO.Timeout = 2000;
                     instr.WriteString("INIT");
                     instr.WriteString("SWE:TIME?");
