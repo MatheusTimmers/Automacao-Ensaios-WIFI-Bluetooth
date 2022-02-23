@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 using MatheusProductions.KeysightLib;
-using MatheusProductions.RodheLib;
+using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
@@ -35,7 +35,7 @@ namespace Automacao_N9010A
             ks = new Keysight();
             if (!System.IO.File.Exists(caminhoJson + @"\" + "save.json"))
             {
-                json = ks.CriaArquivo("save.json", caminhoJson);
+                json = Keysight.CriaArquivo("save.json", caminhoJson);
                 json.Close();
                 caminhoJson = System.IO.Path.Combine(caminhoJson, "save.json");
                 jsonString =
@@ -216,7 +216,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Largura_6dB(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Largura_6dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Largura_6dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -273,7 +273,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Largura_26dB(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Largura_26dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Largura_26dB(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -330,7 +330,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Pico_da_densidade_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -386,7 +386,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Valor_médio_da_densidade_espectral_de_potência(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -444,7 +444,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Potência_de_pico_máximaLE(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -501,7 +501,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -556,45 +556,33 @@ namespace Automacao_N9010A
             salva = JsonSerializer.Deserialize<Save>(jsonString);
             if (salva.EnsaiosItem11[0] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 6 dB");
                 Ensaio_Largura_de_faixa_a_6_dB(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios())/ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[1] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Largura de Faixa a 26 dB");
                 Ensaio_Largura_de_faixa_a_26_dB(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[2] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Potência de Pico Máxima, Utilizando o Método de ensaio de Integração do Item 9.1.8 da norma 6506");
                 Ensaio_Potencia_de_Pico_Maxima(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[3] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Valor Médio da Potência Máxima de Saída, Utilizando o Método de ensaio de Integração do Item 9.1.8 da norma 6506");
                 Ensaio_Valor_médio_da_potência_máxima_de_saída(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show(@"valores Salvos na Pasta");
             }
             if (salva.EnsaiosItem11[4] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Pico da Densidade de Potência");
                 Ensaio_pico_da_densidade_de_potência(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show(@"valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[5] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio Valor Médio da Densidade Espectral de Potência");
                 Ensaio_Valor_Medio_Densidade_Espectral(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show(@"valores Salvos na pasta");
             }
             if (salva.EnsaiosItem11[6] == true)
             {
@@ -602,55 +590,42 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem12[0] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Potencia de Saida, Utilizando o método 1, verifique se o aparelho encontra-se em transmissão continua");
                 Ensaio_Potencia_de_Saida(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem12[1] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Densidade espectral de potencia, Utilizando o método 1, verifique se o aparelho encontra-se em transmissão continua");
                 Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem12[2] == true)
             {
                 //EM BREVE!!
             }
             if (salva.EnsaiosItem10[0] == true)
-            {
-                MessageBox.Show("Iniciando o Ensaio de Separação de Canais de Salto");
+            { 
                 Ensaio_Separação_de_Canais_de_Salto(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem10[1] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Número de frequencia de Salto");
                 Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem10[2] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Tempo de Ocupação");
                 Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem10[3] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Largura de faixa a 20db");
                 Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-                MessageBox.Show("valores Salvos na pasta");
             }
             if (salva.EnsaiosItem10[4] == true)
             {
                 MessageBox.Show("Iniciando o Ensaio de Emissão fora de Faixa");
                 // EM BREVE!!!!!
-                MessageBox.Show("valores Salvos na pasta");
             }
         }
 
@@ -666,7 +641,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Potencia_De_Saida(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -724,7 +699,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Densidade_Espectral_de_Potencia(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -1002,16 +977,12 @@ namespace Automacao_N9010A
             }
             else
             {
+                LConecta.Text = "CONECTANDO";
+                LConecta.ForeColor = System.Drawing.Color.Yellow;
                 if (radical.ConectaIP(TextBoxIP.Text) == true)
                 {       
                     LConecta.Text = "CONECTADO";
-                    LConecta.ForeColor = System.Drawing.Color.Green;
-                    while (LConecta.Text != "CONECTADO")
-                    {
-                        LConecta.Text = "CONECTANDO";
-                        LConecta.ForeColor = System.Drawing.Color.Yellow;
-                    }
-                    
+                    LConecta.ForeColor = System.Drawing.Color.Green;                   
                 }
                 else
                 {

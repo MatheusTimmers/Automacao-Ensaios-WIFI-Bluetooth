@@ -105,7 +105,9 @@ namespace Automacao_N9010A
             this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem10);
             this.Controls.Add(this.LEnsaiosItem10);
+            this.MaximizeBox = false;
             this.Name = "Item_10";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item_10";
             this.ResumeLayout(false);
             this.PerformLayout();

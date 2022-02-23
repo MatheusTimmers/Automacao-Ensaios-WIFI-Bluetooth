@@ -12,7 +12,7 @@ namespace MatheusProductions.KeysightLib
 
     public class Keysight
     {
-        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints)
+        public static void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints)
         {
  
             if (tPrints)
@@ -23,7 +23,7 @@ namespace MatheusProductions.KeysightLib
             
         }
 
-        public void CriaPasta(string nomePasta, string nomeSubPasta = "")
+        public static void CriaPasta(string nomePasta, string nomeSubPasta = "")
         {
             //---------------------------------------------------------------
             //Cria Uma pasta para salvar os valores
@@ -39,35 +39,32 @@ namespace MatheusProductions.KeysightLib
             // Verifica o Caminho
         }
 
-        public FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
+        public static FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
         {
             nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
             return File.Create(nomePasta);
         }
 
-        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public static bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
         {
-        try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
-        {
-            //-----------------------------------------------------------
-            // Inicialização:
-            //-----------------------------------------------------------
-            // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
-            instr.IO = (IMessage)rm.Open(ip);
-            instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
-            return true;
-        }
-        catch (RsInstrumentException e)
-        {
-            Console.WriteLine($"Erro ao inicializar a sessão do instrumento:\n{e.Message}");
-            Console.WriteLine("Pressione qualquer tecla para sair.");
-            Console.ReadKey();
-            return false;
-        }
+            try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
+            {
+                //-----------------------------------------------------------
+                // Inicialização:
+                //-----------------------------------------------------------
+                // Ajuste a string de recursos VISA para se adequar ao seu instrumento 
+                instr.IO = (IMessage)rm.Open(ip);
+                instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
         }
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
         {
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
             instr.WriteString($"UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
@@ -83,7 +80,7 @@ namespace MatheusProductions.KeysightLib
         }
 
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
         {
             //Channel Power
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
@@ -102,7 +99,7 @@ namespace MatheusProductions.KeysightLib
 
 
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string porc_Ocu, string qDbs)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string porc_Ocu, string qDbs)
         {
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
             instr.WriteString($"SENS:OBW:PERC {porc_Ocu}"); // Seleciona a porcentagem de Occupied Bandwidth Measurement
@@ -119,7 +116,7 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"OBW:DET {detector}"); //Configura o Trace
         }
 
-        public void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        public static void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
         {
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
             instr.WriteString($"UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
@@ -135,7 +132,7 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"SENS:DET:TRAC {detector}"); //Configura o Trace
         }
 
-        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
+        public static void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
 
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
@@ -162,7 +159,7 @@ namespace MatheusProductions.KeysightLib
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
+        public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
@@ -188,7 +185,7 @@ namespace MatheusProductions.KeysightLib
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
+        public static void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
@@ -214,7 +211,7 @@ namespace MatheusProductions.KeysightLib
             }
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
+        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
         {
             // Inicia as variaveis do marker, com valores padrao para entrar no While
             double markerX = 1;
@@ -249,10 +246,10 @@ namespace MatheusProductions.KeysightLib
                 instr.WriteString("CALC1:MARK1:Y?");
                 New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
             }
-            SalvaMarkers(nomeArquivo, nomePasta, New_markerX/1000, New_markerY/1000, freqC, nome);
+            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
 
-        public void AchaSinalZeroSpan(FormattedIO488 instr)
+        public static void AchaSinalZeroSpan(FormattedIO488 instr)
         {
             double markerX = 0;
             double markerY = 0;
@@ -271,11 +268,11 @@ namespace MatheusProductions.KeysightLib
 
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome,int numMarkers)
+        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome,int numMarkers)
         {
 
             double markerX = 1;
-            double oldY = 0;
+            double oldY = 1;
             double markerY = 1;
             double New_markerX = 0;
             double New_markerY = 0;
@@ -305,7 +302,7 @@ namespace MatheusProductions.KeysightLib
                     oldY = New_markerY;
                     Thread.Sleep(10000);
                 }
-                SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, freqC, nome);
+                SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
             }
             
 

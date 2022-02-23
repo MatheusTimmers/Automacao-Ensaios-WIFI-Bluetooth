@@ -11,7 +11,7 @@ namespace MatheusProductions.RodheLib
     public class Rodhe
     {
 
-        public void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints, string tipoImagem)
+        public static void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints, string tipoImagem)
         {
 
             if (tPrints)
@@ -25,7 +25,7 @@ namespace MatheusProductions.RodheLib
 
         }
 
-        public void CriaPasta(string nomePasta, string nomeSubPasta = "")
+        public static void CriaPasta(string nomePasta, string nomeSubPasta = "")
         {
             //---------------------------------------------------------------
             //Cria Uma pasta para salvar os valores
@@ -41,14 +41,14 @@ namespace MatheusProductions.RodheLib
             // Verifica o Caminho
         }
 
-        public FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
+        public static FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
         {
             nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
             return File.Create(nomePasta);
         }
 
-        public bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
+        public static bool Inicializacao(FormattedIO488 instr, ResourceManager rm, string ip)
         {
             try // Criar um Try-catch separado para inicialização impede o acesso a objetos não inicializados
             {
@@ -69,7 +69,7 @@ namespace MatheusProductions.RodheLib
             }
         }
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
         {
                 instr.WriteString($"INST:SEL {modo}"); // Seleciona o modo
                 instr.WriteString($"CALC:UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
@@ -85,7 +85,7 @@ namespace MatheusProductions.RodheLib
         }
 
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string larguraDeBanda, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string larguraDeBanda, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
         {
             double aux = Convert.ToInt32(larguraDeBanda);
             double auxSpan = aux * 1.5;
@@ -113,7 +113,7 @@ namespace MatheusProductions.RodheLib
 
 
 
-        public void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string porc_Ocu, string qDbs)
+        public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string porc_Ocu, string qDbs)
         {
             //OBW
             instr.WriteString($"INST:SEL {modo}"); // Seleciona o modo
@@ -131,7 +131,7 @@ namespace MatheusProductions.RodheLib
             instr.WriteString($"DET {detector}"); //Configura o Trace
         }
 
-        public void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        public static void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
         {
             
             instr.WriteString($"INST:SEL {modo}"); // Seleciona o modo
@@ -149,7 +149,7 @@ namespace MatheusProductions.RodheLib
 
         }
 
-        public void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
+        public static void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
 
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
@@ -176,7 +176,7 @@ namespace MatheusProductions.RodheLib
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
+        public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
@@ -202,7 +202,7 @@ namespace MatheusProductions.RodheLib
             }
         }
 
-        public void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
+        public static void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
             if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
             {
@@ -228,7 +228,7 @@ namespace MatheusProductions.RodheLib
             }
         }
 
-        public void pegaMarker(FormattedIO488 instr, string trace = "MAXH")
+        public static void PegaMarker(FormattedIO488 instr, string trace = "MAXH")
         {
             double markerX = 1;
             double markerY = 1;
@@ -263,7 +263,7 @@ namespace MatheusProductions.RodheLib
             }
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
+        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome)
         {
             // Inicia as variaveis do marker, com valores padrao para entrar no While
             double markerX = 1;
@@ -303,16 +303,16 @@ namespace MatheusProductions.RodheLib
             
         }
 
-        public void AchaSinalZeroSpan(FormattedIO488 instr)
+        public static void AchaSinalZeroSpan(FormattedIO488 instr)
         {
-            double markerX = 0;
+            double markerX;
             double markerY = 0;
             while (markerY < -10)
             {
                 instr.WriteString("INIT:CONT ON");
-                instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
+                instr.WriteString("CALC1:MARK1:MAX"); //Definindo o marker para o Peak search
                 instr.WriteString("CALC1:MARK1:X?");
-                markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 instr.WriteString("CALC1:MARK1:Y?");
                 markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 Thread.Sleep(500);
@@ -322,7 +322,7 @@ namespace MatheusProductions.RodheLib
 
         }
 
-        public void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
+        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
         {
 
             double markerX = 1;
