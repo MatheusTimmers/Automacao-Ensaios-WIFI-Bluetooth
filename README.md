@@ -16,5 +16,9 @@ Automação para os modelos N9010A da Keysight e para o ESR da Rohde e Schwarz
 ## 💻 Como Utilizar
 
 Para o funcionamento do programa sera necessário:
-Uma conexão LAN com um Analizador de Espectro 
+
+Uma conexão LAN com um Analizador de Espectro;
+
+Um Software da sua escolha para descobrir o IP do Analisador de espectro
+(Recomendo: https://www.ni.com/pt-br/support/downloads/drivers/download.ni-visa.html#442805) 
 
