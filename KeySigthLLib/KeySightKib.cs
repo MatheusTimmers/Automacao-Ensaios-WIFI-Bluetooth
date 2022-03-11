@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Threading;
 using System.IO;
-using RohdeSchwarz.RsInstrument; // Biblioteca que providencia os comandos. Procure ela no www.nuget.org
 using Ivi.Visa.Interop;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 
 namespace MatheusProductions.KeysightLib
-    {
+{
 
     public class Keysight
     {
         public static void SalvaPrints(FormattedIO488 instr, string nomePasta, string nomePrint, bool tPrints)
         {
- 
+
             if (tPrints)
             {
                 nomePasta = nomePasta + @"\" + nomePrint;
                 instr.WriteString(@$"MMEM:STOR:SCR '{nomePasta}.PNG'"); // Faça a captura de tela
             }
-            
+
         }
 
         public static void CriaPasta(string nomePasta, string nomeSubPasta = "")
@@ -31,17 +30,24 @@ namespace MatheusProductions.KeysightLib
 
             // 
             // Adicionando o nome Valores do Marker dentro da variavel Nome Pasta
-            nomePasta = System.IO.Path.Combine(nomePasta, nomeSubPasta);
+            using (NetworkShareAccesser.Access("A-N9010A-00151", "Administrator", "agilent4u"))
+            {
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeSubPasta);
 
-            //Cria pasta
-            System.IO.Directory.CreateDirectory(nomePasta);
+                //Cria pasta
+                System.IO.Directory.CreateDirectory(nomePasta);
+            }
+
 
             // Verifica o Caminho
         }
 
         public static FileStream CriaArquivo(string nomeArquivo, string nomePasta = "")
         {
-            nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+            using (NetworkShareAccesser.Access("A-N9010A-00151", "Administrator", "agilent4u"))
+            {
+                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+            }
 
             return File.Create(nomePasta);
         }
@@ -58,7 +64,7 @@ namespace MatheusProductions.KeysightLib
                 instr.IO.Timeout = 3000; // Tempo limite para operações de leitura VISA
                 return true;
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -79,7 +85,6 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"SENS:DET:TRAC {detector}"); //Configura o Trace
         }
 
-
         public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string integBW)
         {
             //Channel Power
@@ -96,8 +101,6 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"TRAC:CHP:TYPE {trace}"); //Configura o Trace
             instr.WriteString($"CHP:DET {detector}"); //Configura o Trace
         }
-
-
 
         public static void ConfiguraInstr(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo, string porc_Ocu, string qDbs)
         {
@@ -116,7 +119,7 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"OBW:DET {detector}"); //Configura o Trace
         }
 
-        public static void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        public static void ConfiguraInstrSalto(FormattedIO488 instr, string freqI, string freqF, string unidadeY, string att, string refL, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
         {
             instr.WriteString($"CONF:{modo}"); // Seleciona o modo
             instr.WriteString($"UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
@@ -124,7 +127,6 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"DISP:WIND:TRAC:Y:SCAL:RLEV {refL} dbm"); // Configura o Reference Level
             instr.WriteString($"FREQ:STAR {freqI} Mhz"); // Configura a Frequencia Inicial
             instr.WriteString($"FREQ:STOP {freqF} Mhz"); // Configura a Frequencia Final
-            instr.WriteString($"FREQ:SPAN {span} MHz"); // Configura o span
             instr.WriteString($"BAND {rbw} kHz"); // Configura o RBW
             instr.WriteString($"BAND:VID {vbw} kHz"); // Configura o VBW
             instr.WriteString($"SWE:TIME:AUTO {sweepAuto}"); // Configura o sweep points
@@ -224,7 +226,7 @@ namespace MatheusProductions.KeysightLib
             // -----------------------------------------------------------
             if (trace == "MAXH")
             {
-                while (markerY != New_markerY)
+                while (markerY != New_markerY && markerX != New_markerX)
                 {
                     markerX = New_markerX;
                     markerY = New_markerY;
@@ -268,21 +270,20 @@ namespace MatheusProductions.KeysightLib
 
         }
 
-        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome,int numMarkers)
+        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
         {
-
-            double markerX = 1;
-            double oldY = 1;
-            double markerY = 1;
-            double New_markerX = 0;
-            double New_markerY = 0;
-            for (int i = 0; i < numMarkers; i++)
+            for (int i = 1; i <= numMarkers; i++)
             {
-                while (markerY != New_markerY)
+                double markerX = 1;
+                double oldY = 1;
+                double markerY = 1;
+                double New_markerX = 0;
+                double New_markerY = 0;
+                while (markerY != New_markerY && markerX != New_markerX)
                 {
                     markerX = New_markerX;
                     markerY = New_markerY;
-                    if (New_markerY != oldY)
+                    if (i == 1)
                     {
                         instr.WriteString($"CALC1:MARK{i}:MAX"); //  Definindo o marker para o Peak search
                         instr.WriteString($"CALC1:MARK{i}:X?");
@@ -292,21 +293,240 @@ namespace MatheusProductions.KeysightLib
                     }
                     else
                     {
-                        instr.WriteString("CALC:MARK:MODE DELT");
+                        oldY = New_markerY;
+                        instr.WriteString($"CALC:MARK{i}:MODE DELT");
+                        instr.WriteString($"CALC:MARK{i}:REF 1");
                         instr.WriteString($"CALC1:MARK{i}:MAX:NEXT");
                         instr.WriteString($"CALC1:MARK{i}:X?");
                         New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         instr.WriteString($"CALC1:MARK{i}:Y?");
                         New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     }
-                    oldY = New_markerY;
-                    Thread.Sleep(10000);
+                    //Thread.Sleep(10000);
                 }
-                SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
+                //SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
             }
-            
+
 
         }
+        public class NetworkShareAccesser : IDisposable
+        {
+            private string _remoteUncName;
+            private string _remoteComputerName;
 
+            public string RemoteComputerName
+            {
+                get
+                {
+                    return this._remoteComputerName;
+                }
+                set
+                {
+                    this._remoteComputerName = value;
+                    this._remoteUncName = @"\\" + this._remoteComputerName;
+                }
+            }
+
+            public string UserName
+            {
+                get;
+                set;
+            }
+            public string Password
+            {
+                get;
+                set;
+            }
+
+            #region Consts
+
+            private const int RESOURCE_CONNECTED = 0x00000001;
+            private const int RESOURCE_GLOBALNET = 0x00000002;
+            private const int RESOURCE_REMEMBERED = 0x00000003;
+
+            private const int RESOURCETYPE_ANY = 0x00000000;
+            private const int RESOURCETYPE_DISK = 0x00000001;
+            private const int RESOURCETYPE_PRINT = 0x00000002;
+
+            private const int RESOURCEDISPLAYTYPE_GENERIC = 0x00000000;
+            private const int RESOURCEDISPLAYTYPE_DOMAIN = 0x00000001;
+            private const int RESOURCEDISPLAYTYPE_SERVER = 0x00000002;
+            private const int RESOURCEDISPLAYTYPE_SHARE = 0x00000003;
+            private const int RESOURCEDISPLAYTYPE_FILE = 0x00000004;
+            private const int RESOURCEDISPLAYTYPE_GROUP = 0x00000005;
+
+            private const int RESOURCEUSAGE_CONNECTABLE = 0x00000001;
+            private const int RESOURCEUSAGE_CONTAINER = 0x00000002;
+
+
+            private const int CONNECT_INTERACTIVE = 0x00000008;
+            private const int CONNECT_PROMPT = 0x00000010;
+            private const int CONNECT_REDIRECT = 0x00000080;
+            private const int CONNECT_UPDATE_PROFILE = 0x00000001;
+            private const int CONNECT_COMMANDLINE = 0x00000800;
+            private const int CONNECT_CMD_SAVECRED = 0x00001000;
+
+            private const int CONNECT_LOCALDRIVE = 0x00000100;
+
+            #endregion
+
+            #region Errors
+
+            private const int NO_ERROR = 0;
+
+            private const int ERROR_ACCESS_DENIED = 5;
+            private const int ERROR_ALREADY_ASSIGNED = 85;
+            private const int ERROR_BAD_DEVICE = 1200;
+            private const int ERROR_BAD_NET_NAME = 67;
+            private const int ERROR_BAD_PROVIDER = 1204;
+            private const int ERROR_CANCELLED = 1223;
+            private const int ERROR_EXTENDED_ERROR = 1208;
+            private const int ERROR_INVALID_ADDRESS = 487;
+            private const int ERROR_INVALID_PARAMETER = 87;
+            private const int ERROR_INVALID_PASSWORD = 1216;
+            private const int ERROR_MORE_DATA = 234;
+            private const int ERROR_NO_MORE_ITEMS = 259;
+            private const int ERROR_NO_NET_OR_BAD_PATH = 1203;
+            private const int ERROR_NO_NETWORK = 1222;
+
+            private const int ERROR_BAD_PROFILE = 1206;
+            private const int ERROR_CANNOT_OPEN_PROFILE = 1205;
+            private const int ERROR_DEVICE_IN_USE = 2404;
+            private const int ERROR_NOT_CONNECTED = 2250;
+            private const int ERROR_OPEN_FILES = 2401;
+
+            #endregion
+
+            #region PInvoke Signatures
+
+            [DllImport("Mpr.dll")]
+            private static extern int WNetUseConnection(
+                IntPtr hwndOwner,
+                NETRESOURCE lpNetResource,
+                string lpPassword,
+                string lpUserID,
+                int dwFlags,
+                string lpAccessName,
+                string lpBufferSize,
+                string lpResult
+                );
+
+            [DllImport("Mpr.dll")]
+            private static extern int WNetCancelConnection2(
+                string lpName,
+                int dwFlags,
+                bool fForce
+                );
+
+            [StructLayout(LayoutKind.Sequential)]
+            private class NETRESOURCE
+            {
+                public int dwScope = 0;
+                public int dwType = 0;
+                public int dwDisplayType = 0;
+                public int dwUsage = 0;
+                public string lpLocalName = "";
+                public string lpRemoteName = "";
+                public string lpComment = "";
+                public string lpProvider = "";
+            }
+
+            #endregion
+
+            /// <summary>
+            /// Creates a NetworkShareAccesser for the given computer name. The user will be promted to enter credentials
+            /// </summary>
+            /// <param name="remoteComputerName"></param>
+            /// <returns></returns>
+            public static NetworkShareAccesser Access(string remoteComputerName)
+            {
+                return new NetworkShareAccesser(remoteComputerName);
+            }
+
+            /// <summary>
+            /// Creates a NetworkShareAccesser for the given computer name using the given domain/computer name, username and password
+            /// </summary>
+            /// <param name="remoteComputerName"></param>
+            /// <param name="domainOrComuterName"></param>
+            /// <param name="userName"></param>
+            /// <param name="password"></param>
+            public static NetworkShareAccesser Access(string remoteComputerName, string domainOrComuterName, string userName, string password)
+            {
+                return new NetworkShareAccesser(remoteComputerName,
+                                                domainOrComuterName + @"\" + userName,
+                                                password);
+            }
+
+            /// <summary>
+            /// Creates a NetworkShareAccesser for the given computer name using the given username (format: domainOrComputername\Username) and password
+            /// </summary>
+            /// <param name="remoteComputerName"></param>
+            /// <param name="userName"></param>
+            /// <param name="password"></param>
+            public static NetworkShareAccesser Access(string remoteComputerName, string userName, string password)
+            {
+                return new NetworkShareAccesser(remoteComputerName,
+                                                userName,
+                                                password);
+            }
+
+            private NetworkShareAccesser(string remoteComputerName)
+            {
+                RemoteComputerName = remoteComputerName;
+
+                this.ConnectToShare(this._remoteUncName, null, null, true);
+            }
+
+            private NetworkShareAccesser(string remoteComputerName, string userName, string password)
+            {
+                RemoteComputerName = remoteComputerName;
+                UserName = userName;
+                Password = password;
+
+                this.ConnectToShare(this._remoteUncName, this.UserName, this.Password, false);
+            }
+
+            private void ConnectToShare(string remoteUnc, string username, string password, bool promptUser)
+            {
+                NETRESOURCE nr = new NETRESOURCE
+                {
+                    dwType = RESOURCETYPE_DISK,
+                    lpRemoteName = remoteUnc
+                };
+
+                int result;
+                if (promptUser)
+                {
+                    result = WNetUseConnection(IntPtr.Zero, nr, "", "", CONNECT_INTERACTIVE | CONNECT_PROMPT, null, null, null);
+                }
+                else
+                {
+                    result = WNetUseConnection(IntPtr.Zero, nr, password, username, 0, null, null, null);
+                }
+
+                if (result != NO_ERROR)
+                {
+                    throw new Win32Exception(result);
+                }
+            }
+
+            private void DisconnectFromShare(string remoteUnc)
+            {
+                int result = WNetCancelConnection2(remoteUnc, CONNECT_UPDATE_PROFILE, false);
+                if (result != NO_ERROR)
+                {
+                    throw new Win32Exception(result);
+                }
+            }
+
+            /// <summary>
+            /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            /// <filterpriority>2</filterpriority>
+            public void Dispose()
+            {
+                this.DisconnectFromShare(this._remoteUncName);
+            }
+        }
     }
 }

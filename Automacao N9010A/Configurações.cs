@@ -13,7 +13,7 @@ namespace Automacao_N9010A
     public partial class Configurações : Form
     {
         Principal pr;
-        public string  RefLevel, Att, marca;
+        public string RefLevel, Att, marca;
         public Configurações()
         {
             InitializeComponent();
@@ -36,6 +36,7 @@ namespace Automacao_N9010A
             TextBoxAtt.Text = "";
             TextBoxRefLevel.Text = "";
         }
+
 
         private void BtSalvar_Click(object sender, EventArgs e)
         {

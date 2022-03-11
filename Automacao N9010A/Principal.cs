@@ -2,10 +2,11 @@
 using System;
 using System.Windows.Forms;
 using MatheusProductions.KeysightLib;
-using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
+using System.Media;
+
 
 namespace Automacao_N9010A
 {
@@ -65,7 +66,15 @@ namespace Automacao_N9010A
                   ""Att"": ""35"",
                   ""Marca"": ""NA"",
                   ""AtivarPrints"": true
-                  ""SelTipo"": -1  
+                  ""SelTipo"": -1,
+                  ""FreqEspurios"": [
+                    ""30"",
+                    ""2402"",
+                    ""2302"",
+                    ""2480"",
+                    ""2580"",
+                    ""18000""
+                    ]
                 }
                 ";
                 File.WriteAllText(caminhoJson, jsonString);
@@ -87,7 +96,6 @@ namespace Automacao_N9010A
                 }
             }
         }
-
         public void SalvaEnsaios11(bool EstadoEnsaio, int i)
         {
             jsonString = File.ReadAllText(caminhoJson);
@@ -106,6 +114,24 @@ namespace Automacao_N9010A
             return salva.EnsaiosItem11[i];
         }
 
+        public string CarregaFreqEspurios(int i)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salva.FreqEspurios[i];
+        }
+
+        public void SalvaFreqEspurios()
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            //salva.FreqEspurios = CBSelTipo.SelectedIndex;
+            string novoSave = JsonSerializer.Serialize(salva);
+            File.WriteAllText(caminhoJson, novoSave);
+        }
+
         public void SalvaTipo()
         {
             jsonString = File.ReadAllText(caminhoJson);
@@ -115,6 +141,7 @@ namespace Automacao_N9010A
             string novoSave = JsonSerializer.Serialize(salva);
             File.WriteAllText(caminhoJson, novoSave);
         }
+
 
         public int CarregaTipo()
         {
@@ -318,6 +345,29 @@ namespace Automacao_N9010A
             }
         }
 
+        public void Ensaio_Largura_de_Faixa_a_20db(string valFreq, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = CarregaAtt();
+            RefLevel = CarregaRefLevel();
+            marca = CarregaMarca();
+            if (marca != "NA")
+            {
+                switch (ensaioAtual)
+                {
+                    case "GFSK":
+                        radical.Largura_20dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI/4 DQPSK":
+                        radical.Largura_20dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "8DPSK":
+                        radical.Largura_20dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                }
+            }
+        }
+
         public void Ensaio_pico_da_densidade_de_potência(string valFreq, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
@@ -501,7 +551,7 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Valor_médio_da_potência_máxima_de_saídaLE(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Valor_médio_da_potência_máxima_de_saída(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -547,6 +597,75 @@ namespace Automacao_N9010A
 
         }
 
+        public void Ensaio_Espurios(string valFreq, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = CarregaAtt();
+            RefLevel = CarregaRefLevel();
+            marca = CarregaMarca();
+
+            if (marca != "NA")
+            {
+                switch (ensaioAtual)
+                {
+                    case "Bluetooth Low Energy":
+                        radical.Espurios("30","2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11a":
+                        radical.Espurios("30", "2422", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11b":
+                        radical.Espurios("2322", "2422", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11g":
+                        radical.Espurios("2452", "2552", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11n (20)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11n (40)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11n (80)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ac (20)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ac (40)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ac (80)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ax (20)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ax (40)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ax (80)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "802.11ax (160)":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "GFSK":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI/4 DQPSK":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "8DPSK":
+                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                }
+            }
+
+        }
+
+
+
         private void ListaDeEnsaios(string ensaioAtual, TelaLoading tl, Configurações config)
         {
             it11 = new Item_11();
@@ -586,7 +705,8 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem11[6] == true)
             {
-                //EM BREVE!!!!
+                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
             }
             if (salva.EnsaiosItem12[0] == true)
             {
@@ -600,32 +720,35 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem12[2] == true)
             {
-                //EM BREVE!!
+                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[0] == true)
-            { 
+            {
+                MessageBox.Show("Iniciando ensaio de separação de canais de salto, coloque o dispositivo em modo de salto");
                 Ensaio_Separação_de_Canais_de_Salto(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[1] == true)
             {
-                Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                MessageBox.Show("EM BREVE!");
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[2] == true)
             {
-                Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                MessageBox.Show("EM BREVE!");
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[3] == true)
             {
-                Ensaio_Densidade_Espectral_de_Potencia(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                Ensaio_Largura_de_Faixa_a_20db(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[4] == true)
             {
-                MessageBox.Show("Iniciando o Ensaio de Emissão fora de Faixa");
-                // EM BREVE!!!!!
+                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+
             }
         }
 
@@ -757,13 +880,13 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), 3, marca);
+                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
                         break;
                     case "PI/4 DQPSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), 3, marca);
+                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
                         break;
                     case "8DPSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "1", RefLevel, Att, config.GetTPrints(), 3, marca);
+                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
                         break;
                 }
             }
@@ -846,6 +969,8 @@ namespace Automacao_N9010A
                                 }
                             }
                             tl.Close();
+                            TocaRatinho();
+
                         }
                         else
                         {
@@ -871,6 +996,7 @@ namespace Automacao_N9010A
                                     }
                                 }
                                 tl.Close();
+                                TocaRatinho();
                             }
                             else
                             {
@@ -898,19 +1024,46 @@ namespace Automacao_N9010A
 
         }
 
+        private static void TocaRatinho()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\Ratinho.wav");
+            simpleSound.Play();
+        }
+
         private void BtSelTodos_Click(object sender, EventArgs e)
         {
-             for (int i = 0; i < ListaTecnologiasWifi.Items.Count; i++)
-             {
-                ListaTecnologiasWifi.SetItemChecked(i, true);
-             }
+            if (CBSelTipo.Text == "Wifi")
+            {
+                for (int i = 0; i < ListaTecnologiasWifi.Items.Count; i++)
+                {
+                   ListaTecnologiasWifi.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ListaTecnologiasBT.Items.Count; i++)
+                {
+                    ListaTecnologiasBT.SetItemChecked(i, true);
+                }
+            }
+            
         }
 
         private void BtLimpar_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ListaTecnologiasWifi.Items.Count; i++)
+            if (CBSelTipo.Text == "Wifi")
             {
-                ListaTecnologiasWifi.SetItemChecked(i, false);
+                for (int i = 0; i < ListaTecnologiasWifi.Items.Count; i++)
+                {
+                    ListaTecnologiasWifi.SetItemChecked(i, false);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ListaTecnologiasBT.Items.Count; i++)
+                {
+                    ListaTecnologiasBT.SetItemChecked(i, false);
+                }
             }
         }
 
@@ -977,10 +1130,9 @@ namespace Automacao_N9010A
             }
             else
             {
-                LConecta.Text = "CONECTANDO";
-                LConecta.ForeColor = System.Drawing.Color.Yellow;
+
                 if (radical.ConectaIP(TextBoxIP.Text) == true)
-                {       
+                { 
                     LConecta.Text = "CONECTADO";
                     LConecta.ForeColor = System.Drawing.Color.Green;                   
                 }
@@ -991,8 +1143,6 @@ namespace Automacao_N9010A
                     LConecta.ForeColor = System.Drawing.Color.Red;
                 }
             }
-            
-
         }
 
         public string LAP { get; set; }
@@ -1022,6 +1172,6 @@ namespace Automacao_N9010A
         public string Marca { get; set; }
         public bool AtivarPrints { get; set; }
         public int SelTipo { get; set; }
-        
+        public string[] FreqEspurios { get; set; }
     }
 }

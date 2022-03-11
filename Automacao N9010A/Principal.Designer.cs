@@ -126,6 +126,11 @@ namespace Automacao_N9010A
             // 
             // TextBoxIP
             // 
+            this.TextBoxIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "192.168.0.158",
+            "192.168.1.100"});
+            this.TextBoxIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TextBoxIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBoxIP.Location = new System.Drawing.Point(160, 102);
             this.TextBoxIP.Name = "TextBoxIP";
             this.TextBoxIP.Size = new System.Drawing.Size(117, 22);
