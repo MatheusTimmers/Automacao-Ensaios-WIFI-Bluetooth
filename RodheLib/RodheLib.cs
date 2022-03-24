@@ -18,11 +18,25 @@ namespace MatheusProductions.RodheLib
 
             if (tPrints)
             {
-                nomePasta = nomePasta + @"\" + nomePrint;
-                instr.WriteString(@$"HCOP:DEV:LANG {tipoImagem}"); // Faça a captura de tela
-                instr.WriteString(@$"HCOP:DEST MMEM"); // Faça a captura de tela
-                instr.WriteString(@$"MMEM:NAME '{nomePasta}'"); // Faça a captura de tela
-                instr.WriteString(@$"HCOP"); // Faça a captura de tela
+                if (!System.IO.File.Exists(nomePasta))
+                {
+                    // Combina o nome do arquivo ao caminho onde ta os prints
+                    CriaPasta(nomePasta);
+                    nomePasta = nomePasta + @"\" + nomePrint;
+                    instr.WriteString(@$"HCOP:DEV:LANG {tipoImagem}"); // Faça a captura de tela
+                    instr.WriteString(@$"HCOP:DEST MMEM"); // Faça a captura de tela
+                    instr.WriteString(@$"MMEM:NAME '{nomePasta}'"); // Faça a captura de tela
+                    instr.WriteString(@$"HCOP"); // Faça a captura de tela
+
+                }
+                else
+                {
+                    nomePasta = nomePasta + @"\" + nomePrint;
+                    instr.WriteString(@$"HCOP:DEV:LANG {tipoImagem}"); // Faça a captura de tela
+                    instr.WriteString(@$"HCOP:DEST MMEM"); // Faça a captura de tela
+                    instr.WriteString(@$"MMEM:NAME '{nomePasta}'"); // Faça a captura de tela
+                    instr.WriteString(@$"HCOP"); // Faça a captura de tela
+                }
             }
 
         }
@@ -144,7 +158,7 @@ namespace MatheusProductions.RodheLib
             instr.WriteString($"BAND {rbw} kHz"); // Configura o RBW
             instr.WriteString($"BAND:VID {vbw} kHz"); // Configura o VBW
             instr.WriteString($"SWE:TIME:AUTO {sweepAuto}"); // Configura o sweep points
-            instr.WriteString($"TRAC:MODE {trace}"); //Configura o Trace
+            instr.WriteString($"DISP:TRAC:MODE {trace}"); //Configura o Trace
             instr.WriteString($"DET {detector}"); //Configura o Trace
 
         }
@@ -322,7 +336,7 @@ namespace MatheusProductions.RodheLib
 
         }
 
-        public static void Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
+        public static void Pega_Salva_Marker_Espurios(FormattedIO488 instr,string configFreq, string nomeArquivo, string nomePasta, string freqI, string freqF, string span, string nome, int numMarkers)
         {
 
 
@@ -338,14 +352,14 @@ namespace MatheusProductions.RodheLib
                     {
                         markerX = New_markerX;
                         markerY = New_markerY;
-                        instr.WriteString($"CALC1:MARK{i}:MAX"); //  Definindo o marker para o Peak search
+                        instr.WriteString($"CALC{i}:MARK{i}:MAX"); //  Definindo o marker para o Peak search
                         instr.WriteString($"CALC1:MARK{i}:X?");
                         New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         instr.WriteString($"CALC1:MARK{i}:Y?");
                         New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         Thread.Sleep(10000);
                     }
-                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, freqC, nome);
+                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, freqI, nome);
                 }
                 else
                 {
@@ -353,24 +367,126 @@ namespace MatheusProductions.RodheLib
                     {
                         markerX = New_markerX;
                         markerY = New_markerY;
-                        for (int j = 1; j < i; j++ )
-                        {
-                            instr.WriteString($"CALC1:DELT{i}:MAX:NEXT");
-                        }
+                        instr.WriteString($"CALC{i}:DELT{i} ON");
                         instr.WriteString($"CALC1:DELT{i}:X?");
                         New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         instr.WriteString($"CALC1:DELT{i}:Y?");
                         New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         Thread.Sleep(10000);
                     }
-                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, freqC, nome);
+                    if (!MesmaPosicao(instr, i))
+                    {
+                        SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqI, nome);
+                    }
+                    else
+                    {
+                        while (markerY != New_markerY && markerX != New_markerX)
+                        {
+                            markerX = New_markerX;
+                            markerY = New_markerY;
+                            instr.WriteString($"CALC{i}:MARK{i}:MAX"); //  Definindo o marker para o Peak search
+                            instr.WriteString($"CALC1:MARK{i}:X?");
+                            New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                            instr.WriteString($"CALC1:MARK{i}:Y?");
+                            New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                            Thread.Sleep(10000);
+                        }
+                        if (Convert.ToUInt32(freqI) < Convert.ToUInt32(configFreq))
+                        {
+                            New_markerX -= (Convert.ToUInt32(span) * 1000000);
+                            instr.WriteString($"CALC1:MARK{i}:X {New_markerX}");
+                        }
+                        else
+                        {
+                            New_markerX += (Convert.ToUInt32(span) * 1000000);
+                            instr.WriteString($"CALC1:MARK{i}:X {New_markerX}");
+                        }
+                        SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqI, nome);
+
+                    }
                 }
+
+
+            }
+        }
+        public static bool MesmaPosicao(FormattedIO488 instr, int i)
+        {
+            double markerx1, markery1, markerx2, markery2;
+
+            instr.WriteString($"CALC1:DELT{i}:X?");
+            markerx1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString($"CALC1:DELT{i}:Y?");
+            markery1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString($"CALC1:MARK{i-1}:X?");
+            markerx2 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString($"CALC1:MARK{i - 1}:Y?");
+            markery2 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            if ((markerx1 == markerx2))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
+        public static bool Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string valFreq, string nome, int numMarkers)
+        {
 
-    
+
+            for (int i = 1; i <= numMarkers; i++)
+            {
+                double markerX = 1;
+                double markerY = 1;
+                double New_markerX = 0;
+                double New_markerY = 0;
+                if (i == 1)
+                {
+                    while (markerY != New_markerY && markerX != New_markerX)
+                    {
+                        markerX = New_markerX;
+                        markerY = New_markerY;
+                        instr.WriteString($"CALC{i}:MARK{i}:MAX"); //  Definindo o marker para o Peak search
+                        instr.WriteString($"CALC1:MARK{i}:X?");
+                        New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                        instr.WriteString($"CALC1:MARK{i}:Y?");
+                        New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                        Thread.Sleep(10000);
+                    }
+                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, valFreq, nome);
+                }
+                else
+                {
+                    while (markerY != New_markerY && markerX != New_markerX)
+                    {
+                        markerX = New_markerX;
+                        markerY = New_markerY;
+                        instr.WriteString($"CALC{i}:DELT{i} ON");
+                        instr.WriteString($"CALC1:DELT{i}:X?");
+                        New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                        instr.WriteString($"CALC1:DELT{i}:Y?");
+                        New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                        Thread.Sleep(10000);
+                    }
+                    if (!MesmaPosicao(instr, i))
+                    {
+                        SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, valFreq, nome);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+
+                    }
+                }
+
+            }
+            return true;
+        }
+
     }
+
     public class NetworkShareAccesser : IDisposable
     {
         private string _remoteUncName;

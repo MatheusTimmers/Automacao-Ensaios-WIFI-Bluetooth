@@ -244,7 +244,7 @@ namespace Automacao_N9010A
             this.ListaTecnologiasBT.FormattingEnabled = true;
             this.ListaTecnologiasBT.Items.AddRange(new object[] {
             "GFSK",
-            "PI/4 DQPSK",
+            "PI4 DQPSK",
             "8DPSK"});
             this.ListaTecnologiasBT.Location = new System.Drawing.Point(12, 26);
             this.ListaTecnologiasBT.Name = "ListaTecnologiasBT";

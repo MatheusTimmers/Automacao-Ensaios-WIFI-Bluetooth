@@ -43,26 +43,21 @@ namespace Automacao_N9010A
             this.CBModelos = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.CBEspurios = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TbCanalInicial = new System.Windows.Forms.TextBox();
+            this.TbFreqFinal = new System.Windows.Forms.TextBox();
+            this.LCanalFinal = new System.Windows.Forms.Label();
+            this.LFreqFinal = new System.Windows.Forms.Label();
+            this.BtSalvarEspurios = new System.Windows.Forms.Button();
+            this.TbFreqInicial = new System.Windows.Forms.TextBox();
+            this.TbCanalFinal = new System.Windows.Forms.TextBox();
+            this.LFreqInicial = new System.Windows.Forms.Label();
+            this.LCanalInicial = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +155,7 @@ namespace Automacao_N9010A
             this.CBPrints.AutoSize = true;
             this.CBPrints.Checked = true;
             this.CBPrints.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CBPrints.Location = new System.Drawing.Point(110, 449);
+            this.CBPrints.Location = new System.Drawing.Point(110, 493);
             this.CBPrints.Name = "CBPrints";
             this.CBPrints.Size = new System.Drawing.Size(15, 14);
             this.CBPrints.TabIndex = 17;
@@ -173,7 +168,7 @@ namespace Automacao_N9010A
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(16, 448);
+            this.label1.Location = new System.Drawing.Point(16, 492);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 14);
             this.label1.TabIndex = 18;
@@ -192,7 +187,7 @@ namespace Automacao_N9010A
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(12, 51);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(496, 184);
+            this.groupBox1.Size = new System.Drawing.Size(517, 184);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
@@ -222,174 +217,75 @@ namespace Automacao_N9010A
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.CBEspurios);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.TbCanalInicial);
+            this.groupBox2.Controls.Add(this.TbFreqFinal);
+            this.groupBox2.Controls.Add(this.LCanalFinal);
+            this.groupBox2.Controls.Add(this.LFreqFinal);
+            this.groupBox2.Controls.Add(this.BtSalvarEspurios);
+            this.groupBox2.Controls.Add(this.TbFreqInicial);
+            this.groupBox2.Controls.Add(this.TbCanalFinal);
+            this.groupBox2.Controls.Add(this.LFreqInicial);
+            this.groupBox2.Controls.Add(this.LCanalInicial);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(12, 241);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(496, 189);
+            this.groupBox2.Size = new System.Drawing.Size(517, 239);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             // 
-            // button1
+            // CBEspurios
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(189, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 32);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.CBEspurios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBEspurios.FormattingEnabled = true;
+            this.CBEspurios.Items.AddRange(new object[] {
+            "WIFI",
+            "BlueTooth"});
+            this.CBEspurios.Location = new System.Drawing.Point(25, 65);
+            this.CBEspurios.Name = "CBEspurios";
+            this.CBEspurios.Size = new System.Drawing.Size(191, 23);
+            this.CBEspurios.TabIndex = 19;
+            this.CBEspurios.SelectedIndexChanged += new System.EventHandler(this.CBEspurios_SelectedIndexChanged);
             // 
-            // textBox1
+            // label16
             // 
-            this.textBox1.Location = new System.Drawing.Point(11, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(64, 23);
-            this.textBox1.TabIndex = 10;
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(394, 109);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 14);
+            this.label16.TabIndex = 28;
+            this.label16.Text = "Freq Final:";
             // 
-            // textBox2
+            // label14
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox2.Location = new System.Drawing.Point(92, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(64, 23);
-            this.textBox2.TabIndex = 9;
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(277, 109);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 14);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Canal Final:";
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(11, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 14);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Atual: 35";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(92, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 14);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Atual: 20";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(11, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 14);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "1 Freq:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(170, 73);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(64, 23);
-            this.textBox3.TabIndex = 18;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox4.Location = new System.Drawing.Point(251, 73);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(64, 23);
-            this.textBox4.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(173, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 14);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Atual: 35";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(251, 99);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 14);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Atual: 20";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(334, 73);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(64, 23);
-            this.textBox5.TabIndex = 22;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox6.Location = new System.Drawing.Point(415, 73);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(64, 23);
-            this.textBox6.TabIndex = 21;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(336, 99);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 14);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Atual: 35";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(416, 99);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 14);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Atual: 20";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(152, 109);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 14);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Canal Inicial:";
             // 
             // label13
             // 
@@ -403,65 +299,109 @@ namespace Automacao_N9010A
             this.label13.TabIndex = 25;
             this.label13.Text = "Frequencias para Espurios:";
             // 
-            // label5
+            // TbCanalInicial
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(92, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 14);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "2 Freq:";
+            this.TbCanalInicial.Location = new System.Drawing.Point(152, 126);
+            this.TbCanalInicial.Name = "TbCanalInicial";
+            this.TbCanalInicial.Size = new System.Drawing.Size(88, 23);
+            this.TbCanalInicial.TabIndex = 18;
             // 
-            // label14
+            // TbFreqFinal
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(170, 56);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 14);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "3 Freq:";
+            this.TbFreqFinal.BackColor = System.Drawing.SystemColors.Window;
+            this.TbFreqFinal.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.TbFreqFinal.Location = new System.Drawing.Point(391, 126);
+            this.TbFreqFinal.Name = "TbFreqFinal";
+            this.TbFreqFinal.Size = new System.Drawing.Size(88, 23);
+            this.TbFreqFinal.TabIndex = 17;
             // 
-            // label15
+            // LCanalFinal
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(415, 56);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 14);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "6 Freq:";
+            this.LCanalFinal.AutoSize = true;
+            this.LCanalFinal.BackColor = System.Drawing.Color.Transparent;
+            this.LCanalFinal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LCanalFinal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LCanalFinal.Location = new System.Drawing.Point(277, 152);
+            this.LCanalFinal.Name = "LCanalFinal";
+            this.LCanalFinal.Size = new System.Drawing.Size(64, 14);
+            this.LCanalFinal.TabIndex = 20;
+            this.LCanalFinal.Text = "Atual: 35";
             // 
-            // label16
+            // LFreqFinal
             // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(251, 56);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(52, 14);
-            this.label16.TabIndex = 28;
-            this.label16.Text = "4 Freq:";
+            this.LFreqFinal.AutoSize = true;
+            this.LFreqFinal.BackColor = System.Drawing.Color.Transparent;
+            this.LFreqFinal.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LFreqFinal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LFreqFinal.Location = new System.Drawing.Point(394, 152);
+            this.LFreqFinal.Name = "LFreqFinal";
+            this.LFreqFinal.Size = new System.Drawing.Size(64, 14);
+            this.LFreqFinal.TabIndex = 19;
+            this.LFreqFinal.Text = "Atual: 20";
             // 
-            // label17
+            // BtSalvarEspurios
             // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(334, 56);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(52, 14);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "5 Freq:";
+            this.BtSalvarEspurios.BackColor = System.Drawing.Color.Transparent;
+            this.BtSalvarEspurios.ForeColor = System.Drawing.Color.Black;
+            this.BtSalvarEspurios.Location = new System.Drawing.Point(189, 188);
+            this.BtSalvarEspurios.Name = "BtSalvarEspurios";
+            this.BtSalvarEspurios.Size = new System.Drawing.Size(98, 32);
+            this.BtSalvarEspurios.TabIndex = 14;
+            this.BtSalvarEspurios.Text = "Salvar";
+            this.BtSalvarEspurios.UseVisualStyleBackColor = false;
+            this.BtSalvarEspurios.Click += new System.EventHandler(this.BtSalvarEspurios_Click);
+            // 
+            // TbFreqInicial
+            // 
+            this.TbFreqInicial.Location = new System.Drawing.Point(25, 126);
+            this.TbFreqInicial.Name = "TbFreqInicial";
+            this.TbFreqInicial.Size = new System.Drawing.Size(88, 23);
+            this.TbFreqInicial.TabIndex = 10;
+            // 
+            // TbCanalFinal
+            // 
+            this.TbCanalFinal.BackColor = System.Drawing.SystemColors.Window;
+            this.TbCanalFinal.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.TbCanalFinal.Location = new System.Drawing.Point(277, 126);
+            this.TbCanalFinal.Name = "TbCanalFinal";
+            this.TbCanalFinal.Size = new System.Drawing.Size(88, 23);
+            this.TbCanalFinal.TabIndex = 9;
+            // 
+            // LFreqInicial
+            // 
+            this.LFreqInicial.AutoSize = true;
+            this.LFreqInicial.BackColor = System.Drawing.Color.Transparent;
+            this.LFreqInicial.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LFreqInicial.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LFreqInicial.Location = new System.Drawing.Point(25, 152);
+            this.LFreqInicial.Name = "LFreqInicial";
+            this.LFreqInicial.Size = new System.Drawing.Size(64, 14);
+            this.LFreqInicial.TabIndex = 16;
+            this.LFreqInicial.Text = "Atual: 35";
+            // 
+            // LCanalInicial
+            // 
+            this.LCanalInicial.AutoSize = true;
+            this.LCanalInicial.BackColor = System.Drawing.Color.Transparent;
+            this.LCanalInicial.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LCanalInicial.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LCanalInicial.Location = new System.Drawing.Point(152, 152);
+            this.LCanalInicial.Name = "LCanalInicial";
+            this.LCanalInicial.Size = new System.Drawing.Size(64, 14);
+            this.LCanalInicial.TabIndex = 15;
+            this.LCanalInicial.Text = "Atual: 20";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(25, 109);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 14);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Freq Inicial:";
             // 
             // Configurações
             // 
@@ -469,7 +409,7 @@ namespace Automacao_N9010A
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(526, 478);
+            this.ClientSize = new System.Drawing.Size(541, 518);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -503,25 +443,20 @@ namespace Automacao_N9010A
         private System.Windows.Forms.ComboBox CBModelos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TbCanalInicial;
+        private System.Windows.Forms.TextBox TbFreqFinal;
+        private System.Windows.Forms.Label LCanalFinal;
+        private System.Windows.Forms.Label LFreqFinal;
+        private System.Windows.Forms.Button BtSalvarEspurios;
+        private System.Windows.Forms.TextBox TbFreqInicial;
+        private System.Windows.Forms.TextBox TbCanalFinal;
+        private System.Windows.Forms.Label LFreqInicial;
+        private System.Windows.Forms.Label LCanalInicial;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox CBEspurios;
     }
 }

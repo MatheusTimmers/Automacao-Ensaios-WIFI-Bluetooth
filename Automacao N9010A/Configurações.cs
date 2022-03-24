@@ -13,13 +13,27 @@ namespace Automacao_N9010A
     public partial class Configurações : Form
     {
         Principal pr;
-        public string RefLevel, Att, marca;
+        public string RefLevel, Att, marca, freqInicial, freqFinal, canalInicial, canalFinal;
         public Configurações()
         {
             InitializeComponent();
             pr = new Principal();
             RefLevel = pr.CarregaRefLevel();
             Att = pr.CarregaAtt();
+            if (pr.CarregaTipo() == 0)
+            {
+                freqInicial = pr.CarregaFreqEspuriosWifi(0);
+                canalInicial = pr.CarregaFreqEspuriosWifi(1);
+                canalFinal= pr.CarregaFreqEspuriosWifi(2);
+                freqFinal = pr.CarregaFreqEspuriosWifi(3);
+            }
+            else
+            {
+                freqInicial = pr.CarregaFreqEspuriosBt(0);
+                canalInicial = pr.CarregaFreqEspuriosBt(1);
+                canalFinal = pr.CarregaFreqEspuriosBt(2);
+                freqFinal = pr.CarregaFreqEspuriosBt(3);
+            }
             if (pr.CarregaMarca() == "Agilent")
             {
                 CBModelos.SelectedItem = "N9010A";
@@ -33,8 +47,16 @@ namespace Automacao_N9010A
             CBPrints.Checked = pr.CarregaAPrints();
             LValorAtualRLevel.Text = "Atual:" + RefLevel;
             LValorAtualAtt.Text = "Atual:" + Att; ;
+            LFreqFinal.Text = "Atual:" + freqFinal;
+            LCanalFinal.Text = "Atual:" + canalFinal;
+            LCanalInicial.Text = "Atual:" + canalInicial;
+            LFreqInicial.Text = "Atual:" + freqInicial;
             TextBoxAtt.Text = "";
             TextBoxRefLevel.Text = "";
+            TbFreqFinal.Text = "";
+            TbCanalInicial.Text = "";
+            TbFreqFinal.Text = "";
+            TbCanalFinal.Text = "";
         }
 
 
@@ -133,6 +155,24 @@ namespace Automacao_N9010A
             }
         }
 
+        private void CBEspurios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBEspurios.SelectedIndex == 0)
+            {
+                LFreqInicial.Text = "Atual:" + pr.CarregaFreqEspuriosWifi(0);
+                LCanalInicial.Text = "Atual:" + pr.CarregaFreqEspuriosWifi(1);
+                LCanalFinal.Text = "Atual:" + pr.CarregaFreqEspuriosWifi(2);
+                LFreqFinal.Text = "Atual:" + pr.CarregaFreqEspuriosWifi(3);
+            }
+            else
+            {
+                LFreqInicial.Text = "Atual:" + pr.CarregaFreqEspuriosBt(0);
+                LCanalInicial.Text = "Atual:" + pr.CarregaFreqEspuriosBt(1);
+                LCanalFinal.Text = "Atual:" + pr.CarregaFreqEspuriosBt(2);
+                LFreqFinal.Text = "Atual:" + pr.CarregaFreqEspuriosBt(3);
+            }
+        }
+
         public string GetRef()
         {
             return RefLevel;
@@ -157,7 +197,552 @@ namespace Automacao_N9010A
                 pr.SalvaConfig(RefLevel, Att, CBPrints.Checked, marca);
             }
         }
-        
+
+        private void BtSalvarEspurios_Click(object sender, EventArgs e)
+        {
+            if (CBEspurios.SelectedItem.Equals("BlueTooth"))
+            {
+                if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                {
+                    MessageBox.Show("Por favor insira algum valor válido");
+                }
+                else
+                {
+                    if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                    {
+                        MessageBox.Show("Salvando novo valor para a frequencia inicial");
+                        freqInicial = TbFreqInicial.Text;
+                        LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                        TbFreqInicial.Text = "";
+                        TbCanalInicial.Text = "";
+                        TbFreqFinal.Text = "";
+                        TbCanalFinal.Text = "";
+                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                    }
+                    else
+                    {
+                        if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                        {
+                            MessageBox.Show("Salvando novo valor para o canal inicial");
+                            canalInicial = TbCanalInicial.Text;
+                            LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                            TbFreqInicial.Text = "";
+                            TbCanalInicial.Text = "";
+                            TbFreqFinal.Text = "";
+                            TbCanalFinal.Text = "";
+                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                        }
+                        else
+                        {
+                            if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                            {
+                                MessageBox.Show("Salvando novo valor para a frequencia final");
+                                freqFinal = TbFreqFinal.Text;
+                                LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                TbFreqInicial.Text = "";
+                                TbCanalInicial.Text = "";
+                                TbFreqFinal.Text = "";
+                                TbCanalFinal.Text = "";
+                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                            }
+                            else
+                            {
+                                if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                {
+                                    MessageBox.Show("Salvando novo valor para o canal final");
+                                    canalFinal = TbCanalFinal.Text;
+                                    LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                    TbFreqInicial.Text = "";
+                                    TbCanalInicial.Text = "";
+                                    TbFreqFinal.Text = "";
+                                    TbCanalFinal.Text = "";
+                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                }
+                                else
+                                {
+                                    if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                                    {
+                                        MessageBox.Show("Salvando novo valor para a frequencia inicial e o canal inicial");
+                                        canalInicial = TbCanalInicial.Text;
+                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                        freqInicial = TbFreqInicial.Text;
+                                        LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                        TbFreqInicial.Text = "";
+                                        TbCanalInicial.Text = "";
+                                        TbFreqFinal.Text = "";
+                                        TbCanalFinal.Text = "";
+                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                    }
+                                    else
+                                    {
+                                        if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                        {
+                                            MessageBox.Show("Salvando novo valor para a frequencia inicial e frequencia final");
+                                            freqFinal = TbFreqFinal.Text;
+                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                            freqInicial = TbFreqInicial.Text;
+                                            LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                            TbFreqInicial.Text = "";
+                                            TbCanalInicial.Text = "";
+                                            TbFreqFinal.Text = "";
+                                            TbCanalFinal.Text = "";
+                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                        }
+                                        else
+                                        {
+                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                            {
+                                                MessageBox.Show("Salvando novo valor para a frequencia inicial e o canal final");
+                                                canalFinal = TbCanalFinal.Text;
+                                                LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                freqInicial = TbFreqInicial.Text;
+                                                LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                TbFreqInicial.Text = "";
+                                                TbCanalInicial.Text = "";
+                                                TbFreqFinal.Text = "";
+                                                TbCanalFinal.Text = "";
+                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                            }
+                                            else
+                                            {
+                                                if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                {
+                                                    MessageBox.Show("Salvando novo valor para o canal inicial e a frequencia final");
+                                                    freqFinal = TbFreqFinal.Text;
+                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                    canalInicial = TbCanalInicial.Text;
+                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                    TbFreqInicial.Text = "";
+                                                    TbCanalInicial.Text = "";
+                                                    TbFreqFinal.Text = "";
+                                                    TbCanalFinal.Text = "";
+                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                }
+                                                else
+                                                {
+                                                    if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                                    {
+                                                        MessageBox.Show("Salvando novo valor para o canal inicial e o canal final");
+                                                        canalFinal = TbCanalFinal.Text;
+                                                        LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                        canalInicial = TbCanalInicial.Text;
+                                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                        TbFreqInicial.Text = "";
+                                                        TbCanalInicial.Text = "";
+                                                        TbFreqFinal.Text = "";
+                                                        TbCanalFinal.Text = "";
+                                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                        {
+                                                            MessageBox.Show("Salvando novo valor para a frequencia final e o canal final");
+                                                            canalFinal = TbCanalFinal.Text;
+                                                            LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                            freqFinal = TbFreqFinal.Text;
+                                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                            TbFreqInicial.Text = "";
+                                                            TbCanalInicial.Text = "";
+                                                            TbFreqFinal.Text = "";
+                                                            TbCanalFinal.Text = "";
+                                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                        }
+                                                        else
+                                                        {
+                                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                            {
+                                                                MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e frequencia final");
+                                                                freqFinal = TbFreqFinal.Text;
+                                                                LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                canalInicial = TbCanalInicial.Text;
+                                                                LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                TbFreqInicial.Text = "";
+                                                                TbCanalInicial.Text = "";
+                                                                TbFreqFinal.Text = "";
+                                                                TbCanalFinal.Text = "";
+                                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                            }
+                                                            else
+                                                            {
+                                                                if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                                {
+                                                                    MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e frequencia final");
+                                                                    freqInicial = TbFreqInicial.Text;
+                                                                    LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                    canalInicial = TbCanalInicial.Text;
+                                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                    freqFinal = TbFreqFinal.Text;
+                                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                    TbFreqInicial.Text = "";
+                                                                    TbCanalInicial.Text = "";
+                                                                    TbFreqFinal.Text = "";
+                                                                    TbCanalFinal.Text = "";
+                                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                    {
+                                                                        MessageBox.Show("Salvando novo valor para o canal inicial, frequencia final e o canal final");
+                                                                        canalFinal = TbCanalFinal.Text;
+                                                                        LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                        canalInicial = TbCanalInicial.Text;
+                                                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                        freqFinal = TbFreqFinal.Text;
+                                                                        LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                        TbFreqInicial.Text = "";
+                                                                        TbCanalInicial.Text = "";
+                                                                        TbFreqFinal.Text = "";
+                                                                        TbCanalFinal.Text = "";
+                                                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                        {
+                                                                            MessageBox.Show("Salvando novo valor para a frequencia inicial, frequencia final e canal final");
+                                                                            freqInicial = TbFreqInicial.Text;
+                                                                            LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                            canalFinal = TbCanalFinal.Text;
+                                                                            LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                            freqFinal = TbFreqFinal.Text;
+                                                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                            TbFreqInicial.Text = "";
+                                                                            TbCanalInicial.Text = "";
+                                                                            TbFreqFinal.Text = "";
+                                                                            TbCanalFinal.Text = "";
+                                                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                                                            {
+                                                                                MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e canal final");
+                                                                                freqInicial = TbFreqInicial.Text;
+                                                                                LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                                canalFinal = TbCanalFinal.Text;
+                                                                                LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                                canalInicial = TbCanalInicial.Text;
+                                                                                LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                                TbFreqInicial.Text = "";
+                                                                                TbCanalInicial.Text = "";
+                                                                                TbFreqFinal.Text = "";
+                                                                                TbCanalFinal.Text = "";
+                                                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                                {
+                                                                                    MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial, frequencia final e para o canal final");
+                                                                                    canalInicial = TbCanalInicial.Text;
+                                                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                                    freqInicial = TbFreqInicial.Text;
+                                                                                    LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                                    canalFinal = TbCanalFinal.Text;
+                                                                                    LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                                    freqFinal = TbFreqFinal.Text;
+                                                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                                    TbFreqInicial.Text = "";
+                                                                                    TbCanalInicial.Text = "";
+                                                                                    TbFreqFinal.Text = "";
+                                                                                    TbCanalFinal.Text = "";
+                                                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                {
+                    MessageBox.Show("Por favor insira algum valor válido");
+                }
+                else
+                {
+                    if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                    {
+                        MessageBox.Show("Salvando novo valor para a frequencia inicial");
+                        freqInicial = TbFreqInicial.Text;
+                        LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                        TbFreqInicial.Text = "";
+                        TbCanalInicial.Text = "";
+                        TbFreqFinal.Text = "";
+                        TbCanalFinal.Text = "";
+                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                    }
+                    else
+                    {
+                        if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                        {
+                            MessageBox.Show("Salvando novo valor para o canal inicial");
+                            canalInicial = TbCanalInicial.Text;
+                            LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                            TbFreqInicial.Text = "";
+                            TbCanalInicial.Text = "";
+                            TbFreqFinal.Text = "";
+                            TbCanalFinal.Text = "";
+                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                        }
+                        else
+                        {
+                            if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                            {
+                                MessageBox.Show("Salvando novo valor para a frequencia final");
+                                freqFinal = TbFreqFinal.Text;
+                                LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                TbFreqInicial.Text = "";
+                                TbCanalInicial.Text = "";
+                                TbFreqFinal.Text = "";
+                                TbCanalFinal.Text = "";
+                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                            }
+                            else
+                            {
+                                if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                {
+                                    MessageBox.Show("Salvando novo valor para o canal final");
+                                    canalFinal = TbCanalFinal.Text;
+                                    LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                    TbFreqInicial.Text = "";
+                                    TbCanalInicial.Text = "";
+                                    TbFreqFinal.Text = "";
+                                    TbCanalFinal.Text = "";
+                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                }
+                                else
+                                {
+                                    if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text == "")
+                                    {
+                                        MessageBox.Show("Salvando novo valor para a frequencia inicial e o canal inicial");
+                                        canalInicial = TbCanalInicial.Text;
+                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                        freqInicial = TbFreqInicial.Text;
+                                        LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                        TbFreqInicial.Text = "";
+                                        TbCanalInicial.Text = "";
+                                        TbFreqFinal.Text = "";
+                                        TbCanalFinal.Text = "";
+                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                    }
+                                    else
+                                    {
+                                        if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                        {
+                                            MessageBox.Show("Salvando novo valor para a frequencia inicial e frequencia final");
+                                            freqFinal = TbFreqFinal.Text;
+                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                            freqInicial = TbFreqInicial.Text;
+                                            LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                            TbFreqInicial.Text = "";
+                                            TbCanalInicial.Text = "";
+                                            TbFreqFinal.Text = "";
+                                            TbCanalFinal.Text = "";
+                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                        }
+                                        else
+                                        {
+                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                            {
+                                                MessageBox.Show("Salvando novo valor para a frequencia inicial e o canal final");
+                                                canalFinal = TbCanalFinal.Text;
+                                                LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                freqInicial = TbFreqInicial.Text;
+                                                LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                TbFreqInicial.Text = "";
+                                                TbCanalInicial.Text = "";
+                                                TbFreqFinal.Text = "";
+                                                TbCanalFinal.Text = "";
+                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                            }
+                                            else
+                                            {
+                                                if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                {
+                                                    MessageBox.Show("Salvando novo valor para o canal inicial e a frequencia final");
+                                                    freqFinal = TbFreqFinal.Text;
+                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                    canalInicial = TbCanalInicial.Text;
+                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                    TbFreqInicial.Text = "";
+                                                    TbCanalInicial.Text = "";
+                                                    TbFreqFinal.Text = "";
+                                                    TbCanalFinal.Text = "";
+                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                }
+                                                else
+                                                {
+                                                    if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                                    {
+                                                        MessageBox.Show("Salvando novo valor para o canal inicial e o canal final");
+                                                        canalFinal = TbCanalFinal.Text;
+                                                        LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                        canalInicial = TbCanalInicial.Text;
+                                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                        TbFreqInicial.Text = "";
+                                                        TbCanalInicial.Text = "";
+                                                        TbFreqFinal.Text = "";
+                                                        TbCanalFinal.Text = "";
+                                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (TbFreqInicial.Text == "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                        {
+                                                            MessageBox.Show("Salvando novo valor para a frequencia final e o canal final");
+                                                            canalFinal = TbCanalFinal.Text;
+                                                            LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                            freqFinal = TbFreqFinal.Text;
+                                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                            TbFreqInicial.Text = "";
+                                                            TbCanalInicial.Text = "";
+                                                            TbFreqFinal.Text = "";
+                                                            TbCanalFinal.Text = "";
+                                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                        }
+                                                        else
+                                                        {
+                                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                            {
+                                                                MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e frequencia final");
+                                                                freqFinal = TbFreqFinal.Text;
+                                                                LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                canalInicial = TbCanalInicial.Text;
+                                                                LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                TbFreqInicial.Text = "";
+                                                                TbCanalInicial.Text = "";
+                                                                TbFreqFinal.Text = "";
+                                                                TbCanalFinal.Text = "";
+                                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                            }
+                                                            else
+                                                            {
+                                                                if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text == "")
+                                                                {
+                                                                    MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e frequencia final");
+                                                                    freqInicial = TbFreqInicial.Text;
+                                                                    LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                    canalInicial = TbCanalInicial.Text;
+                                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                    freqFinal = TbFreqFinal.Text;
+                                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                    TbFreqInicial.Text = "";
+                                                                    TbCanalInicial.Text = "";
+                                                                    TbFreqFinal.Text = "";
+                                                                    TbCanalFinal.Text = "";
+                                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (TbFreqInicial.Text == "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                    {
+                                                                        MessageBox.Show("Salvando novo valor para o canal inicial, frequencia final e o canal final");
+                                                                        canalFinal = TbCanalFinal.Text;
+                                                                        LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                        canalInicial = TbCanalInicial.Text;
+                                                                        LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                        freqFinal = TbFreqFinal.Text;
+                                                                        LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                        TbFreqInicial.Text = "";
+                                                                        TbCanalInicial.Text = "";
+                                                                        TbFreqFinal.Text = "";
+                                                                        TbCanalFinal.Text = "";
+                                                                        pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (TbFreqInicial.Text != "" & TbCanalInicial.Text == "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                        {
+                                                                            MessageBox.Show("Salvando novo valor para a frequencia inicial, frequencia final e canal final");
+                                                                            freqInicial = TbFreqInicial.Text;
+                                                                            LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                            canalFinal = TbCanalFinal.Text;
+                                                                            LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                            freqFinal = TbFreqFinal.Text;
+                                                                            LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                            TbFreqInicial.Text = "";
+                                                                            TbCanalInicial.Text = "";
+                                                                            TbFreqFinal.Text = "";
+                                                                            TbCanalFinal.Text = "";
+                                                                            pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text == "" & TbCanalFinal.Text != "")
+                                                                            {
+                                                                                MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial e canal final");
+                                                                                freqInicial = TbFreqInicial.Text;
+                                                                                LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                                canalFinal = TbCanalFinal.Text;
+                                                                                LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                                canalInicial = TbCanalInicial.Text;
+                                                                                LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                                TbFreqInicial.Text = "";
+                                                                                TbCanalInicial.Text = "";
+                                                                                TbFreqFinal.Text = "";
+                                                                                TbCanalFinal.Text = "";
+                                                                                pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                if (TbFreqInicial.Text != "" & TbCanalInicial.Text != "" & TbFreqFinal.Text != "" & TbCanalFinal.Text != "")
+                                                                                {
+                                                                                    MessageBox.Show("Salvando novo valor para a frequencia inicial, canal inicial, frequencia final e para o canal final");
+                                                                                    canalInicial = TbCanalInicial.Text;
+                                                                                    LCanalInicial.Text = "Atual:" + TbCanalInicial.Text;
+                                                                                    freqInicial = TbFreqInicial.Text;
+                                                                                    LFreqInicial.Text = "Atual:" + TbFreqInicial.Text;
+                                                                                    canalFinal = TbCanalFinal.Text;
+                                                                                    LCanalFinal.Text = "Atual:" + TbCanalFinal.Text;
+                                                                                    freqFinal = TbFreqFinal.Text;
+                                                                                    LFreqFinal.Text = "Atual:" + TbFreqFinal.Text;
+                                                                                    TbFreqInicial.Text = "";
+                                                                                    TbCanalInicial.Text = "";
+                                                                                    TbFreqFinal.Text = "";
+                                                                                    TbCanalFinal.Text = "";
+                                                                                    pr.SalvaConfigEspurios(CBEspurios.SelectedItem.ToString(), freqInicial, freqFinal, canalInicial, canalFinal);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         public string GetMarca()
         {

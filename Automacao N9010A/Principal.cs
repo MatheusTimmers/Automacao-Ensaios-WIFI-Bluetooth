@@ -10,13 +10,15 @@ using System.Media;
 
 namespace Automacao_N9010A
 {
-    
+
 
     public partial class Principal : Form
     {
         string RefLevel;
         string Att;
         string marca;
+        string configFreqWifi;
+        string configFreqBt;
         string caminhoJson = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
         Keysight ks;
         string jsonString;
@@ -36,12 +38,14 @@ namespace Automacao_N9010A
             ks = new Keysight();
             if (!System.IO.File.Exists(caminhoJson + @"\" + "save.json"))
             {
-                json = Keysight.CriaArquivo("save.json", caminhoJson);
+                json = Keysight.CriaArquivoSemSenha("save.json", caminhoJson);
                 json.Close();
                 caminhoJson = System.IO.Path.Combine(caminhoJson, "save.json");
                 jsonString =
                 @"{
                   ""EnsaiosItem10"": [
+                    false,
+                    false,
                     false,
                     false,
                     false,
@@ -65,14 +69,18 @@ namespace Automacao_N9010A
                   ""RefLevel"": ""10"",
                   ""Att"": ""35"",
                   ""Marca"": ""NA"",
-                  ""AtivarPrints"": true
-                  ""SelTipo"": -1,
-                  ""FreqEspurios"": [
+                  ""AtivarPrints"": true,
+                  ""SelTipo"": 0,
+                  ""FreqEspuriosWifi"": [
                     ""30"",
                     ""2402"",
-                    ""2302"",
                     ""2480"",
-                    ""2580"",
+                    ""18000""
+                    ],
+                  ""FreqEspuriosBT"": [
+                    ""30"",
+                    ""2402"",
+                    ""2480"",
                     ""18000""
                     ]
                 }
@@ -99,7 +107,7 @@ namespace Automacao_N9010A
         public void SalvaEnsaios11(bool EstadoEnsaio, int i)
         {
             jsonString = File.ReadAllText(caminhoJson);
-            salva =  JsonSerializer.Deserialize<Save>(jsonString);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
 
             salva.EnsaiosItem11[i] = EstadoEnsaio;
             string novoSave = JsonSerializer.Serialize(salva);
@@ -114,22 +122,20 @@ namespace Automacao_N9010A
             return salva.EnsaiosItem11[i];
         }
 
-        public string CarregaFreqEspurios(int i)
+        public string CarregaFreqEspuriosWifi(int i)
         {
             jsonString = File.ReadAllText(caminhoJson);
             salva = JsonSerializer.Deserialize<Save>(jsonString);
 
-            return salva.FreqEspurios[i];
+            return salva.FreqEspuriosWifi[i];
         }
 
-        public void SalvaFreqEspurios()
+        public string CarregaFreqEspuriosBt(int i)
         {
             jsonString = File.ReadAllText(caminhoJson);
             salva = JsonSerializer.Deserialize<Save>(jsonString);
 
-            //salva.FreqEspurios = CBSelTipo.SelectedIndex;
-            string novoSave = JsonSerializer.Serialize(salva);
-            File.WriteAllText(caminhoJson, novoSave);
+            return salva.FreqEspuriosBT[i];
         }
 
         public void SalvaTipo()
@@ -141,7 +147,6 @@ namespace Automacao_N9010A
             string novoSave = JsonSerializer.Serialize(salva);
             File.WriteAllText(caminhoJson, novoSave);
         }
-
 
         public int CarregaTipo()
         {
@@ -200,6 +205,31 @@ namespace Automacao_N9010A
             File.WriteAllText(caminhoJson, novoSave);
         }
 
+        public void SalvaConfigEspurios(string CB, string freqInicial, string freqFinal, string canalInicial, string canalFinal)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            if (CB == "WIFI")
+            {
+                salva.FreqEspuriosWifi[0] = freqInicial;
+                salva.FreqEspuriosWifi[1] = canalInicial;
+                salva.FreqEspuriosWifi[2] = canalFinal;
+                salva.FreqEspuriosWifi[3] = freqFinal;
+                string novoSave = JsonSerializer.Serialize(salva);
+                File.WriteAllText(caminhoJson, novoSave);
+            }
+            else
+            {
+                salva.FreqEspuriosBT[0] = freqInicial;
+                salva.FreqEspuriosBT[1] = canalInicial;
+                salva.FreqEspuriosBT[2] = canalFinal;
+                salva.FreqEspuriosBT[3] = freqFinal;
+                string novoSave = JsonSerializer.Serialize(salva);
+                File.WriteAllText(caminhoJson, novoSave);
+            }
+                
+        }
         public string CarregaAtt()
         {
             jsonString = File.ReadAllText(caminhoJson);
@@ -286,7 +316,7 @@ namespace Automacao_N9010A
                         break;
                 }
             }
-            
+
         }
 
         public void Ensaio_Largura_de_faixa_a_26_dB(string valFreq, string ip, string ensaioAtual, Configurações config)
@@ -358,7 +388,7 @@ namespace Automacao_N9010A
                     case "GFSK":
                         radical.Largura_20dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
-                    case "PI/4 DQPSK":
+                    case "PI4 DQPSK":
                         radical.Largura_20dB(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "8DPSK":
@@ -494,7 +524,16 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Potência_de_pico_máximaLE(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Potência_de_pico_máximaBT(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "GFSK":
+                        radical.Potência_de_pico_máximaBT(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI4 DQPSK":
+                        radical.Potência_de_pico_máximaBT(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "8DPSK":
+                        radical.Potência_de_pico_máximaBT(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "802.11a":
                         radical.Potência_de_pico_máxima(valFreq, ip, ensaioAtual, "20", RefLevel, Att, config.GetTPrints(), marca);
@@ -597,73 +636,94 @@ namespace Automacao_N9010A
 
         }
 
-        public void Ensaio_Espurios(string valFreq, string ip, string ensaioAtual, Configurações config)
+        public string CarregaConfigFreqWifi()
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salva.FreqEspuriosWifi[1];
+        }
+
+        public string CarregaConfigFreqBt()
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salva.FreqEspuriosBT[1];
+        }
+
+        public void Ensaio_Espurios(string freqI, string freqF, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = CarregaMarca();
+            configFreqWifi = CarregaConfigFreqWifi();
+            configFreqBt = CarregaConfigFreqBt();
 
             if (marca != "NA")
             {
                 switch (ensaioAtual)
                 {
                     case "Bluetooth Low Energy":
-                        radical.Espurios("30","2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "2", configFreqWifi);
                         break;
                     case "802.11a":
-                        radical.Espurios("30", "2422", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11b":
-                        radical.Espurios("2322", "2422", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11g":
-                        radical.Espurios("2452", "2552", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11n (20)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual,  RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11n (40)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "40", configFreqWifi);
                         break;
                     case "802.11n (80)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "80", configFreqWifi);
                         break;
                     case "802.11ac (20)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11ac (40)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "40", configFreqWifi);
                         break;
                     case "802.11ac (80)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "80", configFreqWifi);
                         break;
                     case "802.11ax (20)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "20", configFreqWifi);
                         break;
                     case "802.11ax (40)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "40", configFreqWifi);
                         break;
                     case "802.11ax (80)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "80", configFreqWifi);
                         break;
                     case "802.11ax (160)":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "160", configFreqWifi);
                         break;
                     case "GFSK":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "2", configFreqBt);
                         break;
-                    case "PI/4 DQPSK":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                    case "PI4 DQPSK":
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "2", configFreqBt);
                         break;
                     case "8DPSK":
-                        radical.Espurios("30", "2402", ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Espurios(freqI, freqF, ip, ensaioAtual, RefLevel, Att, config.GetTPrints(), marca, "2", configFreqBt);
                         break;
                 }
             }
+            else
+            {
+                MessageBox.Show("Selecione um Modelo");
+            }
 
         }
-
 
 
         private void ListaDeEnsaios(string ensaioAtual, TelaLoading tl, Configurações config)
@@ -705,7 +765,25 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem11[6] == true)
             {
-                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[0], salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 1:
+                            Ensaio_Espurios(Convert.ToString(Convert.ToInt32(salva.FreqEspuriosWifi[1]) - 100), salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 2:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[2], Convert.ToString(100 + Convert.ToInt32(salva.FreqEspuriosWifi[2])), TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 3:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[2], salva.FreqEspuriosWifi[3], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+
+                    }
+                }
                 tl.SetValorPB((100 / it11.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
             }
             if (salva.EnsaiosItem12[0] == true)
@@ -720,35 +798,131 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem12[2] == true)
             {
-                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
-                tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[0], salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 1:
+                            Ensaio_Espurios(Convert.ToString(Convert.ToInt32(salva.FreqEspuriosWifi[1]) - 100), salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 2:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[2], Convert.ToString(100 + Convert.ToInt32(salva.FreqEspuriosWifi[2])), TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 3:
+                            Ensaio_Espurios(salva.FreqEspuriosWifi[2], salva.FreqEspuriosWifi[3], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+
+                    }
+                }
+                    tl.SetValorPB((100 / it12.GetQuantidadeEnsaios()) / ListaTecnologiasWifi.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[0] == true)
+            {
+                Ensaio_Largura_de_Faixa_a_20db(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+            }
+            if (salva.EnsaiosItem10[1] == true)
+            {
+                Ensaio_Potencia_de_Pico_Maxima(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+            }
+            if (salva.EnsaiosItem10[2] == true)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            MessageBox.Show("Selecione no aparelho a frequencia Inicial");
+                            Ensaio_Espurios(salva.FreqEspuriosBT[0], salva.FreqEspuriosBT[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 1:
+                            Ensaio_Espurios(Convert.ToString(Convert.ToInt32(salva.FreqEspuriosBT[1]) - 100), salva.FreqEspuriosBT[1], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 2:
+                            MessageBox.Show("Selecione no aparelho a frequencia final");
+                            Ensaio_Espurios(salva.FreqEspuriosBT[2], Convert.ToString(100 + Convert.ToInt32(salva.FreqEspuriosBT[2])), TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                        case 3:
+                            Ensaio_Espurios(salva.FreqEspuriosBT[2], salva.FreqEspuriosBT[3], TextBoxIP.Text, ensaioAtual, config);
+                            break;
+                    }
+                }
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+            }
+            if (salva.EnsaiosItem10[3] == true)
             {
                 MessageBox.Show("Iniciando ensaio de separação de canais de salto, coloque o dispositivo em modo de salto");
                 Ensaio_Separação_de_Canais_de_Salto(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
-            if (salva.EnsaiosItem10[1] == true)
-            {
-                MessageBox.Show("EM BREVE!");
-                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-            }
-            if (salva.EnsaiosItem10[2] == true)
-            {
-                MessageBox.Show("EM BREVE!");
-                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-            }
-            if (salva.EnsaiosItem10[3] == true)
-            {
-                Ensaio_Largura_de_Faixa_a_20db(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
-                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
-            }
             if (salva.EnsaiosItem10[4] == true)
             {
-                Ensaio_Espurios(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                MessageBox.Show("EM BREVE!");
+                Ensaio_Numero_de_Canais(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+            }
+            if (salva.EnsaiosItem10[5] == true)
+            {
+                MessageBox.Show("Iniciando ensaio de numero de ocupações, coloque o dispositivo em modo de salto");
+                Ensaio_Numero_de_Ocupações(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
 
+            }
+            if (salva.EnsaiosItem10[6] == true)
+            {
+                MessageBox.Show("EM BREVE!");
+                tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
+
+            }
+        }
+
+        public void Ensaio_Numero_de_Canais(string freqI, string freqF, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = CarregaAtt();
+            RefLevel = CarregaRefLevel();
+            marca = config.GetMarca();
+            if (marca != "NA")
+            {
+                switch (ensaioAtual)
+                {
+                    case "GFSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI4 DQPSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "8DPSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                }
+            }
+        }
+
+        public void Ensaio_Numero_de_Ocupações(string valFreq, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = CarregaAtt();
+            RefLevel = CarregaRefLevel();
+            marca = config.GetMarca();
+            if (marca != "NA")
+            {
+                switch (ensaioAtual)
+                {
+                    case "GFSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI4 DQPSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "8DPSK":
+                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                }
             }
         }
 
@@ -880,13 +1054,27 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
+                        
+                        if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
+                        {
+                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
+                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                        }
+
                         break;
-                    case "PI/4 DQPSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
+                    case "PI4 DQPSK":
+                        if (!radical.Separação_Entre_Canais_de_SaltoPIe8(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
+                        {
+                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
+                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                        }
                         break;
                     case "8DPSK":
-                        radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca);
+                        if (!radical.Separação_Entre_Canais_de_SaltoPIe8(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
+                        {
+                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
+                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                        }
                         break;
                 }
             }
@@ -985,9 +1173,9 @@ namespace Automacao_N9010A
                                             MessageBox.Show("Iniciando o Ensaio do GFSK, configure o aparelho");
                                             ListaDeEnsaios("GFSK", tl, config);
                                             continue;
-                                        case "PI/4 DQPSK":
+                                        case "PI4 DQPSK":
                                             MessageBox.Show("Iniciando o Ensaio do PI/4 DQPSK, configure o aparelho");
-                                            ListaDeEnsaios("PI/4 DQPSK", tl, config);
+                                            ListaDeEnsaios("PI4 DQPSK", tl, config);
                                             continue;
                                         case "8DPSK":
                                             MessageBox.Show("Iniciando o Ensaio do 8DPSK, configure o aparelho");
@@ -1029,7 +1217,6 @@ namespace Automacao_N9010A
             SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\Ratinho.wav");
             simpleSound.Play();
         }
-
         private void BtSelTodos_Click(object sender, EventArgs e)
         {
             if (CBSelTipo.Text == "Wifi")
@@ -1145,8 +1332,6 @@ namespace Automacao_N9010A
             }
         }
 
-        public string LAP { get; set; }
-
         private void CBSelTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             SalvaTipo();
@@ -1172,6 +1357,7 @@ namespace Automacao_N9010A
         public string Marca { get; set; }
         public bool AtivarPrints { get; set; }
         public int SelTipo { get; set; }
-        public string[] FreqEspurios { get; set; }
+        public string[] FreqEspuriosWifi { get; set; }
+        public string[] FreqEspuriosBT { get; set; }
     }
 }
