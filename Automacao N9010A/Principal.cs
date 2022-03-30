@@ -82,6 +82,11 @@ namespace Automacao_N9010A
                     ""2402"",
                     ""2480"",
                     ""18000""
+                    ],
+                  ""FreqNumeroCanaisDeSalto"": [
+                    ""2400"",
+                    ""2400.5"",
+                    ""2483.5""
                     ]
                 }
                 ";
@@ -136,6 +141,14 @@ namespace Automacao_N9010A
             salva = JsonSerializer.Deserialize<Save>(jsonString);
 
             return salva.FreqEspuriosBT[i];
+        }
+
+        public string CarregaFreqNCS(int i)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            return salva.FreqNumeroCanaisDeSalto[i];
         }
 
         public void SalvaTipo()
@@ -201,6 +214,19 @@ namespace Automacao_N9010A
             salva.Marca = marca;
             salva.Att = att;
             salva.AtivarPrints = gPrints;
+            string novoSave = JsonSerializer.Serialize(salva);
+            File.WriteAllText(caminhoJson, novoSave);
+        }
+
+
+        public void SalvaConfigNCS(string freqInicial, string freqMeio, string freqFinal)
+        {
+            jsonString = File.ReadAllText(caminhoJson);
+            salva = JsonSerializer.Deserialize<Save>(jsonString);
+
+            salva.FreqNumeroCanaisDeSalto[0] = freqInicial;
+            salva.FreqNumeroCanaisDeSalto[1] = freqMeio;
+            salva.FreqNumeroCanaisDeSalto[2] = freqFinal;
             string novoSave = JsonSerializer.Serialize(salva);
             File.WriteAllText(caminhoJson, novoSave);
         }
@@ -770,16 +796,19 @@ namespace Automacao_N9010A
                     switch (i)
                     {
                         case 0:
+                            MessageBox.Show("Selecione no aparelho a frequencia Inicial");
                             Ensaio_Espurios(salva.FreqEspuriosWifi[0], salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
                             break;
                         case 1:
                             Ensaio_Espurios(Convert.ToString(Convert.ToInt32(salva.FreqEspuriosWifi[1]) - 100), salva.FreqEspuriosWifi[1], TextBoxIP.Text, ensaioAtual, config);
                             break;
                         case 2:
+                            MessageBox.Show("Selecione no aparelho a frequencia final");
                             Ensaio_Espurios(salva.FreqEspuriosWifi[2], Convert.ToString(100 + Convert.ToInt32(salva.FreqEspuriosWifi[2])), TextBoxIP.Text, ensaioAtual, config);
                             break;
                         case 3:
                             Ensaio_Espurios(salva.FreqEspuriosWifi[2], salva.FreqEspuriosWifi[3], TextBoxIP.Text, ensaioAtual, config);
+                            MessageBox.Show("Terminando ensaio de Espurios, volte pra frequencia de ensaio");
                             break;
 
                     }
@@ -848,6 +877,7 @@ namespace Automacao_N9010A
                             break;
                         case 3:
                             Ensaio_Espurios(salva.FreqEspuriosBT[2], salva.FreqEspuriosBT[3], TextBoxIP.Text, ensaioAtual, config);
+                            MessageBox.Show("Terminando ensaio de Espurios, volte pra frequencia de ensaio");
                             break;
                     }
                 }
@@ -861,8 +891,8 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem10[4] == true)
             {
-                MessageBox.Show("EM BREVE!");
-                Ensaio_Numero_de_Canais(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                MessageBox.Show("Iniciando Ensaio de numero de Canais de Salto, coloque o dispositivo em modo salto!");
+                Ensaio_Numero_de_Canais(salva.FreqNumeroCanaisDeSalto[0], salva.FreqNumeroCanaisDeSalto[1], salva.FreqNumeroCanaisDeSalto[2], TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[5] == true)
@@ -874,13 +904,15 @@ namespace Automacao_N9010A
             }
             if (salva.EnsaiosItem10[6] == true)
             {
-                MessageBox.Show("EM BREVE!");
+                MessageBox.Show("Iniciando ensaio de Tempo de Ocupação, coloque o dispositivo em modo de salto");
+                //Ensaio_Tempo_de_Ocupação(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
 
             }
         }
 
-        public void Ensaio_Numero_de_Canais(string freqI, string freqF, string ip, string ensaioAtual, Configurações config)
+        /*
+        public void Ensaio_Tempo_de_Ocupação(string valFreq, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
             Att = CarregaAtt();
@@ -891,13 +923,37 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
                         break;
                     case "PI4 DQPSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        break;
+                    case "8DPSK":   
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        break;
+                }
+            }
+        }
+        */
+
+        public void Ensaio_Numero_de_Canais(string freqI, string freqF, string freqM, string ip, string ensaioAtual, Configurações config)
+        {
+            radical = new AutomacaoN9010A();
+            Att = CarregaAtt();
+            RefLevel = CarregaRefLevel();
+            marca = config.GetMarca();
+            if (marca != "NA")
+            {
+                switch (ensaioAtual)
+                {
+                    case "GFSK":
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        break;
+                    case "PI4 DQPSK":
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "8DPSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                 }
             }
@@ -1359,5 +1415,6 @@ namespace Automacao_N9010A
         public int SelTipo { get; set; }
         public string[] FreqEspuriosWifi { get; set; }
         public string[] FreqEspuriosBT { get; set; }
+        public string[] FreqNumeroCanaisDeSalto { get; set; }
     }
 }

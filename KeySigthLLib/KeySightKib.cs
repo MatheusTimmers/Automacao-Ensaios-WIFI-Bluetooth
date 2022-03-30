@@ -52,7 +52,40 @@ namespace MatheusProductions.KeysightLib
             return File.Create(nomePasta);
         }
 
-
+        /*
+        public static void Pega_Salva_MarkerTempodeOcupação(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string nome)
+        {
+            // Inicia as variaveis do marker, com valores padrao para entrar no While
+            double New_markerX = 0;
+            double New_markerY = 0;
+            //Criar um while que define
+            //o o marker para o Peak search e pegando o X e Y
+            //E testa se esses valores não mudaram em 10 segundos
+            // -----------------------------------------------------------
+            
+            instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
+            while (!TestaSeTaNaBeira(instr, 1))
+            {
+                instr.WriteString("CALC1:MARK1:X?");
+                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                instr.WriteString("CALC1:MARK1:Y?");
+                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                instr.WriteString($"CALC1:MARK1:X {New_markerX - 10}");
+                New_markerX -= 10;
+            }
+            
+            SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
+        }
+        /*
+        public static bool TestaSeTaNaBeira(FormattedIO488 instr ,int i,double posicaoMarkerAntigo, double potenciaMarkerAntigo)
+        {
+            double aux = 0;
+            instr.WriteString($"CALC1:MARK1:X {posicaoMarkerAntigo - 10}");
+            aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            if (potenciaMarkerAntigo - )
+            return true;
+        }
+        */
         public static FileStream CriaArquivoSemSenha(string nomeArquivo, string nomePasta = "")
         {
             nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
@@ -107,6 +140,14 @@ namespace MatheusProductions.KeysightLib
                 }
             }
             return cont - 1;
+        }
+
+
+        public static double MedeMarker(FormattedIO488 instr)
+        {
+            instr.WriteString($"CALC1:MARK1 ON");
+            instr.WriteString($"CALC1:MARK1:Y?");
+            return (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
         }
 
         public static bool TestaAltura(FormattedIO488 instr, int cont)
@@ -305,7 +346,6 @@ namespace MatheusProductions.KeysightLib
             SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
 
-
         public static void AchaSinalZeroSpan(FormattedIO488 instr)
         {
             double markerX = 0;
@@ -409,7 +449,6 @@ namespace MatheusProductions.KeysightLib
             }
         }
         
-
         public static bool Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
         {
             for (int i = 1; i <= numMarkers; i++)
@@ -462,7 +501,6 @@ namespace MatheusProductions.KeysightLib
 
 
         }
-
 
         public class NetworkShareAccesser : IDisposable
         {
