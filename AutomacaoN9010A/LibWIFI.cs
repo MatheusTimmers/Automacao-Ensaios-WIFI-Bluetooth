@@ -29,7 +29,7 @@ namespace MatheusProductions.AutomacaoN9010A
             
             rm = new ResourceManager();
             instr = new FormattedIO488();
-            return Keysight.Inicializacao(instr, rm, "TCPIP0::" + ip + "::hislip0::INSTR");
+            return Keysight.Inicializacao(instr, rm, "TCPIP0::" + ip + "::INSTR");
         }
 
         public void Largura_6dB(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
