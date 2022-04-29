@@ -30,7 +30,7 @@ namespace Automacao_N9010A
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            this.ListaTecnologias = new System.Windows.Forms.CheckedListBox();
+            this.ListaTecnologiasWifi = new System.Windows.Forms.CheckedListBox();
             this.BtConfirmar = new System.Windows.Forms.Button();
             this.LFreq = new System.Windows.Forms.Label();
             this.TextBoxFreqC = new System.Windows.Forms.TextBox();
@@ -44,20 +44,23 @@ namespace Automacao_N9010A
             this.BtItem11 = new System.Windows.Forms.Button();
             this.BtItem12 = new System.Windows.Forms.Button();
             this.TextBoxTecnologias = new System.Windows.Forms.GroupBox();
+            this.ListaTecnologiasBT = new System.Windows.Forms.CheckedListBox();
             this.BtSelTodos = new System.Windows.Forms.Button();
             this.GrupoDasNormas = new System.Windows.Forms.GroupBox();
             this.BtConectado = new System.Windows.Forms.Button();
             this.LConecta = new System.Windows.Forms.Label();
+            this.LSelTipo = new System.Windows.Forms.Label();
+            this.CBSelTipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.LogoLabelo)).BeginInit();
             this.TextBoxTecnologias.SuspendLayout();
             this.GrupoDasNormas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ListaTecnologias
+            // ListaTecnologiasWifi
             // 
-            this.ListaTecnologias.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ListaTecnologias.FormattingEnabled = true;
-            this.ListaTecnologias.Items.AddRange(new object[] {
+            this.ListaTecnologiasWifi.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ListaTecnologiasWifi.FormattingEnabled = true;
+            this.ListaTecnologiasWifi.Items.AddRange(new object[] {
             "Bluetooth Low Energy",
             "802.11a",
             "802.11b",
@@ -72,17 +75,17 @@ namespace Automacao_N9010A
             "802.11ax (40)",
             "802.11ax (80)",
             "802.11ax (160)"});
-            this.ListaTecnologias.Location = new System.Drawing.Point(12, 26);
-            this.ListaTecnologias.Name = "ListaTecnologias";
-            this.ListaTecnologias.Size = new System.Drawing.Size(361, 174);
-            this.ListaTecnologias.TabIndex = 0;
+            this.ListaTecnologiasWifi.Location = new System.Drawing.Point(12, 26);
+            this.ListaTecnologiasWifi.Name = "ListaTecnologiasWifi";
+            this.ListaTecnologiasWifi.Size = new System.Drawing.Size(361, 174);
+            this.ListaTecnologiasWifi.TabIndex = 0;
             // 
             // BtConfirmar
             // 
             this.BtConfirmar.BackColor = System.Drawing.SystemColors.Control;
             this.BtConfirmar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtConfirmar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BtConfirmar.Location = new System.Drawing.Point(277, 533);
+            this.BtConfirmar.Location = new System.Drawing.Point(277, 556);
             this.BtConfirmar.Name = "BtConfirmar";
             this.BtConfirmar.Size = new System.Drawing.Size(108, 33);
             this.BtConfirmar.TabIndex = 6;
@@ -123,6 +126,11 @@ namespace Automacao_N9010A
             // 
             // TextBoxIP
             // 
+            this.TextBoxIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "192.168.0.158",
+            "192.168.1.100"});
+            this.TextBoxIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TextBoxIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBoxIP.Location = new System.Drawing.Point(160, 102);
             this.TextBoxIP.Name = "TextBoxIP";
             this.TextBoxIP.Size = new System.Drawing.Size(117, 22);
@@ -217,17 +225,31 @@ namespace Automacao_N9010A
             // 
             // TextBoxTecnologias
             // 
+            this.TextBoxTecnologias.Controls.Add(this.ListaTecnologiasBT);
             this.TextBoxTecnologias.Controls.Add(this.BtSelTodos);
             this.TextBoxTecnologias.Controls.Add(this.BtConfig);
             this.TextBoxTecnologias.Controls.Add(this.BtLimpar);
-            this.TextBoxTecnologias.Controls.Add(this.ListaTecnologias);
+            this.TextBoxTecnologias.Controls.Add(this.ListaTecnologiasWifi);
             this.TextBoxTecnologias.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxTecnologias.Location = new System.Drawing.Point(12, 180);
+            this.TextBoxTecnologias.Location = new System.Drawing.Point(12, 218);
             this.TextBoxTecnologias.Name = "TextBoxTecnologias";
             this.TextBoxTecnologias.Size = new System.Drawing.Size(379, 248);
             this.TextBoxTecnologias.TabIndex = 21;
             this.TextBoxTecnologias.TabStop = false;
             this.TextBoxTecnologias.Text = "Tecnologias para ensaio";
+            // 
+            // ListaTecnologiasBT
+            // 
+            this.ListaTecnologiasBT.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ListaTecnologiasBT.FormattingEnabled = true;
+            this.ListaTecnologiasBT.Items.AddRange(new object[] {
+            "GFSK",
+            "PI4 DQPSK",
+            "8DPSK"});
+            this.ListaTecnologiasBT.Location = new System.Drawing.Point(12, 26);
+            this.ListaTecnologiasBT.Name = "ListaTecnologiasBT";
+            this.ListaTecnologiasBT.Size = new System.Drawing.Size(361, 174);
+            this.ListaTecnologiasBT.TabIndex = 28;
             // 
             // BtSelTodos
             // 
@@ -248,7 +270,7 @@ namespace Automacao_N9010A
             this.GrupoDasNormas.Controls.Add(this.BtItem10);
             this.GrupoDasNormas.Controls.Add(this.BtItem11);
             this.GrupoDasNormas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GrupoDasNormas.Location = new System.Drawing.Point(12, 446);
+            this.GrupoDasNormas.Location = new System.Drawing.Point(12, 479);
             this.GrupoDasNormas.Name = "GrupoDasNormas";
             this.GrupoDasNormas.Size = new System.Drawing.Size(379, 65);
             this.GrupoDasNormas.TabIndex = 22;
@@ -280,6 +302,31 @@ namespace Automacao_N9010A
             this.LConecta.TabIndex = 24;
             this.LConecta.Text = "SEM CONEXÃO";
             // 
+            // LSelTipo
+            // 
+            this.LSelTipo.AutoSize = true;
+            this.LSelTipo.BackColor = System.Drawing.Color.Transparent;
+            this.LSelTipo.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LSelTipo.ForeColor = System.Drawing.Color.Black;
+            this.LSelTipo.Location = new System.Drawing.Point(21, 174);
+            this.LSelTipo.Name = "LSelTipo";
+            this.LSelTipo.Size = new System.Drawing.Size(165, 13);
+            this.LSelTipo.TabIndex = 26;
+            this.LSelTipo.Text = "Selecione o Tipo de Ensaio:";
+            // 
+            // CBSelTipo
+            // 
+            this.CBSelTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBSelTipo.FormattingEnabled = true;
+            this.CBSelTipo.Items.AddRange(new object[] {
+            "Wifi",
+            "Bluetooth"});
+            this.CBSelTipo.Location = new System.Drawing.Point(21, 190);
+            this.CBSelTipo.Name = "CBSelTipo";
+            this.CBSelTipo.Size = new System.Drawing.Size(364, 22);
+            this.CBSelTipo.TabIndex = 27;
+            this.CBSelTipo.SelectedIndexChanged += new System.EventHandler(this.CBSelTipo_SelectedIndexChanged);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -287,7 +334,9 @@ namespace Automacao_N9010A
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(403, 588);
+            this.ClientSize = new System.Drawing.Size(403, 598);
+            this.Controls.Add(this.CBSelTipo);
+            this.Controls.Add(this.LSelTipo);
             this.Controls.Add(this.LConecta);
             this.Controls.Add(this.BtConectado);
             this.Controls.Add(this.BtConfirmar);
@@ -319,7 +368,7 @@ namespace Automacao_N9010A
         #endregion
 
 
-        private System.Windows.Forms.CheckedListBox ListaTecnologias;
+        private System.Windows.Forms.CheckedListBox ListaTecnologiasWifi;
         private System.Windows.Forms.Button BtConfirmar;
         private System.Windows.Forms.Label LFreq;
         private System.Windows.Forms.TextBox TextBoxFreqC;
@@ -337,6 +386,9 @@ namespace Automacao_N9010A
         private System.Windows.Forms.GroupBox GrupoDasNormas;
         private System.Windows.Forms.Button BtConectado;
         private System.Windows.Forms.Label LConecta;
+        private System.Windows.Forms.Label LSelTipo;
+        private System.Windows.Forms.ComboBox CBSelTipo;
+        private System.Windows.Forms.CheckedListBox ListaTecnologiasBT;
     }
 }
 

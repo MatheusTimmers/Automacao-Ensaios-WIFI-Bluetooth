@@ -29,3 +29,6 @@ C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\D
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\ref\Automacao WIFI.dll
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.pdb
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.genruntimeconfig.cache
+C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.dll
+C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.pdb
+C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Item_10.resources

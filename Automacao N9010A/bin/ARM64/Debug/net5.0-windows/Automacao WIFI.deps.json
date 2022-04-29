@@ -9,7 +9,8 @@
       "Automacao WIFI/1.0.0": {
         "dependencies": {
           "AutomacaoN9010A": "1.0.0",
-          "KeySightLib": "1.0.0"
+          "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0"
         },
         "runtime": {
           "Automacao WIFI.dll": {}
@@ -26,6 +27,7 @@
       "AutomacaoN9010A/1.0.0": {
         "dependencies": {
           "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0",
           "RsInstrument": "1.15.0"
         },
         "runtime": {
@@ -38,6 +40,14 @@
         },
         "runtime": {
           "KeySightLib.dll": {}
+        }
+      },
+      "RodheLib/1.0.0": {
+        "dependencies": {
+          "RsInstrument": "1.15.0"
+        },
+        "runtime": {
+          "RodheLib.dll": {}
         }
       },
       "Ivi.Visa.Interop/7.1.1.0": {
@@ -69,6 +79,11 @@
       "sha512": ""
     },
     "KeySightLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RodheLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

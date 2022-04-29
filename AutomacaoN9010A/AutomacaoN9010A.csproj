@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KeySigthLLib\KeySightLib.csproj" />
+    <ProjectReference Include="..\RodheLib\RodheLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

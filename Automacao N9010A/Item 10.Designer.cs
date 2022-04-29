@@ -70,11 +70,13 @@ namespace Automacao_N9010A
             // 
             this.ListaEnsaiosItem10.FormattingEnabled = true;
             this.ListaEnsaiosItem10.Items.AddRange(new object[] {
+            "Largura de Faixa a 20 dB",
+            "Potência de pico máxima",
+            "Emissão Fora de Faixa",
             "Separação de Canais de Salto",
             "Numero de Frequencia de Salto",
-            "Tempo de Ocupação",
-            "Largura de Faixa a 20 dB",
-            "Emissão Fora de Faixa"});
+            "Numero de Ocupações",
+            "Tempo de Ocupação"});
             this.ListaEnsaiosItem10.Location = new System.Drawing.Point(13, 55);
             this.ListaEnsaiosItem10.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ListaEnsaiosItem10.Name = "ListaEnsaiosItem10";
@@ -105,7 +107,9 @@ namespace Automacao_N9010A
             this.Controls.Add(this.BtSelTodos);
             this.Controls.Add(this.ListaEnsaiosItem10);
             this.Controls.Add(this.LEnsaiosItem10);
+            this.MaximizeBox = false;
             this.Name = "Item_10";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item_10";
             this.ResumeLayout(false);
             this.PerformLayout();

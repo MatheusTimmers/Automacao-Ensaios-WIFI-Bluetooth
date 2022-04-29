@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="VisaComLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>13</VersionMinor>
+      <VersionMajor>5</VersionMajor>
+      <Guid>db8cbf00-d6d3-11d4-aa51-00a024ee30bd</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RsInstrument" Version="1.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Ivi.Driver">
+      <HintPath>..\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Scope">
+      <HintPath>..\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Scope.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Visa.Interop">
+      <HintPath>..\IVI Foundation\VISA\VisaCom64\Primary Interop Assemblies\Ivi.Visa.Interop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
