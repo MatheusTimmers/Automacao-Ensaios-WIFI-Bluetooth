@@ -52,40 +52,76 @@ namespace MatheusProductions.KeysightLib
             return File.Create(nomePasta);
         }
 
-        /*
+        
         public static void Pega_Salva_MarkerTempodeOcupação(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string nome)
         {
-            // Inicia as variaveis do marker, com valores padrao para entrar no While
             double New_markerX = 0;
             double New_markerY = 0;
-            //Criar um while que define
-            //o o marker para o Peak search e pegando o X e Y
-            //E testa se esses valores não mudaram em 10 segundos
-            // -----------------------------------------------------------
-            
-            instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
-            while (!TestaSeTaNaBeira(instr, 1))
-            {
-                instr.WriteString("CALC1:MARK1:X?");
-                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                instr.WriteString("CALC1:MARK1:Y?");
-                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                instr.WriteString($"CALC1:MARK1:X {New_markerX - 10}");
-                New_markerX -= 10;
-            }
-            
+
+            TestaSeTaNaBeiraDireita(instr, ref New_markerX, ref New_markerY);
+            TestaSeTaNaBeiraEsquerda(instr, ref New_markerX, ref New_markerY);
             SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
-        /*
-        public static bool TestaSeTaNaBeira(FormattedIO488 instr ,int i,double posicaoMarkerAntigo, double potenciaMarkerAntigo)
+        public static void TestaSeTaNaBeiraDireita(FormattedIO488 instr, ref double posicaoMarker, ref double potenciaMarker)
         {
-            double aux = 0;
-            instr.WriteString($"CALC1:MARK1:X {posicaoMarkerAntigo - 10}");
-            aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            if (potenciaMarkerAntigo - )
-            return true;
+            bool aux = false;
+            double novoY, novoX;
+            instr.WriteString($"CALC1:MARK1:MAX?");
+            instr.WriteString("CALC1:MARK1:X?");
+            posicaoMarker = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString("CALC1:MARK1:Y?");
+            potenciaMarker = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            while (!aux)
+            {
+                instr.WriteString($"CALC1:MARK1:X {posicaoMarker - 10}");
+                instr.WriteString("CALC1:MARK1:X?");
+                novoX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                instr.WriteString("CALC1:MARK1:Y?");
+                novoY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                if ((potenciaMarker - novoY) > 6)
+                {
+                    instr.WriteString($"CALC1:MARK1:X {posicaoMarker + 10}");
+                    aux = true;
+                }
+                else
+                {
+                    potenciaMarker = novoY;
+                    posicaoMarker = novoX;
+                    aux = false;
+                }
+            }
         }
-        */
+
+        public static void TestaSeTaNaBeiraEsquerda(FormattedIO488 instr,ref double posicaoMarker, ref double potenciaMarker)
+        {
+            bool aux = false;
+            double novoY, novoX;
+            instr.WriteString($"CALC1:MARK2:MAX?");
+            instr.WriteString("CALC1:MARK2:X?");
+            posicaoMarker = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString("CALC1:MARK2:Y?");
+            potenciaMarker = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            while (!aux)
+            {
+                instr.WriteString($"CALC1:MARK2:X {posicaoMarker + 10}");
+                instr.WriteString("CALC1:MARK2:X?");
+                novoX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                instr.WriteString("CALC1:MARK2:Y?");
+                novoY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                if ((potenciaMarker - novoY) > 6)
+                {
+                    instr.WriteString($"CALC1:MARK2:X {posicaoMarker - 10}");
+                    aux = true;
+                }
+                else
+                {
+                    potenciaMarker = novoY;
+                    posicaoMarker = novoX;
+                    aux = false;
+                }
+            }
+        }
+
         public static FileStream CriaArquivoSemSenha(string nomeArquivo, string nomePasta = "")
         {
             nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
@@ -143,7 +179,7 @@ namespace MatheusProductions.KeysightLib
         }
 
 
-        public static double MedeMarker(FormattedIO488 instr)
+        public static double GetMarker(FormattedIO488 instr)
         {
             instr.WriteString($"CALC1:MARK1 ON");
             instr.WriteString($"CALC1:MARK1:Y?");

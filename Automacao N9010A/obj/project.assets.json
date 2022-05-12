@@ -11,21 +11,6 @@
           "lib/netcoreapp3.1/RsInstrument.dll": {}
         }
       },
-      "AutomacaoN9010A/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "KeySightLib": "1.0.0",
-          "RodheLib": "1.0.0",
-          "RsInstrument": "1.15.0"
-        },
-        "compile": {
-          "bin/placeholder/AutomacaoN9010A.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/AutomacaoN9010A.dll": {}
-        }
-      },
       "KeySightLib/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -84,11 +69,6 @@
         "rsinstrument.nuspec"
       ]
     },
-    "AutomacaoN9010A/1.0.0": {
-      "type": "project",
-      "path": "../AutomacaoN9010A/AutomacaoN9010A.csproj",
-      "msbuildProject": "../AutomacaoN9010A/AutomacaoN9010A.csproj"
-    },
     "KeySightLib/1.0.0": {
       "type": "project",
       "path": "../KeySigthLLib/KeySightLib.csproj",
@@ -102,7 +82,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "AutomacaoN9010A >= 1.0.0",
       "KeySightLib >= 1.0.0",
       "RodheLib >= 1.0.0"
     ]
@@ -139,9 +118,6 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
-              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
-            },
             "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
               "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
             },

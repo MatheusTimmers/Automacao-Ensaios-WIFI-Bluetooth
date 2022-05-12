@@ -33,9 +33,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutomacaoN9010A\AutomacaoN9010A.csproj" />
     <ProjectReference Include="..\KeySigthLLib\KeySightLib.csproj" />
     <ProjectReference Include="..\RodheLib\RodheLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Ivi.Driver">
+      <HintPath>..\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Scope">
+      <HintPath>..\IVI Foundation\IVI\Microsoft.NET\Framework64\v2.0.50727\IviFoundationSharedComponents 2.0.0\Ivi.Scope.dll</HintPath>
+    </Reference>
+    <Reference Include="Ivi.Visa.Interop">
+      <HintPath>..\..\Automacao Radios 943\IVI Foundation\VISA\VisaCom64\Primary Interop Assemblies\Ivi.Visa.Interop.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

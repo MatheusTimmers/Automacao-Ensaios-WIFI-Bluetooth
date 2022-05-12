@@ -905,13 +905,13 @@ namespace Automacao_N9010A
             if (salva.EnsaiosItem10[6] == true)
             {
                 MessageBox.Show("Iniciando ensaio de Tempo de Ocupação, coloque o dispositivo em modo de salto");
-                //Ensaio_Tempo_de_Ocupação(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                Ensaio_Tempo_de_Ocupação(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
 
             }
         }
 
-        /*
+       
         public void Ensaio_Tempo_de_Ocupação(string valFreq, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
@@ -923,18 +923,17 @@ namespace Automacao_N9010A
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                     case "PI4 DQPSK":
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(),  marca);
                         break;
                     case "8DPSK":   
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
                         break;
                 }
             }
         }
-        */
 
         public void Ensaio_Numero_de_Canais(string freqI, string freqF, string freqM, string ip, string ensaioAtual, Configurações config)
         {
