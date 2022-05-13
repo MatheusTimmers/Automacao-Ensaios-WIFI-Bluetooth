@@ -2,19 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <Platforms>AnyCPU;x64;ARM64</Platforms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <COMReference Include="VisaComLib">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>13</VersionMinor>
-      <VersionMajor>5</VersionMajor>
-      <Guid>db8cbf00-d6d3-11d4-aa51-00a024ee30bd</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="RsInstrument" Version="1.15.0" />

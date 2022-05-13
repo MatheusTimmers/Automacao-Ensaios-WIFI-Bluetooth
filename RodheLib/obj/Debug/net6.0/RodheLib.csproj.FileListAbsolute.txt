@@ -10,8 +10,6 @@ C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\bin\Debug\net6.0\Iv
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\bin\Debug\net6.0\Ivi.Visa.Interop.xml
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\bin\Debug\net6.0\Ivi.ConfigServer.xml
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\RodheLib.csproj.AssemblyReference.cache
-C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\Interop.VisaComLib.dll
-C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\RodheLib.csproj.ResolveComReference.cache
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\RodheLib.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\RodheLib.AssemblyInfoInputs.cache
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\RodheLib\obj\Debug\net6.0\RodheLib.AssemblyInfo.cs
