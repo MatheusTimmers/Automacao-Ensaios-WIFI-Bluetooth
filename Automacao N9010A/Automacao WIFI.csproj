@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Automacao_N9010A</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64;ARM64</Platforms>
@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KeySigthLLib\KeySightLib.csproj" />
+    <ProjectReference Include="..\LibPrc\LibPrc.csproj" />
     <ProjectReference Include="..\RodheLib\RodheLib.csproj" />
   </ItemGroup>
 

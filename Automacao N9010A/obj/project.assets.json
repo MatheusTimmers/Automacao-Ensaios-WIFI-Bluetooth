@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {
+    "net6.0-windows7.0": {
       "RsInstrument/1.15.0": {
         "type": "package",
         "compile": {
@@ -13,7 +13,7 @@
       },
       "KeySightLib/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "RsInstrument": "1.15.0"
         },
@@ -24,9 +24,23 @@
           "bin/placeholder/KeySightLib.dll": {}
         }
       },
+      "LibPrc/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LibPrc.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LibPrc.dll": {}
+        }
+      },
       "RodheLib/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "RsInstrument": "1.15.0"
         },
@@ -74,6 +88,11 @@
       "path": "../KeySigthLLib/KeySightLib.csproj",
       "msbuildProject": "../KeySigthLLib/KeySightLib.csproj"
     },
+    "LibPrc/1.0.0": {
+      "type": "project",
+      "path": "../LibPrc/LibPrc.csproj",
+      "msbuildProject": "../LibPrc/LibPrc.csproj"
+    },
     "RodheLib/1.0.0": {
       "type": "project",
       "path": "../RodheLib/RodheLib.csproj",
@@ -81,8 +100,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": [
+    "net6.0-windows7.0": [
       "KeySightLib >= 1.0.0",
+      "LibPrc >= 1.0.0",
       "RodheLib >= 1.0.0"
     ]
   },
@@ -108,18 +128,21 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows7.0"
+        "net6.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0-windows7.0": {
-          "targetAlias": "net5.0-windows",
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
           "projectReferences": {
             "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
               "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
+            },
+            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\LibPrc\\LibPrc.csproj": {
+              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\LibPrc\\LibPrc.csproj"
             },
             "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
               "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj"
@@ -134,8 +157,8 @@
       }
     },
     "frameworks": {
-      "net5.0-windows7.0": {
-        "targetAlias": "net5.0-windows",
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
         "imports": [
           "net461",
           "net462",

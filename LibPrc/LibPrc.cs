@@ -26,7 +26,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         public bool ConectaIP(string ip)
         {
-            
+
             rm = new ResourceManager();
             instr = new FormattedIO488();
             return Keysight.Inicializacao(instr, rm, "TCPIP0::" + ip + "::INSTR");
@@ -36,13 +36,13 @@ namespace MatheusProductions.AutomacaoN9010A
         {
             ConectaIP(ip);
 
-            
-      
 
-            try 
+
+
+            try
             {
-                instr.WriteString("*RST;*CLS"); 
-                instr.WriteString("INIT:CONT ON"); 
+                instr.WriteString("*RST;*CLS");
+                instr.WriteString("INIT:CONT ON");
                 instr.WriteString("DISP:ENAB ON");
                 // Seta as configurções basicas
                 double Span = int.Parse(largura_Banda) * 1.5;
@@ -144,7 +144,7 @@ namespace MatheusProductions.AutomacaoN9010A
             ConectaIP(ip);
 
             try
-            {   
+            {
                 instr.WriteString("*RST;*CLS");
                 instr.WriteString("INIT:CONT ON");
                 instr.WriteString("DISP:ENAB ON");
@@ -191,14 +191,14 @@ namespace MatheusProductions.AutomacaoN9010A
                     {
                         return false;
                     }
-                    
+
                 }
-                
+
 
             }
             catch (RsInstrumentException e)
             {
-                
+
                 Console.WriteLine(e.Message);
                 return false;
             }
@@ -234,7 +234,7 @@ namespace MatheusProductions.AutomacaoN9010A
                         instr.WriteString("INIT:OFF");
                         potenciaMarker = Keysight.GetMarker(instr);
                     }
-                    Keysight.Pega_Salva_MarkerTempodeOcupação(instr, nomeArquivo, nomePasta, valFreq, nome );
+                    Keysight.Pega_Salva_MarkerTempodeOcupação(instr, nomeArquivo, nomePasta, valFreq, nome);
                     Thread.Sleep(15000);
                     Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 }
@@ -252,7 +252,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
 
 
-        public void TiraPrint(string valFreq, string ip,string nome, bool tPrints, string marca)
+        public void TiraPrint(string valFreq, string ip, string nome, bool tPrints, string marca)
         {
             ConectaIP(ip);
             if (marca == "Agilent")
@@ -263,7 +263,7 @@ namespace MatheusProductions.AutomacaoN9010A
             {
                 Rodhe.SalvaPrints(instr, @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto", nome + " " + valFreq, tPrints, "WMF");
             }
-            
+
         }
 
         public bool Separação_Entre_Canais_de_SaltoPIe8(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, int numMarkers, string marca)
@@ -319,18 +319,18 @@ namespace MatheusProductions.AutomacaoN9010A
                     {
                         return false;
                     }
-                    
+
                 }
 
 
             }
-            catch 
+            catch
             {
                 return false;
             }
         }
 
-        public void Numero_De_Frequencia_de_Salto(string valFreqI, string valFreqM, string valFreqF,  string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
+        public void Numero_De_Frequencia_de_Salto(string valFreqI, string valFreqM, string valFreqF, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
 
             ConectaIP(ip);
@@ -360,7 +360,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 else
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Numero De Frequencia de Salto";
-                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel,  "100", "100", "ON", "MAXH", "POS", "SAN");
+                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -368,7 +368,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
-                    Rodhe.ConfiguraInstrSalto(instr, valFreqM, valFreqF, "Dbm", Att, RefLevel,  "100", "100", "ON", "MAXH", "POS", "SAN");
+                    Rodhe.ConfiguraInstrSalto(instr, valFreqM, valFreqF, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
@@ -441,7 +441,7 @@ namespace MatheusProductions.AutomacaoN9010A
         {
 
             ConectaIP(ip);
-           
+
             //"TCPIP0::192.168.1.100::hislip0::INSTR";
 
             try // Try o bloco para capturar qualquer RsInstrumentException()
@@ -480,7 +480,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
-                
+
             }
             catch (RsInstrumentException e)
             {
@@ -536,7 +536,7 @@ namespace MatheusProductions.AutomacaoN9010A
                         numMarkers = Keysight.ContaMarker(instr);
                     }
                     instr.WriteString("INIT:CONT OFF");
-                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints,"WMF");
+                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
             }
             catch (RsInstrumentException e)
@@ -647,7 +647,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     // -----------------------------------------------------------
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
-                
+
 
             }
             catch (RsInstrumentException e)
@@ -661,7 +661,7 @@ namespace MatheusProductions.AutomacaoN9010A
         {
             ConectaIP(ip);
 
-            
+
 
             try
             {
@@ -711,7 +711,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
                 // OBS: Será usado para ensaio o valor minimo permitido pela norma de acordo com o Item 9.1.8 (Opção 3) da 6506
-                
+
 
             }
             catch (RsInstrumentException e)
@@ -723,7 +723,7 @@ namespace MatheusProductions.AutomacaoN9010A
 
         public void Valor_médio_da_potência_máxima_de_saída(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
-            
+
             ConectaIP(ip);
 
             try
@@ -775,7 +775,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
                 // OBS: Será usado para ensaio o valor minimo permitido pela norma de acordo com o Item 9.1.8 (Opção 3) da 6506
-                
+
 
             }
             catch (RsInstrumentException e)
@@ -944,7 +944,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     // -----------------------------------------------------------
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
                 }
-                
+
             }
             catch (RsInstrumentException e)
             {
@@ -952,7 +952,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Espurios(string freqI, string freqF, string ip, string nome, string RefLevel, string Att, bool tPrints, string marca,string largura, string configFreq )
+        public void Espurios(string freqI, string freqF, string ip, string nome, string RefLevel, string Att, bool tPrints, string marca, string largura, string configFreq)
         {
             ConectaIP(ip);
 
@@ -967,7 +967,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\ESR26-101761\prints\Espurios";
                     string nomeArquivo = "Valores do ensaio.csv";
-                    Keysight.ConfiguraInstrSalto(instr, freqI, freqF, "Dbm", Att, RefLevel, "100", "300", "ON","MAXH", "POS", "SAN");
+                    Keysight.ConfiguraInstrSalto(instr, freqI, freqF, "Dbm", Att, RefLevel, "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     Thread.Sleep(5000);
@@ -986,7 +986,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.Pega_Salva_Marker_Espurios(instr, configFreq, nomeArquivo, nomePasta, freqI, freqF, largura, nome, 2);
                     // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + freqI + " " + freqF, tPrints, "WMF");
-                    
+
                 }
             }
             catch (RsInstrumentException e)
