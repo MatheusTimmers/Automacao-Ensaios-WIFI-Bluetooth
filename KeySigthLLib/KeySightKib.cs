@@ -384,7 +384,6 @@ namespace MatheusProductions.KeysightLib
 
         public static void AchaSinalZeroSpan(FormattedIO488 instr)
         {
-            double markerX = 0;
             double markerY = 0;
             while (markerY < -10)
             {
