@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj": {}
+    "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj": {
+    "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj",
+        "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
         "projectName": "Automacao WIFI",
-        "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj",
-        "packagesPath": "C:\\Users\\10087959\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\obj\\",
+        "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\10087959\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,14 +32,14 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
-                "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
+              "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
+                "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
               },
-              "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj": {
-                "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj"
+              "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
               },
-              "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj": {
-                "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj"
+              "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj"
               }
             }
           }
@@ -59,24 +63,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -85,21 +71,25 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
+    "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+        "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
         "projectName": "AutomacaoN9010A",
-        "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
-        "packagesPath": "C:\\Users\\10087959\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\obj\\",
+        "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\10087959\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -113,11 +103,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj": {
-                "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj"
+              "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
               },
-              "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj": {
-                "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj"
+              "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
+                "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj"
               }
             }
           }
@@ -147,40 +137,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj": {
+    "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj",
+        "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj",
         "projectName": "KeySightLib",
-        "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj",
-        "packagesPath": "C:\\Users\\10087959\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\obj\\",
+        "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\10087959\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -221,40 +201,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj": {
+    "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj",
+        "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj",
         "projectName": "RodheLib",
-        "projectPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj",
-        "packagesPath": "C:\\Users\\10087959\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\obj\\",
+        "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj",
+        "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\10087959\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -295,26 +265,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }

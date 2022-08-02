@@ -23,28 +23,3 @@ C:\Users\80400197\Documents\GitHub\Automacao-N9010A\AutomacaoN9010A\obj\ARM64\De
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.pdb
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\AutomacaoN9010A\bin\ARM64\Debug\net5.0\RodheLib.dll
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\AutomacaoN9010A\bin\ARM64\Debug\net5.0\RodheLib.pdb
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\AutomacaoN9010A.deps.json
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\AutomacaoN9010A.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\ref\AutomacaoN9010A.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\AutomacaoN9010A.pdb
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Driver.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Scope.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Visa.Interop.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\KeySightLib.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\RodheLib.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.ConfigServer.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\KeySightLib.pdb
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\RodheLib.pdb
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Driver.xml
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Scope.xml
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.Visa.Interop.xml
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\bin\ARM64\Debug\net5.0\Ivi.ConfigServer.xml
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.csproj.AssemblyReference.cache
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.AssemblyInfoInputs.cache
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.AssemblyInfo.cs
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.csproj.CoreCompileInputs.cache
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.csproj.CopyComplete
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\ref\AutomacaoN9010A.dll
-C:\Users\10087959\Documents\Visual Studio 2022\Automacao-Ensaios-WIFI-Bluetooth\AutomacaoN9010A\obj\ARM64\Debug\net5.0\AutomacaoN9010A.pdb

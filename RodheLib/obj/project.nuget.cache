@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "keqpDX/N5w3a/NaBEzRX8UxuEsgVLy9dC2ACxT5rd2bgGEkOAgvHsx/6pM/+XjkSpCM9qwoHDTkH257WUiiwwA==",
+  "dgSpecHash": "VcQbN3wZI/YT/f/Njg0W+/d4x/sdx0V69N1mgNAhPoModiTXnyT+cKBtw0CLpIWKFiAuY89/BzS8u5gLcAV3GA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj",
+  "projectFilePath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\10087959\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512",
-    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\80400197\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512"
   ],
   "logs": []
 }
