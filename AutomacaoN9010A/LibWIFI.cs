@@ -418,7 +418,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     aux /= 1000;
                     string val = Convert.ToString(aux);
-                    Rodhe.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
+                    Keysight.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                     Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 }
                 else
@@ -978,7 +978,7 @@ namespace MatheusProductions.AutomacaoN9010A
                 // Seta as configurções basicas
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\ESR26-101761\prints\Espurios";
+                    string nomePasta = @"\\A-N9010A-00151\prints\Espurios";
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstrSalto(instr, freqI, freqF, "Dbm", Att, RefLevel, "100", "300", "ON","MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ZW+233OqhJNCRpytU1ZoFzktcRSLIUAC7m8CdUAFBBIf3OS+bBB42PBliSRHldDY6L3y08qiFtEx1fyCmdsLQg==",
+  "dgSpecHash": "Xf8PebD2hpwYSU6XstcnvKM1j9glblHb1T3G40z19VoLQwiOYMoBcTG04OofnwrwP1vnMq+BNz2YMAYBtCpwUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
+  "projectFilePath": "C:\\Users\\10087959\\Documents\\Visual Studio 2022\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\80400197\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512"
+    "C:\\Users\\10087959\\.nuget\\packages\\rsinstrument\\1.15.0\\rsinstrument.1.15.0.nupkg.sha512",
+    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\10087959\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

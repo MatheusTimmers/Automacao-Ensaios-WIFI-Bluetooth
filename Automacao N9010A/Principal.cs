@@ -1270,8 +1270,8 @@ namespace Automacao_N9010A
 
         private static void TocaRatinho()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\Ratinho.wav");
-            simpleSound.Play();
+            //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\Ratinho.wav");
+            //simpleSound.Play();
         }
         private void BtSelTodos_Click(object sender, EventArgs e)
         {
