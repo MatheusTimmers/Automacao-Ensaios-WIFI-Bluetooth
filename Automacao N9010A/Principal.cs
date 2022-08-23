@@ -892,7 +892,7 @@ namespace Automacao_N9010A
             if (salva.EnsaiosItem10[4] == true)
             {
                 MessageBox.Show("Iniciando Ensaio de numero de Canais de Salto, coloque o dispositivo em modo salto!");
-                Ensaio_Numero_de_Canais(salva.FreqNumeroCanaisDeSalto[0], salva.FreqNumeroCanaisDeSalto[1], salva.FreqNumeroCanaisDeSalto[2], TextBoxIP.Text, ensaioAtual, config);
+                Ensaio_Numero_de_Canais(salva.FreqNumeroCanaisDeSalto[0], salva.FreqNumeroCanaisDeSalto[2], salva.FreqNumeroCanaisDeSalto[1], TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
             }
             if (salva.EnsaiosItem10[5] == true)
@@ -1113,23 +1113,35 @@ namespace Automacao_N9010A
                         
                         if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
-                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            }
+                            radical.GetMarkers(valFreq,ensaioAtual,marca,ip);
                         }
 
                         break;
                     case "PI4 DQPSK":
-                        if (!radical.Separação_Entre_Canais_de_SaltoPIe8(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
+                        if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
-                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            }
+                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip);
                         }
                         break;
                     case "8DPSK":
-                        if (!radical.Separação_Entre_Canais_de_SaltoPIe8(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
+                        if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Não foi possivel encontrar valores de marker corretamente, por favor configure o aparelho e pressione OK");
-                            radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                            }
+                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip);
                         }
                         break;
                 }

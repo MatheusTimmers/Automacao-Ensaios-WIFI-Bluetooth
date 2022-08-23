@@ -108,23 +108,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\80400197\\.nuget\\packages\\": {},
+    "C:\\Users\\10088365\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
+      "projectUniqueName": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj",
       "projectName": "Automacao WIFI",
-      "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\Automacao WIFI.csproj",
-      "packagesPath": "C:\\Users\\80400197\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\Automacao N9010A\\obj\\",
+      "projectPath": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\Automacao WIFI.csproj",
+      "packagesPath": "C:\\Users\\10088365\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\Automacao N9010A\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\80400197\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\10088365\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -139,14 +139,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
-              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
+            "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj": {
+              "projectPath": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\AutomacaoN9010A\\AutomacaoN9010A.csproj"
             },
-            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj": {
-              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\KeySigthLLib\\KeySightLib.csproj"
+            "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj": {
+              "projectPath": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\KeySigthLLib\\KeySightLib.csproj"
             },
-            "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj": {
-              "projectPath": "C:\\Users\\80400197\\Documents\\GitHub\\Automacao-N9010A\\RodheLib\\RodheLib.csproj"
+            "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj": {
+              "projectPath": "C:\\Users\\10088365\\Documents\\GitHub\\Automacao-Ensaios-WIFI-Bluetooth\\RodheLib\\RodheLib.csproj"
             }
           }
         }
@@ -178,7 +178,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

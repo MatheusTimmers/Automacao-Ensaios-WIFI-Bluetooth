@@ -3,3 +3,24 @@ C:\Users\Teste\source\repos\Automacao N9010A\KeySigthLLib\obj\Debug\net5.0\KeySi
 C:\Users\Teste\source\repos\Automacao N9010A\KeySigthLLib\obj\Debug\net5.0\KeySightLib.AssemblyInfoInputs.cache
 C:\Users\Teste\source\repos\Automacao N9010A\KeySigthLLib\obj\Debug\net5.0\KeySightLib.AssemblyInfo.cs
 C:\Users\Teste\source\repos\Automacao N9010A\KeySigthLLib\obj\Debug\net5.0\KeySightLib.csproj.CoreCompileInputs.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\KeySightLib.deps.json
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\KeySightLib.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\KeySightLib.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Driver.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Scope.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Visa.Interop.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.ConfigServer.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Driver.xml
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Scope.xml
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.Visa.Interop.xml
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\bin\Debug\net5.0\Ivi.ConfigServer.xml
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.csproj.AssemblyReference.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.AssemblyInfoInputs.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.AssemblyInfo.cs
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.csproj.CoreCompileInputs.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.csproj.CopyComplete
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\refint\KeySightLib.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\KeySightLib.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\KeySigthLLib\obj\Debug\net5.0\ref\KeySightLib.dll

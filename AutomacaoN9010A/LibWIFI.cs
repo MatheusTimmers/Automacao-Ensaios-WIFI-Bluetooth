@@ -40,7 +40,7 @@ namespace MatheusProductions.AutomacaoN9010A
       
 
             try 
-            {
+            { 
                 instr.WriteString("*RST;*CLS"); 
                 instr.WriteString("INIT:CONT ON"); 
                 instr.WriteString("DISP:ENAB ON");
@@ -138,6 +138,40 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
+        public void GetMarkers(string valFreq, string nome, string marca, string ip)
+        {
+            ConectaIP(ip);
+
+            try
+            {
+                if (marca == "Agilent")
+                {
+                    string nomePasta = @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto";
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    instr.WriteString("INIT:CONT OFF");
+                    Keysight.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, 3);
+
+                }
+                else
+                {
+                    string nomePasta = @"\\ESR26-101761\prints\Separação Entre Canais de Salto";
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    instr.WriteString("INIT:CONT OFF");
+                    Rodhe.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, 3);
+
+                }
+
+
+            }
+            catch (RsInstrumentException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+
         public bool Separação_Entre_Canais_de_Salto(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, int numMarkers, string marca)
         {
 
@@ -152,45 +186,22 @@ namespace MatheusProductions.AutomacaoN9010A
                 double Span = int.Parse(largura_Banda) * 1.5;
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
                     Thread.Sleep(20000);
-                    string nomeArquivo = "Valores do ensaio.csv";
                     instr.WriteString("INIT:CONT OFF");
-                    if (Keysight.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH", nome, numMarkers))
-                    {
-                        Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return false;
+
                 }
                 else
                 {
-                    string nomePasta = @"\\ESR26-101761\prints\Separação Entre Canais de Salto";
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
                     Thread.Sleep(20000);
-                    string nomeArquivo = "Valores do ensaio.csv";
                     instr.WriteString("INIT:CONT OFF");
-                    if (Rodhe.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, nome, numMarkers))
-                    {
-                        Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return false;
                     
                 }
                 
@@ -358,10 +369,8 @@ namespace MatheusProductions.AutomacaoN9010A
                 {
                     string nomePasta = @"\\A-N9010A-00151\prints\Numero De Frequencia de Salto";
                     Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
-                    instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
+                    instr.IO.Timeout = 2000; 
+                    instr.WriteString("INIT"); 
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
@@ -418,7 +427,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     double aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     aux /= 1000;
                     string val = Convert.ToString(aux);
-                    Rodhe.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
+                    Keysight.SalvaValores(nomeArquivo, nomePasta, val, valFreq, nome);
                     Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
                 }
                 else

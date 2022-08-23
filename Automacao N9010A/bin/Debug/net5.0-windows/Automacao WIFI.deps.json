@@ -1,0 +1,97 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Automacao WIFI/1.0.0": {
+        "dependencies": {
+          "AutomacaoN9010A": "1.0.0",
+          "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0"
+        },
+        "runtime": {
+          "Automacao WIFI.dll": {}
+        }
+      },
+      "RsInstrument/1.15.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/RsInstrument.dll": {
+            "assemblyVersion": "1.15.0.67",
+            "fileVersion": "1.15.0.67"
+          }
+        }
+      },
+      "AutomacaoN9010A/1.0.0": {
+        "dependencies": {
+          "KeySightLib": "1.0.0",
+          "RodheLib": "1.0.0",
+          "RsInstrument": "1.15.0"
+        },
+        "runtime": {
+          "AutomacaoN9010A.dll": {}
+        }
+      },
+      "KeySightLib/1.0.0": {
+        "dependencies": {
+          "RsInstrument": "1.15.0"
+        },
+        "runtime": {
+          "KeySightLib.dll": {}
+        }
+      },
+      "RodheLib/1.0.0": {
+        "dependencies": {
+          "RsInstrument": "1.15.0"
+        },
+        "runtime": {
+          "RodheLib.dll": {}
+        }
+      },
+      "Ivi.Visa.Interop/7.1.1.0": {
+        "runtime": {
+          "Ivi.Visa.Interop.dll": {
+            "assemblyVersion": "7.1.1.0",
+            "fileVersion": "7.1.6708.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Automacao WIFI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RsInstrument/1.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/z7cFPjm7Fxz5j7QuNH0ojjZl2Z08QuFV+oIRWcz8/m5okAvfjxhzLpLUD4NklOfpUhju6lINx6S3gyPMZ7i0g==",
+      "path": "rsinstrument/1.15.0",
+      "hashPath": "rsinstrument.1.15.0.nupkg.sha512"
+    },
+    "AutomacaoN9010A/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "KeySightLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RodheLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Ivi.Visa.Interop/7.1.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

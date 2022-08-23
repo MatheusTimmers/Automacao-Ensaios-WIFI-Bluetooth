@@ -110,6 +110,24 @@ namespace MatheusProductions.KeysightLib
             }
         }
 
+
+        public static void Pega_Salva_MarkersSCS(FormattedIO488 instr, string nomeArquivo, string nomePasta, string valFreq,string nome, int numMarkers)
+        {
+            for (int i = 1; i <= numMarkers; i++)
+            {
+                double New_markerX; 
+                double New_markerY;
+                instr.WriteString($"CALC1:MARK{i}:X?");
+                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                instr.WriteString($"CALC1:MARK{i}:Y?");
+                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                Thread.Sleep(10000);
+                SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY, valFreq, nome);
+                
+            }
+
+        }
+
         public static int ContaMarker(FormattedIO488 instr)
         {
             int cont = 0;
@@ -232,7 +250,7 @@ namespace MatheusProductions.KeysightLib
         public static void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
 
-            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
@@ -258,7 +276,7 @@ namespace MatheusProductions.KeysightLib
 
         public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
             {
                 // Combina o nome do arquivo ao caminho onde ta os prints
                 CriaPasta(nomePasta);
@@ -284,7 +302,7 @@ namespace MatheusProductions.KeysightLib
 
         public static void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
             {
                 CriaPasta(nomePasta);
                 //Criando o arquivo e adicionando os Valores
@@ -439,7 +457,7 @@ namespace MatheusProductions.KeysightLib
             markerx1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
             instr.WriteString($"CALC1:DELT{i}:Y?");
             markery1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            if ((markerx1 == 0) & (markery1== 0))
+            if ((markerx1 == 0) && (markery1== 0))
             {
                 return true;
             }
@@ -470,7 +488,7 @@ namespace MatheusProductions.KeysightLib
                         New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         Thread.Sleep(10000);
                     }
-                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY / 1000, freqC, nome);
+                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY, freqC, nome);
                 }
                 else
                 {
