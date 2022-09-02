@@ -165,80 +165,146 @@ namespace MatheusProductions.RodheLib
 
         public static void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
-
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            using (NetworkShareAccesser.Access("ESR26-101761", "instrument", "894129"))
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, markerX.ToString() + ";");
-                File.AppendAllText(nomePasta, markerY.ToString() + "\n");
-            }
-            else
-            {
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, markerX.ToString() + ";");
-                File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    // Combina o nome do arquivo ao caminho onde ta os prints
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
+
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerX.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+                }
+                else
+                {
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerX.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+                }
             }
         }
 
-        public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
+        public static int ContaMarker(FormattedIO488 instr)
         {
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            int cont = 0;
+            bool aux = true;
+            while (aux)
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
+                cont++;
+                if (cont == 1)
+                {
+                    instr.WriteString($"CALC1:MARK{cont} ON");
+                }
+                else
+                {
+                    instr.WriteString($"CALC1:MARK{cont} ON");
+                    instr.WriteString($"CALC1:MARK{cont}:MODE DELT");
+                    if (MesmaPosicao(instr, cont))
+                    {
+                        instr.WriteString($"CALC1:MARK{cont} OFF");
+                        aux = false;
+                    }
+                    else
+                    {
+                        if (TestaAltura(instr, cont))
+                        {
+                            instr.WriteString($"CALC1:MARK{cont} OFF");
+                            aux = false;
+                        }
+                    }
+                }
+            }
+            return cont - 1;
+        }
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+        public static double MedeMarker(FormattedIO488 instr)
+        {
+            instr.WriteString($"CALC1:MARK1 ON");
+            instr.WriteString($"CALC1:MARK1:Y MAX");
+            instr.WriteString($"CALC1:MARK1:Y?");
+            return (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+        }
 
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + "\n");
-
+        public static bool TestaAltura(FormattedIO488 instr, int cont)
+        {
+            double aux;
+            instr.WriteString($"CALC1:MARK{cont}:Y?");
+            aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            if (aux < -1)
+            {
+                return true;
             }
             else
             {
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + "\n");
+                return false;
+            }
+        }
+
+
+        public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
+        {
+            using (NetworkShareAccesser.Access("ESR26-101761", "instrument", "894129"))
+            {
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    // Combina o nome do arquivo ao caminho onde ta os prints
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
+
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + "\n");
+
+                }
+                else
+                {
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + "\n");
+                }
             }
         }
 
         public static void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            using (NetworkShareAccesser.Access("ESR26-101761", "instrument", "894129"))
             {
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
-            }
-            else
-            {
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+                }
+                else
+                {
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+                }
             }
         }
 

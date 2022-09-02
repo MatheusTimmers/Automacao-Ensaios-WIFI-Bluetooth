@@ -905,36 +905,76 @@ namespace Automacao_N9010A
             if (salva.EnsaiosItem10[6] == true)
             {
                 MessageBox.Show("Iniciando ensaio de Tempo de Ocupação, coloque o dispositivo em modo de salto");
-                //Ensaio_Tempo_de_Ocupação(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
+                Ensaio_Tempo_de_Ocupação(TextBoxFreqC.Text, TextBoxIP.Text, ensaioAtual, config);
                 tl.SetValorPB((100 / it10.GetQuantidadeEnsaios()) / ListaTecnologiasBT.CheckedItems.Count);
 
             }
         }
 
-        /*
+
         public void Ensaio_Tempo_de_Ocupação(string valFreq, string ip, string ensaioAtual, Configurações config)
         {
             radical = new AutomacaoN9010A();
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
+            string nomePasta = @"\\A-N9010A-00151\prints\Tempo de Ocupacao";
             if (marca != "NA")
             {
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        if (radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                            }
+                            radical.GetMarkersTempo(valFreq, ensaioAtual, marca, ip, nomePasta);
+                        }
                         break;
                     case "PI4 DQPSK":
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                        if (radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                            }
+                            radical.GetMarkersTempo(valFreq, ensaioAtual, marca, ip, nomePasta);
+                        }
                         break;
-                    case "8DPSK":   
-                        radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 2, marca);
+                    case "8DPSK":
+                        if (radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.TempoDeOcupacao(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                            }
+                            radical.GetMarkersTempo(valFreq, ensaioAtual, marca, ip, nomePasta);
+                        }
                         break;
                 }
             }
         }
-        */
+
 
         public void Ensaio_Numero_de_Canais(string freqI, string freqF, string freqM, string ip, string ensaioAtual, Configurações config)
         {
@@ -942,18 +982,52 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
+            string nomePasta = @"\\A-N9010A-00151\prints\Numero de Canais";
             if (marca != "NA")
             {
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqI + " " + freqM, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
+                        radical.Numero_De_Frequencia_de_Salto(freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqM + " " + freqF, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
                         break;
                     case "PI4 DQPSK":
-                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqI + " " + freqM, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
+                        radical.Numero_De_Frequencia_de_Salto(freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqM + " " + freqF, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
                         break;
                     case "8DPSK":
-                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        radical.Numero_De_Frequencia_de_Salto(freqI, freqM, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqI + " " + freqM, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
+                        radical.Numero_De_Frequencia_de_Salto(freqM, freqF, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        MessageBox.Show("Tudo Certo ai, chefia?");
+                        if (config.GetTPrints())
+                        {
+                            radical.TiraPrint(freqM + " " + freqF, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                        }
                         break;
                 }
             }
@@ -965,18 +1039,59 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
+            string nomePasta = @"\\A-N9010A-00151\prints\Numero de Ocupaçoes";
+            int numMarkers = 0;
             if (marca != "NA")
             {
                 switch (ensaioAtual)
                 {
                     case "GFSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        if (radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca,nomePasta);
+                            }
+                            radical.GetMarkersNmrOcu(valFreq, ensaioAtual, marca, ip, numMarkers, nomePasta);
+                        }
                         break;
                     case "PI4 DQPSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        if (radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                            }
+                            radical.GetMarkersNmrOcu(valFreq, ensaioAtual, marca, ip, numMarkers, nomePasta);
+                        }
                         break;
                     case "8DPSK":
-                        radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca);
+                        if(radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers))
+                        {
+                            DialogResult dialogResult = DialogResult.No;
+                            while (dialogResult == DialogResult.No)
+                            {
+                                radical.NumeroDeOcupacoes(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), marca, ref numMarkers);
+                                dialogResult = MessageBox.Show("Tudo certo ai, chefia?", "Aviso", MessageBoxButtons.YesNo);
+                            }
+                            if (config.GetTPrints())
+                            {
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
+                            }
+                            radical.GetMarkersNmrOcu(valFreq, ensaioAtual, marca, ip, numMarkers, nomePasta);
+                        }
                         break;
                 }
             }
@@ -1104,6 +1219,7 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = config.GetRef();
             marca = config.GetMarca();
+            string nomePasta = @"\\A-N9010A-00151\prints\Separacao de Canais de Salto";
 
             if (marca != "NA")
             {
@@ -1113,35 +1229,35 @@ namespace Automacao_N9010A
                         
                         if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            MessageBox.Show("Tudo certo ai, chefia?");
                             if (config.GetTPrints())
                             {
-                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
                             }
-                            radical.GetMarkers(valFreq,ensaioAtual,marca,ip);
+                            radical.GetMarkers(valFreq,ensaioAtual,marca,ip, 3, nomePasta);
                         }
 
                         break;
                     case "PI4 DQPSK":
                         if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            MessageBox.Show("Tudo certo ai, chefia?");
                             if (config.GetTPrints())
                             {
-                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
                             }
-                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip);
+                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip, 3, nomePasta);
                         }
                         break;
                     case "8DPSK":
                         if (!radical.Separação_Entre_Canais_de_Salto(valFreq, ip, ensaioAtual, "2", RefLevel, Att, config.GetTPrints(), 3, marca))
                         {
-                            MessageBox.Show("Por favor coloque os markers no lugar e pressione OK");
+                            MessageBox.Show("Tudo certo ai, chefia?");
                             if (config.GetTPrints())
                             {
-                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca);
+                                radical.TiraPrint(valFreq, ip, ensaioAtual, config.GetTPrints(), marca, nomePasta);
                             }
-                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip);
+                            radical.GetMarkers(valFreq, ensaioAtual, marca, ip, 3, nomePasta);
                         }
                         break;
                 }

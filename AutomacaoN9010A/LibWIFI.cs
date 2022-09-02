@@ -138,7 +138,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void GetMarkers(string valFreq, string nome, string marca, string ip)
+        public void GetMarkers(string valFreq, string nome, string marca, string ip, int numMarkers, string nomePasta)
         {
             ConectaIP(ip);
 
@@ -146,15 +146,13 @@ namespace MatheusProductions.AutomacaoN9010A
             {
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto";
                     string nomeArquivo = "Valores do ensaio.csv";
                     instr.WriteString("INIT:CONT OFF");
-                    Keysight.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, 3);
+                    Keysight.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, numMarkers);
 
                 }
                 else
                 {
-                    string nomePasta = @"\\ESR26-101761\prints\Separação Entre Canais de Salto";
                     string nomeArquivo = "Valores do ensaio.csv";
                     instr.WriteString("INIT:CONT OFF");
                     Rodhe.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, 3);
@@ -169,6 +167,64 @@ namespace MatheusProductions.AutomacaoN9010A
                 Console.WriteLine(e.Message);
             }
         }
+
+
+        public void GetMarkersNmrOcu(string valFreq, string nome, string marca, string ip, int numMarkers, string nomePasta)
+        {
+            ConectaIP(ip);
+
+            try
+            {
+                if (marca == "Agilent")
+                {
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    Keysight.SalvaValores(nomeArquivo, nomePasta,Convert.ToString(numMarkers), valFreq, nome);
+                }
+                else
+                {
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    Rodhe.SalvaValores(nomeArquivo, nomePasta, Convert.ToString(numMarkers), valFreq, nome);
+
+                }
+            }
+            catch (RsInstrumentException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        public void GetMarkersTempo(string valFreq, string nome, string marca, string ip, string nomePasta)
+        {
+            ConectaIP(ip);
+
+            try
+            {
+                if (marca == "Agilent")
+                {
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    instr.WriteString("INIT:CONT OFF");
+                    Keysight.Pega_Salva_MarkerTempodeOcupação(instr, nomeArquivo, nomePasta, valFreq, nome);
+
+                }
+                else
+                {
+                    string nomeArquivo = "Valores do ensaio.csv";
+                    instr.WriteString("INIT:CONT OFF");
+                    Rodhe.Pega_Salva_MarkersSCS(instr, nomeArquivo, nomePasta, valFreq, nome, 3);
+
+                }
+
+
+            }
+            catch (RsInstrumentException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+
 
 
 
@@ -189,7 +245,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
-                    Thread.Sleep(20000);
+                    Thread.Sleep(25000);
                     instr.WriteString("INIT:CONT OFF");
                     return false;
 
@@ -199,7 +255,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    Thread.Sleep(20000);
+                    Thread.Sleep(25000);
                     instr.WriteString("INIT:CONT OFF");
                     return false;
                     
@@ -215,8 +271,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        /*
-        public void TempoDeOcupacao(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
+        public bool TempoDeOcupacao(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
 
             ConectaIP(ip);
@@ -226,66 +281,59 @@ namespace MatheusProductions.AutomacaoN9010A
                 instr.WriteString("*RST;*CLS");
                 instr.WriteString("INIT:CONT ON");
                 instr.WriteString("DISP:ENAB ON");
-                // Seta as configurções basicas
                 double span = int.Parse(largura_Banda) * 1.5;
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\A-N9010A-00151\prints\Numero De Frequencia de Salto";
-                    Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, span.ToString(), "1000", "1000", "ON", "WRIT", "POS", "SAN");
-                    instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
-                    string nomeArquivo = "Valores do ensaio.csv";
-                    double potenciaMarker = 0;
-                    while (potenciaMarker < -10 )
+                    Keysight.ConfiguraInstrZeroSpan(instr, valFreq, "Dbm", Att, RefLevel, "0", "1000", "1000", "0.02", "WRIT", "POS", "SAN");
+                    instr.IO.Timeout = 2000;
+                    instr.WriteString("INIT"); 
+                    double potenciaMarker = -40;
+                    while (potenciaMarker < -20 )
+                    {
+                        instr.WriteString("CALC:MARK:AOFF");
+                        instr.WriteString("INIT:CONT ON");
+                        Thread.Sleep(100);
+                        instr.WriteString("INIT:CONT OFF");
+                        Thread.Sleep(500);
+                        potenciaMarker = Keysight.MedeMarker(instr);
+                    }
+                    return true;
+                }
+                else
+                {
+                    Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, span.ToString(), "1000", "1000", "ON", "WRIT", "0.002", "SAN");
+                    instr.IO.Timeout = 2000;
+                    instr.WriteString("INIT"); 
+                    double potenciaMarker = -20;
+                    while (potenciaMarker < -10)
                     {
                         instr.WriteString("CALC:MARK:AOFF");
                         instr.WriteString("INIT:CONT ON");
                         Thread.Sleep(1000);
                         instr.WriteString("INIT:OFF");
-                        potenciaMarker = Keysight.MedeMarker(instr);
+                        potenciaMarker = Rodhe.MedeMarker(instr);
                     }
-                    Keysight.Pega_Salva_MarkerTempodeOcupação(instr, nomeArquivo, nomePasta, valFreq, nome );
-                    Thread.Sleep(15000);
-                    Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
-                }
-                else
-                {
-                    string nomePasta = @"\\ESR26-101761\prints\Numero De Frequencia de Salto";
-                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
-                    instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
-                    Rodhe.ConfiguraInstrSalto(instr, valFreqM, valFreqF, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
+                    return true;
                 }
             }
-            catch (RsInstrumentException e)
+            catch (RsInstrumentException)
             {
-                Console.WriteLine(e.Message);
+                return false;
             }
         }
 
-        */
 
 
-        public void TiraPrint(string valFreq, string ip,string nome, bool tPrints, string marca)
+        public void TiraPrint(string valFreq, string ip,string nome, bool tPrints, string marca, string nomePasta)
         {
             ConectaIP(ip);
             if (marca == "Agilent")
             {
-                Keysight.SalvaPrints(instr, @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto", nome + " " + valFreq, tPrints);
+                Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
             }
             else
             {
-                Rodhe.SalvaPrints(instr, @"\\A-N9010A-00151\prints\Separação Entre Canais de Salto", nome + " " + valFreq, tPrints, "WMF");
+                Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints, "WMF");
             }
             
         }
@@ -354,7 +402,7 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void Numero_De_Frequencia_de_Salto(string valFreqI, string valFreqM, string valFreqF,  string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
+        public void Numero_De_Frequencia_de_Salto(string valFreqI, string valFreqF,  string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
         {
 
             ConectaIP(ip);
@@ -367,33 +415,15 @@ namespace MatheusProductions.AutomacaoN9010A
                 // Seta as configurções basicas
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\A-N9010A-00151\prints\Numero De Frequencia de Salto";
-                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
+                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqF, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; 
-                    instr.WriteString("INIT"); 
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
-                    Keysight.ConfiguraInstrSalto(instr, valFreqM, valFreqF, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints);
+                    instr.WriteString("INIT:CONT ON");   
                 }
                 else
                 {
-                    string nomePasta = @"\\ESR26-101761\prints\Numero De Frequencia de Salto";
-                    Keysight.ConfiguraInstrSalto(instr, valFreqI, valFreqM, "Dbm", Att, RefLevel,  "100", "100", "ON", "MAXH", "POS", "SAN");
-                    instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
-                    Rodhe.ConfiguraInstrSalto(instr, valFreqM, valFreqF, "Dbm", Att, RefLevel,  "100", "100", "ON", "MAXH", "POS", "SAN");
-                    Thread.Sleep(15000);
-                    instr.WriteString("INIT:CONT OFF");
-                    Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreqI + " " + valFreqF, tPrints, "WMF");
+                    Rodhe.ConfiguraInstrSalto(instr, valFreqI, valFreqF, "Dbm", Att, RefLevel, "100", "100", "ON", "MAXH", "POS", "SAN");
+                    instr.IO.Timeout = 2000;
+                    instr.WriteString("INIT:CONT ON");
                 }
             }
             catch (RsInstrumentException e)
@@ -420,7 +450,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "OBW", "99", "-26");
                     instr.IO.Timeout = 5000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     instr.WriteString("FETC:OBW:XDB?");
@@ -437,7 +467,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "OBW", "99", "26");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 5000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     Rodhe.PegaMarker(instr);
@@ -479,7 +509,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
                     //Salvando os Valores do Marker
                     Thread.Sleep(15000);
                     //Cria uma variavel com o nome do arquivo que quer criar
@@ -494,7 +524,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
                     //Salvando os Valores do Marker
                     Thread.Sleep(15000);
                     //Cria uma variavel com o nome do arquivo que quer criar
@@ -510,9 +540,9 @@ namespace MatheusProductions.AutomacaoN9010A
             }
         }
 
-        public void NumeroDeOcupacoes(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca)
+        public bool NumeroDeOcupacoes(string valFreq, string ip, string nome, string largura_Banda, string RefLevel, string Att, bool tPrints, string marca, ref int numMarkers)
         {
-            int numMarkers = 0;
+            int cont = 0;
             ConectaIP(ip);
 
             //"TCPIP0::192.168.1.100::hislip0::INSTR";
@@ -525,20 +555,22 @@ namespace MatheusProductions.AutomacaoN9010A
                 double Span = int.Parse(largura_Banda) * 1.5;
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\A-N9010A-00151\prints\Pico da densidade de potencia";
-                    Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "300", "300", "ON", "MAXH", "POS", "SAN");
+                    string nomePasta = @"\\A-N9010A-00151\prints\Numero de Ocupacoes";
+                    Keysight.ConfiguraInstrZeroSpan(instr, valFreq, "Dbm", Att, RefLevel, "0", "300", "300", "1", "WRIT", "POS", "SAN");
                     instr.WriteString("SWE:TIME 1");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    while (numMarkers <= 4 & numMarkers >= 3)
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
+                    while (!(cont <= 4 && cont >= 3))
                     {
                         instr.WriteString("INIT:CONT ON");
                         Thread.Sleep(1000);
-                        instr.WriteString("INIT:OFF");
-                        numMarkers = Keysight.ContaMarker(instr);
+                        instr.WriteString("INIT:CONT OFF");
+                        Thread.Sleep(500);
+                        cont = Keysight.ContaMarker(instr);
                     }
+                    numMarkers = cont;
                     instr.WriteString("INIT:CONT OFF");
-                    Keysight.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints);
+                    return true;
                 }
                 else
                 {
@@ -548,21 +580,23 @@ namespace MatheusProductions.AutomacaoN9010A
                     instr.WriteString("*OPC?");
                     Thread.Sleep(2000);
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    while (!(numMarkers <= 4 & numMarkers >= 3))
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
+                    while (!(numMarkers <= 4 && numMarkers >= 3))
                     {
                         instr.WriteString("CALC:MARK:AOFF");
                         instr.WriteString("INIT:CONT ON");
                         Thread.Sleep(1500);
                         instr.WriteString("INIT:CONT OFF");
-                        numMarkers = Keysight.ContaMarker(instr);
+                        numMarkers = Rodhe.ContaMarker(instr);
                     }
                     instr.WriteString("INIT:CONT OFF");
                     Rodhe.SalvaPrints(instr, nomePasta, nome + " " + valFreq, tPrints,"WMF");
+                    return true;
                 }
             }
             catch (RsInstrumentException e)
             {
+                return false;
                 Console.WriteLine(e.Message);
             }
         }
@@ -587,9 +621,8 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
-                    //Salvando os Valores do Marker
-                    //Cria uma variavel com o nome do arquivo que quer criar
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
+                    Thread.Sleep(5000);
                     instr.WriteString("INIT:CONT OFF");
                     Keysight.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, valFreq, "MAXH", nome);
                     // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
@@ -601,6 +634,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "POS", "SAN");
                     instr.WriteString("*OPC?");
+                    Thread.Sleep(5000);
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
                     instr.WriteString("INIT"); // Comece a varredura
                     //Salvando os Valores do Marker
@@ -636,7 +670,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     instr.WriteString("SWE:TIME?");
                     double tempo = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     Thread.Sleep(10000);
@@ -656,7 +690,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "3", "10", "ON", "AVER", "RMS", "SAN");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     instr.WriteString("SWE:TIME?");
                     double tempo = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                     Thread.Sleep(15000);
@@ -697,7 +731,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomePasta = @"\\A-N9010A-00151\prints\Potência_de_pico_máxima";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "POS", "CHP", largura_Banda);
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -717,7 +751,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "POS", "ACP", largura_Banda);
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -760,7 +794,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomePasta = @"\\A-N9010A-00151\prints\Valor Médio da Potência Máxima De Saída";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "RMS", "CHP", largura_Banda);
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -781,7 +815,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "RMS", "CHP", largura_Banda);
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -824,7 +858,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomePasta = @"\\A-N9010A-00151\prints\Valor Médio da Potência Máxima De Saída";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "RMS", "CHP", largura_Banda);
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -838,7 +872,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "1000", "3000", "ON", "MAXH", "RMS", "SAN");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     string nomeArquivo = "Valores do ensaio.csv";
                     //Pega os Valores
                     Thread.Sleep(15000);
@@ -873,7 +907,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomePasta = @"\\A-N9010A-00151\prints\Potencia de Saida";
                     Keysight.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "OBW", "99", "-26");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     instr.WriteString("FETC:OBW:XDB?");
@@ -897,7 +931,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     Rodhe.ConfiguraInstr(instr, valFreq, "Dbm", Att, RefLevel, Span.ToString(), "100", "300", "ON", "MAXH", "POS", "OBW", "99", "-26");
                     instr.WriteString("*OPC?");
                     instr.IO.Timeout = 2000;
-                    instr.WriteString("INIT");
+                    instr.WriteString("INIT:CONT ON");
                     Thread.Sleep(15000);
                     instr.WriteString("INIT:CONT OFF");
                     instr.WriteString("CALC:MARK1:FUNC:NDBD:RES?");
@@ -987,11 +1021,11 @@ namespace MatheusProductions.AutomacaoN9010A
                 // Seta as configurções basicas
                 if (marca == "Agilent")
                 {
-                    string nomePasta = @"\\ESR26-101761\prints\Espurios";
+                    string nomePasta = @"\\A-N9010A-00151\prints\Espurios";
                     string nomeArquivo = "Valores do ensaio.csv";
                     Keysight.ConfiguraInstrSalto(instr, freqI, freqF, "Dbm", Att, RefLevel, "100", "300", "ON","MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
                     Thread.Sleep(5000);
                     Keysight.Pega_Salva_Marker(instr, nomeArquivo, nomePasta, freqI, "MAXH", nome, 2);
                     // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC
@@ -1003,7 +1037,7 @@ namespace MatheusProductions.AutomacaoN9010A
                     string nomeArquivo = "Valores do ensaio.csv";
                     Rodhe.ConfiguraInstrSalto(instr, freqI, freqF, "Dbm", Att, RefLevel, "100", "300", "ON", "MAXH", "POS", "SAN");
                     instr.IO.Timeout = 2000; // tempo limite de varredura - defina ele mais alto do que o tempo de aquisição do instrumento
-                    instr.WriteString("INIT"); // Comece a varredura
+                    instr.WriteString("INIT:CONT ON"); // Comece a varredura
                     Thread.Sleep(5000);
                     Rodhe.Pega_Salva_Marker_Espurios(instr, configFreq, nomeArquivo, nomePasta, freqI, freqF, largura, nome, 2);
                     // Fazendo uma captura de tela do instrumento e transferindo o arquivo para o PC

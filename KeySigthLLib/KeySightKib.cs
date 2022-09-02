@@ -52,7 +52,7 @@ namespace MatheusProductions.KeysightLib
             return File.Create(nomePasta);
         }
 
-        /*
+
         public static void Pega_Salva_MarkerTempodeOcupação(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string nome)
         {
             // Inicia as variaveis do marker, com valores padrao para entrar no While
@@ -63,19 +63,17 @@ namespace MatheusProductions.KeysightLib
             //E testa se esses valores não mudaram em 10 segundos
             // -----------------------------------------------------------
             
-            instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
-            while (!TestaSeTaNaBeira(instr, 1))
-            {
-                instr.WriteString("CALC1:MARK1:X?");
-                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                instr.WriteString("CALC1:MARK1:Y?");
-                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                instr.WriteString($"CALC1:MARK1:X {New_markerX - 10}");
-                New_markerX -= 10;
-            }
+            instr.WriteString("CALC1:MARK2:MAX"); //  Definindo o marker para o Peak search
+
+            instr.WriteString("CALC1:MARK2:X?");
+            New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+            instr.WriteString("CALC1:MARK2:Y?");
+            New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+
             
             SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
         }
+
         /*
         public static bool TestaSeTaNaBeira(FormattedIO488 instr ,int i,double posicaoMarkerAntigo, double potenciaMarkerAntigo)
         {
@@ -115,15 +113,19 @@ namespace MatheusProductions.KeysightLib
         {
             for (int i = 1; i <= numMarkers; i++)
             {
-                double New_markerX; 
-                double New_markerY;
-                instr.WriteString($"CALC1:MARK{i}:X?");
-                New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                instr.WriteString($"CALC1:MARK{i}:Y?");
-                New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                Thread.Sleep(10000);
-                SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY, valFreq, nome);
-                
+                instr.WriteString($"CALC1:MARK{i}:MODE?");
+                string isDelta = instr.ReadString();
+                if (isDelta == "DELT\n")
+                {
+                    double New_markerX;
+                    double New_markerY;
+                    instr.WriteString($"CALC1:MARK{i}:X?");
+                    New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                    instr.WriteString($"CALC1:MARK{i}:Y?");
+                    New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                    Thread.Sleep(10000);
+                    SalvaMarkers(nomeArquivo, nomePasta, New_markerX / 1000, New_markerY, valFreq, nome);
+                }
             }
 
         }
@@ -132,29 +134,32 @@ namespace MatheusProductions.KeysightLib
         {
             int cont = 0;
             bool aux = true;
+            instr.WriteString($"CALC:MARK:AOFF");
             while (aux)
             {
                 cont++;
+                if (cont == 12)
+                {
+                    return cont;
+                }
                 if (cont == 1)
                 {
-                    instr.WriteString($"CALC1:MARK{cont} ON");
+                    instr.WriteString($"CALC1:MARK{cont}:MAX");
                 }
                 else
                 {
-                    instr.WriteString($"CALC1:DELT{cont} ON");
-                    if (MesmaPosicao(instr, cont))
+                    instr.WriteString($"CALC1:MARK{cont}:MAX");
+                    instr.WriteString($"CALC1:MARK{cont}:REF 1");
+                    while (MesmaPosicao(instr, cont))
                     {
-                        instr.WriteString($"CALC1:MARK{cont} OFF");
+                        instr.WriteString($"CALC:MARK{cont}:MAX:NEXT");
+                    }
+                    if (!MesmaAltura(instr, cont))
+                    {
+                        instr.WriteString($"CALC1:MARK{cont}:MODE OFF");
                         aux = false;
                     }
-                    else
-                    {
-                        if (TestaAltura(instr, cont))
-                        {
-                            instr.WriteString($"CALC1:DELT{cont} OFF");
-                            aux = false;
-                        }
-                    }
+
                 }
             }
             return cont - 1;
@@ -163,17 +168,18 @@ namespace MatheusProductions.KeysightLib
 
         public static double MedeMarker(FormattedIO488 instr)
         {
-            instr.WriteString($"CALC1:MARK1 ON");
+            instr.WriteString($"CALC1:MARK1:MODE POS");
+            instr.WriteString($"CALC1:MARK1:MAX");
             instr.WriteString($"CALC1:MARK1:Y?");
             return (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
         }
 
-        public static bool TestaAltura(FormattedIO488 instr, int cont)
+        public static bool MesmaAltura(FormattedIO488 instr, int cont)
         {
             double aux;
-            instr.WriteString($"CALC1:DELT{cont}:Y?");
+            instr.WriteString($"CALC1:MARK{cont}:Y?");
             aux = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            if (aux < -1)
+            if (aux >= -1 && aux <= 1)
             {
                 return true;
             }
@@ -194,6 +200,21 @@ namespace MatheusProductions.KeysightLib
             instr.WriteString($"BAND {rbw} kHz"); // Configura o RBW
             instr.WriteString($"BAND:VID {vbw} kHz"); // Configura o VBW
             instr.WriteString($"SWE:TIME:AUTO {sweepAuto}"); // Configura o sweep points
+            instr.WriteString($"TRAC:TYPE {trace}"); //Configura o Trace
+            instr.WriteString($"SENS:DET:TRAC {detector}"); //Configura o Trace
+        }
+
+        public static void ConfiguraInstrZeroSpan(FormattedIO488 instr, string freqC, string unidadeY, string att, string refL, string span, string rbw, string vbw, string sweepAuto, string trace, string detector, string modo)
+        {
+            instr.WriteString($"CONF:{modo}"); // Seleciona o modo
+            instr.WriteString($"UNIT:POW {unidadeY}"); //Configura a unidade do reference Level
+            instr.WriteString($"SENS:POW:RF:ATT {att} dB"); //Configura o ATT
+            instr.WriteString($"DISP:WIND:TRAC:Y:SCAL:RLEV {refL} dbm"); // Configura o Reference Level
+            instr.WriteString($"FREQ:CENT {freqC} Mhz"); // Configura a Frequencia Central
+            instr.WriteString($"FREQ:SPAN {span} MHz"); // Configura o span
+            instr.WriteString($"BAND {rbw} kHz"); // Configura o RBW
+            instr.WriteString($"BAND:VID {vbw} kHz"); // Configura o VBW
+            instr.WriteString($"SWE:TIME {sweepAuto}"); // Configura o sweep points
             instr.WriteString($"TRAC:TYPE {trace}"); //Configura o Trace
             instr.WriteString($"SENS:DET:TRAC {detector}"); //Configura o Trace
         }
@@ -249,80 +270,91 @@ namespace MatheusProductions.KeysightLib
 
         public static void SalvaMarkers(string nomeArquivo, string nomePasta, double markerX, double markerY, string freqC, string nome)
         {
-
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            using (NetworkShareAccesser.Access("A-N9010A-00151", "Administrator", "agilent4u"))
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    // Combina o nome do arquivo ao caminho onde ta os prints
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, markerX.ToString() + ";");
-                File.AppendAllText(nomePasta, markerY.ToString() + "\n");
-            }
-            else
-            {
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, markerX.ToString() + ";");
-                File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerX.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+
+
+                }
+                else
+                {
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerX.ToString() + ";");
+                    File.AppendAllText(nomePasta, markerY.ToString() + "\n");
+                }
             }
         }
 
         public static void SalvaValores(string nomeArquivo, string nomePasta, string valor, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            using (NetworkShareAccesser.Access("A-N9010A-00151", "Administrator", "agilent4u"))
             {
-                // Combina o nome do arquivo ao caminho onde ta os prints
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    // Combina o nome do arquivo ao caminho onde ta os prints
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + "\n");
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + "\n");
 
-            }
-            else
-            {
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + "\n");
+                }
+                else
+                {
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + "\n");
+                }
             }
         }
 
         public static void SalvaValores(string nomeArquivo, string nomePasta, double valor, double valor2, string freqC, string nome)
         {
-            if (!System.IO.File.Exists(nomePasta + "\\" + nomeArquivo))
+            using (NetworkShareAccesser.Access("A-N9010A-00151", "Administrator", "agilent4u"))
             {
-                CriaPasta(nomePasta);
-                //Criando o arquivo e adicionando os Valores
-                System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
-                fs.Close();
+                if (!System.IO.File.Exists(nomePasta + @"\" + nomeArquivo))
+                {
+                    CriaPasta(nomePasta);
+                    //Criando o arquivo e adicionando os Valores
+                    System.IO.FileStream fs = CriaArquivo(nomeArquivo, nomePasta);
+                    fs.Close();
 
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
 
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
-            }
-            else
-            {
-                File.AppendAllText(nomePasta, nome.ToString() + ";");
-                nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
-                File.AppendAllText(nomePasta, freqC.ToString() + ";");
-                File.AppendAllText(nomePasta, valor.ToString() + ";");
-                File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+
+                }
+                else
+                {
+                    File.AppendAllText(nomePasta, nome.ToString() + ";");
+                    nomePasta = System.IO.Path.Combine(nomePasta, nomeArquivo);
+                    File.AppendAllText(nomePasta, freqC.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor.ToString() + ";");
+                    File.AppendAllText(nomePasta, valor2.ToString() + "\n");
+                }
             }
         }
 
@@ -366,14 +398,11 @@ namespace MatheusProductions.KeysightLib
 
         public static void AchaSinalZeroSpan(FormattedIO488 instr)
         {
-            double markerX = 0;
             double markerY = 0;
             while (markerY < -10)
             {
                 instr.WriteString("INIT:CONT ON");
                 instr.WriteString("CALC1:MARK1:MAX"); //  Definindo o marker para o Peak search
-                instr.WriteString("CALC1:MARK1:X?");
-                markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 instr.WriteString("CALC1:MARK1:Y?");
                 markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                 Thread.Sleep(500);
@@ -382,6 +411,7 @@ namespace MatheusProductions.KeysightLib
             }
 
         }
+        /*
         public static void Pega_Salva_Marker_Espurios(FormattedIO488 instr, string configFreq, string nomeArquivo, string nomePasta, string freqI, string freqF, string span, string nome, int numMarkers)
         {
             for (int i = 1; i <= numMarkers; i++)
@@ -449,22 +479,34 @@ namespace MatheusProductions.KeysightLib
 
 
         }
+        */
         public static bool MesmaPosicao(FormattedIO488 instr, int i)
         {
             double markerx1, markery1;
+            double ultimaPosX;
 
-            instr.WriteString($"CALC1:DELT{i}:X?");
+            instr.WriteString($"CALC1:MARK{i}:X?");
             markerx1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            instr.WriteString($"CALC1:DELT{i}:Y?");
+            instr.WriteString($"CALC1:MARK{i}:Y?");
             markery1 = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            if ((markerx1 == 0) && (markery1== 0))
+            for (int j = 1; j < i; j++)
             {
-                return true;
+                if (j == 1)
+                {
+                    ultimaPosX = 0;
+                }
+                else
+                {
+                    instr.WriteString($"CALC1:MARK{j}:X?");
+                    ultimaPosX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
+                }
+                
+                if (ultimaPosX == markerx1)
+                {
+                    return true;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
         
         public static bool Pega_Salva_Marker(FormattedIO488 instr, string nomeArquivo, string nomePasta, string freqC, string trace, string nome, int numMarkers)
@@ -496,22 +538,23 @@ namespace MatheusProductions.KeysightLib
                     {
                         markerX = New_markerX;
                         markerY = New_markerY;
-                        instr.WriteString($"CALC{i}:DELT{i} ON");
-                        instr.WriteString($"CALC1:DELT{i}:X?");
+                        instr.WriteString($"CALC{i}:MARK{i} ON");
+                        instr.WriteString($"CALC{i}:MARK{i}:REF 1");
+                        instr.WriteString($"CALC1:MARK{i}:X?");
                         New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-                        instr.WriteString($"CALC1:DELT{i}:Y?");
+                        instr.WriteString($"CALC1:MARK{i}:Y?");
                         New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
                         Thread.Sleep(10000);
                     }
-                    if (!MesmaPosicao(instr, i))
-                    {
-                        SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
-                        return true;
-                    }
-                    else
-                    {
+                    //if (!MesmaPosicao(instr, i, 0 ,0))
+                 //  {
+                      //  SalvaMarkers(nomeArquivo, nomePasta, New_markerX, New_markerY, freqC, nome);
+                      //  return true;
+                   // }
+                   // else
+                   // {
                         return false;
-                    }
+                   // }
                 }
 
             }
@@ -714,17 +757,19 @@ namespace MatheusProductions.KeysightLib
                 {
                     result = WNetUseConnection(IntPtr.Zero, nr, password, username, 0, null, null, null);
                 }
-
-                if (result != NO_ERROR)
+                if (result != 1219)
                 {
-                    throw new Win32Exception(result);
+                    if (result != NO_ERROR)
+                    {
+                        throw new Win32Exception(result);
+                    }
                 }
             }
 
             private void DisconnectFromShare(string remoteUnc)
             {
                 int result = WNetCancelConnection2(remoteUnc, CONNECT_UPDATE_PROFILE, false);
-                if (result != NO_ERROR)
+                if (result != NO_ERROR && result != 2250)
                 {
                     throw new Win32Exception(result);
                 }

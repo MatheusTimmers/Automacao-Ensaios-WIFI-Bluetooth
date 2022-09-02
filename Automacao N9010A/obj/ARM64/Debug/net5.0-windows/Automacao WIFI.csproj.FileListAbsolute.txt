@@ -32,3 +32,37 @@ C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\D
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.dll
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.pdb
 C:\Users\80400197\Documents\GitHub\Automacao-N9010A\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Item_10.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.exe
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.deps.json
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.runtimeconfig.json
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.runtimeconfig.dev.json
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Automacao WIFI.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RsInstrument.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\AutomacaoN9010A.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\KeySightLib.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Ivi.Visa.Interop.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\AutomacaoN9010A.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\KeySightLib.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\RodheLib.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\bin\ARM64\Debug\net5.0-windows\Ivi.Visa.Interop.xml
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.csproj.AssemblyReference.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Configurações.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Item_10.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Item_11.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Item_12.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Principal.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.Properties.Resources.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao_N9010A.TelaLoading.resources
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.csproj.GenerateResource.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.AssemblyInfoInputs.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.AssemblyInfo.cs
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.csproj.CoreCompileInputs.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.csproj.CopyComplete
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\refint\Automacao WIFI.dll
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.pdb
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\Automacao WIFI.genruntimeconfig.cache
+C:\Users\10088365\Documents\GitHub\Automacao-Ensaios-WIFI-Bluetooth\Automacao N9010A\obj\ARM64\Debug\net5.0-windows\ref\Automacao WIFI.dll
