@@ -918,7 +918,15 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
-            string nomePasta = @"\\A-N9010A-00151\prints\Tempo de Ocupacao";
+            string nomePasta;
+            if (marca == "Rodhe")
+            {
+                nomePasta = @"\\ESR26-101761\prints\Tempo de Ocupacao";
+            }
+            else
+            {
+                nomePasta = @"\\A-N9010A-00151\prints\Tempo de Ocupacao";
+            }
             if (marca != "NA")
             {
                 switch (ensaioAtual)
@@ -982,7 +990,15 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
-            string nomePasta = @"\\A-N9010A-00151\prints\Numero de Canais";
+            string nomePasta;
+            if (marca == "Rodhe")
+            {
+                nomePasta = @"\\ESR26-101761\prints\Numero de Canais";
+            }
+            else
+            {
+                nomePasta = @"\\A-N9010A-00151\prints\Numero de Canais";
+            }
             if (marca != "NA")
             {
                 switch (ensaioAtual)
@@ -1039,7 +1055,17 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = CarregaRefLevel();
             marca = config.GetMarca();
-            string nomePasta = @"\\A-N9010A-00151\prints\Numero de Ocupaçoes";
+            string nomePasta;
+            if (marca == "Rodhe")
+            {
+                nomePasta = @"\\ESR26-101761\prints\Numero de Ocupaçoes";
+            }
+            else
+            { 
+            
+                nomePasta = @"\\A-N9010A-00151\prints\Numero de Ocupaçoes";
+            }
+            
             int numMarkers = 0;
             if (marca != "NA")
             {
@@ -1219,7 +1245,17 @@ namespace Automacao_N9010A
             Att = CarregaAtt();
             RefLevel = config.GetRef();
             marca = config.GetMarca();
-            string nomePasta = @"\\A-N9010A-00151\prints\Separacao de Canais de Salto";
+            string nomePasta;
+            if(marca == "Rodhe")
+            {
+                nomePasta = @"\\ESR26-101761\prints\Separacao de Canais de Salto";
+            }
+            else
+            {
+                nomePasta = @"\\A-N9010A-00151\prints\Separacao de Canais de Salto";
+            }
+
+            
 
             if (marca != "NA")
             {

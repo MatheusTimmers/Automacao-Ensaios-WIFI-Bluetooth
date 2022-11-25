@@ -65,9 +65,9 @@ namespace MatheusProductions.KeysightLib
             
             instr.WriteString("CALC1:MARK2:MAX"); //  Definindo o marker para o Peak search
 
-            instr.WriteString("CALC1:MARK2:X?");
+            instr.WriteString("CALC1:DELT2:X?");
             New_markerX = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
-            instr.WriteString("CALC1:MARK2:Y?");
+            instr.WriteString("CALC1:DELT2:Y?");
             New_markerY = (double)instr.ReadNumber(IEEEASCIIType.ASCIIType_R8, true);
 
             
